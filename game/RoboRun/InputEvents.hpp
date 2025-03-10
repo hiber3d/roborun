@@ -72,5 +72,5 @@ struct TurnLeftInput {};
 HIBER3D_REFLECT(HIBER3D_TYPE(TurnLeftInput));
 struct TurnRightInput {};
 HIBER3D_REFLECT(HIBER3D_TYPE(TurnRightInput));
-struct ToggleAutoRunDebugInput {};
-HIBER3D_REFLECT(HIBER3D_TYPE(ToggleAutoRunDebugInput));
+struct ToggleAutoTurnDebugInput {};
+HIBER3D_REFLECT(HIBER3D_TYPE(ToggleAutoTurnDebugInput));

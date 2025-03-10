@@ -11,6 +11,7 @@
   onCreate() {
     hiber3d.addEventListener(this.entity, "TurnLeftInput");
     hiber3d.addEventListener(this.entity, "TurnRightInput");
+    hiber3d.addEventListener(this.entity, "ToggleAutoTurnDebugInput");
   },
   update() {
     if (!this.shouldRun()) {
