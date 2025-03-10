@@ -65,7 +65,7 @@ void loadEnvironment(
     renderEnvironment->reflectionbox.cubemap    = lightbox;
 
     renderEnvironment->fog.enabled        = true;
-    renderEnvironment->fog.density        = 0.00050f;
+    renderEnvironment->fog.density        = 0.00010f;
     renderEnvironment->fog.height         = 30.0f;
     renderEnvironment->fog.color          = Hiber3D::float3{0.2f, 0.35f, 0.4f};
     renderEnvironment->fog.skyboxAlpha    = 1.0f;
