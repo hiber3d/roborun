@@ -1,8 +1,6 @@
 ﻿const module = module || {};
 module.exports = module.exports || {};
 
-const regUtils = require("scripts/utils/RegUtils.js");
-
 function getStepEntity(segmentSceneEntity, stepIndex) {
   const stepsEntity = regUtils.findEntityWithNameInHierarchy(segmentSceneEntity, "steps");
   if (stepsEntity == undefined) {
