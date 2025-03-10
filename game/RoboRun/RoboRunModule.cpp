@@ -28,7 +28,7 @@ struct AnimationLoadout {
     std::unordered_map<std::string, std::vector<AnimationData>> animations;
 };
 
-constexpr auto PLAYER_ANIMATION_GLB = "a/glbs/player.glb";
+constexpr auto PLAYER_ANIMATION_GLB = "glbs/player.glb";
 
 static void resetSingletons(
     Hiber3D::Singleton<SegmentsState> segmentsState,
@@ -237,14 +237,14 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TurnRightInput>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoRunDebugInput>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoRunDebugInput>(context);
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "a/scripts/utils/CollisionUtils.js");
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "a/scripts/utils/QuatUtils.js");
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "a/scripts/utils/RegUtils.js");
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "a/scripts/utils/RoboRunUtils.js");
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "a/scripts/utils/ScalarUtils.js");
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "a/scripts/utils/SegUtils.js");
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "a/scripts/utils/SplineUtils.js");
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "a/scripts/utils/VectorUtils.js");
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/CollisionUtils.js");
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/QuatUtils.js");
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/RegUtils.js");
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/RoboRunUtils.js");
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/ScalarUtils.js");
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/SegUtils.js");
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/SplineUtils.js");
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/VectorUtils.js");
     context.getModule<Hiber3D::SceneModule>().registerComponent<Stats>(context);
     context.getModule<Hiber3D::SceneModule>().registerComponent<SplineData>(context);
     context.getModule<Hiber3D::SceneModule>().registerComponent<SegmentScene>(context);

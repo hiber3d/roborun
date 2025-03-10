@@ -46,7 +46,7 @@ public:
 
         context.registerModule<Hiber3D::LogModule>(Hiber3D::LogSettings{.logLevel = Hiber3D::LogLevel::INFO});
         context.registerModule<Hiber3D::GltfModule>();
-        context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "a/scenes/RoboRun.scene"});
+        context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "scenes/RoboRun.scene"});
         context.registerModule<Hiber3D::WorldTransformModule>();
         context.registerModule<Hiber3D::AnimationModule>(); // after HierarchyModule
         context.registerModule<Hiber3D::SkinningModule>(); // after SceneModule
