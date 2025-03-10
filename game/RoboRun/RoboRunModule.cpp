@@ -14,7 +14,9 @@
 #include <Hiber3D/Editor/EditorModule.hpp>
 #include <Hiber3D/Gltf/GltfLabel.hpp>
 #include <Hiber3D/Hiber3D.hpp>
+#include <Hiber3D/Renderer/Camera.hpp>
 #include <Hiber3D/Renderer/RenderEnvironment.hpp>
+#include <Hiber3D/Renderer/ScreenInfo.hpp>
 #include <Hiber3D/Scene/SceneModule.hpp>
 #include <Hiber3D/Scripting/JavaScriptScriptingModule.hpp>
 #include <Hiber3D/Scripting/ScriptInstance.hpp>
@@ -160,6 +162,14 @@ void handlePlayAnimation(
     }
 }
 
+static void updateCameraAspectRatio(
+    Hiber3D::View<Hiber3D::Camera>          cameras,
+    Hiber3D::Singleton<Hiber3D::ScreenInfo> screenInfo) {
+    for (auto [entity, camera] : cameras.each()) {
+        camera.aspect = screenInfo->getAspectRatio();
+    }
+}
+
 void broadcastStats(
     Hiber3D::Singleton<GameState>               gameState,
     Hiber3D::View<Stats>                        stats,
@@ -175,6 +185,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayerCreated);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayAnimation);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, updateCameraAspectRatio);
     context.addSystem(Hiber3D::Schedule::ON_TICK, broadcastStats);
 
     context.registerSingleton<GameState>();
