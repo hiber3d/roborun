@@ -55,7 +55,6 @@ public:
         context.registerModule<Hiber3D::InteropModule>();
         context.registerModule<Hiber3D::InputModule>();
 
-        // TODO: Clean
         context.registerModule<Hiber3D::JavaScriptScriptingModule>();
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Transform>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::ComputedWorldTransform>(context);
@@ -69,9 +68,8 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justPressed(key); }>(context, "keyJustPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");
 
-        context.registerModule<Hiber3D::EditorModule>();
-
         context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorSettings{.startInPlayMode = true});
+
         context.registerModule<RoboRunModule>();
     }
 };
