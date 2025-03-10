@@ -1,5 +1,5 @@
-@import "@hiber3d/web/styles";
 @import "tailwindcss" source("/");
+@import "@hiber3d/web/styles";
 
 @layer base {
   * {
