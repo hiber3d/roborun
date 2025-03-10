@@ -17,10 +17,17 @@ FetchContent_MakeAvailable(Hiber3D_zip)
 # Executable (Desktop for IDE auto-complete + Emscripten for web build)
 set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Main.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedTypes.hpp
     
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Modules/ExampleModule/ExampleEvent.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Modules/ExampleModule/ExampleModule.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Modules/ExampleModule/ExampleModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/InputEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunTypes.hpp
 )
 
 hiber3d_add_game(GameTemplate "${GAME_FILES}")

@@ -1,0 +1,195 @@
+﻿const module = module || {};
+module.exports = module.exports || {};
+
+function isAncestorOf(ancestor, entity) {
+  if (ancestor === undefined || entity === undefined) {
+    return false;
+  }
+  if (ancestor === entity) {
+    return true;
+  }
+  var parent = getParent(entity);
+  if (parent === undefined) {
+    return false;
+  } else if (parent === ancestor) {
+    return true;
+  } else {
+    return isAncestorOf(ancestor, parent);
+  }
+}
+module.exports.isAncestorOf = isAncestorOf;
+function getParent(entity) {
+  if (hiber3d.hasComponents(entity, "Hiber3D::Parent") !== true) {
+    return undefined;
+  }
+  return hiber3d.getValue(entity, "Hiber3D::Parent", "parent");
+}
+module.exports.getParent = getParent;
+function getSiblings(entity) {
+  const parent = getParent(entity);
+  if (parent === undefined) {
+    hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no parent");
+    return undefined;
+  }
+  if (hiber3d.hasComponents(parent, "Hiber3D::Children") !== true) {
+    hiber3d.print("getChildIndexOf() - parent:'" + parent + "' has no children");
+    return undefined;
+  }
+  return hiber3d.getValue(parent, "Hiber3D::Children", "entities");
+}
+module.exports.getSiblings = getSiblings;
+function getChildIndexOf(entity) {
+  const siblings = getSiblings(entity);
+  if (siblings === undefined) {
+    hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no siblings");
+    return undefined;
+  }
+  for (var i = 0; i < siblings.length; i++) {
+    if (siblings[i] === entity) {
+      return i;
+    }
+  }
+  return undefined;
+}
+module.exports.getChildIndexOf = getChildIndexOf;
+function isLastChild(entity) {
+  const siblings = getSiblings(entity);
+  if (siblings === undefined) {
+    hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no siblings");
+    return undefined;
+  }
+  const childIndex = getChildIndexOf(entity);
+  if (childIndex === undefined) {
+    hiber3d.print("isLastChild() - entity:'" + entity + "' has no valid index");
+    return undefined;
+  }
+  return childIndex === siblings.length - 1;
+}
+module.exports.isLastChild = isLastChild;
+
+function findEntityWithNameInHierarchy(entity, name) {
+  if (entity === undefined) {
+    return undefined;
+  }
+  if (hiber3d.hasComponents(entity, "Hiber3D::Name") === true) {
+    if (hiber3d.getValue(entity, "Hiber3D::Name") == name) {
+      return entity;
+    }
+  }
+  if (hiber3d.hasComponents(entity, "Hiber3D::Children")) {
+    const children = hiber3d.getValue(entity, "Hiber3D::Children", "entities");
+    for (var i = 0; i < children.length; i++) {
+      const recursiveResult = findEntityWithNameInHierarchy(children[i], name);
+      if (recursiveResult !== undefined) {
+        return recursiveResult;
+      }
+    }
+  }
+  return undefined;
+}
+module.exports.findEntityWithNameInHierarchy = findEntityWithNameInHierarchy;
+
+function findEntityWithComponentInHierarchy(entity) {
+  if (entity === undefined) {
+    return undefined;
+  }
+  if (hiber3d.hasComponents(entity, component) === true) {
+    return entity;
+  }
+  if (hiber3d.hasComponents(entity, "Hiber3D::Children") === true) {
+    const children = hiber3d.getValue(entity, "Hiber3D::Children", "entities");
+    for (var i = 0; i < children.length; i++) {
+      const recursiveResult = findEntityWithComponentInHierarchy(children[i], component);
+      if (recursiveResult !== undefined) {
+        return recursiveResult;
+      }
+    }
+  }
+  return undefined;
+}
+module.exports.findEntityWithComponentInHierarchy = findEntityWithComponentInHierarchy;
+
+function createChildToParent(parent) {
+  const child = hiber3d.createEntity();
+  hiber3d.addComponent(child, "Hiber3D::Parent");
+  hiber3d.setValue(child, "Hiber3D::Parent", "parent", parent);
+  if (hiber3d.hasComponents(parent, "Hiber3D::Children") !== true) {
+    hiber3d.addComponent(parent, "Hiber3D::Children");
+  }
+  var entities = hiber3d.getValue(parent, "Hiber3D::Children", "entities");
+  if (entities === undefined) {
+    hiber3d.setValue(parent, "Hiber3D::Children", "entities", [child]);
+  } else {
+    entities.push(child);
+    hiber3d.setValue(parent, "Hiber3D::Children", "entities", entities);
+  }
+  return child;
+}
+module.exports.createChildToParent = createChildToParent;
+function addScript(entity, scriptPath) {
+  if (!hiber3d.hasComponents(entity, "Hiber3D::ScriptInstance")) {
+    hiber3d.addComponent(entity, "Hiber3D::ScriptInstance");
+  }
+  var scripts = hiber3d.getValue(entity, "Hiber3D::ScriptInstance", "scripts");
+  if(scripts === undefined) {
+    scripts = [];
+  }
+  scripts.push(scriptPath);
+  hiber3d.setValue(entity, "Hiber3D::ScriptInstance", "scripts", scripts);
+
+  // TODO: Temp, just to show in editor
+  if (!hiber3d.hasComponents(entity, "Hiber3D::Transform")) {
+    hiber3d.addComponent(entity, "Hiber3D::Transform");
+  }
+}
+module.exports.addScript = addScript;
+function removeScript(entity) {
+  hiber3d.print("ERROR, regUtils.removeScript() is not implemented yet!");
+}
+module.exports.removeScript = removeScript;
+function destroyEntity(entity) {
+  if (!entity) {
+    return null;
+  }
+  if (hiber3d.hasComponents(entity, "Hiber3D::Parent")) {
+    const parent = hiber3d.getValue(entity, "Hiber3D::Parent", "parent");
+    if (hiber3d.hasComponents(parent, "Hiber3D::Children")) {
+      const siblings = hiber3d.getValue(parent, "Hiber3D::Children", "entities");
+      for (var i = 0; i < siblings.length; i++) {
+        if (siblings[i] === entity) {
+          siblings.splice(i, 1);
+          hiber3d.setValue(parent, "Hiber3D::Children", "entities", siblings);
+          break;
+        }
+      }
+    }
+  }
+  function destroyRecursive(currentEntity) {
+    if (!currentEntity) {
+      return;
+    }
+    if (hiber3d.hasComponents(currentEntity, "Hiber3D::Children")) {
+      const children = hiber3d.getValue(currentEntity, "Hiber3D::Children", "entities");
+      for (var i = 0; i < children.length; i++) {
+        destroyRecursive(children[i]);
+      }
+    }
+    hiber3d.destroyEntity(currentEntity);
+  }
+  return destroyRecursive(entity);
+};
+module.exports.destroyEntity = destroyEntity;
+
+function addComponentIfNotPresent(entity, component) {
+  if (hiber3d.hasComponents(entity, component) === false) {
+    hiber3d.addComponent(entity, component);
+  }
+  return hiber3d.getValue(entity, component);
+}
+module.exports.addComponentIfNotPresent = addComponentIfNotPresent;
+function removeComponentIfPresent(entity, component) {
+  if (hiber3d.hasComponents(entity, component) === true) {
+    hiber3d.removeComponent(entity, component);
+  }
+}
+module.exports.removeComponentIfPresent = removeComponentIfPresent;
