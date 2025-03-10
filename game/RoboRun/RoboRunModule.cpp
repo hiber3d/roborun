@@ -7,6 +7,8 @@
 #include <Animated/AnimatedModule.hpp>
 #include <Animated/AnimatedTypes.hpp>
 
+#include <VisualEffects/VisualEffectsModule.hpp>
+
 #include <Hiber3D/Animation/AnimationBlend.hpp>
 #include <Hiber3D/Animation/AnimationTransition.hpp>
 #include <Hiber3D/Asset/AssetServer.hpp>
@@ -235,8 +237,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<SlideInput>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TurnLeftInput>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TurnRightInput>(context);
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoRunDebugInput>(context);
-    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoRunDebugInput>(context);
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoTurnDebugInput>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/CollisionUtils.js");
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/QuatUtils.js");
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/RegUtils.js");
@@ -254,4 +255,5 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.getModule<Hiber3D::SceneModule>().registerComponent<Jumping>(context);
 
     context.registerModule<AnimatedModule>();
+    context.registerModule<VisualEffectsModule>();
 }

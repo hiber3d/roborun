@@ -45,11 +45,11 @@
   ROOMS: {
     "straight": [
       [1, 1, "scenes/rooms/RoomStraightA.scene"],
-      [1, 1, "scenes/rooms/RoomStraightB.scene"],
-      [1, 1, "scenes/rooms/RoomStraightC.scene"],
-      [1, 1, "scenes/rooms/RoomStraightD.scene"],
-      [1, 1, "scenes/rooms/RoomStraightE.scene"],
-      [1, 1, "scenes/rooms/RoomStraightF.scene"]
+      [0, 1, "scenes/rooms/RoomStraightB.scene"],
+      [0, 1, "scenes/rooms/RoomStraightC.scene"],
+      [0, 1, "scenes/rooms/RoomStraightD.scene"],
+      [0, 1, "scenes/rooms/RoomStraightE.scene"],
+      [0, 1, "scenes/rooms/RoomStraightF.scene"]
     ],
     "left": [
       [1, 1, "scenes/rooms/RoomLeftA.scene"]

@@ -18,16 +18,20 @@ FetchContent_MakeAvailable(Hiber3D_zip)
 set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Main.cpp
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedEvents.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedModule.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedModule.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedTypes.hpp
-    
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/InputEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunModule.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunTypes.hpp
+
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedTypes.hpp
+    
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/VisualEffects/VisualEffectsModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/VisualEffects/VisualEffectsModule.cpp
 )
 
 hiber3d_add_game(GameTemplate "${GAME_FILES}")

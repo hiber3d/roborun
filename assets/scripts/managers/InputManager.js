@@ -46,7 +46,7 @@ const KEYS = {
     if (hiber3d.call("keyIsPressed", KEYS.TURN_RIGHT)) {
       hiber3d.writeEvent("TurnRightInput", {});
     }
-    if (hiber3d.call("keyIsPressed", KEYS.TOGGLE_AUTO_TURN_DEBUG)) {
+    if (hiber3d.call("keyJustPressed", KEYS.TOGGLE_AUTO_TURN_DEBUG)) {
       hiber3d.writeEvent("ToggleAutoTurnDebugInput", {});
     }
   },
