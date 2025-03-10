@@ -23,7 +23,7 @@
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
       hiber3d.addComponent(entity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(entity, "Hiber3D::SceneRoot", "scene", "glbs/Cylinder.glb#scene0");
+      hiber3d.setValue(entity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/Cylinder.glb#scene0");
       hiber3d.setValue(entity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
     }
   },

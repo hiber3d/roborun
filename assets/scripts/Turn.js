@@ -1,6 +1,4 @@
-﻿const segUtils = require("scripts/utils/SegUtils.js");
-
-({
+﻿({
   TURN_SPEED: 270, // degrees per second
   TURN_SPEED_DIFFICULTY_FACTOR: 1.5,
   TURN_SPEED_MAX: 3600,

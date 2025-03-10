@@ -45,7 +45,7 @@
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::Transform");
       hiber3d.setValue(this.debugSplineEntity, "Hiber3D::Transform", "scale", {x:2, y:2, z:2});
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(this.debugSplineEntity, "Hiber3D::SceneRoot", "scene", "glbs/arrow.glb#scene0");
+      hiber3d.setValue(this.debugSplineEntity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/Cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineEntity, "Hiber3D::Name", "DebugSpline");
     }
@@ -58,7 +58,7 @@
       hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D::Transform");
       hiber3d.setValue(this.debugSplineLeftLaneEntity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.1, z: 0.1 });
       hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(this.debugSplineLeftLaneEntity, "Hiber3D::SceneRoot", "scene", "glbs/cylinder.glb#scene0");
+      hiber3d.setValue(this.debugSplineLeftLaneEntity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/Cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineLeftLaneEntity, "Hiber3D::Name", "DebugSplineLeftLane");
     }
@@ -71,7 +71,7 @@
       hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D::Transform");
       hiber3d.setValue(this.debugSplineRightLaneEntity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.1, z: 0.1 });
       hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(this.debugSplineRightLaneEntity, "Hiber3D::SceneRoot", "scene", "glbs/cylinder.glb#scene0");
+      hiber3d.setValue(this.debugSplineRightLaneEntity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/Cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineRightLaneEntity, "Hiber3D::Name", "DebugSplineRightLane");
     }
@@ -84,7 +84,7 @@
       hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D::Transform");
       hiber3d.setValue(this.debugSplineLeftWallEntity, "Hiber3D::Transform", "scale", { x: 0.2, y: 0.2, z: 0.2 });
       hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(this.debugSplineLeftWallEntity, "Hiber3D::SceneRoot", "scene", "glbs/cylinder.glb#scene0");
+      hiber3d.setValue(this.debugSplineLeftWallEntity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/Cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineLeftWallEntity, "Hiber3D::Name", "DebugSplineLeftWall");
     }
@@ -97,7 +97,7 @@
       hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D::Transform");
       hiber3d.setValue(this.debugSplineRightWallEntity, "Hiber3D::Transform", "scale", { x: 0.2, y: 0.2, z: 0.2 });
       hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(this.debugSplineRightWallEntity, "Hiber3D::SceneRoot", "scene", "glbs/cylinder.glb#scene0");
+      hiber3d.setValue(this.debugSplineRightWallEntity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/Cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineRightWallEntity, "Hiber3D::Name", "DebugSplineRightWall");
     }

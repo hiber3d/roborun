@@ -1,5 +1,3 @@
-const segUtils = require("scripts/utils/SegUtils.js");
-
 ({
   NUM_SEGMENTS: 13,
   START_VANILLA_STRAIGHT_LENGTH: 3,
