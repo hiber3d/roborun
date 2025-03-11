@@ -112,7 +112,7 @@ void handlePlayerCreated(
         loadAnimation(assetServer, "run", 5, animationLoadout, 0.0f, std::nullopt, 1.25f);
         loadAnimation(assetServer, "dying", 11, animationLoadout, 0.0f, std::nullopt, 0.75f);
         // loadAnimation(assetServer, "dead", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "slide", 6, animationLoadout, 0.25f, 0.25f, 1.25f);
+        loadAnimation(assetServer, "slide", 6, animationLoadout, 0.25f, 0.25f, 1.5f);
         loadAnimation(assetServer, "jump", 1, animationLoadout, 0.0f, std::nullopt, 1.0f);
         loadAnimation(assetServer, "jump", 2, animationLoadout, 0.0f, std::nullopt, 1.0f);
         // loadAnimation(assetServer, "jump", 3, animationLoadout, 0.0f, std::nullopt, 1.0f);

@@ -27,13 +27,18 @@
       [0.1, 1, "scenes/segments/SegmentStraightNOA.scene"],
       [0.1, 1, "scenes/segments/SegmentStraightCOA.scene"],
 
-      [0.1, 1, "scenes/segments/SegmentStraightNPL.scene"],
-      [0.1, 1, "scenes/segments/SegmentStraightNPR.scene"],
-      [0.1, 1, "scenes/segments/SegmentStraightCPL.scene"],
-      [0.1, 1, "scenes/segments/SegmentStraightCPR.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightNPL.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightNPR.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightCPL.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightCPR.scene"],
 
       [0, 1, "scenes/segments/SegmentStraightPTL.scene"],
-      [0, 1, "scenes/segments/SegmentStraightPTR.scene"]
+      [0, 1, "scenes/segments/SegmentStraightPTR.scene"],
+
+      [0.1, 1, "scenes/segments/SegmentStraightNSM.scene"],
+      [0.1, 1, "scenes/segments/SegmentStraightNSM2.scene"],
+      [0.01, 100, "scenes/segments/SegmentStraightCSM.scene"],
+      [0.01, 100, "scenes/segments/SegmentStraightCSM2.scene"]
     ],
     "left": [
       [1, 1, "scenes/SegmentLeftBase.scene"]
