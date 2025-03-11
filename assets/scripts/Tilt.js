@@ -17,6 +17,8 @@
     hiber3d.addEventListener(this.entity, "TiltStraightInput");
     hiber3d.addEventListener(this.entity, "TiltLeftInput");
     hiber3d.addEventListener(this.entity, "TiltRightInput");
+    hiber3d.addEventListener(this.entity, "LeftLaneInput");
+    hiber3d.addEventListener(this.entity, "RightLaneInput");
   },
   update(dt) {
     if (!this.shouldRun()) {
@@ -30,10 +32,12 @@
     if (
       this.tiltFactor < 0 && this.tiltFactorPreviousTick === 0 ||
       this.tiltFactor < 1 && this.tiltFactorPreviousTick === 1) {
+      hiber3d.print("tiltLeft | tiltFactor: " + this.tiltFactor + " tiltFactorPreviousTick: " + this.tiltFactorPreviousTick);
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "tiltLeft", loop: false });
     } else if (
       this.tiltFactor > 0 && this.tiltFactorPreviousTick === 0 ||
       this.tiltFactor > -1 && this.tiltFactorPreviousTick === -1) {
+      hiber3d.print("tiltRight | tiltFactor: " + this.tiltFactor + " tiltFactorPreviousTick: " + this.tiltFactorPreviousTick);
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "tiltRight", loop: false });
     }
 
@@ -47,6 +51,10 @@
       this.tiltFactor = -1;
     } else if (event === "TiltRightInput") {
       this.tiltFactor = 1;
+    } else if (event === "LeftLaneInput") {
+      this.tiltFactor = Math.max(-1, this.tiltFactor - 1);
+    } else if (event === "RightLaneInput") {
+      this.tiltFactor = Math.min(1, this.tiltFactor + 1);
     }
   },
 });

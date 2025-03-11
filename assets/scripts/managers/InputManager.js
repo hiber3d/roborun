@@ -72,15 +72,19 @@ const KEYS = {
       }
     } else {
       // Start game on any non-tilt touch input
-      hiber3d.writeEvent("StartInput", {});
+      if (hiber3d.getValue("GameState", "paused") === true) {
+        hiber3d.writeEvent("StartInput", {});
+        return;
+      }
     }
-
 
     if (event === "LeftTapped") {
-      hiber3d.writeEvent("TiltLeftInput", {});
+      hiber3d.print("LeftTapped");
+      hiber3d.writeEvent("LeftLaneInput", {});
     }
     if (event === "RightTapped") {
-      hiber3d.writeEvent("TiltRightInput", {});
+      hiber3d.print("RightTapped");
+      hiber3d.writeEvent("RightLaneInput", {});
     }
 
     if (event === "SwipedUp") {
