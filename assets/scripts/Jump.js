@@ -59,9 +59,7 @@
           hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", loop: false });
           hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
         }
-        if (roboRunUtils.isPlayer(this.entity)) {
-          hiber3d.writeEvent("PlayerLanded", {});
-        }
+        hiber3d.writeEvent("LandedEvent", { entity: this.entity });
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", 0);
       } else {
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newJumpHeight);
@@ -79,9 +77,7 @@
         hiber3d.setValue(this.entity, "Jumping", "startHeight", startHeight);
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "jump", loop: false });
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "fall", loop: true });
-        if (roboRunUtils.isPlayer(this.entity)) {
-          hiber3d.writeEvent("PlayerJumped", {});
-        }
+        hiber3d.writeEvent("JumpedEvent", {entity: this.entity});
       }
     } else if (event === "DiveInput") {
       if (hiber3d.hasComponents(this.entity, "Jumping")) {

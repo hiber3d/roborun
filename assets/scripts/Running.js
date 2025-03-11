@@ -132,7 +132,8 @@
     if (currentStepEntity === undefined) {
       return undefined;
     }
-    const tiltFactor = hiber3d.getValue("GameState", "tiltFactor");
+    regUtils.addComponentIfNotPresent(this.entity, "TiltFactor");
+    const tiltFactor = hiber3d.getValue(this.entity, "TiltFactor", "factor");
     const isLeft = tiltFactor < 0;
     const laneOffset = hiber3d.getValue(currentStepEntity, "Step", isLeft ? "laneOffsetLeft" : "laneOffsetRight");
     const tiltVector = { x: laneOffset * tiltFactor, y: 0, z: 0 };

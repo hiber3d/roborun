@@ -24,7 +24,8 @@
     }
 
     const lerpedTiltFactor = this.lerpedTiltFactorPreviousTick + (this.tiltFactor - this.lerpedTiltFactorPreviousTick) * dt / this.SECONDS_TO_TILT;
-    hiber3d.setValue("GameState", "tiltFactor", lerpedTiltFactor);
+    regUtils.addComponentIfNotPresent(this.entity, "TiltFactor")
+    hiber3d.setValue(this.entity, "TiltFactor", "factor", lerpedTiltFactor);
 
     if (
       this.tiltFactor < 0 && this.tiltFactorPreviousTick === 0 ||
