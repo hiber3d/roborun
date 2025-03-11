@@ -17,11 +17,11 @@ static void updateAnimations(
     Hiber3D::EventWriter<CancelAnimationEvent>&                                    cancelWriter) {
     for (auto [entity, animationBlend, animationTransition, animated] : animateds.each()) {
         if (const auto* animation = animationAssets->get(animationBlend.layers[0].animation)) {
-            const auto currentTime    = animationBlend.layers[0].animationTime;
-            const auto transitionTime = Hiber3D::Time::fromSeconds(animated.animationData.transitionTimeFrom.value_or(animated.baseAnimationData.transitionTimeTo));
-            const auto maxTime        = animation->duration() - transitionTime;
-
-            if (currentTime >= maxTime) {
+            const auto currentTime      = animationBlend.layers[0].animationTime;
+            const auto transitionTime   = Hiber3D::Time::fromSeconds(animated.animationData.transitionTimeFrom.value_or(animated.baseAnimationData.transitionTimeTo));
+            const auto compensationTime = Hiber3D::Time::fromSeconds(2.0f / 60.0f); // Needed to prevent animation to re-loop
+            const auto maxTime          = animation->duration() - transitionTime - compensationTime;
+            if (currentTime >= maxTime - compensationTime) {
                 if (animated.animationData.destroyEntityAfterAnimationFinishes) {
                     destroyEntityWithChildrenRecursive(registry, entity);
                 } else {

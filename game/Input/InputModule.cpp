@@ -18,6 +18,8 @@ void InputModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TiltLeftInput>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TiltStraightInput>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TiltRightInput>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<LeftLaneInput>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<RightLaneInput>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<JumpInput>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<DiveInput>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<SlideInput>(context);
