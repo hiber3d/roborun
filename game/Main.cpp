@@ -1,6 +1,6 @@
-#include <Animated/AnimatedModule.hpp>
 #include <AnimationLoadout/AnimationLoadoutModule.hpp>
 #include <Broadcast/BroadcastModule.hpp>
+#include <Input/InputModule.hpp>
 #include <Path/PathModule.hpp>
 #include <RoboRun/RoboRunModule.hpp>
 #include <Segment/SegmentModule.hpp>
@@ -76,9 +76,9 @@ public:
         context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorSettings{.startInPlayMode = true});
 
         // Custom modules
-        context.registerModule<AnimatedModule>();
         context.registerModule<AnimationLoadoutModule>();
         context.registerModule<BroadcastModule>();
+        context.registerModule<InputModule>();
         context.registerModule<RoboRunModule>();
         context.registerModule<PathModule>();
         context.registerModule<SegmentModule>();

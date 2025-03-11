@@ -1,4 +1,3 @@
-#include "InputEvents.hpp"
 #include "RoboRunEvents.hpp"
 #include "RoboRunModule.hpp"
 #include "RoboRunTypes.hpp"
@@ -101,26 +100,6 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
 
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<GameState>(context);
-
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<SwipedLeft>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<SwipedRight>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<SwipedUp>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<SwipedDown>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<LeftTapped>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<RightTapped>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<Tilted>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<StartInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PauseInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TiltLeftInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TiltStraightInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TiltRightInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<JumpInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<DiveInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<SlideInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TurnLeftInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TurnRightInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoRunDebugInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoRunDebugInput>(context);
 
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerCreated>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<KillPlayer>(context);

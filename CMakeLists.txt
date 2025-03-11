@@ -18,11 +18,11 @@ FetchContent_MakeAvailable(Hiber3D_zip)
 set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Main.cpp
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedEvents.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedModule.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedModule.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Animated/AnimatedTypes.hpp
     
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/Animated/AnimatedEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/Animated/AnimatedModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/Animated/AnimatedModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/Animated/AnimatedTypes.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/AnimationLoadoutEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/AnimationLoadoutModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/AnimationLoadoutModule.cpp
@@ -30,14 +30,16 @@ set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Broadcast/BroadcastEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Broadcast/BroadcastModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Broadcast/BroadcastModule.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Broadcast/BroadcastTypes.hpp
+    
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Input/InputEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Input/InputModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Input/InputModule.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Path/PathEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Path/PathModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Path/PathModule.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Path/PathTypes.hpp
     
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/InputEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunModule.cpp

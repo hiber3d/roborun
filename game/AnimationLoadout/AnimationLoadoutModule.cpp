@@ -1,8 +1,9 @@
 #include "AnimationLoadoutEvents.hpp"
 #include "AnimationLoadoutModule.hpp"
 
-#include <Animated/AnimatedEvents.hpp>
-#include <Animated/AnimatedTypes.hpp>
+#include <AnimationLoadout/Animated/AnimatedEvents.hpp>
+#include <AnimationLoadout/Animated/AnimatedModule.hpp>
+#include <AnimationLoadout/Animated/AnimatedTypes.hpp>
 
 #include <RoboRun/RoboRunEvents.hpp>
 #include <RoboRun/RoboRunTypes.hpp>
@@ -129,4 +130,6 @@ void AnimationLoadoutModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayAnimation>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<AnimationFinished>(context);
     }
+
+    context.registerModule<AnimatedModule>();
 }
