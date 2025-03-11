@@ -16,6 +16,13 @@ const KEYS = {
 
 ({
   onCreate() {
+    hiber3d.addEventListener(this.entity, "SwipedUp");
+    hiber3d.addEventListener(this.entity, "SwipedDown");
+    hiber3d.addEventListener(this.entity, "SwipedLeft");
+    hiber3d.addEventListener(this.entity, "SwipedRight");
+    hiber3d.addEventListener(this.entity, "Tilted");
+    hiber3d.addEventListener(this.entity, "LeftTapped");
+    hiber3d.addEventListener(this.entity, "RightTapped");
   },
   update(dt) {
     // Keyboard events
@@ -52,29 +59,38 @@ const KEYS = {
   },
   onEvent(event, payload) {
     // Touch events
-    if (event === "Tilt") {
-      if (Math.abs(payload) < 0.01) {
+    if (event === "Tilted") {
+      if (Math.abs(payload.value) < 10) {
         hiber3d.writeEvent("TiltStraightInput", {});
-      } else if (payload < 0) {
+      } else if (payload.value < 0) {
         hiber3d.writeEvent("TiltLeftInput", {});
       } else {
         hiber3d.writeEvent("TiltRightInput", {});
       }
-      if (event === "SwipedUp") {
-        hiber3d.writeEvent("JumpInput", {});
-      }
-      if (event === "SwipedDown") {
-        hiber3d.writeEvent("DiveInput", {});
-      }
-      if (event === "SwipedDown") {
-        hiber3d.writeEvent("SlideInput", {});
-      }
-      if (event === "SwipedLeft") {
-        hiber3d.writeEvent("TurnLeftInput", {});
-      }
-      if (event === "SwipedRight") {
-        hiber3d.writeEvent("TurnRightInput", {});
-      }
+    }
+
+    if (event === "LeftTapped") {
+      hiber3d.writeEvent("TiltLeftInput", {});
+    }
+    if (event === "RightTapped") {
+      hiber3d.writeEvent("TiltRightInput", {});
+    }
+
+    if (event === "SwipedUp") {
+      hiber3d.writeEvent("StartInput", {});
+      hiber3d.writeEvent("JumpInput", {});
+    }
+    if (event === "SwipedDown") {
+      hiber3d.writeEvent("DiveInput", {});
+    }
+    if (event === "SwipedDown") {
+      hiber3d.writeEvent("SlideInput", {});
+    }
+    if (event === "SwipedLeft") {
+      hiber3d.writeEvent("TurnLeftInput", {});
+    }
+    if (event === "SwipedRight") {
+      hiber3d.writeEvent("TurnRightInput", {});
     }
   },
 });

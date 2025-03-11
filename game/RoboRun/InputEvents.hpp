@@ -54,6 +54,7 @@ HIBER3D_INTEROP_RECEIVE_FROM_JS(Tilted);
 
 struct StartInput {};
 HIBER3D_REFLECT(HIBER3D_TYPE(StartInput));
+HIBER3D_INTEROP_RECEIVE_FROM_JS(StartInput);
 struct PauseInput {};
 HIBER3D_REFLECT(HIBER3D_TYPE(PauseInput));
 struct TiltLeftInput {};
