@@ -10,8 +10,6 @@
 #include <Hiber3D/Hiber3D.hpp>
 #include <Hiber3D/Hierarchy/Hierarchy.hpp>
 
-constexpr auto ANIMATION_TRANSITION_TIME = Hiber3D::Time::fromSeconds(0.1f);
-
 static void updateAnimations(
     Hiber3D::Registry&                                                             registry,
     Hiber3D::View<Hiber3D::AnimationBlend, Hiber3D::AnimationTransition, Animated> animateds,
@@ -19,8 +17,9 @@ static void updateAnimations(
     Hiber3D::EventWriter<CancelAnimationEvent>&                                    cancelWriter) {
     for (auto [entity, animationBlend, animationTransition, animated] : animateds.each()) {
         if (const auto* animation = animationAssets->get(animationBlend.layers[0].animation)) {
-            const auto currentTime = animationBlend.layers[0].animationTime;
-            const auto maxTime     = animation->duration() - ANIMATION_TRANSITION_TIME;
+            const auto currentTime    = animationBlend.layers[0].animationTime;
+            const auto transitionTime = Hiber3D::Time::fromSeconds(animated.animationData.transitionTimeFrom.value_or(animated.baseAnimationData.transitionTimeTo));
+            const auto maxTime        = animation->duration() - transitionTime;
 
             if (currentTime >= maxTime) {
                 if (animated.animationData.destroyEntityAfterAnimationFinishes) {
@@ -40,7 +39,8 @@ static void handleCancelAnimationEvent(
     for (const auto& event : events) {
         animateds.withComponent(event.entity, [&](Hiber3D::AnimationTransition& animationTransition, Animated& animated) {
             if (event.animationData.handle == animated.animationData.handle) {
-                animationTransition.startTransition(animated.baseAnimationData.handle, ANIMATION_TRANSITION_TIME, animated.baseAnimationData.animationSpeed);
+                const auto transitionTime = Hiber3D::Time::fromSeconds(animated.animationData.transitionTimeFrom.value_or(animated.baseAnimationData.transitionTimeTo));
+                animationTransition.startTransition(animated.baseAnimationData.handle, transitionTime, animated.baseAnimationData.animationSpeed);
                 animated.animationLayer = AnimationLayer::BASE;
                 animated.animationData  = animated.baseAnimationData;
                 writer.writeEvent(AnimationFinishedEvent{.entity = event.entity, .animationData = event.animationData});
