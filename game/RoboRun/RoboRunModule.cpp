@@ -22,7 +22,7 @@ static void resetSingletons(
     *gameState = GameState{};
 }
 
-// TODO: Move to SceneModule
+// TODO: Move to some SceneModule
 void loadEnvironment(
     Hiber3D::Singleton<Hiber3D::RenderEnvironment>        renderEnvironment,
     Hiber3D::Singleton<Hiber3D::AssetServer>              assetServer,
