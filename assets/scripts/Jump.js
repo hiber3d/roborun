@@ -38,7 +38,7 @@
     // In air
     if (hiber3d.hasComponents(this.entity, "Jumping")) {
       const newTimeSinceJumped = hiber3d.getValue(this.entity, "Jumping", "timeSinceJumped") + dt;
-      const isDiving = hiber3d.getValue(this.entity, "Jumping", "isDiving");
+      const isDiving = hiber3d.hasComponents(this.entity, "Diving");
       const newDeltaHeight = this.getDeltaHeight(newTimeSinceJumped, isDiving);
       const newJumpHeight = hiber3d.getValue(this.entity, "Jumping", "startHeight") + newDeltaHeight;
 
@@ -85,10 +85,12 @@
       }
     } else if (event === "DiveInput") {
       if (hiber3d.hasComponents(this.entity, "Jumping")) {
-        hiber3d.setValue(this.entity, "Jumping", "isDiving", true);
+        regUtils.addComponentIfNotPresent(this.entity, "Diving");
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", loop: false });
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
       }
+    } else if (event === "AnimationFinished" && payload.name === "dive") {
+      regUtils.removeComponentIfPresent(this.entity, "Diving");
     }
   },
 });
