@@ -16,14 +16,13 @@ static void updateAnimations(
     Hiber3D::Registry&                                                             registry,
     Hiber3D::View<Hiber3D::AnimationBlend, Hiber3D::AnimationTransition, Animated> animateds,
     Hiber3D::Singleton<Hiber3D::Assets<Hiber3D::Animation>>                        animationAssets,
-    Hiber3D::EventWriter<CancelAnimationEvent>&                                     cancelWriter) {
+    Hiber3D::EventWriter<CancelAnimationEvent>&                                    cancelWriter) {
     for (auto [entity, animationBlend, animationTransition, animated] : animateds.each()) {
         if (const auto* animation = animationAssets->get(animationBlend.layers[0].animation)) {
             const auto currentTime = animationBlend.layers[0].animationTime;
             const auto maxTime     = animation->duration() - ANIMATION_TRANSITION_TIME;
 
-            const auto hackyCompensation = Hiber3D::Time::fromSeconds(2.0f / 60.0f);  // TODO
-            if ((currentTime + hackyCompensation) >= maxTime) {
+            if (currentTime >= maxTime) {
                 if (animated.animationData.destroyEntityAfterAnimationFinishes) {
                     destroyEntityWithChildrenRecursive(registry, entity);
                 } else {
@@ -36,13 +35,15 @@ static void updateAnimations(
 
 static void handleCancelAnimationEvent(
     Hiber3D::EventView<CancelAnimationEvent>              events,
-    Hiber3D::View<Hiber3D::AnimationTransition, Animated> animateds) {
+    Hiber3D::View<Hiber3D::AnimationTransition, Animated> animateds,
+    Hiber3D::EventWriter<AnimationFinishedEvent>&         writer) {
     for (const auto& event : events) {
         animateds.withComponent(event.entity, [&](Hiber3D::AnimationTransition& animationTransition, Animated& animated) {
             if (event.animationData.handle == animated.animationData.handle) {
                 animationTransition.startTransition(animated.baseAnimationData.handle, ANIMATION_TRANSITION_TIME, animated.baseAnimationData.animationSpeed);
                 animated.animationLayer = AnimationLayer::BASE;
                 animated.animationData  = animated.baseAnimationData;
+                writer.writeEvent(AnimationFinishedEvent{.entity = event.entity, .animationData = event.animationData});
             }
         });
     }
@@ -68,6 +69,6 @@ static void handlePlayAnimationEvent(
 
 void AnimatedModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_TICK, updateAnimations);
-    context.addSystem(Hiber3D::Schedule::ON_TICK, handleCancelAnimationEvent); // after updateAnimations
-    context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayAnimationEvent);  // after updateAnimations
+    context.addSystem(Hiber3D::Schedule::ON_TICK, handleCancelAnimationEvent);  // after updateAnimations
+    context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayAnimationEvent);    // after updateAnimations
 }

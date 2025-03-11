@@ -16,3 +16,9 @@ struct CancelAnimationEvent {
 
     AnimationData animationData;
 };
+
+struct AnimationFinishedEvent {
+	Hiber3D::Entity entity;
+
+	AnimationData animationData;
+};
