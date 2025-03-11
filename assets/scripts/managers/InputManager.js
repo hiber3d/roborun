@@ -70,7 +70,11 @@ const KEYS = {
       } else {
         hiber3d.writeEvent("TiltRightInput", {});
       }
+    } else {
+      // Start game on any non-tilt touch input
+      hiber3d.writeEvent("StartInput", {});
     }
+
 
     if (event === "LeftTapped") {
       hiber3d.writeEvent("TiltLeftInput", {});
@@ -80,7 +84,6 @@ const KEYS = {
     }
 
     if (event === "SwipedUp") {
-      hiber3d.writeEvent("StartInput", {});
       hiber3d.writeEvent("JumpInput", {});
     }
     if (event === "SwipedDown") {
