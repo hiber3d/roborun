@@ -31,24 +31,24 @@ void loadEnvironment(
         Hiber3D::AssetPath("skybox"),
         [](Hiber3D::AssetLoadContext& ctx) -> Hiber3D::Cubemap {
             return Hiber3D::Cubemap{
-                .posX = ctx.load<Hiber3D::Texture>("environments/skybox_posx.ktx2"),
-                .negX = ctx.load<Hiber3D::Texture>("environments/skybox_negx.ktx2"),
-                .posY = ctx.load<Hiber3D::Texture>("environments/skybox_posy.ktx2"),
-                .negY = ctx.load<Hiber3D::Texture>("environments/skybox_negy.ktx2"),
-                .posZ = ctx.load<Hiber3D::Texture>("environments/skybox_posz.ktx2"),
-                .negZ = ctx.load<Hiber3D::Texture>("environments/skybox_negz.ktx2"),
+                .posX = ctx.load<Hiber3D::Texture>("environments/skybox_posx.png"),
+                .negX = ctx.load<Hiber3D::Texture>("environments/skybox_negx.png"),
+                .posY = ctx.load<Hiber3D::Texture>("environments/skybox_posy.png"),
+                .negY = ctx.load<Hiber3D::Texture>("environments/skybox_negy.png"),
+                .posZ = ctx.load<Hiber3D::Texture>("environments/skybox_posz.png"),
+                .negZ = ctx.load<Hiber3D::Texture>("environments/skybox_negz.png"),
             };
         });
     auto lightbox = assetServer->loadProcedural<Hiber3D::Cubemap>(
         Hiber3D::AssetPath("lightbox"),
         [](Hiber3D::AssetLoadContext& ctx) -> Hiber3D::Cubemap {
             return Hiber3D::Cubemap{
-                .posX = ctx.load<Hiber3D::Texture>("environments/lightbox_posx.ktx2"),
-                .negX = ctx.load<Hiber3D::Texture>("environments/lightbox_negx.ktx2"),
-                .posY = ctx.load<Hiber3D::Texture>("environments/lightbox_posy.ktx2"),
-                .negY = ctx.load<Hiber3D::Texture>("environments/lightbox_negy.ktx2"),
-                .posZ = ctx.load<Hiber3D::Texture>("environments/lightbox_posz.ktx2"),
-                .negZ = ctx.load<Hiber3D::Texture>("environments/lightbox_negz.ktx2"),
+                .posX = ctx.load<Hiber3D::Texture>("environments/lightbox_posx.png"),
+                .negX = ctx.load<Hiber3D::Texture>("environments/lightbox_negx.png"),
+                .posY = ctx.load<Hiber3D::Texture>("environments/lightbox_posy.png"),
+                .negY = ctx.load<Hiber3D::Texture>("environments/lightbox_negy.png"),
+                .posZ = ctx.load<Hiber3D::Texture>("environments/lightbox_posz.png"),
+                .negZ = ctx.load<Hiber3D::Texture>("environments/lightbox_negz.png"),
             };
         });
 
@@ -56,25 +56,25 @@ void loadEnvironment(
 
     renderEnvironment->skybox.cubemap = skybox;
 
-    renderEnvironment->lightbox.brightness = 0.3f;
+    renderEnvironment->lightbox.brightness = 0.1f;
     renderEnvironment->lightbox.cubemap    = lightbox;
 
-    renderEnvironment->reflectionbox.brightness = 1.0f;
-    renderEnvironment->reflectionbox.cubemap    = lightbox;
+    renderEnvironment->reflectionbox.brightness = 1.8f;
+    renderEnvironment->reflectionbox.cubemap    = skybox;
 
     renderEnvironment->fog.enabled        = true;
-    renderEnvironment->fog.density        = 0.00010f;
+    renderEnvironment->fog.density        = 0.00005f;
     renderEnvironment->fog.height         = 30.0f;
     renderEnvironment->fog.color          = Hiber3D::float3{0.2f, 0.35f, 0.4f};
     renderEnvironment->fog.skyboxAlpha    = 1.0f;
     renderEnvironment->fog.skyboxGradient = 0.01f;
 
-    renderEnvironment->bloom.enabled            = false;
+    renderEnvironment->bloom.enabled            = true;
     renderEnvironment->bloom.brightnessTreshold = 0.65f;
-    renderEnvironment->bloom.blendAlpha         = 1.0f;
+    renderEnvironment->bloom.blendAlpha         = 0.7f;
 
     renderEnvironment->colorGrading.enabled    = true;
-    renderEnvironment->colorGrading.saturation = 1.0f;
+    renderEnvironment->colorGrading.saturation = 1.05f;
     renderEnvironment->colorGrading.contrast   = 1.01f;
 
     renderEnvironment->sun.strength    = 0.0f;
