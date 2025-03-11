@@ -45,6 +45,7 @@ struct AutoTurn {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(AutoTurn), HIBER3D_MEMBER(dummy));
 
+
 struct Jumping {
     float deltaHeight;
     float startHeight;
@@ -53,6 +54,12 @@ struct Jumping {
 };
 
 HIBER3D_REFLECT(HIBER3D_TYPE(Jumping), HIBER3D_MEMBER(deltaHeight), HIBER3D_MEMBER(startHeight), HIBER3D_MEMBER(timeSinceJumped), HIBER3D_MEMBER(isDiving));
+
+struct Sliding {
+    bool dummy;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(Sliding), HIBER3D_MEMBER(dummy));
 
 struct Stats {
     float points       = 0.0f;

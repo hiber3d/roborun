@@ -40,6 +40,9 @@ const KEYS = {
     if (hiber3d.call("keyIsPressed", KEYS.DIVE)) {
       hiber3d.writeEvent("DiveInput", {});
     }
+    if (hiber3d.call("keyJustPressed", KEYS.SLIDE)) {
+      hiber3d.writeEvent("SlideInput", {});
+    }
     if (hiber3d.call("keyIsPressed", KEYS.TURN_LEFT)) {
       hiber3d.writeEvent("TurnLeftInput", {});
     }

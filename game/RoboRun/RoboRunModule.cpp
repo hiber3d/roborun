@@ -112,7 +112,7 @@ void handlePlayerCreated(
         loadAnimation(assetServer, "run", 5, animationLoadout, 0.0f, std::nullopt, 1.25f);
         loadAnimation(assetServer, "dying", 11, animationLoadout, 0.0f, std::nullopt, 0.75f);
         // loadAnimation(assetServer, "dead", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "slide", 6, animationLoadout, 0.0f, std::nullopt, 1.25f);
+        loadAnimation(assetServer, "slide", 6, animationLoadout, 0.25f, 0.25f, 1.25f);
         loadAnimation(assetServer, "jump", 1, animationLoadout, 0.0f, std::nullopt, 1.0f);
         loadAnimation(assetServer, "jump", 2, animationLoadout, 0.0f, std::nullopt, 1.0f);
         // loadAnimation(assetServer, "jump", 3, animationLoadout, 0.0f, std::nullopt, 1.0f);
@@ -162,6 +162,26 @@ void handlePlayAnimation(
     }
 }
 
+void handleAnimationFinished(
+    Hiber3D::EventView<AnimationFinishedEvent> events,
+    Hiber3D::View<AnimationLoadout>            animationLoadouts,
+    Hiber3D::EventWriter<AnimationFinished>&   writer) {
+    for (const auto& event : events) {
+        const auto entity = event.entity;
+        animationLoadouts.withComponent(entity, [&](const AnimationLoadout& animationLoadout) {
+            const auto& handle = event.animationData.handle;
+            for (const auto& [name, animationDatas] : animationLoadout.animations) {
+                for (const auto& animationData : animationDatas) {
+                    if (animationData.handle == handle) {
+						writer.writeEvent({.entity = entity, .name = name});
+						return;
+					}
+				}
+			}
+        });
+    }
+}
+
 static void updateCameraAspectRatio(
     Hiber3D::View<Hiber3D::Camera>          cameras,
     Hiber3D::Singleton<Hiber3D::ScreenInfo> screenInfo) {
@@ -185,6 +205,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayerCreated);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayAnimation);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, handleAnimationFinished);
     context.addSystem(Hiber3D::Schedule::ON_TICK, updateCameraAspectRatio);
     context.addSystem(Hiber3D::Schedule::ON_TICK, broadcastStats);
 
@@ -199,6 +220,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::EditorModule>().registerComponent<OnPath>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<AutoTurn>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<Jumping>(context);
+        context.getModule<Hiber3D::EditorModule>().registerComponent<Sliding>(context);
     }
 
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<GameState>(context);
@@ -210,6 +232,8 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<OnPath>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<AutoTurn>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Jumping>(context);
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Sliding>(context);
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<AnimationFinished>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<KillPlayer>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayAnimation>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerCreated>(context);
