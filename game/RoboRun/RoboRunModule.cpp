@@ -220,6 +220,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::EditorModule>().registerComponent<OnPath>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<AutoTurn>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<Jumping>(context);
+        context.getModule<Hiber3D::EditorModule>().registerComponent<Diving>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<Sliding>(context);
     }
 
@@ -232,6 +233,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<OnPath>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<AutoTurn>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Jumping>(context);
+    context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Diving>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Sliding>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<AnimationFinished>(context);
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<KillPlayer>(context);
@@ -269,13 +271,9 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/SegUtils.js");
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/SplineUtils.js");
     context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/VectorUtils.js");
-    context.getModule<Hiber3D::SceneModule>().registerComponent<Stats>(context);
     context.getModule<Hiber3D::SceneModule>().registerComponent<SplineData>(context);
     context.getModule<Hiber3D::SceneModule>().registerComponent<SegmentScene>(context);
     context.getModule<Hiber3D::SceneModule>().registerComponent<Step>(context);
-    context.getModule<Hiber3D::SceneModule>().registerComponent<OnPath>(context);
-    context.getModule<Hiber3D::SceneModule>().registerComponent<AutoTurn>(context);
-    context.getModule<Hiber3D::SceneModule>().registerComponent<Jumping>(context);
 
     context.registerModule<AnimatedModule>();
 }

@@ -50,10 +50,15 @@ struct Jumping {
     float deltaHeight;
     float startHeight;
     float timeSinceJumped = 0.0f;
-    bool  isDiving        = false;
 };
 
-HIBER3D_REFLECT(HIBER3D_TYPE(Jumping), HIBER3D_MEMBER(deltaHeight), HIBER3D_MEMBER(startHeight), HIBER3D_MEMBER(timeSinceJumped), HIBER3D_MEMBER(isDiving));
+HIBER3D_REFLECT(HIBER3D_TYPE(Jumping), HIBER3D_MEMBER(deltaHeight), HIBER3D_MEMBER(startHeight), HIBER3D_MEMBER(timeSinceJumped));
+
+struct Diving {
+    bool dummy;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(Diving), HIBER3D_MEMBER(dummy));
 
 struct Sliding {
     bool dummy;
