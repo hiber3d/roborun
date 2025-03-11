@@ -2,6 +2,11 @@ import { useHiber3D } from "@hiber3d/web";
 import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
+interface DeviceOrientationEventExtended extends DeviceOrientationEvent {
+  requestPermission?: () => Promise<"granted" | "denied">;
+}
+
 const useTouchControls = (hasTiltPermission: boolean) => {
   const { canvasRef, api } = useHiber3D();
   const { ref } = useSwipeable({
@@ -34,7 +39,7 @@ const useTouchControls = (hasTiltPermission: boolean) => {
     }
     const handleOrientation = (event: Event) => {
       const { gamma } = event as DeviceOrientationEvent;
-      api?.writeTilted({ value: gamma });
+      api?.writeTilted({ value: gamma ?? 0 });
     };
     window.addEventListener("deviceorientation", handleOrientation);
 
@@ -68,18 +73,21 @@ const useTouchControls = (hasTiltPermission: boolean) => {
   return null;
 };
 
+const DeviceOrientationEventEx =
+  DeviceOrientationEvent as unknown as DeviceOrientationEventExtended;
+
 export const GestureControls = () => {
   const { api } = useHiber3D();
   const needsPermission =
-    typeof DeviceOrientationEvent.requestPermission === "function";
+    typeof DeviceOrientationEventEx.requestPermission === "function";
   const [hasTiltPermission, setHasTiltPermission] = useState(
     needsPermission ? false : true
   );
   useTouchControls(hasTiltPermission);
 
   const handleClick = () => {
-    if (typeof DeviceMotionEvent.requestPermission === "function") {
-      DeviceOrientationEvent.requestPermission().then((response) => {
+    if (typeof DeviceOrientationEventEx.requestPermission === "function") {
+      DeviceOrientationEventEx.requestPermission().then((response) => {
         setHasTiltPermission(response === "granted");
         api?.writeStartInput();
       });
