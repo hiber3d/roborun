@@ -1,6 +1,7 @@
-import { Stats } from "@hiber3d/interop";
 import { useApi } from "@hiber3d/web";
 import { useCallback, useEffect, useReducer } from "react";
+import { Stats } from "../../build/web/src/moduleFactory";
+
 type Score = Stats;
 type Player = {
   name: string;
