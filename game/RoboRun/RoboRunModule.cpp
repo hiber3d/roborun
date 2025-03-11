@@ -41,22 +41,34 @@ void loadEnvironment(
     Hiber3D::Singleton<Hiber3D::RenderEnvironment>        renderEnvironment,
     Hiber3D::Singleton<Hiber3D::AssetServer>              assetServer,
     Hiber3D::Singleton<Hiber3D::Assets<Hiber3D::Cubemap>> cubemaps) {
+    auto skybox = assetServer->loadProcedural<Hiber3D::Cubemap>(
+        Hiber3D::AssetPath("skybox"),
+        [](Hiber3D::AssetLoadContext& ctx) -> Hiber3D::Cubemap {
+            return Hiber3D::Cubemap{
+                .posX = ctx.load<Hiber3D::Texture>("environments/skybox_posx.ktx2"),
+                .negX = ctx.load<Hiber3D::Texture>("environments/skybox_negx.ktx2"),
+                .posY = ctx.load<Hiber3D::Texture>("environments/skybox_posy.ktx2"),
+                .negY = ctx.load<Hiber3D::Texture>("environments/skybox_negy.ktx2"),
+                .posZ = ctx.load<Hiber3D::Texture>("environments/skybox_posz.ktx2"),
+                .negZ = ctx.load<Hiber3D::Texture>("environments/skybox_negz.ktx2"),
+            };
+        });
     auto lightbox = assetServer->loadProcedural<Hiber3D::Cubemap>(
         Hiber3D::AssetPath("lightbox"),
         [](Hiber3D::AssetLoadContext& ctx) -> Hiber3D::Cubemap {
             return Hiber3D::Cubemap{
-                .posX = ctx.load<Hiber3D::Texture>("environments/night_light_posx.ktx2"),
-                .negX = ctx.load<Hiber3D::Texture>("environments/night_light_negx.ktx2"),
-                .posY = ctx.load<Hiber3D::Texture>("environments/night_light_posy.ktx2"),
-                .negY = ctx.load<Hiber3D::Texture>("environments/night_light_negy.ktx2"),
-                .posZ = ctx.load<Hiber3D::Texture>("environments/night_light_posz.ktx2"),
-                .negZ = ctx.load<Hiber3D::Texture>("environments/night_light_negz.ktx2"),
+                .posX = ctx.load<Hiber3D::Texture>("environments/lightbox_posx.ktx2"),
+                .negX = ctx.load<Hiber3D::Texture>("environments/lightbox_negx.ktx2"),
+                .posY = ctx.load<Hiber3D::Texture>("environments/lightbox_posy.ktx2"),
+                .negY = ctx.load<Hiber3D::Texture>("environments/lightbox_negy.ktx2"),
+                .posZ = ctx.load<Hiber3D::Texture>("environments/lightbox_posz.ktx2"),
+                .negZ = ctx.load<Hiber3D::Texture>("environments/lightbox_negz.ktx2"),
             };
         });
 
     renderEnvironment->exposureCompensation = 0.5f;
 
-    renderEnvironment->skybox.cubemap = lightbox;
+    renderEnvironment->skybox.cubemap = skybox;
 
     renderEnvironment->lightbox.brightness = 0.3f;
     renderEnvironment->lightbox.cubemap    = lightbox;
