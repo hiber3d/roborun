@@ -50,6 +50,13 @@ struct PlayAnimation {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(PlayAnimation), HIBER3D_MEMBER(entity), HIBER3D_MEMBER(name), HIBER3D_MEMBER(loop));
 
+struct AnimationFinished {
+    Hiber3D::Entity entity;
+    std::string     name;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(AnimationFinished), HIBER3D_MEMBER(entity), HIBER3D_MEMBER(name));
+
 struct NewStepEvent {
 };
 
