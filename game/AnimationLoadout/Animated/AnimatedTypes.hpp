@@ -8,12 +8,15 @@
 
 // TODO: The "std::optional"s are not reflected
 
+// Duplicate in RoboRun.js
 enum class AnimationLayer : uint8_t {
     UNDEFINED = 0,
     BASE,
-    REACTION,  // e.g. take damage
-    ACTION,    // e.g. attack
-    HIGHEST    // e.g. dying
+    FALL,
+    ACTION,  // "Default"
+    ROLL,
+    DEAD,
+    DYING
 };
 
 struct AnimationData {
@@ -32,6 +35,7 @@ struct AnimationData {
 // Consumers shouldn't modify members, use PlayAnimationEvent instead
 struct Animated {
     AnimationLayer animationLayer = AnimationLayer::UNDEFINED;
+    bool           loop           = false; // Only used for non-BASE layers
     AnimationData  animationData;
     AnimationData  baseAnimationData;
 };

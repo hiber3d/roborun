@@ -14,14 +14,14 @@
 
     // Stop sliding
     if (this.timeSpentSliding >= this.SLIDE_DURATION) {
-      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
+      hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "slide" });
       regUtils.removeComponentIfPresent(this.entity, "Sliding");
     }
   },
   onEvent(event, payload) {
     // Start sliding
     if (event === "SlideInput" && !hiber3d.hasComponents(this.entity, "Jumping")) {
-      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", loop: true });
+      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", layer: ANIMATION_LAYER.ROLL, loop: true });
       regUtils.addComponentIfNotPresent(this.entity, "Sliding");
     }
   }

@@ -21,7 +21,7 @@ static void updateAnimations(
             const auto transitionTime   = Hiber3D::Time::fromSeconds(animated.animationData.transitionTimeFrom.value_or(animated.baseAnimationData.transitionTimeTo));
             const auto compensationTime = Hiber3D::Time::fromSeconds(2.0f / 60.0f); // Needed to prevent animation to re-loop
             const auto maxTime          = animation->duration() - transitionTime - compensationTime;
-            if (currentTime >= maxTime - compensationTime) {
+            if (currentTime >= maxTime && animated.loop == false) {
                 if (animated.animationData.destroyEntityAfterAnimationFinishes) {
                     destroyEntityWithChildrenRecursive(registry, entity);
                 } else {
@@ -43,6 +43,7 @@ static void handleCancelAnimationEvent(
                 animationTransition.startTransition(animated.baseAnimationData.handle, transitionTime, animated.baseAnimationData.animationSpeed);
                 animated.animationLayer = AnimationLayer::BASE;
                 animated.animationData  = animated.baseAnimationData;
+                animated.loop           = true;
                 writer.writeEvent(AnimationFinishedEvent{.entity = event.entity, .animationData = event.animationData});
             }
         });
@@ -59,9 +60,11 @@ static void handlePlayAnimationEvent(
                 animationTransition.startTransition(event.animationData.handle, transitionTime, event.animationData.animationSpeed);
                 animated.animationLayer = event.animationLayer;
                 animated.animationData  = event.animationData;
+                animated.loop           = event.loop;
             }
             if (event.animationLayer == AnimationLayer::BASE) {
                 animated.baseAnimationData = event.animationData;
+                animated.loop              = true;
             }
         });
     }

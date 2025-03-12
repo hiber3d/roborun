@@ -57,10 +57,7 @@
 
       if (landed) {
         hiber3d.removeComponent(this.entity, "Jumping");
-        if (!isDiving) {
-          hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", loop: false });
-          hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
-        }
+        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
         hiber3d.writeEvent("LandedEvent", { entity: this.entity });
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", 0);
       } else {
@@ -73,7 +70,7 @@
       this.timeSpentDivingOnGround += dt;
       if (this.timeSpentDivingOnGround >= this.DIVE_DURATION) {
         regUtils.removeComponentIfPresent(this.entity, "Diving");
-        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
+        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "dive"});
       }
     } else {
       this.timeSpentDivingOnGround = 0;
@@ -88,15 +85,15 @@
         hiber3d.addComponent(this.entity, "Jumping");
         const startHeight = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y");
         hiber3d.setValue(this.entity, "Jumping", "startHeight", startHeight);
-        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "jump", loop: false });
-        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "fall", loop: true });
+        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "jump", layer: ANIMATION_LAYER.ACTION, loop: false });
+        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "fall", layer: ANIMATION_LAYER.FALL, loop: true });
         hiber3d.writeEvent("JumpedEvent", {entity: this.entity});
       }
     } else if (event === "DiveInput") {
       if (hiber3d.hasComponents(this.entity, "Jumping")) {
         regUtils.addComponentIfNotPresent(this.entity, "Diving");
-        hiber3d.writeEvent("CancelAnimation", { entity: this.entity });
-        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", loop: true });
+        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name:"jump"});
+        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", layer: ANIMATION_LAYER.ROLL, loop: true });
       }
     }
   },
