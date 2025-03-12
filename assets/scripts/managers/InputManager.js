@@ -2,16 +2,19 @@ const KEYS = {
   START: 41, // W
   PAUSE: 36, // R
 
-  TILT_LEFT: 19, // A
-  TILT_RIGHT: 22, // D
+  //TILT_LEFT: 19, // A
+  //TILT_RIGHT: 22, // D
 
   JUMP: 1, // SPACE
   DIVE: 37, // S
   SLIDE: 37, // S
 
-  TURN_LEFT: 35, // Q
-  TURN_RIGHT: 23, // E
+  TURN_LEFT: 19, // A
+  TURN_RIGHT: 22, // D
   TOGGLE_AUTO_TURN_DEBUG: 38, // T
+
+  //35, // Q
+  //23, // E
 };
 
 ({
@@ -32,15 +35,15 @@ const KEYS = {
     if (hiber3d.call("keyIsPressed", KEYS.PAUSE)) {
       hiber3d.writeEvent("PauseInput", {});
     }
-    if (hiber3d.call("keyIsPressed", KEYS.TILT_LEFT) && !hiber3d.call("keyIsPressed", KEYS.TILT_RIGHT)) {
-      hiber3d.writeEvent("TiltLeftInput", {});
-    }
-    else if (!hiber3d.call("keyIsPressed", KEYS.TILT_LEFT) && hiber3d.call("keyIsPressed", KEYS.TILT_RIGHT)) {
-      hiber3d.writeEvent("TiltRightInput", {});
-    }
-    else if (hiber3d.call("keyJustReleased", KEYS.TILT_LEFT) || hiber3d.call("keyJustReleased", KEYS.TILT_RIGHT)) {
-      hiber3d.writeEvent("TiltStraightInput", {});
-    }
+    //if (hiber3d.call("keyIsPressed", KEYS.TILT_LEFT) && !hiber3d.call("keyIsPressed", KEYS.TILT_RIGHT)) {
+    //  hiber3d.writeEvent("TiltLeftInput", {});
+    //}
+    //else if (!hiber3d.call("keyIsPressed", KEYS.TILT_LEFT) && hiber3d.call("keyIsPressed", KEYS.TILT_RIGHT)) {
+    //  hiber3d.writeEvent("TiltRightInput", {});
+    //}
+    //else if (hiber3d.call("keyJustReleased", KEYS.TILT_LEFT) || hiber3d.call("keyJustReleased", KEYS.TILT_RIGHT)) {
+    //  hiber3d.writeEvent("TiltStraightInput", {});
+    //}
     if (hiber3d.call("keyIsPressed", KEYS.JUMP)) {
       hiber3d.writeEvent("JumpInput", {});
     }
@@ -50,11 +53,13 @@ const KEYS = {
     if (hiber3d.call("keyJustPressed", KEYS.SLIDE)) {
       hiber3d.writeEvent("SlideInput", {});
     }
-    if (hiber3d.call("keyIsPressed", KEYS.TURN_LEFT)) {
+    if (hiber3d.call("keyJustPressed", KEYS.TURN_LEFT)) {
       hiber3d.writeEvent("TurnLeftInput", {});
+      hiber3d.writeEvent("LeftLaneInput", {});
     }
-    if (hiber3d.call("keyIsPressed", KEYS.TURN_RIGHT)) {
+    if (hiber3d.call("keyJustPressed", KEYS.TURN_RIGHT)) {
       hiber3d.writeEvent("TurnRightInput", {});
+      hiber3d.writeEvent("RightLaneInput", {});
     }
     if (hiber3d.call("keyIsPressed", KEYS.TOGGLE_AUTO_TURN_DEBUG)) {
       hiber3d.writeEvent("ToggleAutoTurnDebugInput", {});
@@ -78,14 +83,12 @@ const KEYS = {
       }
     }
 
-    if (event === "LeftTapped") {
-      hiber3d.print("LeftTapped");
-      hiber3d.writeEvent("LeftLaneInput", {});
-    }
-    if (event === "RightTapped") {
-      hiber3d.print("RightTapped");
-      hiber3d.writeEvent("RightLaneInput", {});
-    }
+    //if (event === "LeftTapped") {
+    //  hiber3d.writeEvent("LeftLaneInput", {});
+    //}
+    //if (event === "RightTapped") {
+    //  hiber3d.writeEvent("RightLaneInput", {});
+    //}
 
     if (event === "SwipedUp") {
       hiber3d.writeEvent("JumpInput", {});
@@ -98,9 +101,11 @@ const KEYS = {
     }
     if (event === "SwipedLeft") {
       hiber3d.writeEvent("TurnLeftInput", {});
+      hiber3d.writeEvent("LeftLaneInput", {});
     }
     if (event === "SwipedRight") {
       hiber3d.writeEvent("TurnRightInput", {});
+      hiber3d.writeEvent("RightLaneInput", {});
     }
   },
 });
