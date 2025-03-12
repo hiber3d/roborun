@@ -48,24 +48,28 @@ static void handlePlayerCreated(
 
         auto& animationLoadout = registry.emplace<AnimationLoadout>(entity);
 
-        // loadAnimation(assetServer, "idle", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "run", 5, animationLoadout, 0.2f, std::nullopt, 1.25f);
         loadAnimation(assetServer, "dying", 0, animationLoadout, 0.0f, std::nullopt, 0.75f);
-        // loadAnimation(assetServer, "dead", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "slide", 12, animationLoadout, 0.1f, 0.2f, 1.0f);
+        loadAnimation(assetServer, "fall", 0, animationLoadout, 0.0f, std::nullopt, 1.0f);
         loadAnimation(assetServer, "jump", 1, animationLoadout, 0.0f, std::nullopt, 1.0f);
         loadAnimation(assetServer, "jump", 2, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        // loadAnimation(assetServer, "jump", 3, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        //  loadAnimation(assetServer, "jumpIdle", 14, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "fall", 0, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        // loadAnimation(assetServer, "fallIdle", 15, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        loadAnimation(assetServer, "jump", 3, animationLoadout, 0.0f, std::nullopt, 1.0f);
         loadAnimation(assetServer, "land", 4, animationLoadout, 0.05f, 0.3f, 1.25f);
-        // loadAnimation(assetServer, "landIdle", 16, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "dive", 12, animationLoadout, 0.05f, 0.15f, 1.0f);
+        loadAnimation(assetServer, "run", 5, animationLoadout, 0.2f, std::nullopt, 1.25f);
+
         loadAnimation(assetServer, "tiltLeft", 7, animationLoadout, 0.03f, 0.1f, 1.0f);
         loadAnimation(assetServer, "tiltRight", 8, animationLoadout, 0.03f, 0.1f, 1.0f);
         loadAnimation(assetServer, "turnLeft", 9, animationLoadout, 0.1f, 0.25f, 1.25f);
         loadAnimation(assetServer, "turnRight", 10, animationLoadout, 0.1f, 0.25f, 1.25f);
+
+        loadAnimation(assetServer, "slide", 12, animationLoadout, 0.1f, 0.2f, 1.0f);
+        loadAnimation(assetServer, "dive", 12, animationLoadout, 0.05f, 0.15f, 1.0f);
+
+
+        // loadAnimation(assetServer, "idle", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        // loadAnimation(assetServer, "dead", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        //  loadAnimation(assetServer, "jumpIdle", 14, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        // loadAnimation(assetServer, "fallIdle", 15, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        // loadAnimation(assetServer, "landIdle", 16, animationLoadout, 0.0f, std::nullopt, 1.0f);
     }
 }
 
@@ -96,21 +100,23 @@ static void handlePlayAnimation(
             const auto& animationDatas = animationLoadout.animations.at(event.name);
             const auto  index          = rand() % animationDatas.size();
             const auto& animationData  = animationDatas.at(index);
-            writer.writeEvent({.entity = entity, .animationData = animationData, .animationLayer = event.loop ? AnimationLayer::BASE : AnimationLayer::ACTION});
+            writer.writeEvent({.entity = entity, .animationData = animationData, .animationLayer = event.layer, .loop = event.loop});
         });
     }
 }
 
 static void handleCancelAnimation(
-	Hiber3D::EventView<CancelAnimation> events,
-	Hiber3D::View<Animated>             animateds,
-	Hiber3D::EventWriter<CancelAnimationEvent>& writer) {
-	for (const auto& event : events) {
-		const auto entity = event.entity;
-        animateds.withComponent(entity, [&](const Animated& animated) {
-            writer.writeEvent({.entity = entity, .animationData = animated.animationData});
-		});
-	}
+    Hiber3D::EventView<CancelAnimation>         events,
+    Hiber3D::View<Animated, AnimationLoadout>   animateds,
+    Hiber3D::EventWriter<CancelAnimationEvent>& writer) {
+    for (const auto& event : events) {
+        const auto entity = event.entity;
+        animateds.withComponent(entity, [&](const Animated& animated, const AnimationLoadout& animationLoadout) {
+            const auto& animationDatas = animationLoadout.animations.at(event.name);
+            const auto  animationData  = animationDatas.at(0);  // TODO: Cancel won't work for animation types with multiple versions
+            writer.writeEvent({.entity = entity, .animationData = animationData});
+        });
+    }
 }
 
 static void handleAnimationFinished(

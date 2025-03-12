@@ -9,6 +9,7 @@ struct PlayAnimationEvent {
 
     AnimationData  animationData;
     AnimationLayer animationLayer;
+    bool           loop;
 };
 
 struct CancelAnimationEvent {
