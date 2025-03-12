@@ -68,13 +68,13 @@ const KEYS = {
   onEvent(event, payload) {
     // Touch events
     if (event === "Tilted") {
-      if (Math.abs(payload.value) < 10) {
-        hiber3d.writeEvent("TiltStraightInput", {});
-      } else if (payload.value < 0) {
-        hiber3d.writeEvent("TiltLeftInput", {});
-      } else {
-        hiber3d.writeEvent("TiltRightInput", {});
-      }
+      //if (Math.abs(payload.value) < 10) {
+      //  hiber3d.writeEvent("TiltStraightInput", {});
+      //} else if (payload.value < 0) {
+      //  hiber3d.writeEvent("TiltLeftInput", {});
+      //} else {
+      //  hiber3d.writeEvent("TiltRightInput", {});
+      //}
     } else {
       // Start game on any non-tilt touch input
       if (hiber3d.getValue("GameState", "paused") === true) {
@@ -83,12 +83,14 @@ const KEYS = {
       }
     }
 
-    //if (event === "LeftTapped") {
-    //  hiber3d.writeEvent("LeftLaneInput", {});
-    //}
-    //if (event === "RightTapped") {
-    //  hiber3d.writeEvent("RightLaneInput", {});
-    //}
+    if (event === "LeftTapped" || event === "SwipedLeft") {
+      hiber3d.writeEvent("TurnLeftInput", {});
+      hiber3d.writeEvent("LeftLaneInput", {});
+    }
+    if (event === "RightTapped" || event === "SwipedRight") {
+      hiber3d.writeEvent("TurnRightInput", {});
+      hiber3d.writeEvent("RightLaneInput", {});
+    }
 
     if (event === "SwipedUp") {
       hiber3d.writeEvent("JumpInput", {});
@@ -98,14 +100,6 @@ const KEYS = {
     }
     if (event === "SwipedDown") {
       hiber3d.writeEvent("SlideInput", {});
-    }
-    if (event === "SwipedLeft") {
-      hiber3d.writeEvent("TurnLeftInput", {});
-      hiber3d.writeEvent("LeftLaneInput", {});
-    }
-    if (event === "SwipedRight") {
-      hiber3d.writeEvent("TurnRightInput", {});
-      hiber3d.writeEvent("RightLaneInput", {});
     }
   },
 });
