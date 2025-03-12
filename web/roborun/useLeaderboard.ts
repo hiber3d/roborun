@@ -129,6 +129,7 @@ export const useLeaderboard = () => {
       api.removeEventCallback(listener);
     };
   }, [api, sendScore, state.player]);
+  
   useEffect(() => {
     if (!api) {
       return;
@@ -137,12 +138,12 @@ export const useLeaderboard = () => {
       dispatch({
         action: "HIDE_LEADERBOARD"
       });
-      return;
     });
     return () => {
       api.removeEventCallback(listener);
     };
   }, [api]);
+  
   return {
     submitName,
     state,
