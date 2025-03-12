@@ -36,7 +36,7 @@ export const LeaderboardContent = ({
 }: {
   state: State;
   onSubmitName: (e: React.FormEvent<HTMLFormElement>) => void;
-  }) => {
+}) => {
   const { api } = useHiber3D();
 
   if (state.mode === "hidden") {
@@ -49,7 +49,7 @@ export const LeaderboardContent = ({
         key="addName"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="absolute w-full h-full flex items-center justify-center"
+        className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
       >
         <form onSubmit={onSubmitName}>
           <input
@@ -74,32 +74,34 @@ export const LeaderboardContent = ({
       key="leaderboard"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="absolute w-full h-full flex items-center justify-center "
+      className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
     >
       <div className="flex flex-col gap-2 max-w-[95%]">
-        <div className="bg-black/50 rounded-lg flex flex-col overflow-hidden">
-          <div className="grid grid-cols-6 gap-6 p-4">
-            <div>Rank</div>
-            <div>Player</div>
-            <div className="text-end">Points</div>
-            <div className="text-end">Meters</div>
-            <div className="text-end">Collectibles</div>
-            <div className="text-end">Multiplier</div>
+        <div className="overflow-y-auto max-h-[80vh]">
+          <div className="bg-black/50 rounded-lg flex flex-col">
+            <div className="grid grid-cols-6 gap-6 p-4">
+              <div>Rank</div>
+              <div>Player</div>
+              <div className="text-end">Points</div>
+              <div className="text-end">Meters</div>
+              <div className="text-end">Collectibles</div>
+              <div className="text-end">Multiplier</div>
+            </div>
+            {state.leaderboard.leaderboard.map((entry, index) => (
+              <EntryItem
+                key={entry.id}
+                entry={entry}
+                rank={index + 1}
+                isNewEntry={entry.id === state.leaderboard.newEntry?.id}
+              />
+            ))}
           </div>
-          {state.leaderboard.leaderboard.map((entry, index) => (
-            <EntryItem
-              key={entry.id}
-              entry={entry}
-              rank={index + 1}
-              isNewEntry={entry.id === state.leaderboard.newEntry?.id}
-            />
-          ))}
+          {state.leaderboard.newEntry && !entryIsInLeaderboard && (
+            <div className="bg-black/50 rounded-lg flex flex-col overflow-hidden">
+              <EntryItem entry={state.leaderboard.newEntry} isNewEntry={true} />
+            </div>
+          )}
         </div>
-        {state.leaderboard.newEntry && !entryIsInLeaderboard && (
-          <div className="bg-black/50 rounded-lg flex flex-col overflow-hidden">
-            <EntryItem entry={state.leaderboard.newEntry} isNewEntry={true} />
-          </div>
-        )}
         <button
           className="bg-black/50 p-4 rounded-lg font-bold"
           onClick={() => api?.writeRestartGame()}

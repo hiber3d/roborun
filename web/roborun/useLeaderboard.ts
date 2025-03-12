@@ -7,38 +7,43 @@ type Player = {
   name: string;
   uuid: string;
 };
+
 export type Entry = {
   id: number;
   rank: number;
   player_name: string;
   user_uuid: string;
 } & Score;
+
 type Leaderboard = {
   leaderboard: Entry[];
   newEntry?: Entry;
 };
+
 export type State = {
   mode: "hidden" | "addName" | "showLeaderboard";
   pendingScore?: Score;
   player?: Player;
   leaderboard: Leaderboard;
 };
+
 type Actions =
   | {
-    action: "SHOW_LEADERBOARD";
-    leaderboard: Leaderboard;
-  }
+      action: "SHOW_LEADERBOARD";
+      leaderboard: Leaderboard;
+    }
   | {
-    action: "HIDE_LEADERBOARD";
-  }
+      action: "HIDE_LEADERBOARD";
+    }
   | {
-    action: "SHOW_PLAYER_FORM";
-    pendingScore: Score;
-  }
+      action: "SHOW_PLAYER_FORM";
+      pendingScore: Score;
+    }
   | {
-    action: "CREATE_PLAYER";
-    player: Player;
-  };
+      action: "CREATE_PLAYER";
+      player: Player;
+    };
+
 const reducer = (state: State, action: Actions): State => {
   switch (action.action) {
     case "SHOW_LEADERBOARD":
@@ -62,6 +67,7 @@ const reducer = (state: State, action: Actions): State => {
       };
   }
 };
+
 export const useLeaderboard = () => {
   const api = useApi();
   const [state, dispatch] = useReducer(reducer, {
@@ -69,6 +75,7 @@ export const useLeaderboard = () => {
     player: JSON.parse(localStorage.getItem("player") || "null"),
     leaderboard: { leaderboard: [] },
   });
+
   const sendScore = useCallback(
     async (player: Player, score: Score) => {
       const payload = {
@@ -97,6 +104,7 @@ export const useLeaderboard = () => {
     },
     [dispatch]
   );
+
   const submitName = (name: string) => {
     const player = {
       name,
@@ -108,6 +116,7 @@ export const useLeaderboard = () => {
       sendScore(player, state.pendingScore);
     }
   };
+
   useEffect(() => {
     if (!api) {
       return;
@@ -125,25 +134,28 @@ export const useLeaderboard = () => {
       }
       sendScore(state.player, pendingScore);
     });
+
     return () => {
       api.removeEventCallback(listener);
     };
   }, [api, sendScore, state.player]);
-  
+
   useEffect(() => {
     if (!api) {
       return;
     }
+
     const listener = api.onGameRestarted(() => {
       dispatch({
-        action: "HIDE_LEADERBOARD"
+        action: "HIDE_LEADERBOARD",
       });
     });
+
     return () => {
       api.removeEventCallback(listener);
     };
   }, [api]);
-  
+
   return {
     submitName,
     state,
