@@ -16,6 +16,7 @@ const KEYS = {
 
 ({
   onCreate() {
+    hiber3d.addEventListener(this.entity, "Hiber3D::TouchEvent");
   },
   update(dt) {
     // Keyboard events
@@ -78,6 +79,9 @@ const KEYS = {
       if (event === "SwipedRight") {
         hiber3d.writeEvent("TurnRightInput", {});
       }
+    }
+    if (event == "Hiber3D::TouchEvent") {
+      hiber3d.writeEvent("JumpInput", {});
     }
   },
 });
