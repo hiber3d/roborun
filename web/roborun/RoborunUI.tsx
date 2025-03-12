@@ -40,7 +40,7 @@ export const RoborunUI = () => {
           ))}
           <div></div>
         </div>
-        x{(Math.floor(stats.multiplier * 10) / 10).toFixed(1)}
+        x{(Math.floor(stats.multiplier * 10 + 0.0001) / 10).toFixed(1)}
       </div>
       <div className="flex flex-col gap-2">
         <div className="text-6xl">{Math.round(stats.points)}</div>
