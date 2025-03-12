@@ -19,8 +19,8 @@ const useTouchControls = ({
     onSwiped: () => {
       console.log("SWIPE");
     },
-    onSwipedLeft: () => api?.writeSwipedLeft(),
-    onSwipedRight: () => api?.writeSwipedRight(),
+    onSwipedLeft: () => !tapMode && api?.writeSwipedLeft(),
+    onSwipedRight: () => !tapMode && api?.writeSwipedRight(),
     onSwipedUp: () => api?.writeSwipedUp(),
     onSwipedDown: () => api?.writeSwipedDown(),
   });
@@ -62,9 +62,9 @@ const useTouchControls = ({
 
     const handlePointerDown = (e: PointerEvent) => {
       // Check if pointer is on first half of x-axis
-      if (e.x < canvasRef.clientWidth / 2) {
+      if (e.x < canvasRef.clientWidth / 3) {
         api?.writeLeftTapped();
-      } else {
+      } else if (e.x > (canvasRef.clientWidth / 3) * 2) {
         api?.writeRightTapped();
       }
     };

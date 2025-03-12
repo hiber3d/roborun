@@ -4,6 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 import { hiber3DVitePlugin } from "@hiber3d/web/vite-plugin";
 import mkcert from "vite-plugin-mkcert";
+import { qrcode } from "vite-plugin-qrcode";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
     tailwindcss(),
     hiber3DVitePlugin(),
     mkcert(),
+    qrcode(),
   ],
   publicDir: "assets",
 });
