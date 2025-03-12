@@ -80,7 +80,7 @@ export const useLeaderboard = () => {
     async (player: Player, score: Score) => {
       const payload = {
         ...score,
-        multiplier: (Math.floor(score.multiplier * 10) / 10).toFixed(1),
+        multiplier: (Math.floor(score.multiplier * 10 + 0.0001) / 10).toFixed(1),
         points: Math.round(score.points),
         meters: Math.round(score.meters),
         ...player,
