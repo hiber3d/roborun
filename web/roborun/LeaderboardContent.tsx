@@ -1,3 +1,4 @@
+import { useHiber3D } from "@hiber3d/web";
 import { motion } from "framer-motion";
 import { Entry, State } from "./useLeaderboard";
 import { twMerge } from "tailwind-merge";
@@ -35,7 +36,9 @@ export const LeaderboardContent = ({
 }: {
   state: State;
   onSubmitName: (e: React.FormEvent<HTMLFormElement>) => void;
-}) => {
+  }) => {
+  const { api } = useHiber3D();
+
   if (state.mode === "hidden") {
     return null;
   }
@@ -99,7 +102,7 @@ export const LeaderboardContent = ({
         )}
         <button
           className="bg-black/50 p-4 rounded-lg font-bold"
-          onClick={() => window.location.reload()}
+          onClick={() => api?.writeRestartGame()}
         >
           Play again
         </button>

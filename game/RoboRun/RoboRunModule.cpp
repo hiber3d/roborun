@@ -10,6 +10,7 @@
 #include <Hiber3D/Renderer/Camera.hpp>
 #include <Hiber3D/Renderer/RenderEnvironment.hpp>
 #include <Hiber3D/Renderer/ScreenInfo.hpp>
+#include <Hiber3D/Scene/SceneManager.hpp>
 #include <Hiber3D/Scene/SceneModule.hpp>
 #include <Hiber3D/Scripting/JavaScriptScriptingModule.hpp>
 #include <Hiber3D/Scripting/ScriptInstance.hpp>
@@ -17,9 +18,19 @@
 #include <string>
 #include <unordered_map>
 
+
 static void resetSingletons(
     Hiber3D::Singleton<GameState> gameState) {
     *gameState = GameState{};
+}
+
+static void handleGameRestarted(
+    Hiber3D::EventView<GameRestarted> events,
+    Hiber3D::Singleton<GameState>     gameState) {
+    for (const auto& event : events) {
+        resetSingletons(gameState);
+        return;
+    }
 }
 
 // TODO: Move to some SceneModule
@@ -91,10 +102,23 @@ static void updateCameraAspectRatio(
     }
 }
 
+static void handleRestartGame(
+    Hiber3D::EventView<RestartGame> events,
+    Hiber3D::Singleton<Hiber3D::SceneManager> sceneManager,
+    Hiber3D::EventWriter<GameRestarted>& writer) {
+    for (const auto& event : events) {
+        sceneManager->changeScene(sceneManager->getCurrentScene());
+        writer.writeEvent({});
+        return;
+    }
+}
+
 void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_EXIT, resetSingletons);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, handleGameRestarted);
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
     context.addSystem(Hiber3D::Schedule::ON_TICK, updateCameraAspectRatio);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
 
     context.registerSingleton<GameState>();
 
