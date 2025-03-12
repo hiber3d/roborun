@@ -16,9 +16,7 @@ const useTouchControls = ({
 }) => {
   const { canvasRef, api } = useHiber3D();
   const { ref } = useSwipeable({
-    onSwiped: () => {
-      console.log("SWIPE");
-    },
+    preventScrollOnSwipe: true,
     onSwipedLeft: () => !tapMode && api?.writeSwipedLeft(),
     onSwipedRight: () => !tapMode && api?.writeSwipedRight(),
     onSwipedUp: () => api?.writeSwipedUp(),
