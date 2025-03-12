@@ -101,6 +101,18 @@ static void handlePlayAnimation(
     }
 }
 
+static void handleCancelAnimation(
+	Hiber3D::EventView<CancelAnimation> events,
+	Hiber3D::View<Animated>             animateds,
+	Hiber3D::EventWriter<CancelAnimationEvent>& writer) {
+	for (const auto& event : events) {
+		const auto entity = event.entity;
+        animateds.withComponent(entity, [&](const Animated& animated) {
+            writer.writeEvent({.entity = entity, .animationData = animated.animationData});
+		});
+	}
+}
+
 static void handleAnimationFinished(
     Hiber3D::EventView<AnimationFinishedEvent> events,
     Hiber3D::View<AnimationLoadout>            animationLoadouts,
@@ -124,10 +136,12 @@ static void handleAnimationFinished(
 void AnimationLoadoutModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayerCreated);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayAnimation);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, handleCancelAnimation);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleAnimationFinished);
 
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayAnimation>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<CancelAnimation>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<AnimationFinished>(context);
     }
 

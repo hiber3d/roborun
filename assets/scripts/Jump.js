@@ -1,4 +1,6 @@
 ({
+  DIVE_DURATION: 0.5,
+  timeSpentDivingOnGround: 0,
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.getValue("GameState", "alive") &&
@@ -65,6 +67,17 @@
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newJumpHeight);
       }
     }
+
+    // Diving
+    if (hiber3d.hasComponents(this.entity, "Diving") && !hiber3d.hasComponents(this.entity, "Jumping")) {
+      this.timeSpentDivingOnGround += dt;
+      if (this.timeSpentDivingOnGround >= this.DIVE_DURATION) {
+        regUtils.removeComponentIfPresent(this.entity, "Diving");
+        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
+      }
+    } else {
+      this.timeSpentDivingOnGround = 0;
+    }
   },
   onEvent(event, payload) {
     if (!this.shouldRun()) {
@@ -82,11 +95,9 @@
     } else if (event === "DiveInput") {
       if (hiber3d.hasComponents(this.entity, "Jumping")) {
         regUtils.addComponentIfNotPresent(this.entity, "Diving");
-        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", loop: false });
-        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
+        hiber3d.writeEvent("CancelAnimation", { entity: this.entity });
+        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", loop: true });
       }
-    } else if (event === "AnimationFinished" && payload.name === "dive") {
-      regUtils.removeComponentIfPresent(this.entity, "Diving");
     }
   },
 });
