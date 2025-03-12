@@ -5,9 +5,6 @@
 #include <AnimationLoadout/Animated/AnimatedModule.hpp>
 #include <AnimationLoadout/Animated/AnimatedTypes.hpp>
 
-#include <RoboRun/RoboRunEvents.hpp>
-#include <RoboRun/RoboRunTypes.hpp>
-
 #include <Hiber3D/Animation/AnimationBlend.hpp>
 #include <Hiber3D/Animation/AnimationTransition.hpp>
 #include <Hiber3D/Asset/AssetServer.hpp>
@@ -17,6 +14,9 @@
 #include <Hiber3D/Scene/SceneModule.hpp>
 #include <Hiber3D/Scripting/JavaScriptScriptingModule.hpp>
 #include <Hiber3D/Scripting/ScriptInstance.hpp>
+
+#include <RoboRun/RoboRunEvents.hpp>
+#include <RoboRun/RoboRunTypes.hpp>
 
 constexpr auto PLAYER_ANIMATION_GLB = "glbs/player.glb";
 
@@ -49,23 +49,23 @@ static void handlePlayerCreated(
         auto& animationLoadout = registry.emplace<AnimationLoadout>(entity);
 
         // loadAnimation(assetServer, "idle", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "run", 5, animationLoadout, 0.0f, std::nullopt, 1.25f);
-        loadAnimation(assetServer, "dying", 11, animationLoadout, 0.0f, std::nullopt, 0.75f);
+        loadAnimation(assetServer, "run", 5, animationLoadout, 0.2f, std::nullopt, 1.25f);
+        loadAnimation(assetServer, "dying", 0, animationLoadout, 0.0f, std::nullopt, 0.75f);
         // loadAnimation(assetServer, "dead", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "slide", 6, animationLoadout, 0.25f, 0.25f, 1.5f);
+        loadAnimation(assetServer, "slide", 12, animationLoadout, 0.05f, 0.15f, 0.7f);
         loadAnimation(assetServer, "jump", 1, animationLoadout, 0.0f, std::nullopt, 1.0f);
         loadAnimation(assetServer, "jump", 2, animationLoadout, 0.0f, std::nullopt, 1.0f);
         // loadAnimation(assetServer, "jump", 3, animationLoadout, 0.0f, std::nullopt, 1.0f);
         //  loadAnimation(assetServer, "jumpIdle", 14, animationLoadout, 0.0f, std::nullopt, 1.0f);
         loadAnimation(assetServer, "fall", 0, animationLoadout, 0.0f, std::nullopt, 1.0f);
         // loadAnimation(assetServer, "fallIdle", 15, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "land", 4, animationLoadout, 0.0f, std::nullopt, 1.25f);
+        loadAnimation(assetServer, "land", 4, animationLoadout, 0.05f, 0.3f, 1.25f);
         // loadAnimation(assetServer, "landIdle", 16, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "dive", 3, animationLoadout, 0.0f, std::nullopt, 1.5f);
-        loadAnimation(assetServer, "tiltLeft", 7, animationLoadout, 0.2f, std::nullopt, 1.5f);
-        loadAnimation(assetServer, "tiltRight", 8, animationLoadout, 0.2f, std::nullopt, 1.5f);
-        loadAnimation(assetServer, "turnLeft", 9, animationLoadout, 0.15f, 0.3f, 1.25f);
-        loadAnimation(assetServer, "turnRight", 10, animationLoadout, 0.15f, 0.3f, 1.25f);
+        loadAnimation(assetServer, "dive", 12, animationLoadout, 0.05f, 0.15f, 0.7f);
+        loadAnimation(assetServer, "tiltLeft", 7, animationLoadout, 0.1f, 0.1f, 1.25f);
+        loadAnimation(assetServer, "tiltRight", 8, animationLoadout, 0.1f, 0.1f, 1.25f);
+        loadAnimation(assetServer, "turnLeft", 9, animationLoadout, 0.04f, 0.25f, 1.25f);
+        loadAnimation(assetServer, "turnRight", 10, animationLoadout, 0.04f, 0.25f, 1.25f);
     }
 }
 
