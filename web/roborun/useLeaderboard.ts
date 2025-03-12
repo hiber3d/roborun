@@ -25,17 +25,20 @@ export type State = {
 };
 type Actions =
   | {
-      action: "SHOW_LEADERBOARD";
-      leaderboard: Leaderboard;
-    }
+    action: "SHOW_LEADERBOARD";
+    leaderboard: Leaderboard;
+  }
   | {
-      action: "SHOW_PLAYER_FORM";
-      pendingScore: Score;
-    }
+    action: "HIDE_LEADERBOARD";
+  }
   | {
-      action: "CREATE_PLAYER";
-      player: Player;
-    };
+    action: "SHOW_PLAYER_FORM";
+    pendingScore: Score;
+  }
+  | {
+    action: "CREATE_PLAYER";
+    player: Player;
+  };
 const reducer = (state: State, action: Actions): State => {
   switch (action.action) {
     case "SHOW_LEADERBOARD":
@@ -44,6 +47,11 @@ const reducer = (state: State, action: Actions): State => {
         pendingScore: undefined,
         leaderboard: action.leaderboard,
         mode: "showLeaderboard",
+      };
+    case "HIDE_LEADERBOARD":
+      return {
+        ...state,
+        mode: "hidden",
       };
     case "SHOW_PLAYER_FORM":
       return { ...state, mode: "addName", pendingScore: action.pendingScore };
@@ -121,6 +129,20 @@ export const useLeaderboard = () => {
       api.removeEventCallback(listener);
     };
   }, [api, sendScore, state.player]);
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+    const listener = api.onGameRestarted(() => {
+      dispatch({
+        action: "HIDE_LEADERBOARD"
+      });
+      return;
+    });
+    return () => {
+      api.removeEventCallback(listener);
+    };
+  }, [api]);
   return {
     submitName,
     state,

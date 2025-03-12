@@ -4,8 +4,19 @@
 #include <Hiber3D/Interop/Defines.hpp>
 #include <Path/PathTypes.hpp>
 
+struct RestartGame {
+};
 
-// TODO: Move out of here
+HIBER3D_REFLECT(HIBER3D_TYPE(RestartGame));
+HIBER3D_INTEROP_RECEIVE_FROM_JS(RestartGame);
+
+struct GameRestarted {
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(GameRestarted));
+HIBER3D_INTEROP_SEND_TO_JS(GameRestarted);
+
+// TODO: Move these out of here
 
 struct PlayerCreated {
     Hiber3D::Entity entity;
