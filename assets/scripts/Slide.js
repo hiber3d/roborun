@@ -1,21 +1,28 @@
 ({
+  SLIDE_DURATION: 0.5,
+  timeSpentSliding: 0,
   onCreate() {
     hiber3d.addEventListener(this.entity, "SlideInput");
     hiber3d.addEventListener(this.entity, "AnimationFinished");
   },
   update(dt) {
+    if (hiber3d.hasComponents(this.entity, "Sliding")) {
+      this.timeSpentSliding += dt;
+    } else {
+      this.timeSpentSliding = 0;
+    }
+
+    // Stop sliding
+    if (this.timeSpentSliding >= this.SLIDE_DURATION) {
+      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
+      regUtils.removeComponentIfPresent(this.entity, "Sliding");
+    }
   },
   onEvent(event, payload) {
     // Start sliding
     if (event === "SlideInput" && !hiber3d.hasComponents(this.entity, "Jumping")) {
-      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", loop: false });
-      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", loop: true });
+      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", loop: true });
       regUtils.addComponentIfNotPresent(this.entity, "Sliding");
-    }
-
-    // Stop sliding
-    if (event === "AnimationFinished" && payload.name === "slide") {
-      regUtils.removeComponentIfPresent(this.entity, "Sliding");
     }
   }
 });
