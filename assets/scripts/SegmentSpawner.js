@@ -67,6 +67,7 @@
   lastTurn: "",
   secondToLastTurn: "",
   straightsInARow: 0,
+  latestSegmentPath: "",
   latestSegmentSceneEntity: undefined,
   segmentIndex: 0,
 
@@ -123,6 +124,10 @@
     return types[segmentType][0][2];
   },
   getSegmentPath(segmentType) {
+    // Enforce every other segment is base straight
+    if (segmentType === "straight" && this.latestSegmentPath !== this.SEGMENTS["straight"][0][2]) {
+      return this.SEGMENTS["straight"][0][2];
+    }
     return this.getPath(segmentType, this.SEGMENTS);
   },
   getRoomPath(segmentType) {
@@ -166,6 +171,7 @@
     hiber3d.setValue(roomSceneEntity, "Hiber3D::SceneRoot", "scene", roomPath);
     hiber3d.addComponent(roomSceneEntity, "Hiber3D::Transform");
 
+    this.latestSegmentPath = segmentPath;
     this.latestSegmentSceneEntity = segmentSceneEntity;
     this.segmentIndex++;
     return segmentSceneEntity;
