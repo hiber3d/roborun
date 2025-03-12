@@ -7,7 +7,13 @@ interface DeviceOrientationEventExtended extends DeviceOrientationEvent {
   requestPermission?: () => Promise<"granted" | "denied">;
 }
 
-const useTouchControls = (hasTiltPermission: boolean) => {
+const useTouchControls = ({
+  hasTiltPermission,
+  tapMode,
+}: {
+  hasTiltPermission: boolean;
+  tapMode: boolean;
+}) => {
   const { canvasRef, api } = useHiber3D();
   const { ref } = useSwipeable({
     onSwiped: () => {
@@ -29,7 +35,7 @@ const useTouchControls = (hasTiltPermission: boolean) => {
 
   // Tilt controls
   useEffect(() => {
-    if (!api || !hasTiltPermission) {
+    if (!api || !hasTiltPermission || tapMode) {
       return;
     }
     const urlParams = new URLSearchParams(window.location.search);
@@ -46,11 +52,11 @@ const useTouchControls = (hasTiltPermission: boolean) => {
     return () => {
       window.removeEventListener("deviceorientation", handleOrientation);
     };
-  }, [api, hasTiltPermission]);
+  }, [api, hasTiltPermission, tapMode]);
 
   // Tap controls
   useEffect(() => {
-    if (!canvasRef) {
+    if (!canvasRef || !tapMode) {
       return;
     }
 
@@ -68,13 +74,16 @@ const useTouchControls = (hasTiltPermission: boolean) => {
     return () => {
       canvasRef?.removeEventListener("pointerdown", handlePointerDown);
     };
-  }, [api, canvasRef]);
+  }, [api, canvasRef, tapMode]);
 
   return null;
 };
 
 const DeviceOrientationEventEx =
   DeviceOrientationEvent as unknown as DeviceOrientationEventExtended;
+
+const urlParams = new URLSearchParams(window.location.search);
+const tapMode = urlParams.get("tapmode") ? true : false;
 
 export const GestureControls = () => {
   const { api } = useHiber3D();
@@ -83,7 +92,7 @@ export const GestureControls = () => {
   const [hasTiltPermission, setHasTiltPermission] = useState(
     needsPermission ? false : true
   );
-  useTouchControls(hasTiltPermission);
+  useTouchControls({ hasTiltPermission, tapMode });
 
   const handleClick = () => {
     if (typeof DeviceOrientationEventEx.requestPermission === "function") {
