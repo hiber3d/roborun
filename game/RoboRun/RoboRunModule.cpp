@@ -18,7 +18,6 @@
 #include <string>
 #include <unordered_map>
 
-
 static void resetSingletons(
     Hiber3D::Singleton<GameState> gameState) {
     *gameState = GameState{};
@@ -82,7 +81,7 @@ void loadEnvironment(
 
     renderEnvironment->bloom.enabled            = true;
     renderEnvironment->bloom.brightnessTreshold = 0.65f;
-    renderEnvironment->bloom.blendAlpha         = 0.7f;
+    renderEnvironment->bloom.blendAlpha         = 0.45f;
 
     renderEnvironment->colorGrading.enabled    = true;
     renderEnvironment->colorGrading.saturation = 1.05f;
@@ -103,9 +102,9 @@ static void updateCameraAspectRatio(
 }
 
 static void handleRestartGame(
-    Hiber3D::EventView<RestartGame> events,
+    Hiber3D::EventView<RestartGame>           events,
     Hiber3D::Singleton<Hiber3D::SceneManager> sceneManager,
-    Hiber3D::EventWriter<GameRestarted>& writer) {
+    Hiber3D::EventWriter<GameRestarted>&      writer) {
     for (const auto& event : events) {
         sceneManager->changeScene(sceneManager->getCurrentScene());
         writer.writeEvent({});
