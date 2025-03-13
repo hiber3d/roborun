@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import { GestureControls } from "roborun/GestureControls";
+//import { GestureControls } from "roborun/GestureControls";
 import { LeaderboardContent } from "./LeaderboardContent";
 import { RoborunUI } from "./RoborunUI";
 import { useLeaderboard } from "./useLeaderboard";
@@ -18,7 +18,7 @@ export const RoborunMode = () => {
 
   return (
     <AnimatePresence>
-      <GestureControls key="controls" />
+      //<GestureControls key="controls" />
       <RoborunUI key="ui" />
       <LeaderboardContent
         key="leaderboard"
