@@ -7,7 +7,7 @@ const splineUtils = require("scripts/utils/SplineUtils.js");
 const vectorUtils = require("scripts/utils/VectorUtils.js");
 const quatUtils = require("scripts/utils/QuatUtils.js");
 
-const DEBUG = true;
+const DEBUG = false;
 
 // Duplicate in AnimatedTypes.hpp
 const ANIMATION_LAYER = {
