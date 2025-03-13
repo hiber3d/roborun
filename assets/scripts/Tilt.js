@@ -8,7 +8,7 @@
   shouldRun() {
     return this.TILT_ENABLED &&
       hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
-      (hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasComponents(this.entity, "AutoTurn")) &&
+      (hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasComponents(this.entity, "AutoRun")) &&
       hiber3d.getValue("GameState", "alive") &&
       !hiber3d.getValue("GameState", "paused") &&
       segUtils.getCurrentStepEntity() !== undefined;

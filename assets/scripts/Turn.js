@@ -11,12 +11,13 @@
   onCreate() {
     hiber3d.addEventListener(this.entity, "TurnLeftInput");
     hiber3d.addEventListener(this.entity, "TurnRightInput");
+    hiber3d.addEventListener(this.entity, "ToggleAutoRunDebugInput");
   },
   update() {
     if (!this.shouldRun()) {
       return;
     }
-    if (hiber3d.hasComponents(this.entity, "AutoTurn")) {
+    if (hiber3d.hasComponents(this.entity, "AutoRun")) {
       regUtils.addComponentIfNotPresent(this.entity, "OnPath");
     }
     if (hiber3d.hasComponents(this.entity, "OnPath")) {
@@ -48,12 +49,12 @@
         hiber3d.setValue("GameState", "direction", newDirection);
         regUtils.removeComponentIfPresent(this.entity, "OnPath");
       }
-    } else if (event === "ToggleAutoTurnDebugInput") {
+    } else if (event === "ToggleAutoRunDebugInput") {
       if (DEBUG) {
-        if (hiber3d.hasComponents(this.entity, "AutoTurn")) {
-          hiber3d.removeComponent(this.entity, "AutoTurn");
+        if (hiber3d.hasComponents(this.entity, "AutoRun")) {
+          hiber3d.removeComponent(this.entity, "AutoRun");
         } else {
-          hiber3d.addComponent(this.entity, "AutoTurn");
+          hiber3d.addComponent(this.entity, "AutoRun");
         }
       }
     }

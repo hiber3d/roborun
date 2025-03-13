@@ -64,6 +64,7 @@ static void handlePlayerCreated(
         loadAnimation(assetServer, "slide", 12, animationLoadout, 0.1f, 0.2f, 1.0f);
         loadAnimation(assetServer, "dive", 12, animationLoadout, 0.05f, 0.15f, 1.0f);
 
+        loadAnimation(assetServer, "autoRun", 13, animationLoadout, 0.3f, std::nullopt, 1.0f);
 
         // loadAnimation(assetServer, "idle", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
         // loadAnimation(assetServer, "dead", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);

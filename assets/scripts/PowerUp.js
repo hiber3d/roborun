@@ -1,6 +1,6 @@
 ({
   SCRIPT_PATHS: [],
-  COMPONENTS: ["AutoTurn"/*, "SpeedBoost"*/],
+  COMPONENTS: ["AutoRun"/*, "SpeedBoost"*/],
   DURATION: 15,
   RADIUS: 0.75,
   shouldRun() {
@@ -44,10 +44,12 @@
         // Setup script that removes the effect after its duration
         const componentRemoverEntity = hiber3d.createEntity();
         regUtils.addScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
-        var componentRemoverScript = hiber3d.getScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
-        componentRemoverScript.Component = component;
-        componentRemoverScript.Entity = playerEntity;
-        componentRemoverScript.Delay = duration;
+
+        // TODO: Depends on [HIB-33606] and [HIB-33679]
+        //var componentRemoverScript = hiber3d.getScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
+        //componentRemoverScript.Component = component;
+        //componentRemoverScript.Entity = playerEntity;
+        //componentRemoverScript.Delay = duration;
       }
 
       // Destroy this power-up

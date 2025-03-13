@@ -10,7 +10,7 @@
       !hiber3d.hasComponents(playerEntity, "SplineData")) {
       return false;
     }
-    const isOnPath = hiber3d.hasComponents(playerEntity, "OnPath") || hiber3d.hasComponents(playerEntity, "AutoTurn");
+    const isOnPath = hiber3d.hasComponents(playerEntity, "OnPath") || hiber3d.hasComponents(playerEntity, "AutoRun");
     if (!isOnPath) {
       return false;
     }

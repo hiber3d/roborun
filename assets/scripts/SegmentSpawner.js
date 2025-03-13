@@ -32,8 +32,8 @@
       [0.01, 10, "scenes/segments/SegmentStraightCPL.scene"],
       [0.01, 10, "scenes/segments/SegmentStraightCPR.scene"],
 
-      [0, 1, "scenes/segments/SegmentStraightPTL.scene"],
-      [0, 1, "scenes/segments/SegmentStraightPTR.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightPTL.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightPTR.scene"],
 
       [0.1, 1, "scenes/segments/SegmentStraightNSM.scene"],
       [0.1, 1, "scenes/segments/SegmentStraightNSM2.scene"],

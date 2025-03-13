@@ -1,6 +1,7 @@
 ({
   RUN_SPEED: 20,
   RUN_AIR_FACTOR: 0.45,
+  AUTO_RUN_FACTOR: 2,
   RUN_DIFFICULTY_BONUS_FACTOR_AT_DIFFICULTY_1: 0.2,
   POSITION_LERP_SPEED: 19,
   ROTATION_LERP_SPEED: 1.5,
@@ -27,7 +28,9 @@
     if (hiber3d.hasComponents(this.entity, "Jumping")) {
       speed *= Math.max(1, Math.pow(this.RUN_AIR_FACTOR, hiber3d.getValue(this.entity, "Jumping", "timeSinceJumped")));
     }
-
+    if (hiber3d.hasComponents(this.entity, "AutoRun")) {
+      speed *= this.AUTO_RUN_FACTOR;
+    }
     if (!hiber3d.hasComponents(this.entity, "OnPath")) {
       speed *= this.curveFactor;
     }
@@ -157,7 +160,7 @@
       return;
     }
 
-    const isOnPath = hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasComponents(this.entity, "AutoTurn");
+    const isOnPath = hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasComponents(this.entity, "AutoRun");
     const speed = this.getSpeed();
     this.recordStats(speed * dt);
     const spline = this.getSpline();

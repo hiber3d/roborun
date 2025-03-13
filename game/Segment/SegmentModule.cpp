@@ -44,7 +44,7 @@ void SegmentModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<NewSegmentEvent>(context);
     }
 
-    if (context.isModuleRegistered<Hiber3D::EditorModule>()) {
+    if (context.isModuleRegistered<Hiber3D::SceneModule>()) {
         context.getModule<Hiber3D::SceneModule>().registerComponent<SegmentScene>(context);
         context.getModule<Hiber3D::SceneModule>().registerComponent<Step>(context);
     }
