@@ -26,6 +26,5 @@ void InputModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TurnLeftInput>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TurnRightInput>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoRunDebugInput>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleAutoRunDebugInput>(context);
     }
 }

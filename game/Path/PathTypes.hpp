@@ -11,11 +11,11 @@ struct OnPath {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(OnPath), HIBER3D_MEMBER(dummy));
 
-struct AutoTurn {
+struct AutoRun {
     bool dummy;
 };
 
-HIBER3D_REFLECT(HIBER3D_TYPE(AutoTurn), HIBER3D_MEMBER(dummy));
+HIBER3D_REFLECT(HIBER3D_TYPE(AutoRun), HIBER3D_MEMBER(dummy));
 
 struct Jumping {
     float deltaHeight;

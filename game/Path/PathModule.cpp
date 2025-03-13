@@ -12,7 +12,7 @@ void PathModule::onRegister(Hiber3D::InitContext& context) {
     if (context.isModuleRegistered<Hiber3D::EditorModule>()) {
         context.getModule<Hiber3D::EditorModule>().registerComponent<SplineData>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<OnPath>(context);
-        context.getModule<Hiber3D::EditorModule>().registerComponent<AutoTurn>(context);
+        context.getModule<Hiber3D::EditorModule>().registerComponent<AutoRun>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<Jumping>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<Diving>(context);
         context.getModule<Hiber3D::EditorModule>().registerComponent<Sliding>(context);
@@ -23,7 +23,7 @@ void PathModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Stats>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<SplineData>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<OnPath>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<AutoTurn>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<AutoRun>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Jumping>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Diving>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Sliding>(context);
