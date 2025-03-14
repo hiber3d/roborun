@@ -106,7 +106,7 @@
     if (types[segmentType] === undefined) {
       hiber3d.print("SegmentSpawner::getSegmentPath: Unknown segment type: '" + segmentType + "'");
     }
-    const numSegmentPaths = types[segmentType].length;
+    const numSegmentPaths = Object.keys(types[segmentType]).length;
     var totalProbability = 0;
     if (this.segmentIndex > this.START_VANILLA_STRAIGHT_LENGTH) {
       for (var i = 0; i < numSegmentPaths; i++) {
