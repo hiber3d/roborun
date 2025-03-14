@@ -77,18 +77,18 @@ const KEYS = {
       //  hiber3d.writeEvent("TiltRightInput", {});
       //}
     } else if (event === "Hiber3D::DeviceOrientationEvent") {
-        hiber3d.print(
-          " alpha : " + payload.alpha +
-          " beta: " + payload.beta +
-          " gamma: " + payload.gamma +
-          " absolute: " + payload.absolute
-        );
-        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-        var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
-        stats.collectibles = payload.alpha;
-        stats.multiplier = payload.beta;
-        stats.meters = payload.gamma;
-        hiber3d.setValue(playerEntity, "Stats", stats);
+      hiber3d.print(
+        " alpha : " + payload.angles.z +
+        " beta: " + payload.angles.x +
+        " gamma: " + payload.angles.y +
+        " absolute: " + payload.absolute
+      );
+      const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+      var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
+      stats.collectibles = payload.angles.z;
+      stats.multiplier = payload.angles.x;
+      stats.meters = payload.angles.y;
+      hiber3d.setValue(playerEntity, "Stats", stats);
     } else {
       // Start game on any non-tilt touch input
       if (hiber3d.getValue("GameState", "paused") === true) {

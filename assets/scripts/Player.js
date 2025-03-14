@@ -14,9 +14,9 @@
   },
   onEvent(event, payload) {
     if (event === "Hiber3D::DeviceOrientationEvent") {
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "scale", "x", payload.alpha / 30);
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "scale", "y", payload.beta / 30);
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "scale", "z", payload.gamma / 30);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "scale", "x", payload.angles.x / 30);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "scale", "y", payload.angles.y / 30);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "scale", "z", payload.angles.z / 30);
     }
   }
 });
