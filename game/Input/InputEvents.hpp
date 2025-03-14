@@ -43,13 +43,6 @@ struct RightTapped {
 HIBER3D_REFLECT(HIBER3D_TYPE(RightTapped));
 HIBER3D_INTEROP_RECEIVE_FROM_JS(RightTapped);
 
-struct Tilted {
-    float value = 0.0f;
-};
-
-HIBER3D_REFLECT(HIBER3D_TYPE(Tilted), HIBER3D_MEMBER(value));
-HIBER3D_INTEROP_RECEIVE_FROM_JS(Tilted);
-
 // ----- BINDINGS -----
 
 struct StartInput {};
@@ -57,12 +50,8 @@ HIBER3D_REFLECT(HIBER3D_TYPE(StartInput));
 HIBER3D_INTEROP_RECEIVE_FROM_JS(StartInput);
 struct PauseInput {};
 HIBER3D_REFLECT(HIBER3D_TYPE(PauseInput));
-struct TiltLeftInput {};
-HIBER3D_REFLECT(HIBER3D_TYPE(TiltLeftInput));
-struct TiltStraightInput {};
-HIBER3D_REFLECT(HIBER3D_TYPE(TiltStraightInput));
-struct TiltRightInput {};
-HIBER3D_REFLECT(HIBER3D_TYPE(TiltRightInput));
+struct UnpauseInput {};
+HIBER3D_REFLECT(HIBER3D_TYPE(UnpauseInput));
 struct LeftLaneInput {};
 HIBER3D_REFLECT(HIBER3D_TYPE(LeftLaneInput));
 struct RightLaneInput {};
