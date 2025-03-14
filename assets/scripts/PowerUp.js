@@ -18,7 +18,7 @@
 
     if (collisionUtils.collidesWithPlayer(this.entity, this.RADIUS)) {
 
-      for (var i = 0; i < this.SCRIPT_PATHS.length; i++) { 
+      for (var i = 0; i < Object.keys(this.SCRIPT_PATHS).length; i++) { 
         const script = this.SCRIPT_PATHS[i];
 
         // Give player effect script
@@ -34,7 +34,7 @@
         scriptRemoverScript.Delay = duration;
       }
 
-      for (var i = 0; i < this.COMPONENTS.length; i++) {
+      for (var i = 0; i < Object.keys(this.COMPONENTS).length; i++) {
         const component = this.COMPONENTS[i];
 
         // Give player effect component
