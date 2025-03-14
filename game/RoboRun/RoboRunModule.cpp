@@ -4,6 +4,7 @@
 
 #include <Hiber3D/Asset/AssetServer.hpp>
 #include <Hiber3D/BaseAssets/Cubemap.hpp>
+#include <Hiber3D/Core/DeviceOrientationEvent.hpp>
 #include <Hiber3D/Editor/EditorModule.hpp>
 #include <Hiber3D/Gltf/GltfLabel.hpp>
 #include <Hiber3D/Hiber3D.hpp>
@@ -112,12 +113,20 @@ static void handleRestartGame(
     }
 }
 
+static void logDeviceOrientationEvents(
+    Hiber3D::EventView<Hiber3D::DeviceOrientationEvent>           events) {
+    for (const auto& event : events) {
+        //LOG_INFO("DeviceOrientationEvent: {}, {}, {}, {}", event.alpha, event.beta, event.gamma, event.absolute);
+    }
+}
+
 void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_EXIT, resetSingletons);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleGameRestarted);
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
     context.addSystem(Hiber3D::Schedule::ON_TICK, updateCameraAspectRatio);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, logDeviceOrientationEvents);
 
     context.registerSingleton<GameState>();
 

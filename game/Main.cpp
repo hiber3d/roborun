@@ -12,7 +12,9 @@
 #include <Hiber3D/BaseAssets/Mesh.hpp>
 #include <Hiber3D/Core/InitContext.hpp>
 #include <Hiber3D/Core/Name.hpp>
+#include <Hiber3D/Core/DeviceOrientationEvent.hpp>
 #include <Hiber3D/Core/KeyEvent.hpp>
+#include <Hiber3D/Core/TouchEvent.hpp>
 #include <Hiber3D/Debug/DebugModule.hpp>
 #include <Hiber3D/Editor/EditorModule.hpp>
 #include <Hiber3D/Gltf/GltfModule.hpp>
@@ -69,6 +71,9 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Parent>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Camera>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Name>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<Hiber3D::KeyEvent>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<Hiber3D::TouchEvent>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<Hiber3D::DeviceOrientationEvent>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().isPressed(key); }>(context, "keyIsPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justPressed(key); }>(context, "keyJustPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");

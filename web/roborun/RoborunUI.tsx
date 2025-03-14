@@ -43,7 +43,7 @@ export const RoborunUI = () => {
         x{(Math.floor(stats.multiplier * 10 + 0.0001) / 10).toFixed(1)}
       </div>
       <div className="flex flex-col gap-2">
-        <div className="text-6xl">{Math.round(stats.points)}</div>
+        <div onClick={() => DeviceOrientationEvent.requestPermission() } className="text-6xl">{Math.round(stats.points)}</div>
         <div>{Math.round(stats.meters)} meters</div>
         <div>{stats.collectibles} collectibles</div>
       </div>

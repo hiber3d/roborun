@@ -7,6 +7,7 @@
       hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   },
   onCreate() {
+    hiber3d.addEventListener(this.entity, "Hiber3D::DeviceOrientationEvent");
   },
   update() {
     if (this.shouldRun() === false) {
@@ -23,5 +24,19 @@
   },
 
   onEvent(event, payload) {
+    if (event === "Hiber3D::DeviceOrientationEvent") {
+      hiber3d.print(
+        " alpha : " + payload.alpha +
+        " beta: " + payload.beta +
+        " gamma: " + payload.gamma +
+        " absolute: " + payload.absolute
+      );
+      const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+      var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
+      stats.collectibles = payload.alpha;
+      stats.multiplier = payload.beta;
+      stats.meters = payload.gamma;
+      hiber3d.setValue(playerEntity, "Stats", stats);
+    }
   }
 });

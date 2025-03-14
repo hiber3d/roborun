@@ -26,6 +26,7 @@ const KEYS = {
     hiber3d.addEventListener(this.entity, "Tilted");
     hiber3d.addEventListener(this.entity, "LeftTapped");
     hiber3d.addEventListener(this.entity, "RightTapped");
+    hiber3d.addEventListener(this.entity, "Hiber3D::DeviceOrientationEvent");
   },
   update(dt) {
     // Keyboard events
@@ -75,6 +76,19 @@ const KEYS = {
       //} else {
       //  hiber3d.writeEvent("TiltRightInput", {});
       //}
+    } else if (event === "Hiber3D::DeviceOrientationEvent") {
+        hiber3d.print(
+          " alpha : " + payload.alpha +
+          " beta: " + payload.beta +
+          " gamma: " + payload.gamma +
+          " absolute: " + payload.absolute
+        );
+        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+        var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
+        stats.collectibles = payload.alpha;
+        stats.multiplier = payload.beta;
+        stats.meters = payload.gamma;
+        hiber3d.setValue(playerEntity, "Stats", stats);
     } else {
       // Start game on any non-tilt touch input
       if (hiber3d.getValue("GameState", "paused") === true) {
