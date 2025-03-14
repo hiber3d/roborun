@@ -61,10 +61,10 @@ static void handlePlayerCreated(
         loadAnimation(assetServer, "turnLeft", 9, animationLoadout, 0.1f, 0.25f, 1.25f);
         loadAnimation(assetServer, "turnRight", 10, animationLoadout, 0.1f, 0.25f, 1.25f);
 
-        loadAnimation(assetServer, "slide", 12, animationLoadout, 0.1f, 0.2f, 1.0f);
-        loadAnimation(assetServer, "dive", 12, animationLoadout, 0.05f, 0.15f, 1.0f);
+        loadAnimation(assetServer, "slide", 11, animationLoadout, 0.1f, 0.2f, 1.0f);
+        loadAnimation(assetServer, "dive", 11, animationLoadout, 0.05f, 0.15f, 1.0f);
 
-        loadAnimation(assetServer, "autoRun", 13, animationLoadout, 0.3f, std::nullopt, 1.0f);
+        loadAnimation(assetServer, "autoRun", 12, animationLoadout, 0.3f, std::nullopt, 1.0f);
 
         // loadAnimation(assetServer, "idle", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
         // loadAnimation(assetServer, "dead", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
