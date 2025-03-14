@@ -1,4 +1,5 @@
-# Hiber3D Game Project
+# RoboRun
+- a simple work-in-progress demo, created to test and showcase the Hiber3D engine, its editor, and its JS scripting functionality.
 
 ## Prerequisites
 
