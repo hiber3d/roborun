@@ -44,7 +44,7 @@ function getChildIndexOf(entity) {
     hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no siblings");
     return undefined;
   }
-  for (var i = 0; i < siblings.length; i++) {
+  for (var i = 0; i < Object.keys(siblings).length; i++) {
     if (siblings[i] === entity) {
       return i;
     }
@@ -63,7 +63,7 @@ function isLastChild(entity) {
     hiber3d.print("isLastChild() - entity:'" + entity + "' has no valid index");
     return undefined;
   }
-  return childIndex === siblings.length - 1;
+  return childIndex === Object.keys(siblings).length - 1;
 }
 module.exports.isLastChild = isLastChild;
 
@@ -78,7 +78,7 @@ function findEntityWithNameInHierarchy(entity, name) {
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Children")) {
     const children = hiber3d.getValue(entity, "Hiber3D::Children", "entities");
-    for (var i = 0; i < children.length; i++) {
+    for (var i = 0; i < Object.keys(children).length; i++) {
       const recursiveResult = findEntityWithNameInHierarchy(children[i], name);
       if (recursiveResult !== undefined) {
         return recursiveResult;
@@ -98,7 +98,7 @@ function findEntityWithComponentInHierarchy(entity) {
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Children") === true) {
     const children = hiber3d.getValue(entity, "Hiber3D::Children", "entities");
-    for (var i = 0; i < children.length; i++) {
+    for (var i = 0; i < Object.keys(children).length; i++) {
       const recursiveResult = findEntityWithComponentInHierarchy(children[i], component);
       if (recursiveResult !== undefined) {
         return recursiveResult;
@@ -155,7 +155,7 @@ function destroyEntity(entity) {
     const parent = hiber3d.getValue(entity, "Hiber3D::Parent", "parent");
     if (hiber3d.hasComponents(parent, "Hiber3D::Children")) {
       const siblings = hiber3d.getValue(parent, "Hiber3D::Children", "entities");
-      for (var i = 0; i < siblings.length; i++) {
+      for (var i = 0; i < Object.keys(siblings).length; i++) {
         if (siblings[i] === entity) {
           siblings.splice(i, 1);
           hiber3d.setValue(parent, "Hiber3D::Children", "entities", siblings);
@@ -170,7 +170,7 @@ function destroyEntity(entity) {
     }
     if (hiber3d.hasComponents(currentEntity, "Hiber3D::Children")) {
       const children = hiber3d.getValue(currentEntity, "Hiber3D::Children", "entities");
-      for (var i = 0; i < children.length; i++) {
+      for (var i = 0; i < Object.keys(children).length; i++) {
         destroyRecursive(children[i]);
       }
     }

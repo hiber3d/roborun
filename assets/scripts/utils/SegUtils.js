@@ -14,10 +14,10 @@ function getStepEntity(segmentSceneEntity, stepIndex) {
   const stepChildren = hiber3d.getValue(stepsEntity, "Hiber3D::Children", "entities");
   var index = stepIndex;
   if (stepIndex === -1) {
-    index = stepChildren.length - 1;
+    index = Object.keys(stepChildren).length - 1;
   } else {
-    if (stepIndex >= stepChildren.length) {
-      return getStepEntity(segmentSceneEntity, stepIndex - stepChildren.length);
+    if (stepIndex >= Object.keys(stepChildren).length) {
+      return getStepEntity(segmentSceneEntity, stepIndex - Object.keys(stepChildren).length);
     }
   }
   const stepEntity = stepChildren[index];

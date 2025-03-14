@@ -152,7 +152,7 @@ function getFlatDimension(p1, p2, q1, q2) {
   // Check if positions are the same in any dimension
   const dimensions = ['x', 'y', 'z'];
 
-  for (var i=0; i<dimensions.length; i++) {
+  for (var i=0; i<Object.keys(dimensions).length; i++) {
     if (Math.abs(p1[dimensions[i]] - p2[dimensions[i]]) < 0.001) {
       const forwardVec1 = rotateVector({ x: 0, y: 0, z: -1 }, q1);
       const forwardVec2 = rotateVector({ x: 0, y: 0, z: -1 }, q2);
