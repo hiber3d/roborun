@@ -13,13 +13,13 @@
     "straight": [
       [1, 0.1, "scenes/SegmentStraightBase.scene"],
 
-      [0.01, 0.1, "scenes/segments/SegmentStraightCCL.scene"], 
-      [0.01, 0.1, "scenes/segments/SegmentStraightCCM.scene"],
-      [0.01, 0.1, "scenes/segments/SegmentStraightCCR.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightCCL.scene"], 
+      [0.01, 10, "scenes/segments/SegmentStraightCCM.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightCCR.scene"],
 
-      [0.1, 0.1, "scenes/segments/SegmentStraightCLL.scene"],
-      [0.01, 0.1, "scenes/segments/SegmentStraightCLM.scene"],
-      [0.1, 0.1, "scenes/segments/SegmentStraightCLR.scene"],
+      [0.1, 10, "scenes/segments/SegmentStraightCLL.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightCLM.scene"],
+      [0.1, 10, "scenes/segments/SegmentStraightCLR.scene"],
       [0.001, 1, "scenes/segments/SegmentStraightCLA.scene"],
 
       [0.1, 1, "scenes/segments/SegmentStraightNOM.scene"],
