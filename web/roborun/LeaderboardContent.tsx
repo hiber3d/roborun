@@ -52,10 +52,10 @@ export const LeaderboardContent = ({
         className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
       >
         <form onSubmit={onSubmitName}>
+          <div className="mb-2">Your Name</div>
           <input
             type="text"
             className="bg-black/50 p-4"
-            placeholder="Your name"
             name="player"
             autoFocus
             data-1p-ignore
