@@ -14,9 +14,6 @@
       segUtils.getCurrentStepEntity() !== undefined;
   },
   onCreate() {
-    hiber3d.addEventListener(this.entity, "TiltStraightInput");
-    hiber3d.addEventListener(this.entity, "TiltLeftInput");
-    hiber3d.addEventListener(this.entity, "TiltRightInput");
     hiber3d.addEventListener(this.entity, "LeftLaneInput");
     hiber3d.addEventListener(this.entity, "RightLaneInput");
   },
@@ -44,13 +41,7 @@
   },
   onEvent(event, payload) {
     if (hiber3d.hasComponents(this.entity, "OnPath")) {
-      if (event === "TiltStraightInput") {
-        this.tiltFactor = 0;
-      } else if (event === "TiltLeftInput") {
-        this.tiltFactor = -1;
-      } else if (event === "TiltRightInput") {
-        this.tiltFactor = 1;
-      } else if (event === "LeftLaneInput") {
+      if (event === "LeftLaneInput") {
         this.tiltFactor = Math.max(-1, this.tiltFactor - 1);
       } else if (event === "RightLaneInput") {
         this.tiltFactor = Math.min(1, this.tiltFactor + 1);
