@@ -41,12 +41,16 @@ const KEYS = {
     if (hiber3d.call("keyJustPressed", KEYS.SLIDE)) {
       hiber3d.writeEvent("SlideInput", {});
     }
-    if (hiber3d.call("keyJustPressed", KEYS.TURN_LEFT)) {
+    if (hiber3d.call("keyIsPressed", KEYS.TURN_LEFT)) {
       hiber3d.writeEvent("TurnLeftInput", {});
+    }
+    if (hiber3d.call("keyIsPressed", KEYS.TURN_RIGHT)) {
+      hiber3d.writeEvent("TurnRightInput", {});
+    }
+    if (hiber3d.call("keyJustPressed", KEYS.TURN_LEFT)) {
       hiber3d.writeEvent("LeftLaneInput", {});
     }
     if (hiber3d.call("keyJustPressed", KEYS.TURN_RIGHT)) {
-      hiber3d.writeEvent("TurnRightInput", {});
       hiber3d.writeEvent("RightLaneInput", {});
     }
     if (hiber3d.call("keyJustPressed", KEYS.TOGGLE_AUTO_TURN_DEBUG)) {

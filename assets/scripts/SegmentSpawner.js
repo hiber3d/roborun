@@ -11,11 +11,13 @@
     // first number is base probability
     // second number is probability factor at difficulty 1 (i.e. a value of 1 means no change, 0 means it doesn't occur at all, 2 means it occurs twice as often, etc.)
     "straight": [
-      [1, 0.1, "scenes/SegmentStraightBase.scene"],
+      [0, 0.1, "scenes/SegmentStraightBase.scene"], // Doesn't need a probability, currently enforced every other straigth segment
 
-      [0.01, 10, "scenes/segments/SegmentStraightCCL.scene"], 
+      [0.5, 0.1, "scenes/SegmentBridgeBase.scene"],
+
+      [0.1, 10, "scenes/segments/SegmentStraightCCL.scene"], 
       [0.01, 10, "scenes/segments/SegmentStraightCCM.scene"],
-      [0.01, 10, "scenes/segments/SegmentStraightCCR.scene"],
+      [0.1, 10, "scenes/segments/SegmentStraightCCR.scene"],
 
       [0.1, 10, "scenes/segments/SegmentStraightCLL.scene"],
       [0.01, 10, "scenes/segments/SegmentStraightCLM.scene"],

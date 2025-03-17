@@ -9,7 +9,7 @@
       hiber3d.hasComponents(this.entity, "Hiber3D::Transform");
   },
   getLerpFactor() {
-const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
     return hiber3d.hasComponents(playerEntity, "AutoRun") ? this.AUTO_RUN_POSITION_LERP_FACTOR : this.POSITION_LERP_FACTOR;
   },
   onCreate() {
@@ -29,7 +29,8 @@ const playerEntity = hiber3d.getValue("GameState", "playerEntity");
     // Rotation
     const isPlayerOnPath = hiber3d.hasComponents(playerEntity, "OnPath");
     if (isPlayerOnPath) {
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", playerSplineData.rotation);
+      const flatRotation = quatUtils.flattenQuaternion(playerSplineData.rotation);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", flatRotation);
     }
   },
   onEvent(event, payload) {
