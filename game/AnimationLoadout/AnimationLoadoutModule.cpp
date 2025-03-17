@@ -20,8 +20,14 @@
 
 constexpr auto PLAYER_ANIMATION_GLB = "glbs/player.glb";
 
+// E.g. One animation name ("Jump") per one AnimationVariant - can have multiple animation datas (jump v1, v2, v3)
+struct AnimiationVariants {
+    std::vector<AnimationData> animationDatas;
+    int                        indexOfLatestPlayedAnimation = -1;
+};
+
 struct AnimationLoadout {
-    std::unordered_map<std::string, std::vector<AnimationData>> animations;
+    std::unordered_map<std::string, AnimiationVariants> loadout;
 };
 
 static void loadAnimation(Hiber3D::Singleton<Hiber3D::AssetServer> assetServer, const std::string& name, const int index, AnimationLoadout& animationLoadout, float to, std::optional<float> from, float animationSpeed) {
@@ -31,7 +37,7 @@ static void loadAnimation(Hiber3D::Singleton<Hiber3D::AssetServer> assetServer, 
     newAnimationData.transitionTimeFrom = from;
     newAnimationData.animationSpeed     = animationSpeed;
 
-    animationLoadout.animations[name].emplace_back(newAnimationData);
+    animationLoadout.loadout[name].animationDatas.emplace_back(newAnimationData);
 }
 
 static void handlePlayerCreated(
@@ -84,8 +90,8 @@ static void handlePlayAnimation(
     Hiber3D::View<Hiber3D::AnimationTransition> animationTransitions) {
     for (const auto& event : events) {
         const auto entity = event.entity;
-        animationLoadouts.withComponent(entity, [&](const AnimationLoadout& animationLoadout) {
-            if (animationLoadout.animations.find(event.name) == animationLoadout.animations.end()) {
+        animationLoadouts.withComponent(entity, [&](AnimationLoadout& animationLoadout) {
+            if (animationLoadout.loadout.find(event.name) == animationLoadout.loadout.end()) {
                 LOG_ERROR("AnimationLoadoutModule::handlePlayAnimation() - Animation:'{}' not found in animationLoadout", event.name);
                 return;
             }
@@ -98,10 +104,12 @@ static void handlePlayAnimation(
             if (!animationTransitions.contains(entity)) {
                 registry.emplace<Hiber3D::AnimationTransition>(entity);
             }
-            const auto& animationDatas = animationLoadout.animations.at(event.name);
-            const auto  index          = rand() % animationDatas.size();
-            const auto& animationData  = animationDatas.at(index);
+            auto&       animationVariants = animationLoadout.loadout.at(event.name);
+            const auto& animationDatas    = animationVariants.animationDatas;
+            const auto  newIndex          = (animationVariants.indexOfLatestPlayedAnimation + 1) % animationDatas.size();
+            const auto& animationData     = animationDatas.at(newIndex);
             writer.writeEvent({.entity = entity, .animationData = animationData, .animationLayer = event.layer, .loop = event.loop});
+            animationVariants.indexOfLatestPlayedAnimation = newIndex;
         });
     }
 }
@@ -113,9 +121,10 @@ static void handleCancelAnimation(
     for (const auto& event : events) {
         const auto entity = event.entity;
         animateds.withComponent(entity, [&](const Animated& animated, const AnimationLoadout& animationLoadout) {
-            const auto& animationDatas = animationLoadout.animations.at(event.name);
-            const auto  animationData  = animationDatas.at(0);  // TODO: Cancel won't work for animation types with multiple versions
-            writer.writeEvent({.entity = entity, .animationData = animationData});
+            const auto& animationDatas = animationLoadout.loadout.at(event.name).animationDatas;
+            for (const auto animationData : animationDatas) {
+                writer.writeEvent({.entity = entity, .animationData = animationData});
+            }
         });
     }
 }
@@ -128,8 +137,8 @@ static void handleAnimationFinished(
         const auto entity = event.entity;
         animationLoadouts.withComponent(entity, [&](const AnimationLoadout& animationLoadout) {
             const auto& handle = event.animationData.handle;
-            for (const auto& [name, animationDatas] : animationLoadout.animations) {
-                for (const auto& animationData : animationDatas) {
+            for (const auto& [name, animationVariants] : animationLoadout.loadout) {
+                for (const auto& animationData : animationVariants.animationDatas) {
                     if (animationData.handle == handle) {
                         writer.writeEvent({.entity = entity, .name = name});
                         return;
