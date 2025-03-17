@@ -48,9 +48,11 @@
       hiber3d.setValue(this.entity, "Jumping", "deltaHeight", newDeltaHeight);
 
       var landed = false;
+      var groundHeight = 0;
       if (hiber3d.hasComponents(this.entity, "SplineData")) {
         const splineHeight = hiber3d.getValue(this.entity, "SplineData", "position").y;
         landed = newJumpHeight <= splineHeight; // touches ground
+        groundHeight = splineHeight;
       } else {
         landed = newDeltaHeight <= 0; // fallback
       }
@@ -59,7 +61,7 @@
         hiber3d.removeComponent(this.entity, "Jumping");
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
         hiber3d.writeEvent("LandedEvent", { entity: this.entity });
-        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", 0);
+        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", groundHeight);
       } else {
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newJumpHeight);
       }

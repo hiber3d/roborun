@@ -93,7 +93,8 @@
                 "data": {
                   "indexForward": 1,
                   "indexLeft": -1,
-                  "indexRight": -1
+                  "indexRight": -1,
+                  "curveFactor": 0
                 }
               }
             ],
@@ -133,7 +134,8 @@
                 "data": {
                   "indexForward": 0,
                   "indexLeft": -1,
-                  "indexRight": -1
+                  "indexRight": -1,
+                  "curveFactor": 0
                 }
               }
             ],
