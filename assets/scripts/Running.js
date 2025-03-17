@@ -3,7 +3,7 @@
   RUN_AIR_FACTOR: 0.45,
   AUTO_RUN_FACTOR: 2,
   RUN_DIFFICULTY_BONUS_FACTOR_AT_DIFFICULTY_1: 0.1,
-  DEBUG_SPLINE: true,
+  DEBUG_SPLINE: false,
 
   debugSplineEntity: undefined,
   debugSplineLeftLaneEntity: undefined,
