@@ -3,44 +3,46 @@
   START_VANILLA_STRAIGHT_LENGTH: 3,
   MIN_STRAIGHTS_IN_ROW: 3,
   MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1: 0,
+  MAX_NON_VANILLA_IN_A_ROW: 1,
+  MAX_NON_VANILLA_IN_A_ROW_AT_DIFFICULTY1: 2,
   MAX_STRAIGHTS_IN_ROW: 6, // Should not be too similar to NUM_SEGMENTS --> will cause "end-of-tunnel" visible
   TURN_CHANCE_MIN: 0.2, // 0.1 --> 10% chance of turning (then left/right is 50/50)
-  TURN_CHANCE_AT_DIFFICULTY_1: 0.75,
-  TURN_CHANCE_MAX: 0.9,
+  TURN_CHANCE_AT_DIFFICULTY_1: 0.5,
+  TURN_CHANCE_MAX: 0.75,
   SEGMENTS: {
     // first number is base probability
     // second number is probability factor at difficulty 1 (i.e. a value of 1 means no change, 0 means it doesn't occur at all, 2 means it occurs twice as often, etc.)
     "straight": [
-      [0, 0.1, "scenes/SegmentStraightBase.scene"], // Doesn't need a probability, currently enforced every other straigth segment
+      [0, 1, "scenes/SegmentStraightBase.scene"], // Doesn't need a probability, currently enforced ever-so-often
 
       [0.5, 0.1, "scenes/SegmentBridgeBase.scene"],
 
-      [0.1, 10, "scenes/segments/SegmentStraightCCL.scene"], 
-      [0.01, 10, "scenes/segments/SegmentStraightCCM.scene"],
-      [0.1, 10, "scenes/segments/SegmentStraightCCR.scene"],
+      [0.5, 0.01, "scenes/segments/SegmentStraightCCL.scene"], 
+      [0.05, 0.01, "scenes/segments/SegmentStraightCCM.scene"],
+      [0.5, 0.01, "scenes/segments/SegmentStraightCCR.scene"],
 
-      [0.1, 10, "scenes/segments/SegmentStraightCLL.scene"],
-      [0.01, 10, "scenes/segments/SegmentStraightCLM.scene"],
-      [0.1, 10, "scenes/segments/SegmentStraightCLR.scene"],
-      [0.001, 1, "scenes/segments/SegmentStraightCLA.scene"],
+      [0.5, 0.01, "scenes/segments/SegmentStraightCLL.scene"],
+      [0.05, 0.01, "scenes/segments/SegmentStraightCLM.scene"],
+      [0.5, 0.01, "scenes/segments/SegmentStraightCLR.scene"],
+      [0.01, 1, "scenes/segments/SegmentStraightCLA.scene"],
 
-      [0.1, 1, "scenes/segments/SegmentStraightNOM.scene"],
-      [0.1, 1, "scenes/segments/SegmentStraightCOM.scene"],
-      [0.1, 1, "scenes/segments/SegmentStraightNOA.scene"],
-      [0.1, 1, "scenes/segments/SegmentStraightCOA.scene"],
+      [0.1, 5, "scenes/segments/SegmentStraightNOM.scene"],
+      [0.1, 5, "scenes/segments/SegmentStraightCOM.scene"],
+      [0.1, 5, "scenes/segments/SegmentStraightNOA.scene"],
+      [0.1, 5, "scenes/segments/SegmentStraightCOA.scene"],
 
-      [0.01, 10, "scenes/segments/SegmentStraightNPL.scene"],
-      [0.01, 10, "scenes/segments/SegmentStraightNPR.scene"],
-      [0.01, 10, "scenes/segments/SegmentStraightCPL.scene"],
-      [0.01, 10, "scenes/segments/SegmentStraightCPR.scene"],
+      [0.01, 20, "scenes/segments/SegmentStraightNPL.scene"],
+      [0.01, 20, "scenes/segments/SegmentStraightNPR.scene"],
+      [0.01, 20, "scenes/segments/SegmentStraightCPL.scene"],
+      [0.01, 20, "scenes/segments/SegmentStraightCPR.scene"],
 
-      [0.025, 10, "scenes/segments/SegmentStraightPTL.scene"],
-      [0.025, 10, "scenes/segments/SegmentStraightPTR.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightPTL.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightPTR.scene"],
 
-      [0.1, 1, "scenes/segments/SegmentStraightNSM.scene"],
-      [0.1, 1, "scenes/segments/SegmentStraightNSM2.scene"],
-      [0.01, 100, "scenes/segments/SegmentStraightCSM.scene"],
-      [0.01, 100, "scenes/segments/SegmentStraightCSM2.scene"]
+      [0.1, 2, "scenes/segments/SegmentStraightNSM.scene"],
+      [0.1, 2, "scenes/segments/SegmentStraightNSM2.scene"],
+      [0.1, 2, "scenes/segments/SegmentStraightCSM.scene"],
+      [0.1, 2, "scenes/segments/SegmentStraightCSM2.scene"]
     ],
     "left": [
       [1, 1, "scenes/SegmentLeftBase.scene"]
@@ -51,12 +53,12 @@
   },
   ROOMS: {
     "straight": [
-      [1, 1, "scenes/rooms/RoomStraightA.scene"],
-      [1, 1, "scenes/rooms/RoomStraightB.scene"],
-      [1, 1, "scenes/rooms/RoomStraightC.scene"],
-      [1, 1, "scenes/rooms/RoomStraightD.scene"],
-      [1, 1, "scenes/rooms/RoomStraightE.scene"],
-      [1, 1, "scenes/rooms/RoomStraightF.scene"]
+      [1, 0.01, "scenes/rooms/RoomStraightA.scene"],
+      [1, 0.01, "scenes/rooms/RoomStraightB.scene"],
+      [1, 0.01, "scenes/rooms/RoomStraightC.scene"],
+      [0.01, 100, "scenes/rooms/RoomStraightD.scene"],
+      [0.01, 100, "scenes/rooms/RoomStraightE.scene"],
+      [0.01, 100, "scenes/rooms/RoomStraightF.scene"]
     ],
     "left": [
       [1, 1, "scenes/rooms/RoomLeftA.scene"]
@@ -71,6 +73,7 @@
   straightsInARow: 0,
   latestSegmentPath: "",
   latestSegmentSceneEntity: undefined,
+  numNonVanillaInARow: 0,
   segmentIndex: 0,
 
   getTurnChance() {
@@ -126,11 +129,24 @@
     return types[segmentType][0][2];
   },
   getSegmentPath(segmentType) {
-    // Enforce every other segment is base straight
-    if (segmentType === "straight" && this.latestSegmentPath !== this.SEGMENTS["straight"][0][2]) {
-      return this.SEGMENTS["straight"][0][2];
+
+    // Enforce vanilla ever-so-often
+    const difficulty = hiber3d.getValue("GameState", "difficulty");
+    const maxNonVanilla = Math.floor(scalarUtils.lerpScalar(this.MAX_NON_VANILLA_IN_A_ROW, this.MAX_NON_VANILLA_IN_A_ROW_AT_DIFFICULTY1, difficulty));
+
+    var path;
+    if (segmentType == "straight" && this.numNonVanillaInARow >= maxNonVanilla) {
+      path = this.SEGMENTS["straight"][0][2];
+    } else {
+      path = this.getPath(segmentType, this.SEGMENTS);
     }
-    return this.getPath(segmentType, this.SEGMENTS);
+    if (path === this.SEGMENTS["straight"][0][2]) {
+      this.numNonVanillaInARow = 0;
+    } else {
+      this.numNonVanillaInARow += 1;
+    }
+
+    return path;
   },
   getRoomPath(segmentType) {
     return this.getPath(segmentType, this.ROOMS);
