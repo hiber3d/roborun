@@ -167,15 +167,13 @@
     hiber3d.setValue(this.entity, "SplineData", "position", spline.position);
     hiber3d.setValue(this.entity, "SplineData", "rotation", spline.rotation);
 
-    const position = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position");
-    const rotation = hiber3d.getValue(this.entity, "Hiber3D::Transform", "rotation");
-
     if (isOnPath) {
       const tiltOffset = this.getTiltOffset(spline.rotation) !== undefined ? this.getTiltOffset(spline.rotation) : { x: 0, y: 0, z: 0 };
       const tiltedPosition = vectorUtils.addVectors(spline.position, tiltOffset);
-
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", tiltedPosition);
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", spline.rotation);
+
+      const rotationPostPotentialAutoRun = hiber3d.hasComponents(this.entity, "AutoRun") ? quatUtils.flattenQuaternion(spline.rotation) : spline.rotation;
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", rotationPostPotentialAutoRun);
 
     } else {
 
@@ -186,6 +184,7 @@
       const rightWallVectorOffset = quatUtils.rotateVectorByQuaternion({ x: rightWallOffset, y: 0, z: 0 }, spline.rotation);
       const leftWallPosition = vectorUtils.addVectors(spline.position, leftWallVectorOffset);
       const rightWallPosition = vectorUtils.addVectors(spline.position, rightWallVectorOffset);
+      const position = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position");
 
       const fallenOff = !vectorUtils.inRangeOfPoints(position, leftWallPosition, rightWallPosition);
       //hiber3d.print(
@@ -199,6 +198,7 @@
 
       } else {
         // Continue in the current direction
+        const position = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position");
         const direction = hiber3d.getValue("GameState", "direction");
         const newPosition = {
           x: position.x + direction.x * speed * dt,
