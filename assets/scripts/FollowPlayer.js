@@ -23,7 +23,11 @@
 
     // Position
     const playerPosition = hiber3d.getValue(playerEntity, "Hiber3D::Transform", "position");
-    const lerpedPosition = vectorUtils.lerpVector(playerSplineData.position, playerPosition, this.getLerpFactor());
+    var splinePosition = playerSplineData.position;
+    if (hiber3d.hasComponents(playerEntity, "AutoRun")) {
+      splinePosition.y = hiber3d.getValue(playerEntity, "AutoRun", "startingHeight");
+    }
+    const lerpedPosition = vectorUtils.lerpVector(splinePosition, playerPosition, this.getLerpFactor());
     hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", lerpedPosition);
 
     // Rotation
