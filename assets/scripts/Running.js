@@ -3,9 +3,7 @@
   RUN_AIR_FACTOR: 0.45,
   AUTO_RUN_FACTOR: 2,
   RUN_DIFFICULTY_BONUS_FACTOR_AT_DIFFICULTY_1: 0.1,
-  POSITION_LERP_SPEED: 15,
-  ROTATION_LERP_SPEED: 1.5,
-  DEBUG_SPLINE: false,
+  DEBUG_SPLINE: true,
 
   debugSplineEntity: undefined,
   debugSplineLeftLaneEntity: undefined,
@@ -24,12 +22,12 @@
     var speed = this.RUN_SPEED;
 
     if (hiber3d.hasComponents(this.entity, "Jumping")) {
-      speed *= Math.max(1, Math.pow(this.RUN_AIR_FACTOR, hiber3d.getValue(this.entity, "Jumping", "timeSinceJumped")));
+      speed *= Math.max(0, Math.pow(this.RUN_AIR_FACTOR, hiber3d.getValue(this.entity, "Jumping", "timeSinceJumped")));
     }
     if (hiber3d.hasComponents(this.entity, "AutoRun")) {
       speed *= this.AUTO_RUN_FACTOR;
     }
-    if (hiber3d.hasComponents(this.entity, "OnPath")) {
+    if (!hiber3d.hasComponents(this.entity, "OnPath")) {
       const currentStepEntity = segUtils.getCurrentStepEntity();
       const curveFactor = hiber3d.getValue(currentStepEntity, "Step", "curveFactor");
       speed /= scalarUtils.lerpScalar(1, Math.sqrt(2), curveFactor);
@@ -176,15 +174,8 @@
       const tiltOffset = this.getTiltOffset(spline.rotation) !== undefined ? this.getTiltOffset(spline.rotation) : { x: 0, y: 0, z: 0 };
       const tiltedPosition = vectorUtils.addVectors(spline.position, tiltOffset);
 
-      const lerpFactorFromSpeed = speed / this.RUN_SPEED;
-      var lerpedPosition = tiltedPosition;
-      if (vectorUtils.getVectorDistance(position, lerpedPosition) > 0.1) {
-        lerpedPosition = vectorUtils.lerpVectorWithDistance(position, tiltedPosition, this.POSITION_LERP_SPEED * lerpFactorFromSpeed * dt);
-      }
-      const lerpedRotation = quatUtils.lerpQuaternionWithDistance(rotation, spline.rotation, this.ROTATION_LERP_SPEED * lerpFactorFromSpeed * dt);
-
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", lerpedPosition);
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", lerpedRotation);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", tiltedPosition);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", spline.rotation);
 
     } else {
 
@@ -214,9 +205,7 @@
           y: position.y + direction.y * speed * dt,
           z: position.z + direction.z * speed * dt
         };
-        const newRotation = quatUtils.lerpQuaternionWithDistance(rotation, quatUtils.quaternionFromVector(direction), this.ROTATION_LERP_SPEED * dt);
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", newPosition);
-        hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", newRotation);
       }
     }
   }

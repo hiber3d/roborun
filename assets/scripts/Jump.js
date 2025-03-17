@@ -8,7 +8,7 @@
       segUtils.getCurrentStepEntity() !== undefined;
   },
   getDeltaHeight(timeSinceJumped, isDiving) {
-    const maxHeight = 3;
+    const maxHeight = 2.5;
     const timeToMaxHeight = isDiving ? 0.05 : 0.2;
     const maxHeightDuration = 0.15; // How long to stay at max height
     const gravityStrength = 30.0; // Increased for faster fall once it begins

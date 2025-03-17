@@ -15,9 +15,9 @@
 
       [0.5, 0.1, "scenes/SegmentBridgeBase.scene"],
 
-      [0.01, 10, "scenes/segments/SegmentStraightCCL.scene"], 
+      [0.1, 10, "scenes/segments/SegmentStraightCCL.scene"], 
       [0.01, 10, "scenes/segments/SegmentStraightCCM.scene"],
-      [0.01, 10, "scenes/segments/SegmentStraightCCR.scene"],
+      [0.1, 10, "scenes/segments/SegmentStraightCCR.scene"],
 
       [0.1, 10, "scenes/segments/SegmentStraightCLL.scene"],
       [0.01, 10, "scenes/segments/SegmentStraightCLM.scene"],
