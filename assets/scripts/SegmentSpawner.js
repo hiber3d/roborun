@@ -15,13 +15,13 @@
 
       [0.5, 0.1, "scenes/SegmentBridgeBase.scene"],
 
-      [0.01, 0.1, "scenes/segments/SegmentStraightCCL.scene"], 
-      [0.01, 0.1, "scenes/segments/SegmentStraightCCM.scene"],
-      [0.01, 0.1, "scenes/segments/SegmentStraightCCR.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightCCL.scene"], 
+      [0.01, 10, "scenes/segments/SegmentStraightCCM.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightCCR.scene"],
 
-      [0.1, 0.1, "scenes/segments/SegmentStraightCLL.scene"],
-      [0.01, 0.1, "scenes/segments/SegmentStraightCLM.scene"],
-      [0.1, 0.1, "scenes/segments/SegmentStraightCLR.scene"],
+      [0.1, 10, "scenes/segments/SegmentStraightCLL.scene"],
+      [0.01, 10, "scenes/segments/SegmentStraightCLM.scene"],
+      [0.1, 10, "scenes/segments/SegmentStraightCLR.scene"],
       [0.001, 1, "scenes/segments/SegmentStraightCLA.scene"],
 
       [0.1, 1, "scenes/segments/SegmentStraightNOM.scene"],
@@ -34,8 +34,8 @@
       [0.01, 10, "scenes/segments/SegmentStraightCPL.scene"],
       [0.01, 10, "scenes/segments/SegmentStraightCPR.scene"],
 
-      [0.00, 10, "scenes/segments/SegmentStraightPTL.scene"],
-      [0.00, 10, "scenes/segments/SegmentStraightPTR.scene"],
+      [0.05, 10, "scenes/segments/SegmentStraightPTL.scene"],
+      [0.05, 10, "scenes/segments/SegmentStraightPTR.scene"],
 
       [0.1, 1, "scenes/segments/SegmentStraightNSM.scene"],
       [0.1, 1, "scenes/segments/SegmentStraightNSM2.scene"],
