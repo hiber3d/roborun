@@ -1,16 +1,11 @@
 ({
   POSITION_LERP_FACTOR: 0.5, // 0: follow spline, 1: follow player
-  AUTO_RUN_POSITION_LERP_FACTOR: 0.1,
   shouldRun() {
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
     return playerEntity !== undefined &&
       hiber3d.hasComponents(playerEntity, "SplineData") &&
       hiber3d.hasComponents(playerEntity, "Hiber3D::Transform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D::Transform");
-  },
-  getLerpFactor() {
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    return hiber3d.hasComponents(playerEntity, "AutoRun") ? this.AUTO_RUN_POSITION_LERP_FACTOR : this.POSITION_LERP_FACTOR;
   },
   onCreate() {
   },
@@ -27,7 +22,7 @@
     if (hiber3d.hasComponents(playerEntity, "AutoRun")) {
       splinePosition.y = hiber3d.getValue(playerEntity, "AutoRun", "startingHeight");
     }
-    const lerpedPosition = vectorUtils.lerpVector(splinePosition, playerPosition, this.getLerpFactor());
+    const lerpedPosition = vectorUtils.lerpVector(splinePosition, playerPosition, this.POSITION_LERP_FACTOR);
     hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", lerpedPosition);
 
     // Rotation
