@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "root": {
-    "id": 5242882,
+    "id": 7340034,
     "components": [
       {
         "type": "Hiber3D::Transform",
@@ -31,7 +31,7 @@
     ],
     "children": [
       {
-        "id": 5243053,
+        "id": 7340036,
         "components": [
           {
             "type": "Hiber3D::Transform",
@@ -61,7 +61,7 @@
         ],
         "children": [
           {
-            "id": 5242890,
+            "id": 7340037,
             "components": [
               {
                 "type": "Hiber3D::Transform",
@@ -106,7 +106,7 @@
             ]
           },
           {
-            "id": 5242893,
+            "id": 7340038,
             "components": [
               {
                 "type": "Hiber3D::Transform",
@@ -114,7 +114,7 @@
                   "position": {
                     "x": 0,
                     "y": 0,
-                    "z": -5
+                    "z": -3.65
                   },
                   "rotation": {
                     "x": 0,
@@ -143,13 +143,13 @@
                   "laneOffsetRight": 1,
                   "wallOffsetLeft": 1.5,
                   "wallOffsetRight": 1.5,
-                  "curveFactor": 0.5
+                  "curveFactor": 0.6
                 }
               }
             ],
             "children": [
               {
-                "id": 5242892,
+                "id": 7340047,
                 "components": [
                   {
                     "type": "Hiber3D::Transform",
@@ -177,7 +177,7 @@
                 ]
               },
               {
-                "id": 5242889,
+                "id": 7340042,
                 "components": [
                   {
                     "type": "Hiber3D::Transform",
@@ -207,13 +207,13 @@
             ]
           },
           {
-            "id": 5242891,
+            "id": 7340046,
             "components": [
               {
                 "type": "Hiber3D::Transform",
                 "data": {
                   "position": {
-                    "x": 5,
+                    "x": 6.35,
                     "y": 0,
                     "z": -10
                   },
@@ -252,7 +252,7 @@
             ]
           },
           {
-            "id": 3145902,
+            "id": 7340045,
             "components": [
               {
                 "type": "Hiber3D::Transform",
@@ -299,7 +299,7 @@
         ]
       },
       {
-        "id": 3145937,
+        "id": 7340040,
         "components": [
           {
             "type": "Hiber3D::Transform",

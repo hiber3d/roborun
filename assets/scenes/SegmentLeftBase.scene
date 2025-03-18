@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "root": {
-    "id": 8388610,
+    "id": 3146515,
     "components": [
       {
         "type": "Hiber3D::Transform",
@@ -31,7 +31,7 @@
     ],
     "children": [
       {
-        "id": 6291704,
+        "id": 3146789,
         "components": [
           {
             "type": "Hiber3D::Transform",
@@ -61,7 +61,7 @@
         ],
         "children": [
           {
-            "id": 6291703,
+            "id": 4194549,
             "components": [
               {
                 "type": "Hiber3D::Transform",
@@ -106,7 +106,7 @@
             ]
           },
           {
-            "id": 8388781,
+            "id": 3146662,
             "components": [
               {
                 "type": "Hiber3D::Transform",
@@ -114,7 +114,7 @@
                   "position": {
                     "x": 0,
                     "y": 0,
-                    "z": -5
+                    "z": -3.65
                   },
                   "rotation": {
                     "x": 0,
@@ -143,7 +143,7 @@
                   "laneOffsetRight": 1,
                   "wallOffsetLeft": 1.5,
                   "wallOffsetRight": 1.5,
-                  "curveFactor": 0.5
+                  "curveFactor": 0.6
                 }
               }
             ],
@@ -151,13 +151,13 @@
             ]
           },
           {
-            "id": 8388618,
+            "id": 3146583,
             "components": [
               {
                 "type": "Hiber3D::Transform",
                 "data": {
                   "position": {
-                    "x": -5,
+                    "x": -6.35,
                     "y": 0,
                     "z": -10
                   },
@@ -196,7 +196,7 @@
             ]
           },
           {
-            "id": 8388620,
+            "id": 2097159,
             "components": [
               {
                 "type": "Hiber3D::Transform",
@@ -243,7 +243,7 @@
         ]
       },
       {
-        "id": 8388617,
+        "id": 2097160,
         "components": [
           {
             "type": "Hiber3D::Transform",
