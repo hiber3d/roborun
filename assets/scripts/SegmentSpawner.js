@@ -31,7 +31,7 @@
       [0.1, 5, "scenes/segments/SegmentStraightNOA.scene"],
       [0.1, 5, "scenes/segments/SegmentStraightCOA.scene"],
 
-      [0.01, 20, "scenes/segments/SegmentStraightNPL.scene"],
+      [1.0, 20, "scenes/segments/SegmentStraightNPL.scene"],
       [0.01, 20, "scenes/segments/SegmentStraightNPR.scene"],
       [0.01, 20, "scenes/segments/SegmentStraightCPL.scene"],
       [0.01, 20, "scenes/segments/SegmentStraightCPR.scene"],
@@ -39,7 +39,7 @@
       [0.01, 10, "scenes/segments/SegmentStraightPTL.scene"],
       [0.01, 10, "scenes/segments/SegmentStraightPTR.scene"],
 
-      [0.1, 2, "scenes/segments/SegmentStraightNSM.scene"],
+      [1.0, 2, "scenes/segments/SegmentStraightNSM.scene"],
       [0.1, 2, "scenes/segments/SegmentStraightNSM2.scene"],
       [0.1, 2, "scenes/segments/SegmentStraightCSM.scene"],
       [0.1, 2, "scenes/segments/SegmentStraightCSM2.scene"]
