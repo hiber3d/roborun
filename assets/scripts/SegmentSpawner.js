@@ -1,175 +1,300 @@
+const STRAIGHT_ROOMS = [
+  {
+    room: "scenes/rooms/RoomStraightA.scene",
+    probability: 0.2,
+  },
+  {
+    room: "scenes/rooms/RoomStraightB.scene",
+    probability: 0.2,
+  },
+  {
+    room: "scenes/rooms/RoomStraightC.scene",
+    probability: 0.2,
+  },
+  {
+    room: "scenes/rooms/RoomStraightD.scene",
+    probability: 0.2,
+  },
+  {
+    room: "scenes/rooms/RoomStraightE.scene",
+    probability: 0.1,
+  },
+  {
+    room: "scenes/rooms/RoomStraightF.scene",
+    probability: 0.1,
+  },
+];
+
+const LEFT_ROOMS = [
+  {
+    room: "scenes/rooms/RoomLeftA.scene",
+    probability: 1,
+  },
+];
+
+const RIGHT_ROOMS = [
+  {
+    room: "scenes/rooms/RoomRightA.scene",
+    probability: 1,
+  },
+];
+
+const LANES = {
+  LEFT: 0,
+  MID: 1,
+  RIGHT: 2,
+};
+
+const PICK_UP_HEIGHTS = {
+  NONE: 0,
+  SLIDE: 1,
+  RUN: 2,
+  JUMP: 3,
+};
+
+const PICK_UP_LANE_BEHAVIORS = {
+  // Must be same as LANES
+  LEFT: 0,
+  MID: 1,
+  RIGHT: 2,
+
+  SAME_AS_OBSTACLE: 3,
+  ANY_BUT_NOT_SAME_AS_OBSTACLE: 4,
+  LEFT_OF_OBSTACLE: 5,
+  RIGHT_OF_OBSTACLE: 6,
+};
+
 ({
   NUM_SEGMENTS: 13,
-  START_VANILLA_STRAIGHT_LENGTH: 3,
-  MIN_STRAIGHTS_IN_ROW: 3,
+
+  // Straights
+  START_STRAIGHT_BASE_LENGTH: 3,
+  MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_0: 3,
   MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1: 0,
-  MAX_NON_VANILLA_IN_A_ROW: 1,
-  MAX_NON_VANILLA_IN_A_ROW_AT_DIFFICULTY1: 2,
   MAX_STRAIGHTS_IN_ROW: 6, // Should not be too similar to NUM_SEGMENTS --> will cause "end-of-tunnel" visible
-  TURN_CHANCE_MIN: 0.2, // 0.1 --> 10% chance of turning (then left/right is 50/50)
-  TURN_CHANCE_AT_DIFFICULTY_1: 0.5,
-  TURN_CHANCE_MAX: 0.75,
-  SEGMENTS: {
-    // first number is base probability
-    // second number is probability factor at difficulty 1 (i.e. a value of 1 means no change, 0 means it doesn't occur at all, 2 means it occurs twice as often, etc.)
-    "straight": [
-      [0, 1, "scenes/SegmentStraightBase.scene"], // Doesn't need a probability, currently enforced ever-so-often
 
-      [0.5, 0.1, "scenes/SegmentBridgeBase.scene"],
+  // Obstacles
+  OBSTACLE_CHANCE_AT_DIFFICULTY_0: 0.25,
+  OBSTACLE_CHANCE_AT_DIFFICULTY_1: 1,
+  MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_0: 2,
+  MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_1: 0,
 
-      [0.5, 0.01, "scenes/segments/SegmentStraightCCL.scene"], 
-      [0.05, 0.01, "scenes/segments/SegmentStraightCCM.scene"],
-      [0.5, 0.01, "scenes/segments/SegmentStraightCCR.scene"],
+  // PickUps
+  POWERUP_CHANCE_AT_DIFFICULTY_0: 0.01,
+  POWERUP_CHANCE_AT_DIFFICULTY_1: 0.05,
+  COLLECTIBLE_CHANCE_AT_DIFFICULTY_0: 0.25,
+  COLLECTIBLE_CHANCE_AT_DIFFICULTY_1: 0.5,
 
-      [0.5, 0.01, "scenes/segments/SegmentStraightCLL.scene"],
-      [0.05, 0.01, "scenes/segments/SegmentStraightCLM.scene"],
-      [0.5, 0.01, "scenes/segments/SegmentStraightCLR.scene"],
-      [0.01, 1, "scenes/segments/SegmentStraightCLA.scene"],
+  SPAWNABLE_STUFF: {
 
-      [0.1, 5, "scenes/segments/SegmentStraightNOM.scene"],
-      [0.1, 5, "scenes/segments/SegmentStraightCOM.scene"],
-      [0.1, 5, "scenes/segments/SegmentStraightNOA.scene"],
-      [0.1, 5, "scenes/segments/SegmentStraightCOA.scene"],
+    straight: {
+      probability: 0.8,
+      segments: [
+        {
+          probability: 0.9,
+          segment: "scenes/segments/SegmentStraightBase.scene", // The first "segment" entry should be the base segment
+          rooms: STRAIGHT_ROOMS,
+          obstacles: [
+            {
+              probability: 1,
+              obstacle: undefined, // The first "obstacle" entry should be undefined
+              obstacleLane: [],
+              pickUps: [
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHTS.RUN, PICK_UP_HEIGHTS.JUMP],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIORS.LEFT, PICK_UP_LANE_BEHAVIORS.MID, PICK_UP_LANE_BEHAVIORS.RIGHT],
+                },
+              ],
+            },
+            {
+              probability: 1,
+              obstacle: "scenes/obstacles/ObstacleTest.scene",
+              obstacleLane: [LANES.LEFT, LANES.MID, LANES.RIGHT],
+              pickUps: [
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHTS.JUMP],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIORS.SAME_AS_OBSTACLE],
+                },
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHTS.RUN],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIORS.ANY_BUT_NOT_SAME_AS_OBSTACLE],
+                }
+              ],
+            }
+          ],
+        },
+        {
+          probability: 0.1,
+          segment: "scenes/segments/SegmentBridgeBase.scene",
+          rooms: STRAIGHT_ROOMS,
+        },
+      ],
+    },
 
-      [1.0, 20, "scenes/segments/SegmentStraightNPL.scene"],
-      [0.01, 20, "scenes/segments/SegmentStraightNPR.scene"],
-      [0.01, 20, "scenes/segments/SegmentStraightCPL.scene"],
-      [0.01, 20, "scenes/segments/SegmentStraightCPR.scene"],
+    turn: {
+      probability: 0.2,
+      segments: [
+        {
+          probability: 0.5,
+          segment: "scenes/segments/SegmentLeftBase.scene",
+          rooms: LEFT_ROOMS,
+        },
+        {
+          probability: 0.5,
+          segment: "scenes/segments/SegmentRightBase.scene",
+          rooms: RIGHT_ROOMS,
+        },
+      ],
+    },
 
-      [0.01, 10, "scenes/segments/SegmentStraightPTL.scene"],
-      [0.01, 10, "scenes/segments/SegmentStraightPTR.scene"],
-
-      [1.0, 2, "scenes/segments/SegmentStraightNSM.scene"],
-      [0.1, 2, "scenes/segments/SegmentStraightNSM2.scene"],
-      [0.1, 2, "scenes/segments/SegmentStraightCSM.scene"],
-      [0.1, 2, "scenes/segments/SegmentStraightCSM2.scene"]
-    ],
-    "left": [
-      [1, 1, "scenes/SegmentLeftBase.scene"]
-    ],
-    "right": [
-      [1, 1, "scenes/SegmentRightBase.scene"]
-    ],
   },
-  ROOMS: {
-    "straight": [
-      [1, 0.01, "scenes/rooms/RoomStraightA.scene"],
-      [1, 0.01, "scenes/rooms/RoomStraightB.scene"],
-      [1, 0.01, "scenes/rooms/RoomStraightC.scene"],
-      [0.01, 100, "scenes/rooms/RoomStraightD.scene"],
-      [0.01, 100, "scenes/rooms/RoomStraightE.scene"],
-      [0.01, 100, "scenes/rooms/RoomStraightF.scene"]
-    ],
-    "left": [
-      [1, 1, "scenes/rooms/RoomLeftA.scene"]
-    ],
-    "right": [
-      [1, 1, "scenes/rooms/RoomRightA.scene"]
-    ],
-  },
 
-  lastTurn: "",
-  secondToLastTurn: "",
-  straightsInARow: 0,
-  latestSegmentPath: "",
+  startStraightBaseCounter: 0,
+  straightInARowCounter: 0,
+  obstaclelessStraightsInARowCounter: 0,
   latestSegmentSceneEntity: undefined,
-  numNonVanillaInARow: 0,
   segmentIndex: 0,
-
-  getTurnChance() {
-    const difficulty = hiber3d.getValue("GameState", "difficulty");
-    return Math.min(this.TURN_CHANCE_MIN + (this.TURN_CHANCE_AT_DIFFICULTY_1 - this.TURN_CHANCE_MIN) * difficulty, this.TURN_CHANCE_MAX);
-  },
-  getSegmentType() {
-    var segmentType = undefined;
-    const difficulty = hiber3d.getValue("GameState", "difficulty");
-    const passedVanilla = this.segmentIndex > this.START_VANILLA_STRAIGHT_LENGTH;
-    const chanceSuccess = Math.random() < this.getTurnChance();
-    const minStraightsInARow = this.MIN_STRAIGHTS_IN_ROW + (this.MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1 - this.MIN_STRAIGHTS_IN_ROW) * difficulty;
-    const passedMinStraightsInARow = this.straightsInARow >= minStraightsInARow;
-    const passedMaxStraightsInARow = this.straightsInARow >= this.MAX_STRAIGHTS_IN_ROW;
-    if ((passedVanilla && chanceSuccess && passedMinStraightsInARow) || passedMaxStraightsInARow) {
-      if (this.lastTurn === this.secondToLastTurn && this.lastTurn !== "") {
-        segmentType = this.lastTurn === "left" ? "right" : "left";
+  getRandomElement(list) {
+    if (list === undefined) {
+      hiber3d.print("SegmentSpawner::getRandomElement() - ERROR: No list found");
+      return undefined;
+    }
+    const length = list.length !== undefined ? list.length : Object.keys(list).length;
+    if (length === 1) {
+      return list[0];
+    }
+    var cumulativeProbability = 0;
+    for (var i = 0; i < length; i++) {
+      const object = list[Object.keys(list)[i]];
+      if (object.probability === undefined) {
+        hiber3d.print("SegmentSpawner::getRandomElement() - ERROR: No probability found for element: " + JSON.stringify(object));
       } else {
-        segmentType = Math.random() < 0.5 ? "left" : "right";
-      }
-      this.straightsInARow = 0;
-    } else {
-      segmentType = "straight";
-      this.straightsInARow++;
-    }
-    return segmentType;
-  },
-  getProbability(segment) {
-    const difficulty = hiber3d.getValue("GameState", "difficulty");
-    const probabilityAtDifficulty0 = segment[0];
-    const probabilityFactorAtDifficulty1 = segment[1];
-    return probabilityAtDifficulty0 * Math.max(0, scalarUtils.lerpScalar(1, probabilityFactorAtDifficulty1, difficulty));
-  },
-  getPath(segmentType, types) {
-    if (types[segmentType] === undefined) {
-      hiber3d.print("SegmentSpawner::getSegmentPath: Unknown segment type: '" + segmentType + "'");
-    }
-    const numSegmentPaths = Object.keys(types[segmentType]).length;
-    var totalProbability = 0;
-    if (this.segmentIndex > this.START_VANILLA_STRAIGHT_LENGTH) {
-      for (var i = 0; i < numSegmentPaths; i++) {
-        totalProbability += this.getProbability(types[segmentType][i]);
+        cumulativeProbability += object.probability;
       }
     }
-    const outcome = Math.random() * totalProbability;
+    const outcome = Math.random() * cumulativeProbability;
     var iteratedProbability = 0;
-    for (var i = 0; i < numSegmentPaths; i++) {
-      iteratedProbability += this.getProbability(types[segmentType][i]);
+    for (var i = 0; i < length; i++) {
+      const object = list[Object.keys(list)[i]];
+      iteratedProbability += object.probability;
       if (iteratedProbability >= outcome) {
-        return types[segmentType][i][2];
+        return object;
       }
     }
-    return types[segmentType][0][2];
+    hiber3d.print("SegmentSpawner::getRandomElement() - ERROR: No element found");
+    return undefined;
   },
-  getSegmentPath(segmentType) {
-
-    // Enforce vanilla ever-so-often
+  getStuffToSpawn() {
     const difficulty = hiber3d.getValue("GameState", "difficulty");
-    const maxNonVanilla = Math.floor(scalarUtils.lerpScalar(this.MAX_NON_VANILLA_IN_A_ROW, this.MAX_NON_VANILLA_IN_A_ROW_AT_DIFFICULTY1, difficulty));
 
-    var path;
-    if (segmentType == "straight" && this.numNonVanillaInARow >= maxNonVanilla) {
-      path = this.SEGMENTS["straight"][0][2];
+    const isAtStart = this.startStraightBaseCounter < this.START_STRAIGHT_BASE_LENGTH;
+    const tooFewStraightsInARow = this.straightInARowCounter < Math.max(0, Math.ceil(scalarUtils.lerpScalar(this.MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_0, this.MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1, difficulty)));
+    const tooManyStraightsInARow = this.straightInARowCounter > this.MAX_STRAIGHTS_IN_ROW;
+
+    var useStraight = false;
+    var useFirstSegment = false;
+    var useObstacle = false;
+    var usePowerup = false;
+    var useCollectible = false;
+
+    // useStraight
+    if (isAtStart) {
+      useStraight = true;
+      useFirstSegment = true;
+      this.startStraightBaseCounter += 1;
+    } else if (tooFewStraightsInARow) {
+      useStraight = true;
+    } else if (tooManyStraightsInARow) {
+      useStraight = false;
     } else {
-      path = this.getPath(segmentType, this.SEGMENTS);
-    }
-    if (path === this.SEGMENTS["straight"][0][2]) {
-      this.numNonVanillaInARow = 0;
-    } else {
-      this.numNonVanillaInARow += 1;
+      useStraight = this.getRandomElement(this.SPAWNABLE_STUFF) === this.SPAWNABLE_STUFF.straight;
     }
 
-    return path;
-  },
-  getRoomPath(segmentType) {
-    return this.getPath(segmentType, this.ROOMS);
+    // useObstacle
+    const obstaclelessSuccess = this.obstaclelessStraightsInARowCounter >= scalarUtils.lerpScalar(this.MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_0, this.MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_1, difficulty);
+    const obstacleChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.OBSTACLE_CHANCE_AT_DIFFICULTY_0, this.OBSTACLE_CHANCE_AT_DIFFICULTY_1, difficulty);
+    useObstacle = !isAtStart && useStraight && obstaclelessSuccess && obstacleChanceSuccess;
+
+    // usePowerup
+    const powerupChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.POWERUP_CHANCE_AT_DIFFICULTY_0, this.POWERUP_CHANCE_AT_DIFFICULTY_1, difficulty);
+    usePowerup = powerupChanceSuccess;
+
+    // useCollectible
+    const collectibleChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_0, this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_1, difficulty);
+    useCollectible = !usePowerup && collectibleChanceSuccess;
+
+    // segmentPath
+    const segmentTypeBlock = useStraight ? this.SPAWNABLE_STUFF.straight : this.SPAWNABLE_STUFF.turn;
+    const segmentBlock = useFirstSegment ? segmentTypeBlock.segments[0] : this.getRandomElement(segmentTypeBlock.segments);
+    const segmentPath = segmentBlock.segment;
+
+    // roomPath
+    const roomBlock = this.getRandomElement(segmentBlock.rooms);
+    const roomPath = roomBlock.room;
+
+    // obstaclePath
+    const obstacleBlock = useObstacle ? this.getRandomElement(segmentBlock.obstacles) : segmentBlock.obstacles !== undefined ? segmentBlock.obstacles[0] : undefined;
+    const obstaclePath = obstacleBlock !== undefined ? obstacleBlock.obstacle : undefined;
+    const obstacleLaneIndex = obstacleBlock !== undefined ? Math.floor(Math.random() * Object.keys(obstacleBlock.obstacleLane).length) : undefined;
+    const obstacleLane = obstacleBlock !== undefined ? obstacleBlock.obstacleLane[obstacleLaneIndex] : undefined;
+
+    // pickUpPath
+    var pickUpPath = undefined;
+    var pickUpLane = undefined;
+    var pickUpHeight = undefined;
+    if (obstacleBlock !== undefined && (usePowerup || useCollectible)) {
+      const pickUpsBlock = this.getRandomElement(obstacleBlock.pickUps); const pickUpHeights = useCollectible && pickUpsBlock !== undefined ? pickUpsBlock.pickUpHeights : undefined;
+
+      const pickUpLaneIndex = pickUpsBlock !== undefined ? Math.floor(Math.random() * Object.keys(pickUpsBlock.pickUpLanes).length) : undefined;
+      pickUpLane = pickUpsBlock !== undefined ? pickUpsBlock.pickUpLanes[pickUpLaneIndex] : undefined;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIORS.SAME_AS_OBSTACLE ? obstacleLane : pickUpLane;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIORS.ANY_BUT_NOT_SAME_AS_OBSTACLE ? (obstacleLane + Math.ceil(2 * Math.random())) % 3 : pickUpLane;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIORS.LEFT_OF_OBSTACLE ? (obstacleLane - 1) % 3 : pickUpLane;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIORS.RIGHT_OF_OBSTACLE ? (obstacleLane + 1) % 3 : pickUpLane;
+
+      const pickUpHeightIndex = pickUpHeights !== undefined ? Math.floor(Math.random() * Object.keys(pickUpHeights).length) : undefined;
+      pickUpHeight = pickUpHeights !== undefined ? pickUpHeights[pickUpHeightIndex] : undefined;
+
+      if (usePowerup) {
+        // TODO: Add support for multiple power-ups here
+        pickUpPath = "scenes/powerups/PowerUpAutoRun.scene";
+      } else if(useCollectible){
+        pickUpPath =
+          (pickUpHeight === PICK_UP_HEIGHTS.SLIDE) ? "scenes/collectibles/CollectiblesDip.scene" :
+            (pickUpHeight === PICK_UP_HEIGHTS.RUN) ? "scenes/collectibles/CollectiblesLine.scene" :
+              (pickUpHeight === PICK_UP_HEIGHTS.JUMP) ? "scenes/collectibles/CollectiblesCurve.scene" :
+                undefined;
+
+        pickUpHeight = PICK_UP_HEIGHTS.NONE; // Collectibles have height as part of the scene
+      }
+    }
+
+    if (segmentPath === undefined) {
+      hiber3d.print("SegmentSpawner::getSegment() - ERROR: No segmentPath found");
+    }
+    if (roomPath === undefined) {
+      hiber3d.print("SegmentSpawner::getSegment() - ERROR: No roomPath found");
+    }
+
+    this.straightInARowCounter = useStraight ? this.straightInARowCounter + 1 : 0;
+    this.obstaclelessStraightsInARowCounter = useObstacle ? 0 : this.obstaclelessStraightsInARowCounter + 1;
+
+    return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight};
   },
   spawnSegmentScene(transform) {
     const segmentsSceneEntity = hiber3d.getValue("SegmentsState", "segmentsSceneEntity");
 
-    const segmentType = this.getSegmentType();
-    if (segmentType == undefined) {
-      return;
-    }
-    if (segmentType != "straight") {
-      this.secondToLastTurn = this.lastTurn;
-      this.lastTurn = segmentType;
-    }
-    const segmentPath = this.getSegmentPath(segmentType);
-    if (segmentPath === undefined) {
-      return;
-    }
-    const roomPath = this.getRoomPath(segmentType);
-    if (roomPath === undefined) {
-      return;
-    }
+    const stuffToSpawn = this.getStuffToSpawn();
+    const segmentPath = stuffToSpawn.segmentPath;
+    const roomPath = stuffToSpawn.roomPath;
+    const obstaclePath = stuffToSpawn.obstaclePath;
+    const obstacleLane = stuffToSpawn.obstacleLane;
+    const pickUpPath = stuffToSpawn.pickUpPath;
+    const pickUpLane = stuffToSpawn.pickUpLane;
+    const pickUpHeight = stuffToSpawn.pickUpHeight;
 
     // Segment
     const segmentSceneEntity = regUtils.createChildToParent(segmentsSceneEntity);
@@ -189,7 +314,36 @@
     hiber3d.setValue(roomSceneEntity, "Hiber3D::SceneRoot", "scene", roomPath);
     hiber3d.addComponent(roomSceneEntity, "Hiber3D::Transform");
 
-    this.latestSegmentPath = segmentPath;
+    // Obstacle
+    if (obstaclePath !== undefined) {
+      const obstacleEntity = regUtils.createChildToParent(segmentSceneEntity);
+      hiber3d.addComponent(obstacleEntity, "Hiber3D::SceneRoot");
+      hiber3d.setValue(obstacleEntity, "Hiber3D::SceneRoot", "scene", obstaclePath);
+      hiber3d.addComponent(obstacleEntity, "Hiber3D::Name");
+      hiber3d.setValue(obstacleEntity, "Hiber3D::Name", "Obstacle");
+      hiber3d.addComponent(obstacleEntity, "Hiber3D::Transform");
+      const x = obstacleLane === LANES.LEFT ? -1 : obstacleLane === LANES.RIGHT ? 1 : 0; // TODO: Get width from scene
+      const z = -5;
+      hiber3d.setValue(obstacleEntity, "Hiber3D::Transform", "position", { x, y: 0, z });
+    }
+
+    // PickUp
+    if (pickUpPath !== undefined) {
+      const pickUpEntity = regUtils.createChildToParent(segmentSceneEntity);
+      hiber3d.addComponent(pickUpEntity, "Hiber3D::SceneRoot");
+      hiber3d.setValue(pickUpEntity, "Hiber3D::SceneRoot", "scene", pickUpPath);
+      hiber3d.addComponent(pickUpEntity, "Hiber3D::Name");
+      hiber3d.setValue(pickUpEntity, "Hiber3D::Name", "PickUp");
+      hiber3d.addComponent(pickUpEntity, "Hiber3D::Transform");
+      const x = pickUpLane === LANES.LEFT ? -1 : pickUpLane === LANES.RIGHT ? 1 : 0; // TODO: Get width from scene
+      const y =
+        pickUpHeight === PICK_UP_HEIGHTS.SLIDE ? 0.5 :
+          pickUpHeight === PICK_UP_HEIGHTS.RUN ? 1 :
+            pickUpHeight === PICK_UP_HEIGHTS.JUMP ? 3.5 :
+            0; // TODO: Get height from scene
+      hiber3d.setValue(pickUpEntity, "Hiber3D::Transform", "position", { x, y, z: 0 });
+    }
+
     this.latestSegmentSceneEntity = segmentSceneEntity;
     this.segmentIndex++;
     return segmentSceneEntity;
