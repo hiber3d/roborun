@@ -109,7 +109,7 @@ const PICK_UP_LANE_BEHAVIORS = {
             },
             {
               probability: 1,
-              obstacle: "scenes/obstacles/ObstacleTest.scene",
+              obstacle: "scenes/obstacles/Obstacle1LaneJumpOver.scene",
               obstacleLane: [LANES.LEFT, LANES.MID, LANES.RIGHT],
               pickUps: [
                 {
@@ -302,7 +302,7 @@ const PICK_UP_LANE_BEHAVIORS = {
     hiber3d.setValue(segmentSceneEntity, "Hiber3D::SceneRoot", "scene", segmentPath);
     hiber3d.addComponent(segmentSceneEntity, "SegmentScene");
     hiber3d.addComponent(segmentSceneEntity, "Hiber3D::Name");
-    hiber3d.setValue(segmentSceneEntity, "Hiber3D::Name", "Segment" + this.segmentIndex);
+    hiber3d.setValue(segmentSceneEntity, "Hiber3D::Name", "SegmentScene" + this.segmentIndex);
     hiber3d.addComponent(segmentSceneEntity, "Hiber3D::Transform");
     if (transform !== undefined) {
       hiber3d.setValue(segmentSceneEntity, "Hiber3D::Transform", transform);
@@ -312,6 +312,8 @@ const PICK_UP_LANE_BEHAVIORS = {
     const roomSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
     hiber3d.addComponent(roomSceneEntity, "Hiber3D::SceneRoot");
     hiber3d.setValue(roomSceneEntity, "Hiber3D::SceneRoot", "scene", roomPath);
+    hiber3d.addComponent(roomSceneEntity, "Hiber3D::Name");
+    hiber3d.setValue(roomSceneEntity, "Hiber3D::Name", "RoomScene");
     hiber3d.addComponent(roomSceneEntity, "Hiber3D::Transform");
 
     // Obstacle
@@ -320,7 +322,7 @@ const PICK_UP_LANE_BEHAVIORS = {
       hiber3d.addComponent(obstacleEntity, "Hiber3D::SceneRoot");
       hiber3d.setValue(obstacleEntity, "Hiber3D::SceneRoot", "scene", obstaclePath);
       hiber3d.addComponent(obstacleEntity, "Hiber3D::Name");
-      hiber3d.setValue(obstacleEntity, "Hiber3D::Name", "Obstacle");
+      hiber3d.setValue(obstacleEntity, "Hiber3D::Name", "ObstacleScene");
       hiber3d.addComponent(obstacleEntity, "Hiber3D::Transform");
       const x = obstacleLane === LANES.LEFT ? -1 : obstacleLane === LANES.RIGHT ? 1 : 0; // TODO: Get width from scene
       const z = -5;
@@ -333,7 +335,7 @@ const PICK_UP_LANE_BEHAVIORS = {
       hiber3d.addComponent(pickUpEntity, "Hiber3D::SceneRoot");
       hiber3d.setValue(pickUpEntity, "Hiber3D::SceneRoot", "scene", pickUpPath);
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Name");
-      hiber3d.setValue(pickUpEntity, "Hiber3D::Name", "PickUp");
+      hiber3d.setValue(pickUpEntity, "Hiber3D::Name", "PickUpScene");
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Transform");
       const x = pickUpLane === LANES.LEFT ? -1 : pickUpLane === LANES.RIGHT ? 1 : 0; // TODO: Get width from scene
       const y =
