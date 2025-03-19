@@ -39,13 +39,14 @@
 
         // Give player effect component
         const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-        hiber3d.addComponent(playerEntity, component);
-
-        // Setup script that removes the effect after its duration
-        const componentRemoverEntity = hiber3d.createEntity();
-        regUtils.addScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
+        regUtils.addOrReplaceComponent(playerEntity, component);
 
         // TODO: Depends on [HIB-33606] and [HIB-33679]
+
+        // Setup script that removes the effect after its duration
+        //const componentRemoverEntity = hiber3d.createEntity();
+        //regUtils.addScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
+
         //var componentRemoverScript = hiber3d.getScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
         //componentRemoverScript.Component = component;
         //componentRemoverScript.Entity = playerEntity;

@@ -193,3 +193,10 @@ function removeComponentIfPresent(entity, component) {
   }
 }
 module.exports.removeComponentIfPresent = removeComponentIfPresent;
+function addOrReplaceComponent(entity, component) {
+  if (hiber3d.hasComponents(entity, component) === true) {
+    hiber3d.removeComponent(entity, component);
+  }
+  hiber3d.addComponent(entity, component);
+}
+module.exports.addOrReplaceComponent = addOrReplaceComponent;
