@@ -18,20 +18,12 @@ static void broadcastStats(
     });
 }
 
-static void debug(
-    Hiber3D::EventView<BroadcastCollectiblePickup> events) {
-    LOG_DEBUG("Player pick up");
-    for (const auto& event : events) {
-        LOG_DEBUG("Player pick up");
-    }
-}
-
 void BroadcastModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_TICK, broadcastStats);
-    context.addSystem(Hiber3D::Schedule::ON_TICK, debug);
 
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastPlayerStats>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastCollectiblePickup>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastGameStarted>(context);
     }
 }

@@ -32,6 +32,7 @@ const ANIMATION_LAYER = {
   onEvent(event, payload) {
     if (event === "StartInput" && !this.hasStarted){
       hiber3d.setValue("GameState", "paused", false);
+      hiber3d.writeEvent("BroadcastGameStarted", {})
       this.hasStarted = true;
     } else if (event === "PauseInput") {
       hiber3d.setValue("GameState", "paused", true);

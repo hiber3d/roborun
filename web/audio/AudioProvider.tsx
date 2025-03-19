@@ -1,4 +1,5 @@
 import sfxJson from "./sfx.json";
+import musicJson from "./music.json";
 import {
   AudioContext,
   MusicSounds,
@@ -8,7 +9,7 @@ import {
 import { useSoundSource } from "./useSoundSource";
 
 const typedFxJson = sfxJson as unknown as SpriteData<SFXSounds>;
-const typedMusicJson = sfxJson as unknown as SpriteData<MusicSounds>;
+const typedMusicJson = musicJson as unknown as SpriteData<MusicSounds>;
 
 export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
   const sfx = useSoundSource<SFXSounds>(
@@ -18,6 +19,7 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
     },
     { localStorageKey: "sfx" }
   );
+
   const music = useSoundSource<MusicSounds>(
     {
       sprite: typedMusicJson.sprite,

@@ -110,7 +110,7 @@ export const useSoundSource = <Sound extends string>(
         id
       );
     }
-    if (playOptions?.volume && id) {
+    if (typeof playOptions?.volume !== "undefined" && id) {
       howl?.volume(playOptions.volume * vol, id);
     }
 
@@ -197,5 +197,6 @@ export const useSoundSource = <Sound extends string>(
     isPlaying,
     soundQueued,
     setSoundQueued,
+    soundSource,
   };
 };

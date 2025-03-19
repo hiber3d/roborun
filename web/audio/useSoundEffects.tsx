@@ -6,7 +6,7 @@ const COOL_DOWN_TIMER_MS = 1000;
 
 export const useSoundEffects = () => {
   const { api } = useHiber3D();
-  const { sfx, music } = useAudio();
+  const { sfx } = useAudio();
   const lastPickup = useRef<number>(null);
   const pickupsInARow = useRef(0);
 
@@ -27,16 +27,13 @@ export const useSoundEffects = () => {
       }
       lastPickup.current = now;
 
-      sfx.play("collectible", { rate: 0.8 + pickupsInARow.current * 0.04 });
+      sfx.play("collectible", {
+        rate: 0.8 + pickupsInARow.current * 0.04,
+        volume: 0.5,
+      });
       pickupsInARow.current += 1;
     });
 
     return () => api.removeEventCallback(listener);
   }, [api, sfx]);
-
-  useEffect(() => {
-    console.log("playing");
-
-    music.play("roborun_music_drums_01", { loop: true });
-  }, [music]);
 };
