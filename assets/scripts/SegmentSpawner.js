@@ -123,6 +123,35 @@ const PICK_UP_LANE_BEHAVIOR = {
                   pickUpLanes: [PICK_UP_LANE_BEHAVIOR.ANY_BUT_NOT_SAME_AS_OBSTACLE],
                 }
               ],
+            },
+            {
+              probability: 1,
+              obstacle: "scenes/obstacles/Obstacle2LaneJumpOver.scene",
+              obstacleLane: [LANE.LEFT, LANE.MID],
+              pickUps: [
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHT.JUMP],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.SAME_AS_OBSTACLE, PICK_UP_LANE_BEHAVIOR.RIGHT_AS_OBSTACLE],
+                },
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHT.RUN],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT_OF_OBSTACLE],
+                }
+              ],
+            },
+            {
+              probability: 1,
+              obstacle: "scenes/obstacles/Obstacle3LaneJumpOver.scene",
+              obstacleLane: [LANE.MID],
+              pickUps: [
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHT.JUMP],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
+                }
+              ],
             }
           ],
         },
