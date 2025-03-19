@@ -39,21 +39,21 @@ const RIGHT_ROOMS = [
   },
 ];
 
-const LANES = {
+const LANE = {
   LEFT: 0,
   MID: 1,
   RIGHT: 2,
 };
 
-const PICK_UP_HEIGHTS = {
+const PICK_UP_HEIGHT = {
   NONE: 0,
   SLIDE: 1,
   RUN: 2,
   JUMP: 3,
 };
 
-const PICK_UP_LANE_BEHAVIORS = {
-  // Must be same as LANES
+const PICK_UP_LANE_BEHAVIOR = {
+  // Must be same as LANE
   LEFT: 0,
   MID: 1,
   RIGHT: 2,
@@ -102,25 +102,25 @@ const PICK_UP_LANE_BEHAVIORS = {
               pickUps: [
                 {
                   probability: 1,
-                  pickUpHeights: [PICK_UP_HEIGHTS.RUN, PICK_UP_HEIGHTS.JUMP],
-                  pickUpLanes: [PICK_UP_LANE_BEHAVIORS.LEFT, PICK_UP_LANE_BEHAVIORS.MID, PICK_UP_LANE_BEHAVIORS.RIGHT],
+                  pickUpHeights: [PICK_UP_HEIGHT.RUN, PICK_UP_HEIGHT.JUMP],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
                 },
               ],
             },
             {
               probability: 1,
               obstacle: "scenes/obstacles/Obstacle1LaneJumpOver.scene",
-              obstacleLane: [LANES.LEFT, LANES.MID, LANES.RIGHT],
+              obstacleLane: [LANE.LEFT, LANE.MID, LANE.RIGHT],
               pickUps: [
                 {
                   probability: 1,
-                  pickUpHeights: [PICK_UP_HEIGHTS.JUMP],
-                  pickUpLanes: [PICK_UP_LANE_BEHAVIORS.SAME_AS_OBSTACLE],
+                  pickUpHeights: [PICK_UP_HEIGHT.JUMP],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.SAME_AS_OBSTACLE],
                 },
                 {
                   probability: 1,
-                  pickUpHeights: [PICK_UP_HEIGHTS.RUN],
-                  pickUpLanes: [PICK_UP_LANE_BEHAVIORS.ANY_BUT_NOT_SAME_AS_OBSTACLE],
+                  pickUpHeights: [PICK_UP_HEIGHT.RUN],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.ANY_BUT_NOT_SAME_AS_OBSTACLE],
                 }
               ],
             }
@@ -250,10 +250,10 @@ const PICK_UP_LANE_BEHAVIORS = {
 
       const pickUpLaneIndex = pickUpsBlock !== undefined ? Math.floor(Math.random() * Object.keys(pickUpsBlock.pickUpLanes).length) : undefined;
       pickUpLane = pickUpsBlock !== undefined ? pickUpsBlock.pickUpLanes[pickUpLaneIndex] : undefined;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIORS.SAME_AS_OBSTACLE ? obstacleLane : pickUpLane;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIORS.ANY_BUT_NOT_SAME_AS_OBSTACLE ? (obstacleLane + Math.ceil(2 * Math.random())) % 3 : pickUpLane;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIORS.LEFT_OF_OBSTACLE ? (obstacleLane - 1) % 3 : pickUpLane;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIORS.RIGHT_OF_OBSTACLE ? (obstacleLane + 1) % 3 : pickUpLane;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.SAME_AS_OBSTACLE ? obstacleLane : pickUpLane;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.ANY_BUT_NOT_SAME_AS_OBSTACLE ? (obstacleLane + Math.ceil(2 * Math.random())) % 3 : pickUpLane;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.LEFT_OF_OBSTACLE ? (obstacleLane - 1) % 3 : pickUpLane;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.RIGHT_OF_OBSTACLE ? (obstacleLane + 1) % 3 : pickUpLane;
 
       const pickUpHeightIndex = pickUpHeights !== undefined ? Math.floor(Math.random() * Object.keys(pickUpHeights).length) : undefined;
       pickUpHeight = pickUpHeights !== undefined ? pickUpHeights[pickUpHeightIndex] : undefined;
@@ -263,12 +263,12 @@ const PICK_UP_LANE_BEHAVIORS = {
         pickUpPath = "scenes/powerups/PowerUpAutoRun.scene";
       } else if(useCollectible){
         pickUpPath =
-          (pickUpHeight === PICK_UP_HEIGHTS.SLIDE) ? "scenes/collectibles/CollectiblesDip.scene" :
-            (pickUpHeight === PICK_UP_HEIGHTS.RUN) ? "scenes/collectibles/CollectiblesLine.scene" :
-              (pickUpHeight === PICK_UP_HEIGHTS.JUMP) ? "scenes/collectibles/CollectiblesCurve.scene" :
+          (pickUpHeight === PICK_UP_HEIGHT.SLIDE) ? "scenes/collectibles/CollectiblesDip.scene" :
+            (pickUpHeight === PICK_UP_HEIGHT.RUN) ? "scenes/collectibles/CollectiblesLine.scene" :
+              (pickUpHeight === PICK_UP_HEIGHT.JUMP) ? "scenes/collectibles/CollectiblesCurve.scene" :
                 undefined;
 
-        pickUpHeight = PICK_UP_HEIGHTS.NONE; // Collectibles have height as part of the scene
+        pickUpHeight = PICK_UP_HEIGHT.NONE; // Collectibles have height as part of the scene
       }
     }
 
@@ -324,7 +324,7 @@ const PICK_UP_LANE_BEHAVIORS = {
       hiber3d.addComponent(obstacleEntity, "Hiber3D::Name");
       hiber3d.setValue(obstacleEntity, "Hiber3D::Name", "ObstacleScene");
       hiber3d.addComponent(obstacleEntity, "Hiber3D::Transform");
-      const x = obstacleLane === LANES.LEFT ? -1 : obstacleLane === LANES.RIGHT ? 1 : 0; // TODO: Get width from scene
+      const x = obstacleLane === LANE.LEFT ? -1 : obstacleLane === LANE.RIGHT ? 1 : 0; // TODO: Get width from scene
       const z = -5;
       hiber3d.setValue(obstacleEntity, "Hiber3D::Transform", "position", { x, y: 0, z });
     }
@@ -337,11 +337,11 @@ const PICK_UP_LANE_BEHAVIORS = {
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Name");
       hiber3d.setValue(pickUpEntity, "Hiber3D::Name", "PickUpScene");
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Transform");
-      const x = pickUpLane === LANES.LEFT ? -1 : pickUpLane === LANES.RIGHT ? 1 : 0; // TODO: Get width from scene
+      const x = pickUpLane === LANE.LEFT ? -1 : pickUpLane === LANE.RIGHT ? 1 : 0; // TODO: Get width from scene
       const y =
-        pickUpHeight === PICK_UP_HEIGHTS.SLIDE ? 0.5 :
-          pickUpHeight === PICK_UP_HEIGHTS.RUN ? 1 :
-            pickUpHeight === PICK_UP_HEIGHTS.JUMP ? 3.5 :
+        pickUpHeight === PICK_UP_HEIGHT.SLIDE ? 0.5 :
+          pickUpHeight === PICK_UP_HEIGHT.RUN ? 1 :
+            pickUpHeight === PICK_UP_HEIGHT.JUMP ? 3.5 :
             0; // TODO: Get height from scene
       hiber3d.setValue(pickUpEntity, "Hiber3D::Transform", "position", { x, y, z: 0 });
     }
