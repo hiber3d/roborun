@@ -5,17 +5,29 @@
 #include <Hiber3D/Math/LinalgTypes.hpp>
 #include <Hiber3D/Math/Quaternion.hpp>
 
+// OBS: Duplicate in AutoRunTemp.js
+enum AutoRunStage {
+    UNDEFINED = 0,
+    ASCEND,
+    MAX_HEIGHT,
+    DIP,
+    DESCEND,
+    GROUNDED
+};
+
 struct OnPath {
     bool dummy;
 };
 
 HIBER3D_REFLECT(HIBER3D_TYPE(OnPath), HIBER3D_MEMBER(dummy));
 
-struct AutoTurn {
-    bool dummy;
+struct AutoRun {
+    AutoRunStage stage = ASCEND;
+    float startingHeight;
+    float timeSinceStarted = 0.0f;
 };
 
-HIBER3D_REFLECT(HIBER3D_TYPE(AutoTurn), HIBER3D_MEMBER(dummy));
+HIBER3D_REFLECT(HIBER3D_TYPE(AutoRun), HIBER3D_MEMBER(stage), HIBER3D_MEMBER(startingHeight), HIBER3D_MEMBER(timeSinceStarted));
 
 struct Jumping {
     float deltaHeight;

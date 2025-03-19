@@ -18,13 +18,18 @@
 
     // Position
     const playerPosition = hiber3d.getValue(playerEntity, "Hiber3D::Transform", "position");
-    const lerpedPosition = vectorUtils.lerpVector(playerSplineData.position, playerPosition, this.POSITION_LERP_FACTOR);
+    var splinePosition = playerSplineData.position;
+    if (hiber3d.hasComponents(playerEntity, "AutoRun")) {
+      splinePosition.y = hiber3d.getValue(playerEntity, "AutoRun", "startingHeight");
+    }
+    const lerpedPosition = vectorUtils.lerpVector(splinePosition, playerPosition, this.POSITION_LERP_FACTOR);
     hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", lerpedPosition);
 
     // Rotation
     const isPlayerOnPath = hiber3d.hasComponents(playerEntity, "OnPath");
     if (isPlayerOnPath) {
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", playerSplineData.rotation);
+      const flatRotation = quatUtils.flattenQuaternion(playerSplineData.rotation);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", flatRotation);
     }
   },
   onEvent(event, payload) {

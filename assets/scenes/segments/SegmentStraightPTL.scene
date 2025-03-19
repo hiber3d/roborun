@@ -94,12 +94,12 @@
           },
           {
             "type": "Hiber3D::Name",
-            "data": "PowerUpAutoTurn.scene"
+            "data": "PowerUpAutoRun.scene"
           },
           {
             "type": "Hiber3D::SceneRoot",
             "data": {
-              "scene": "scenes\\powerups\\PowerUpAutoTurn.scene"
+              "scene": "scenes\\powerups\\PowerUpAutoRun.scene"
             }
           }
         ],

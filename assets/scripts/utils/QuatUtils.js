@@ -106,6 +106,34 @@ function lerpQuaternionWithDistance(q1, q2, d) {
 }
 module.exports.lerpQuaternionWithDistance = lerpQuaternionWithDistance;
 
+function flattenQuaternion(q) {
+  const forward = forwardVectorFromQuaternion(q);
+
+  const flatForward = {
+    x: forward.x,
+    y: 0,
+    z: forward.z
+  };
+
+  const epsilon = 0.0001;
+  const lengthSq = flatForward.x * flatForward.x + flatForward.z * flatForward.z;
+
+  if (lengthSq < epsilon) {
+    return { x: 0, y: 0, z: 0, w: 1 };
+  }
+
+  const yRotation = Math.atan2(flatForward.x, flatForward.z);
+  const halfAngle = yRotation / 2;
+
+  return {
+    x: 0,
+    y: Math.sin(halfAngle),
+    z: 0,
+    w: Math.cos(halfAngle)
+  };
+}
+module.exports.flattenQuaternion = flattenQuaternion;
+
 function rotateQuaternionAroundY(q, progress) {
   const angle = progress * 2 * Math.PI;
   const halfAngle = angle / 2;
@@ -135,69 +163,94 @@ function rotateVectorByQuaternion(v, q) {
 }
 module.exports.rotateVectorByQuaternion = rotateVectorByQuaternion;
 
-module.exports.quaternionFromVector = function (vector) {
+function quaternionFromVector(direction) {
   // Input validation
-  if (!vector || typeof vector !== 'object') {
+  if (!direction || typeof direction !== 'object') {
     throw new Error('Vector must be an object');
   }
-
-  if (typeof vector.x !== 'number' ||
-    typeof vector.y !== 'number' ||
-    typeof vector.z !== 'number') {
+  if (typeof direction.x !== 'number' ||
+    typeof direction.y !== 'number' ||
+    typeof direction.z !== 'number') {
     throw new Error('Vector must have numeric x, y, z components');
   }
 
-  // Normalize the input vector
-  var normalizedVector = vectorUtils.normalizeVector(vector);
+  // Normalize the direction vector
+  var length = Math.sqrt(
+    direction.x * direction.x +
+    direction.y * direction.y +
+    direction.z * direction.z
+  );
 
-  // Forward vector (reference direction)
-  var forward = { x: 0, y: 0, z: -1 };
-
-  // Calculate dot product between forward and target direction
-  var dot = forward.x * normalizedVector.x +
-    forward.y * normalizedVector.y +
-    forward.z * normalizedVector.z;
-
-  // If vectors are parallel (dot ≈ 1) or antiparallel (dot ≈ -1)
-  if (Math.abs(dot + 1) < 0.000001) {
-    // Vector is pointing backwards, rotate 180 degrees around Y-axis
-    return { x: 0, y: 1, z: 0, w: 0 };
-  }
-
-  if (Math.abs(dot - 1) < 0.000001) {
-    // Vector is pointing forwards, no rotation needed
-    return { x: 0, y: 0, z: 0, w: 1 };
-  }
-
-  // Calculate rotation axis by cross product
-  var rotationAxis = {
-    x: forward.y * normalizedVector.z - forward.z * normalizedVector.y,
-    y: forward.z * normalizedVector.x - forward.x * normalizedVector.z,
-    z: forward.x * normalizedVector.y - forward.y * normalizedVector.x
+  var normalizedDir = {
+    x: direction.x / length,
+    y: direction.y / length,
+    z: direction.z / length
   };
 
-  // Normalize rotation axis
-  rotationAxis = vectorUtils.normalizeVector(rotationAxis);
+  // Handle special cases where the direction is along the Y axis
+  if (Math.abs(normalizedDir.x) < 0.000001 && Math.abs(normalizedDir.z) < 0.000001) {
+    // Direction is pointing straight up or down
+    if (normalizedDir.y > 0) {
+      // Pointing up (+Y), 90 degree rotation around X
+      return { x: Math.sin(Math.PI / 4), y: 0, z: 0, w: Math.cos(Math.PI / 4) };
+    } else {
+      // Pointing down (-Y), -90 degree rotation around X
+      return { x: -Math.sin(Math.PI / 4), y: 0, z: 0, w: Math.cos(Math.PI / 4) };
+    }
+  }
 
-  // Calculate rotation angle
-  var angle = Math.acos(dot);
-
-  // Create quaternion from axis-angle
-  var halfAngle = angle * 0.5;
-  var sinHalfAngle = Math.sin(halfAngle);
-
-  var quaternion = {
-    x: rotationAxis.x * sinHalfAngle,
-    y: rotationAxis.y * sinHalfAngle,
-    z: rotationAxis.z * sinHalfAngle,
-    w: Math.cos(halfAngle)
+  // Project the direction onto the XZ plane
+  var horizontalDir = {
+    x: normalizedDir.x,
+    y: 0,
+    z: normalizedDir.z
   };
 
-  // Normalize the resulting quaternion
-  return normalizeQuaternion(quaternion);
-}
+  // Normalize the horizontal direction
+  var horizontalLength = Math.sqrt(horizontalDir.x * horizontalDir.x + horizontalDir.z * horizontalDir.z);
+  var normalizedHorizontal = {
+    x: horizontalDir.x / horizontalLength,
+    y: 0,
+    z: horizontalDir.z / horizontalLength
+  };
 
-module.exports.vectorFromQuaternion = function (quaternion) {
+  // Calculate yaw (rotation around Y axis) based on horizontal direction
+  // For -Z as forward, we need to adjust our atan2 calculation
+  // When looking at -Z, the angle should be 0
+  var yawAngle = Math.atan2(-normalizedHorizontal.x, -normalizedHorizontal.z);
+  var halfYawAngle = yawAngle / 2;
+  var yawQuat = {
+    x: 0,
+    y: Math.sin(halfYawAngle),
+    z: 0,
+    w: Math.cos(halfYawAngle)
+  };
+
+  // Calculate pitch (rotation around X axis) based on the angle between
+  // horizontal direction and the full direction
+  var pitchAngle = Math.atan2(normalizedDir.y,
+    Math.sqrt(normalizedDir.x * normalizedDir.x + normalizedDir.z * normalizedDir.z));
+  var halfPitchAngle = pitchAngle / 2;
+  var pitchQuat = {
+    x: Math.sin(halfPitchAngle),
+    y: 0,
+    z: 0,
+    w: Math.cos(halfPitchAngle)
+  };
+
+  // Combine the rotations: first yaw, then pitch
+  // Using quaternion multiplication: result = yaw * pitch
+  var result = {
+    x: yawQuat.w * pitchQuat.x + yawQuat.x * pitchQuat.w + yawQuat.y * pitchQuat.z - yawQuat.z * pitchQuat.y,
+    y: yawQuat.w * pitchQuat.y - yawQuat.x * pitchQuat.z + yawQuat.y * pitchQuat.w + yawQuat.z * pitchQuat.x,
+    z: yawQuat.w * pitchQuat.z + yawQuat.x * pitchQuat.y - yawQuat.y * pitchQuat.x + yawQuat.z * pitchQuat.w,
+    w: yawQuat.w * pitchQuat.w - yawQuat.x * pitchQuat.x - yawQuat.y * pitchQuat.y - yawQuat.z * pitchQuat.z
+  };
+
+  return result;
+} module.exports.quaternionFromVector = quaternionFromVector;
+
+function vectorFromQuaternion(quaternion) {
   // Input validation
   if (!quaternion || typeof quaternion !== 'object') {
     throw new Error('Quaternion must be an object');
@@ -247,6 +300,7 @@ module.exports.vectorFromQuaternion = function (quaternion) {
     z: result.z
   });
 };
+module.exports.vectorFromQuaternion = vectorFromQuaternion;
 function forwardVectorFromQuaternion(q) {
   const x = 2 * (q.x * q.z + q.w * q.y);
   const y = 2 * (q.y * q.z - q.w * q.x);

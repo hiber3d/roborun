@@ -11,12 +11,13 @@
   onCreate() {
     hiber3d.addEventListener(this.entity, "TurnLeftInput");
     hiber3d.addEventListener(this.entity, "TurnRightInput");
+    hiber3d.addEventListener(this.entity, "ToggleAutoRunDebugInput");
   },
   update() {
     if (!this.shouldRun()) {
       return;
     }
-    if (hiber3d.hasComponents(this.entity, "AutoTurn")) {
+    if (hiber3d.hasComponents(this.entity, "AutoRun")) {
       regUtils.addComponentIfNotPresent(this.entity, "OnPath");
     }
     if (hiber3d.hasComponents(this.entity, "OnPath")) {
@@ -29,6 +30,7 @@
       return;
     }
     if (event === "TurnLeftInput" || event === "TurnRightInput") {
+      const isOnPath = hiber3d.hasComponents(this.entity, "OnPath");
       const playerTurnsLeft = event === "TurnLeftInput";
       const playerTurnsRight = event === "TurnRightInput";
       const isAtLeftTurn = segUtils.isPlayerAtLeftTurn();
@@ -39,7 +41,7 @@
         regUtils.addComponentIfNotPresent(this.entity, "OnPath");
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: playerTurnsLeft ? "turnLeft" : "turnRight", layer: ANIMATION_LAYER.ACTION, loop: false });
 
-      } else if (playerTurnsLeft || playerTurnsRight) {
+      } else if ((playerTurnsLeft || playerTurnsRight) && !isOnPath) {
         // Player turns without being at a turn
         const rotation = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "rotation");
         const direction = quatUtils.vectorFromQuaternion(rotation);
@@ -47,12 +49,12 @@
         hiber3d.setValue("GameState", "direction", newDirection);
         regUtils.removeComponentIfPresent(this.entity, "OnPath");
       }
-    } else if (event === "ToggleAutoTurnDebugInput") {
+    } else if (event === "ToggleAutoRunDebugInput") {
       if (DEBUG) {
-        if (hiber3d.hasComponents(this.entity, "AutoTurn")) {
-          hiber3d.removeComponent(this.entity, "AutoTurn");
+        if (hiber3d.hasComponents(this.entity, "AutoRun")) {
+          hiber3d.removeComponent(this.entity, "AutoRun");
         } else {
-          hiber3d.addComponent(this.entity, "AutoTurn");
+          hiber3d.addComponent(this.entity, "AutoRun");
         }
       }
     }

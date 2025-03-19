@@ -1,1 +1,163 @@
-{"version":"1.0.0","root":{"id":2097154,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":1},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Player"},{"type":"Hiber3D::AnimationBlend","data":{"layers":[{"animation":"","playMode":1,"blendMode":0,"animationTime":0,"weight":1,"speed":1,"animationDuration":0},{"animation":"","playMode":1,"blendMode":0,"animationTime":0,"weight":0,"speed":1,"animationDuration":0},{"animation":"","playMode":1,"blendMode":0,"animationTime":0,"weight":0,"speed":1,"animationDuration":0},{"animation":"","playMode":1,"blendMode":0,"animationTime":0,"weight":0,"speed":1,"animationDuration":0}]}},{"type":"Hiber3D::AnimationTransition","data":{"transitions":[{"time":0,"duration":0,"animation":"","animationSpeed":1},{"time":0,"duration":0,"animation":"","animationSpeed":1},{"time":0,"duration":0,"animation":"","animationSpeed":1},{"time":0,"duration":0,"animation":"","animationSpeed":1}]}},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts\\Jump.js","scripts\\OnDeath.js","scripts\\Player.js","scripts\\Running.js","scripts\\RunningAnimations.js","scripts\\Slide.js","scripts\\Turn.js","scripts\\Tilt.js"]}}],"children":[{"id":2097156,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":1,"z":0,"w":0},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Avatar"},{"type":"Hiber3D::SceneRoot","data":{"scene":"glbs\\player.glb#scene0"}}],"children":[]}]}}
+{
+  "version": "1.0.0",
+  "root": {
+    "id": 2097154,
+    "components": [
+      {
+        "type": "Hiber3D::Transform",
+        "data": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "type": "Hiber3D::Name",
+        "data": "Player"
+      },
+      {
+        "type": "Hiber3D::AnimationBlend",
+        "data": {
+          "layers": [
+            {
+              "animation": "",
+              "playMode": 1,
+              "blendMode": 0,
+              "animationTime": 0,
+              "weight": 1,
+              "speed": 1,
+              "animationDuration": 0
+            },
+            {
+              "animation": "",
+              "playMode": 1,
+              "blendMode": 0,
+              "animationTime": 0,
+              "weight": 0,
+              "speed": 1,
+              "animationDuration": 0
+            },
+            {
+              "animation": "",
+              "playMode": 1,
+              "blendMode": 0,
+              "animationTime": 0,
+              "weight": 0,
+              "speed": 1,
+              "animationDuration": 0
+            },
+            {
+              "animation": "",
+              "playMode": 1,
+              "blendMode": 0,
+              "animationTime": 0,
+              "weight": 0,
+              "speed": 1,
+              "animationDuration": 0
+            }
+          ]
+        }
+      },
+      {
+        "type": "Hiber3D::AnimationTransition",
+        "data": {
+          "transitions": [
+            {
+              "time": 0,
+              "duration": 0,
+              "animation": "",
+              "animationSpeed": 1
+            },
+            {
+              "time": 0,
+              "duration": 0,
+              "animation": "",
+              "animationSpeed": 1
+            },
+            {
+              "time": 0,
+              "duration": 0,
+              "animation": "",
+              "animationSpeed": 1
+            },
+            {
+              "time": 0,
+              "duration": 0,
+              "animation": "",
+              "animationSpeed": 1
+            }
+          ]
+        }
+      },
+      {
+        "type": "Hiber3D::ScriptInstance",
+        "data": {
+          "scripts": [
+            "scripts\\Running.js",
+            "scripts\\Jump.js",
+            "scripts\\AutoRunTemp.js",
+            "scripts\\OnDeath.js",
+            "scripts\\Player.js",
+            "scripts\\RunningAnimations.js",
+            "scripts\\Slide.js",
+            "scripts\\Turn.js",
+            "scripts\\Tilt.js"
+          ]
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": 2097156,
+        "components": [
+          {
+            "type": "Hiber3D::Transform",
+            "data": {
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 1,
+                "z": 0,
+                "w": 0
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            }
+          },
+          {
+            "type": "Hiber3D::Name",
+            "data": "Avatar"
+          },
+          {
+            "type": "Hiber3D::SceneRoot",
+            "data": {
+              "scene": "glbs\\player.glb#scene0"
+            }
+          }
+        ],
+        "children": [
+        ]
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 ({
   SCRIPT_PATHS: [],
-  COMPONENTS: ["AutoTurn"/*, "SpeedBoost"*/],
+  COMPONENTS: ["AutoRun"/*, "SpeedBoost"*/],
   DURATION: 15,
   RADIUS: 0.75,
   shouldRun() {
@@ -18,7 +18,7 @@
 
     if (collisionUtils.collidesWithPlayer(this.entity, this.RADIUS)) {
 
-      for (var i = 0; i < this.SCRIPT_PATHS.length; i++) { 
+      for (var i = 0; i < Object.keys(this.SCRIPT_PATHS).length; i++) { 
         const script = this.SCRIPT_PATHS[i];
 
         // Give player effect script
@@ -34,20 +34,23 @@
         scriptRemoverScript.Delay = duration;
       }
 
-      for (var i = 0; i < this.COMPONENTS.length; i++) {
+      for (var i = 0; i < Object.keys(this.COMPONENTS).length; i++) {
         const component = this.COMPONENTS[i];
 
         // Give player effect component
         const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-        hiber3d.addComponent(playerEntity, component);
+        regUtils.addOrReplaceComponent(playerEntity, component);
+
+        // TODO: Depends on [HIB-33606] and [HIB-33679]
 
         // Setup script that removes the effect after its duration
-        const componentRemoverEntity = hiber3d.createEntity();
-        regUtils.addScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
-        var componentRemoverScript = hiber3d.getScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
-        componentRemoverScript.Component = component;
-        componentRemoverScript.Entity = playerEntity;
-        componentRemoverScript.Delay = duration;
+        //const componentRemoverEntity = hiber3d.createEntity();
+        //regUtils.addScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
+
+        //var componentRemoverScript = hiber3d.getScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
+        //componentRemoverScript.Component = component;
+        //componentRemoverScript.Entity = playerEntity;
+        //componentRemoverScript.Delay = duration;
       }
 
       // Destroy this power-up

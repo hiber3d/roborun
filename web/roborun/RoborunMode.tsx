@@ -1,12 +1,16 @@
 import { AnimatePresence } from "framer-motion";
-import { GestureControls } from "roborun/GestureControls";
 import { LeaderboardContent } from "./LeaderboardContent";
 import { RoborunUI } from "./RoborunUI";
 import { useLeaderboard } from "./useLeaderboard";
+import { useTouchControls } from "./useTouchControls";
 import { useSoundEffects } from "audio/useSoundEffects";
+
+const urlParams = new URLSearchParams(window.location.search);
+const tapMode = urlParams.get("tapmode") ? true : false;
 
 export const RoborunMode = () => {
   const { submitName, state } = useLeaderboard();
+  useTouchControls({ tapMode });
   useSoundEffects();
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,7 +24,6 @@ export const RoborunMode = () => {
 
   return (
     <AnimatePresence>
-      <GestureControls key="controls" />
       <RoborunUI key="ui" />
       <LeaderboardContent
         key="leaderboard"

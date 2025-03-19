@@ -12,9 +12,10 @@ struct Step {
     float laneOffsetRight = 1.0f;
     float wallOffsetLeft  = 1.5f;
     float wallOffsetRight = 1.5f;
+    float curveFactor     = 0.0f; // 1.0f for sharpest 90-degree turn possible, 0.5f for "regular" circular turn, 0.0f for straight, etc.
 };
 
-HIBER3D_REFLECT(HIBER3D_TYPE(Step), HIBER3D_MEMBER(indexForward), HIBER3D_MEMBER(indexLeft), HIBER3D_MEMBER(indexRight), HIBER3D_MEMBER(laneOffsetLeft), HIBER3D_MEMBER(laneOffsetRight), HIBER3D_MEMBER(wallOffsetLeft), HIBER3D_MEMBER(wallOffsetRight));
+HIBER3D_REFLECT(HIBER3D_TYPE(Step), HIBER3D_MEMBER(indexForward), HIBER3D_MEMBER(indexLeft), HIBER3D_MEMBER(indexRight), HIBER3D_MEMBER(laneOffsetLeft), HIBER3D_MEMBER(laneOffsetRight), HIBER3D_MEMBER(wallOffsetLeft), HIBER3D_MEMBER(wallOffsetRight), HIBER3D_MEMBER(curveFactor));
 
 struct SegmentScene {
     Hiber3D::Entity prev;

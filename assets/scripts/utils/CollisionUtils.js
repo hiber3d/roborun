@@ -1,7 +1,7 @@
 const module = module || {};
 module.exports = module.exports || {};
 
-// TODO: This file all be removed once we have the collision module
+// TODO: This file will be removed once we have the collision module
 function collidesWithPlayer(entity, radius) {
   const playerEntity = hiber3d.getValue("GameState", "playerEntity");
   const position = hiber3d.getValue(entity, "Hiber3D::ComputedWorldTransform", "position");

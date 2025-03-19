@@ -8,7 +8,7 @@
       segUtils.getCurrentStepEntity() !== undefined;
   },
   getDeltaHeight(timeSinceJumped, isDiving) {
-    const maxHeight = 3;
+    const maxHeight = 2.5;
     const timeToMaxHeight = isDiving ? 0.05 : 0.2;
     const maxHeightDuration = 0.15; // How long to stay at max height
     const gravityStrength = 30.0; // Increased for faster fall once it begins
@@ -48,9 +48,11 @@
       hiber3d.setValue(this.entity, "Jumping", "deltaHeight", newDeltaHeight);
 
       var landed = false;
+      var groundHeight = 0;
       if (hiber3d.hasComponents(this.entity, "SplineData")) {
         const splineHeight = hiber3d.getValue(this.entity, "SplineData", "position").y;
         landed = newJumpHeight <= splineHeight; // touches ground
+        groundHeight = splineHeight;
       } else {
         landed = newDeltaHeight <= 0; // fallback
       }
@@ -59,7 +61,7 @@
         hiber3d.removeComponent(this.entity, "Jumping");
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
         hiber3d.writeEvent("LandedEvent", { entity: this.entity });
-        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", 0);
+        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", groundHeight);
       } else {
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newJumpHeight);
       }
@@ -81,7 +83,7 @@
       return;
     }
     if (event === "JumpInput") {
-      if (!hiber3d.hasComponents(this.entity, "Jumping")) {
+      if (!hiber3d.hasComponents(this.entity, "Jumping") && !hiber3d.hasComponents(this.entity, "AutoRun")) {
         hiber3d.addComponent(this.entity, "Jumping");
         const startHeight = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y");
         hiber3d.setValue(this.entity, "Jumping", "startHeight", startHeight);
@@ -90,7 +92,7 @@
         hiber3d.writeEvent("JumpedEvent", {entity: this.entity});
       }
     } else if (event === "DiveInput") {
-      if (hiber3d.hasComponents(this.entity, "Jumping")) {
+      if (hiber3d.hasComponents(this.entity, "Jumping") && !hiber3d.hasComponents(this.entity, "AutoRun")) {
         regUtils.addComponentIfNotPresent(this.entity, "Diving");
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name:"jump"});
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", layer: ANIMATION_LAYER.ROLL, loop: true });
