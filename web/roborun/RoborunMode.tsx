@@ -3,9 +3,11 @@ import { GestureControls } from "roborun/GestureControls";
 import { LeaderboardContent } from "./LeaderboardContent";
 import { RoborunUI } from "./RoborunUI";
 import { useLeaderboard } from "./useLeaderboard";
+import { useSoundEffects } from "audio/useSoundEffects";
 
 export const RoborunMode = () => {
   const { submitName, state } = useLeaderboard();
+  useSoundEffects();
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

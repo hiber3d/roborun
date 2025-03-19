@@ -1,0 +1,14 @@
+{
+  "urls": [
+    "assets/audio/sfx/sprite/sfx.ogg",
+    "assets/audio/sfx/sprite/sfx.m4a",
+    "assets/audio/sfx/sprite/sfx.mp3",
+    "assets/audio/sfx/sprite/sfx.ac3"
+  ],
+  "sprite": {
+    "collectible": [
+      0,
+      1306.1224489795918
+    ]
+  }
+}
