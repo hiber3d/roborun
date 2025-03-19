@@ -30,9 +30,9 @@
       return;
     }
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+    const hasAutoRun = hiber3d.hasComponents(playerEntity, "AutoRun") && hiber3d.getValue(playerEntity, "AutoRun", "stage") < 5;
 
     // FoV
-    const hasAutoRun = hiber3d.hasComponents(playerEntity, "AutoRun");
     if (hasAutoRun) {
       this.fovGoal = this.fovStart * this.FOV_FACTOR_AUTO_RUN;
     } else {
@@ -45,7 +45,6 @@
     }
 
     // Zoom
-    const hasAutoRun = hiber3d.hasComponents(playerEntity, "AutoRun");
     if (hasAutoRun) {
       this.zoomGoal = this.zoomStart * this.ZOOM_FACTOR_AUTO_RUN;
     } else {

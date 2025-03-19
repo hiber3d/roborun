@@ -24,7 +24,7 @@
     if (hiber3d.hasComponents(this.entity, "Jumping")) {
       speed *= Math.max(0, Math.pow(this.RUN_AIR_FACTOR, hiber3d.getValue(this.entity, "Jumping", "timeSinceJumped")));
     }
-    if (hiber3d.hasComponents(this.entity, "AutoRun")) {
+    if (hiber3d.hasComponents(this.entity, "AutoRun") && hiber3d.getValue(this.entity, "AutoRun", "stage") < 5) {
       speed *= this.AUTO_RUN_FACTOR;
     }
     if (!hiber3d.hasComponents(this.entity, "OnPath")) {
