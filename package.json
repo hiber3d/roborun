@@ -12,11 +12,15 @@
     "dev": "vite --configLoader runner",
     "build": "npm run compile:release && tsc -b && vite build  --configLoader runner",
     "lint": "eslint .",
-    "preview": "vite preview --configLoader runner"
+    "preview": "vite preview --configLoader runner",
+    "audio:sfx": "node ./scripts/create-audio-sprite.cjs sfx ./assets/audio/sfx",
+    "audio:music": "node ./scripts/create-audio-sprite.cjs music ./assets/audio/music"
   },
   "dependencies": {
     "@hiber3d/web": "file:build/web",
     "@tailwindcss/vite": "^4.0.11",
+    "audiosprite": "^0.7.2",
+    "howler": "^2.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-swipeable": "^7.0.2",
@@ -25,6 +29,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/howler": "^2.2.12",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",

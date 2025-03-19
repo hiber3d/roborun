@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { useSoundSource } from "./useSoundSource";
 
 export type SFXSounds = keyof typeof import("./sfx.json")["sprite"];
-export type DialogueSounds = "";
+export type MusicSounds = keyof typeof import("./music.json")["sprite"];
 
 export type SpriteData<T extends string> = {
   urls: string[];
@@ -13,9 +13,8 @@ export type SpriteData<T extends string> = {
 
 export type AudioContextType = {
   sfx: ReturnType<typeof useSoundSource<SFXSounds>>;
+  music: ReturnType<typeof useSoundSource<MusicSounds>>;
 };
-
-export type AudioChannels = AudioContextType["sfx"];
 
 export const AudioContext = createContext<AudioContextType | undefined>(
   undefined
