@@ -107,7 +107,7 @@
               {
                 "type": "Hiber3D::SceneRoot",
                 "data": {
-                  "scene": "scenes\\SegmentStraightBase.scene"
+                  "scene": "scenes\\segments\\SegmentStraightBase.scene"
                 }
               }
             ],
