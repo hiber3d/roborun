@@ -12,6 +12,8 @@ type MusicTracks = {
   drums: Track;
   drums_02: Track;
   bass: Track;
+  bass_02: Track;
+  bass_03: Track;
   strings: Track;
 };
 
@@ -28,6 +30,8 @@ export const useMusicMultiTracks = () => {
     drums: { ...startValues },
     drums_02: { ...startValues },
     bass: { ...startValues },
+    bass_02: { ...startValues },
+    bass_03: { ...startValues },
     strings: { ...startValues },
   });
 
@@ -41,10 +45,13 @@ export const useMusicMultiTracks = () => {
       track.playing = play || false;
     };
 
-    initTrack(musicTracks.current.drums, "roborun_music_drums_01", true);
-    initTrack(musicTracks.current.drums_02, "roborun_music_drums_02");
-    initTrack(musicTracks.current.bass, "roborun_music_bass_01");
-    initTrack(musicTracks.current.strings, "roborun_music_strings_01");
+    initTrack(musicTracks.current.drums, "drums_01", true);
+    initTrack(musicTracks.current.drums_02, "drums_02");
+    initTrack(musicTracks.current.bass, "bass_01");
+    initTrack(musicTracks.current.bass_02, "bass_02");
+    initTrack(musicTracks.current.bass_03, "bass_03");
+
+    initTrack(musicTracks.current.strings, "strings_01");
   }, [music]);
 
   const updateTrack = useCallback(
@@ -52,7 +59,6 @@ export const useMusicMultiTracks = () => {
       if (track.playing === play || !track.id) {
         return;
       }
-      console.log("updateTrack", play ? 1 : 0, track.id, music.soundSource);
 
       music.soundSource.current?.volume(play ? 1 : 0, track.id);
       track.playing = play || false;
@@ -60,17 +66,33 @@ export const useMusicMultiTracks = () => {
     [music.soundSource]
   );
 
+  const resetMusic = useCallback(() => {
+    updateTrack(musicTracks.current.drums, true);
+
+    updateTrack(musicTracks.current.drums_02, false);
+    updateTrack(musicTracks.current.bass, false);
+    updateTrack(musicTracks.current.bass_02, false);
+    updateTrack(musicTracks.current.bass_03, false);
+    updateTrack(musicTracks.current.strings, false);
+  }, [updateTrack]);
+
   useEffect(() => {
     if (!api) {
       return;
     }
 
     const distanceListener = api.onBroadcastPlayerStats((payload) => {
-      if (payload.stats.meters > 200) {
+      const meters = payload.stats.meters;
+      if (meters > 200) {
         updateTrack(musicTracks.current.bass, true);
       }
-      if (payload.stats.meters > 600) {
-        updateTrack(musicTracks.current.strings, true);
+      if (meters > 500) {
+        updateTrack(musicTracks.current.bass, false);
+        updateTrack(musicTracks.current.bass_02, true);
+      }
+      if (meters > 800) {
+        updateTrack(musicTracks.current.bass_02, false);
+        updateTrack(musicTracks.current.bass_03, true);
       }
     });
 
@@ -80,10 +102,7 @@ export const useMusicMultiTracks = () => {
     });
 
     const restartListener = api.onGameRestarted(() => {
-      updateTrack(musicTracks.current.drums, true);
-      updateTrack(musicTracks.current.drums_02, false);
-      updateTrack(musicTracks.current.bass, false);
-      updateTrack(musicTracks.current.strings, false);
+      resetMusic();
     });
 
     return () => {
@@ -91,5 +110,5 @@ export const useMusicMultiTracks = () => {
       api.removeEventCallback(distanceListener);
       api.removeEventCallback(restartListener);
     };
-  }, [api, music, updateTrack]);
+  }, [api, music, resetMusic, updateTrack]);
 };

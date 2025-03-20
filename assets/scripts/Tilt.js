@@ -30,10 +30,13 @@
       this.tiltFactor < 0 && this.tiltFactorPreviousTick === 0 ||
       this.tiltFactor < 1 && this.tiltFactorPreviousTick === 1) {
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "tiltLeft", layer: ANIMATION_LAYER.ACTION, loop: false });
+      hiber3d.writeEvent("TiltedEvent", {})
     } else if (
       this.tiltFactor > 0 && this.tiltFactorPreviousTick === 0 ||
       this.tiltFactor > -1 && this.tiltFactorPreviousTick === -1) {
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "tiltRight", layer: ANIMATION_LAYER.ACTION, loop: false });
+      hiber3d.writeEvent("TiltedEvent", {})
+
     }
 
     this.tiltFactorPreviousTick = this.tiltFactor;

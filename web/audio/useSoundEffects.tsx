@@ -49,9 +49,24 @@ export const useSoundEffects = () => {
       sfx.play("land_01", { volume: 0.6 });
     });
 
+    const tilt = api.onTiltedEvent(() => {
+      sfx.play("tilt_01", { volume: 0.6, rate: 0.9 + Math.random() * 0.2 });
+    });
+
+    const slide = api.onSlidedEvent(() => {
+      sfx.play("roll_01", { volume: 0.9 });
+    });
+
+    const turn = api.onTurnedEvent(() => {
+      sfx.play("turn_01", { volume: 0.3, rate: 0.9 + Math.random() * 0.2 });
+    });
+
     return () => {
       api.removeEventCallback(jump);
       api.removeEventCallback(land);
+      api.removeEventCallback(tilt);
+      api.removeEventCallback(slide);
+      api.removeEventCallback(turn);
     };
   }, [api, sfx]);
 };
