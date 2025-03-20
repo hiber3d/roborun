@@ -281,7 +281,7 @@ const PICK_UP_LANE_BEHAVIOR = {
       pickUpLane = pickUpsBlock !== undefined ? pickUpsBlock.pickUpLanes[pickUpLaneIndex] : undefined;
       pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.SAME_AS_OBSTACLE ? obstacleLane : pickUpLane;
       pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.ANY_BUT_NOT_SAME_AS_OBSTACLE ? (obstacleLane + Math.ceil(2 * Math.random())) % 3 : pickUpLane;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.LEFT_OF_OBSTACLE ? (obstacleLane - 1) % 3 : pickUpLane;
+      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.LEFT_OF_OBSTACLE ? (obstacleLane + 2) % 3 : pickUpLane;
       pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.RIGHT_OF_OBSTACLE ? (obstacleLane + 1) % 3 : pickUpLane;
 
       const pickUpHeightIndex = pickUpHeights !== undefined ? Math.floor(Math.random() * Object.keys(pickUpHeights).length) : undefined;
