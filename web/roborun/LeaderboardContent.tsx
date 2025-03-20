@@ -2,6 +2,15 @@ import { useHiber3D } from "@hiber3d/web";
 import { motion } from "framer-motion";
 import { Entry, State } from "./useLeaderboard";
 import { twMerge } from "tailwind-merge";
+import { cn } from "../../build/web/src/react/editor/lib/utils";
+
+const Column = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => <td className={cn("p-2 md:p-3", className)}>{children}</td>;
 
 const EntryItem = ({
   entry,
@@ -12,22 +21,23 @@ const EntryItem = ({
   isNewEntry: boolean;
   rank?: number;
 }) => (
-  <div
+  <tr
     className={twMerge(
-      "grid grid-cols-6 gap-6 p-4",
-      rank === 1 && "font-bold text-2xl text-yellow-400",
+      rank === 1 && "font-bold text-md md:text-2xl text-yellow-400",
       rank % 2 === 0 ? "bg-gray-600/20" : "bg-gray-500/30",
       isNewEntry && "bg-cyan-200/40 animate-pulse"
     )}
     key={rank}
   >
-    <div>{rank}</div>
-    <div>{entry.player_name}</div>
-    <div className="text-end">{entry.points}</div>
-    <div className="text-end">{entry.meters}</div>
-    <div className="text-end">{entry.collectibles}</div>
-    <div className="text-end">x{entry.multiplier.toFixed(1)}</div>
-  </div>
+    <Column>{rank}</Column>
+    <Column className="truncate max-w-[150px] md:max-w-[300px]">
+      {entry.player_name}
+    </Column>
+    <Column className="text-end">{entry.points}</Column>
+    <Column className="text-end">{entry.meters}</Column>
+    <Column className="text-end">{entry.collectibles}</Column>
+    <Column className="text-end">x{entry.multiplier.toFixed(1)}</Column>
+  </tr>
 );
 
 export const LeaderboardContent = ({
@@ -77,30 +87,38 @@ export const LeaderboardContent = ({
       className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
     >
       <div className="flex flex-col gap-2 max-w-[95%]">
-        <div className="overflow-y-auto max-h-[80vh]">
-          <div className="bg-black/50 rounded-lg flex flex-col">
-            <div className="grid grid-cols-6 gap-6 p-4">
-              <div>Rank</div>
-              <div>Player</div>
-              <div className="text-end">Points</div>
-              <div className="text-end">Meters</div>
-              <div className="text-end">Collectibles</div>
-              <div className="text-end">Multiplier</div>
-            </div>
-            {state.leaderboard.leaderboard.map((entry, index) => (
-              <EntryItem
-                key={entry.id}
-                entry={entry}
-                rank={index + 1}
-                isNewEntry={entry.id === state.leaderboard.newEntry?.id}
-              />
-            ))}
+        <div className="">
+          <div className="bg-black/50 rounded-lg flex flex-col overflow-auto max-h-[80vh]">
+            <table>
+              <tbody>
+                <tr>
+                  <Column>Rank</Column>
+                  <Column>Player</Column>
+                  <Column className="text-end">Points</Column>
+                  <Column className="text-end">Meters</Column>
+                  <Column className="text-end">Collectibles</Column>
+                  <Column className="text-end">Multiplier</Column>
+                </tr>
+
+                {state.leaderboard.leaderboard.map((entry, index) => (
+                  <EntryItem
+                    key={entry.id}
+                    entry={entry}
+                    rank={index + 1}
+                    isNewEntry={entry.id === state.leaderboard.newEntry?.id}
+                  />
+                ))}
+              </tbody>
+              <tfoot>
+                {state.leaderboard.newEntry && !entryIsInLeaderboard && (
+                  <EntryItem
+                    entry={state.leaderboard.newEntry}
+                    isNewEntry={true}
+                  />
+                )}
+              </tfoot>
+            </table>
           </div>
-          {state.leaderboard.newEntry && !entryIsInLeaderboard && (
-            <div className="bg-black/50 rounded-lg flex flex-col overflow-hidden">
-              <EntryItem entry={state.leaderboard.newEntry} isNewEntry={true} />
-            </div>
-          )}
         </div>
         <button
           className="bg-black/50 p-4 rounded-lg font-bold"
