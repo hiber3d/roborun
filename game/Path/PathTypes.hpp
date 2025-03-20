@@ -23,11 +23,12 @@ HIBER3D_REFLECT(HIBER3D_TYPE(OnPath), HIBER3D_MEMBER(dummy));
 
 struct AutoRun {
     AutoRunStage stage = ASCEND;
-    float startingHeight;
-    float timeSinceStarted = 0.0f;
+    float        startingHeight;
+    float        startingGroundHeight;
+    float        timeSinceStarted = 0.0f;
 };
 
-HIBER3D_REFLECT(HIBER3D_TYPE(AutoRun), HIBER3D_MEMBER(stage), HIBER3D_MEMBER(startingHeight), HIBER3D_MEMBER(timeSinceStarted));
+HIBER3D_REFLECT(HIBER3D_TYPE(AutoRun), HIBER3D_MEMBER(stage), HIBER3D_MEMBER(startingHeight), HIBER3D_MEMBER(startingGroundHeight), HIBER3D_MEMBER(timeSinceStarted));
 
 struct Jumping {
     float deltaHeight;
