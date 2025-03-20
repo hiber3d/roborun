@@ -3,7 +3,7 @@
   FOV_FACTOR_AUTO_RUN: 1.5,
 
   ZOOM_LERP_SPEED: 0.05,
-  ZOOM_FACTOR_AUTO_RUN: 0.5,
+  ZOOM_FACTOR_AUTO_RUN: 1,
 
   fovStart: 0,
   fovGoal: 0,
@@ -43,7 +43,6 @@
       const newFov = scalarUtils.lerpScalar(fov, this.fovGoal, this.FOV_LERP_SPEED);
       hiber3d.setValue(this.entity, "Hiber3D::Camera", "fovDegrees", newFov);
     }
-
     // Zoom
     if (hasAutoRun) {
       this.zoomGoal = this.zoomStart * this.ZOOM_FACTOR_AUTO_RUN;
@@ -51,11 +50,21 @@
       this.zoomGoal = this.zoomStart;
     }
     if (this.zoomCurrent !== this.zoomGoal) {
+
       const newZoom = scalarUtils.lerpScalar(this.zoomCurrent, this.zoomGoal, this.ZOOM_LERP_SPEED);
       const newZoomFactor = newZoom / this.zoomCurrent;
       const position = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position");
       const newPosition = vectorUtils.multiplyVector(position, newZoomFactor);
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", newPosition);
+      if (!hiber3d.getValue("GameState", "paused")) {
+      hiber3d.print(
+        "zoomCurrent: " + this.zoomCurrent +
+        " zoomGoal: " + this.zoomGoal +
+        " newZoom: " + newZoom +
+        " newZoomFactor: " + newZoomFactor +
+        "");
+      }
+
       this.zoomCurrent = newZoom;
     }
   },
