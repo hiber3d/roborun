@@ -64,6 +64,11 @@ const PICK_UP_LANE_BEHAVIOR = {
   RIGHT_OF_OBSTACLE: 6,
 };
 
+const PICK_UP_DEPTH = {
+  START: 0,
+  MID: 1,
+};
+
 ({
   NUM_SEGMENTS: 13,
 
@@ -274,8 +279,10 @@ const PICK_UP_LANE_BEHAVIOR = {
     var pickUpPath = undefined;
     var pickUpLane = undefined;
     var pickUpHeight = undefined;
+    var pickUpDepth = undefined;
     if (obstacleBlock !== undefined && (usePowerup || useCollectible)) {
-      const pickUpsBlock = this.getRandomElement(obstacleBlock.pickUps); const pickUpHeights = useCollectible && pickUpsBlock !== undefined ? pickUpsBlock.pickUpHeights : undefined;
+      const pickUpsBlock = this.getRandomElement(obstacleBlock.pickUps);
+      const pickUpHeights = (usePowerup || useCollectible) && pickUpsBlock !== undefined ? pickUpsBlock.pickUpHeights : undefined;
 
       const pickUpLaneIndex = pickUpsBlock !== undefined ? Math.floor(Math.random() * Object.keys(pickUpsBlock.pickUpLanes).length) : undefined;
       pickUpLane = pickUpsBlock !== undefined ? pickUpsBlock.pickUpLanes[pickUpLaneIndex] : undefined;
@@ -290,6 +297,7 @@ const PICK_UP_LANE_BEHAVIOR = {
       if (usePowerup) {
         // TODO: Add support for multiple power-ups here
         pickUpPath = "scenes/powerups/PowerUpAutoRun.scene";
+        pickUpDepth = PICK_UP_DEPTH.MID;
       } else if(useCollectible){
         pickUpPath =
           (pickUpHeight === PICK_UP_HEIGHT.SLIDE) ? "scenes/collectibles/CollectiblesDip.scene" :
@@ -298,6 +306,7 @@ const PICK_UP_LANE_BEHAVIOR = {
                 undefined;
 
         pickUpHeight = PICK_UP_HEIGHT.NONE; // Collectibles have height as part of the scene
+        pickUpDepth = PICK_UP_DEPTH.START; // Collectibles have depth as part of the scene
       }
     }
 
@@ -311,7 +320,7 @@ const PICK_UP_LANE_BEHAVIOR = {
     this.straightInARowCounter = useStraight ? this.straightInARowCounter + 1 : 0;
     this.obstaclelessStraightsInARowCounter = useObstacle ? 0 : this.obstaclelessStraightsInARowCounter + 1;
 
-    return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight};
+    return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth};
   },
   spawnSegmentScene(transform) {
     const segmentsSceneEntity = hiber3d.getValue("SegmentsState", "segmentsSceneEntity");
@@ -324,6 +333,7 @@ const PICK_UP_LANE_BEHAVIOR = {
     const pickUpPath = stuffToSpawn.pickUpPath;
     const pickUpLane = stuffToSpawn.pickUpLane;
     const pickUpHeight = stuffToSpawn.pickUpHeight;
+    const pickUpDepth = stuffToSpawn.pickUpDepth;
 
     // Segment
     const segmentSceneEntity = regUtils.createChildToParent(segmentsSceneEntity);
@@ -366,13 +376,19 @@ const PICK_UP_LANE_BEHAVIOR = {
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Name");
       hiber3d.setValue(pickUpEntity, "Hiber3D::Name", "PickUpScene");
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Transform");
-      const x = pickUpLane === LANE.LEFT ? -1 : pickUpLane === LANE.RIGHT ? 1 : 0; // TODO: Get width from scene
+      const x =
+        pickUpLane === LANE.LEFT ? -1 :
+          pickUpLane === LANE.RIGHT ? 1 :
+            0; // TODO: Get width from scene
       const y =
-        pickUpHeight === PICK_UP_HEIGHT.SLIDE ? 0.5 :
-          pickUpHeight === PICK_UP_HEIGHT.RUN ? 1 :
-            pickUpHeight === PICK_UP_HEIGHT.JUMP ? 3.5 :
-            0; // TODO: Get height from scene
-      hiber3d.setValue(pickUpEntity, "Hiber3D::Transform", "position", { x, y, z: 0 });
+        pickUpHeight === PICK_UP_HEIGHT.SLIDE ? 0 :
+          pickUpHeight === PICK_UP_HEIGHT.RUN ? 0.5 :
+            pickUpHeight === PICK_UP_HEIGHT.JUMP ? 2.5 :
+              0; // TODO: Get height from scene
+      const z =
+        pickUpDepth === PICK_UP_DEPTH.MID ? -5 :
+          0; // TODO: Get depth from scene
+      hiber3d.setValue(pickUpEntity, "Hiber3D::Transform", "position", { x, y, z });
     }
 
     this.latestSegmentSceneEntity = segmentSceneEntity;
