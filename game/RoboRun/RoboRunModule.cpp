@@ -92,15 +92,6 @@ void loadEnvironment(
     renderEnvironment->sun.color       = Hiber3D::float3{1.0f, 1.0f, 1.0f};
 }
 
-// TODO: Get this into hiber2/
-static void updateCameraAspectRatio(
-    Hiber3D::View<Hiber3D::Camera>          cameras,
-    Hiber3D::Singleton<Hiber3D::ScreenInfo> screenInfo) {
-    for (auto [entity, camera] : cameras.each()) {
-        camera.aspect = screenInfo->getAspectRatio();
-    }
-}
-
 static void handleRestartGame(
     Hiber3D::EventView<RestartGame>           events,
     Hiber3D::Singleton<Hiber3D::SceneManager> sceneManager,
@@ -116,7 +107,6 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_EXIT, resetSingletons);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleGameRestarted);
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
-    context.addSystem(Hiber3D::Schedule::ON_TICK, updateCameraAspectRatio);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
 
     context.registerSingleton<GameState>();
