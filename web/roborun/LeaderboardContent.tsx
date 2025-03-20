@@ -2,7 +2,6 @@ import { useHiber3D } from "@hiber3d/web";
 import { motion } from "framer-motion";
 import { Entry, State } from "./useLeaderboard";
 import { twMerge } from "tailwind-merge";
-import { cn } from "../../build/web/src/react/editor/lib/utils";
 
 const Column = ({
   children,
@@ -10,7 +9,7 @@ const Column = ({
 }: {
   children: React.ReactNode;
   className?: string;
-}) => <td className={cn("p-2 md:p-3", className)}>{children}</td>;
+}) => <td className={twMerge("p-2 md:p-3", className)}>{children}</td>;
 
 const EntryItem = ({
   entry,
