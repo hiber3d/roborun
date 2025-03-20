@@ -36,4 +36,22 @@ export const useSoundEffects = () => {
 
     return () => api.removeEventCallback(listener);
   }, [api, sfx]);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const jump = api.onJumpedEvent(() => {
+      sfx.play("jump_01", { volume: 0.6 });
+    });
+    const land = api.onLandedEvent(() => {
+      sfx.play("land_01", { volume: 0.6 });
+    });
+
+    return () => {
+      api.removeEventCallback(jump);
+      api.removeEventCallback(land);
+    };
+  }, [api, sfx]);
 };
