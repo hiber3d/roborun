@@ -25,5 +25,6 @@ void BroadcastModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastPlayerStats>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastCollectiblePickup>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastGameStarted>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastPowerupPickup>(context);
     }
 }

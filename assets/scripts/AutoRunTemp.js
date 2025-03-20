@@ -104,6 +104,7 @@
 
     // Started auto-running
     if (timeSinceStarted === 0) {
+      hiber3d.writeEvent("BroadcastPowerupPickup", {});
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
       const startingHeight = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position", "y");
       hiber3d.setValue(this.entity, "AutoRun", "startingHeight", startingHeight);

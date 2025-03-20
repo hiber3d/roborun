@@ -61,12 +61,17 @@ export const useSoundEffects = () => {
       sfx.play("turn_01", { volume: 0.3, rate: 0.9 + Math.random() * 0.2 });
     });
 
+    const rocket = api.onBroadcastPowerupPickup(() => {
+      sfx.play("rocket_01", { volume: 0.6 });
+    });
+
     return () => {
       api.removeEventCallback(jump);
       api.removeEventCallback(land);
       api.removeEventCallback(tilt);
       api.removeEventCallback(slide);
       api.removeEventCallback(turn);
+      api.removeEventCallback(rocket);
     };
   }, [api, sfx]);
 };
