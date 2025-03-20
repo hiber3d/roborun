@@ -157,6 +157,19 @@ const PICK_UP_DEPTH = {
                   pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
                 }
               ],
+            },
+            {
+              probability: 100,
+              obstacle: "scenes/obstacles/ObstacleBlockLane.scene",
+              obstacleLane: [LANE.LEFT, LANE.MID, LANE.RIGHT],
+              pickUps: [
+               
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHT.RUN],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.ANY_BUT_NOT_SAME_AS_OBSTACLE],
+                }
+              ],
             }
           ],
         },
@@ -164,6 +177,25 @@ const PICK_UP_DEPTH = {
           probability: 0.1,
           segment: "scenes/segments/SegmentBridgeBase.scene",
           rooms: STRAIGHT_ROOMS,
+        },
+        {
+          probability: 0.1,
+          segment: "scenes/segments/SegmentStraightHole.scene",
+          rooms: STRAIGHT_ROOMS,
+          obstacles: [
+            {
+              probability: 1,
+              obstacle: undefined,
+              obstacleLane: [],
+              pickUps: [
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHT.JUMP],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
+                },
+              ],
+            },
+          ],
         },
       ],
     },
