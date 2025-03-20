@@ -63,8 +63,9 @@
   },
   getAutoRunHeight(stage) {
     const timeSinceStarted = hiber3d.getValue(this.entity, "AutoRun", "timeSinceStarted");
+    const startingHeight = hiber3d.getValue(this.entity, "AutoRun", "startingHeight");
     if (stage === this.STAGE.ASCEND) {
-      return scalarUtils.lerpScalar(0, this.AUTO_RUN_MAX_HEIGHT, timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
+      return scalarUtils.lerpScalar(startingHeight, this.AUTO_RUN_MAX_HEIGHT, timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
     }
     if (stage === this.STAGE.MAX_HEIGHT) {
       return this.AUTO_RUN_MAX_HEIGHT;
@@ -108,6 +109,7 @@
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
       const startingHeight = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position", "y");
       hiber3d.setValue(this.entity, "AutoRun", "startingHeight", startingHeight);
+      hiber3d.setValue(this.entity, "AutoRun", "startingGroundHeight", this.getGroundHeight());
       isAutoRunning = true;
     }
 
@@ -126,8 +128,8 @@
       }
 
       const newHeight = this.getAutoRunHeight(newStage);
-      const startingHeight = hiber3d.getValue(this.entity, "AutoRun", "startingHeight");
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", startingHeight + newHeight);
+      const startingGroundHeight = hiber3d.getValue(this.entity, "AutoRun", "startingGroundHeight");
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", startingGroundHeight + newHeight);
     }
 
   },
