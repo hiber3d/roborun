@@ -1,6 +1,7 @@
 import { useHiber3D } from "@hiber3d/web";
 import { useEffect, useRef } from "react";
 import { useAudio } from "./useAudio";
+import { SFXSounds } from "./AudioContext";
 
 const COOL_DOWN_TIMER_MS = 1000;
 
@@ -58,7 +59,8 @@ export const useSoundEffects = () => {
     });
 
     const turn = api.onTurnedEvent(() => {
-      sfx.play("turn_01", { volume: 0.3, rate: 0.9 + Math.random() * 0.2 });
+      const randomInt = Math.floor(1 + Math.random() * 2);
+      sfx.play(`turn_0${randomInt}` as SFXSounds, { volume: 0.2, rate: 1 });
     });
 
     const rocket = api.onBroadcastPowerupPickup(() => {
