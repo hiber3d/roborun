@@ -210,7 +210,7 @@ const PICK_UP_DEPTH = {
           rooms: STRAIGHT_ROOMS,
         },
         {
-          probability: 0.025,
+          probability: 0.05,
           segment: "scenes/segments/SegmentStraightHole.scene",
           tag: ["SEGMENT_INCLUDES_OBSTACLE"],
           rooms: STRAIGHT_ROOMS,
