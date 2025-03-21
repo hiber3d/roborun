@@ -86,11 +86,11 @@ export const useMusicMultiTracks = () => {
       if (meters > 200) {
         updateTrack(musicTracks.current.bass, true);
       }
-      if (meters > 500) {
+      if (meters > 1000) {
         updateTrack(musicTracks.current.bass, false);
         updateTrack(musicTracks.current.bass_02, true);
       }
-      if (meters > 800) {
+      if (meters > 2500) {
         updateTrack(musicTracks.current.bass_02, false);
         updateTrack(musicTracks.current.bass_03, true);
       }
