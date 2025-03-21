@@ -40,7 +40,7 @@
       if (successfullTurn) {
         regUtils.addComponentIfNotPresent(this.entity, "OnPath");
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: playerTurnsLeft ? "turnLeft" : "turnRight", layer: ANIMATION_LAYER.ACTION, loop: false });
-        hiber3d.writeEvent("TurnedEvent", {});
+        hiber3d.writeEvent("BroadcastTurned", {});
 
       } else if ((playerTurnsLeft || playerTurnsRight) && !isOnPath) {
         // Player turns without being at a turn

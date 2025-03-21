@@ -54,15 +54,15 @@ export const useSoundEffects = () => {
       sfx.play("land_01", { volume: 0.6 });
     });
 
-    const tilt = api.onTiltedEvent(() => {
+    const tilt = api.onBroadcastTilted(() => {
       sfx.play("tilt_01", { volume: 0.6, rate: 0.9 + Math.random() * 0.2 });
     });
 
-    const slide = api.onSlidedEvent(() => {
+    const slide = api.onBroadcastSlided(() => {
       sfx.play("roll_01", { volume: 0.9 });
     });
 
-    const turn = api.onTurnedEvent(() => {
+    const turn = api.onBroadcastTurned(() => {
       const randomInt = Math.floor(1 + Math.random() * 2);
       sfx.play(`turn_0${randomInt}` as SFXSounds, { volume: 0.2, rate: 1 });
     });

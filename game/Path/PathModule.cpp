@@ -30,9 +30,6 @@ void PathModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<TiltFactor>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<JumpedEvent>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<LandedEvent>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TiltedEvent>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<SlidedEvent>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<TurnedEvent>(context);
     }
 
     if (context.isModuleRegistered<Hiber3D::SceneModule>()) {
