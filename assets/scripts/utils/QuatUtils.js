@@ -27,6 +27,21 @@ function normalizeQuaternion(q) {
   return divideQuaternion(q, length);
 }
 module.exports.normalizeQuaternion = normalizeQuaternion;
+function inverseQuaternion(q) {
+  // For unit quaternions, the inverse is the same as the conjugate
+  // First, calculate the squared length
+  const lengthSq = q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w;
+
+  // Handle zero-length quaternion
+  if (lengthSq < 0.000001) {
+    hiber3d.print("inverseQuaternion() - cannot invert zero quaternion");
+    return { x: 0, y: 0, z: 0, w: 1 };
+  }
+
+  // Calculate the inverse by dividing conjugate by lengthSq
+  return {x: -q.x / lengthSq, y: -q.y / lengthSq, z: -q.z / lengthSq, w: q.w / lengthSq};
+}
+module.exports.inverseQuaternion = inverseQuaternion;
 function absQuaternion(q) {
   return { x: Math.abs(q.x), y: Math.abs(q.y), z: Math.abs(q.z), w: Math.abs(q.w) };
 }

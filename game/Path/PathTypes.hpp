@@ -30,6 +30,12 @@ struct AutoRun {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(AutoRun), HIBER3D_MEMBER(stage), HIBER3D_MEMBER(startingHeight), HIBER3D_MEMBER(startingGroundHeight), HIBER3D_MEMBER(timeSinceStarted));
 
+struct Magnet {
+	float timeSinceStarted = 0.0f;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(Magnet), HIBER3D_MEMBER(timeSinceStarted));
+
 struct Jumping {
     float deltaHeight;
     float startHeight;

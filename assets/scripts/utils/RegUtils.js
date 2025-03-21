@@ -200,3 +200,33 @@ function addOrReplaceComponent(entity, component) {
   hiber3d.addComponent(entity, component);
 }
 module.exports.addOrReplaceComponent = addOrReplaceComponent;
+function worldToLocalPosition(entity, worldPos) {
+  if (entity === undefined || worldPos === undefined) {
+    return worldPos;
+  }
+
+  // Get the entity's parent
+  var parent = undefined;
+  if (hiber3d.hasComponents(entity, "Hiber3D::Parent")) {
+    parent = hiber3d.getValue(entity, "Hiber3D::Parent", "parent");
+  }
+
+  if (parent === undefined) {
+    // No parent, just return the world position
+    return worldPos;
+  }
+
+  // Get the parent's world transform
+  const parentWorldPos = hiber3d.getValue(parent, "Hiber3D::ComputedWorldTransform", "position");
+  const parentWorldRot = hiber3d.getValue(parent, "Hiber3D::ComputedWorldTransform", "rotation");
+
+  // Calculate position relative to parent in world space
+  const relativePos = vectorUtils.subtractVectors(worldPos, parentWorldPos);
+
+  // Apply inverse of parent's world rotation to get the position in parent's local space
+  const inverseParentRot = quatUtils.inverseQuaternion(parentWorldRot);
+  const posInParentSpace = quatUtils.rotateVectorByQuaternion(relativePos, inverseParentRot);
+
+  return posInParentSpace;
+}
+module.exports.worldToLocalPosition = worldToLocalPosition;
