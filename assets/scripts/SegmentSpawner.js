@@ -90,10 +90,20 @@ const PICK_UP_DEPTH = {
   COLLECTIBLE_CHANCE_AT_DIFFICULTY_0: 0.25,
   COLLECTIBLE_CHANCE_AT_DIFFICULTY_1: 0.5,
 
+  POWER_UPS: [
+    {
+      probability: 1,
+      powerUp: "scenes/powerups/PowerUpAutoRun.scene",
+    }, {
+      probability: 1,
+      powerUp: "scenes/powerups/PowerUpMagnet.scene",
+    }
+  ],
+
   SPAWNABLE_STUFF: {
 
     straight: {
-      probability: 0.8,
+      probability: 4,
       segments: [
         {
           probability: 0.9,
@@ -224,15 +234,15 @@ const PICK_UP_DEPTH = {
     },
 
     turn: {
-      probability: 0.2,
+      probability: 1,
       segments: [
         {
-          probability: 0.5,
+          probability: 1,
           segment: "scenes/segments/SegmentLeftBase.scene",
           rooms: LEFT_ROOMS,
         },
         {
-          probability: 0.5,
+          probability: 1,
           segment: "scenes/segments/SegmentRightBase.scene",
           rooms: RIGHT_ROOMS,
         },
@@ -350,8 +360,8 @@ const PICK_UP_DEPTH = {
       pickUpHeight = pickUpHeights !== undefined ? pickUpHeights[pickUpHeightIndex] : undefined;
 
       if (usePowerup) {
-        // TODO: Add support for multiple power-ups here
-        pickUpPath = "scenes/powerups/PowerUpAutoRun.scene";
+        const pickUpBlock = this.getRandomElement(this.POWER_UPS);
+        pickUpPath = pickUpBlock.powerUp;
         pickUpDepth = PICK_UP_DEPTH.MID;
       } else if(useCollectible){
         pickUpPath =

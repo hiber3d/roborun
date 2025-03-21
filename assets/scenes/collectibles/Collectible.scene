@@ -1,1 +1,115 @@
-{"version":"1.0.0","root":{"id":3145858,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0.318856,"z":0,"w":0.947803},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts\\Collectible.js","scripts\\Rotate.js"]}}],"children":[{"id":3146778,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.03,"y":0,"z":-0.03},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"offset"}],"children":[{"id":3145892,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1.6,"y":1.6,"z":1.6}}},{"type":"Hiber3D::Name","data":"base"},{"type":"Hiber3D::SceneRoot","data":{"scene":"glbs\\collectible.glb#scene0"}}],"children":[]}]}]}}
+{
+  "version": "1.0.0",
+  "root": {
+    "id": 3145858,
+    "components": [
+      {
+        "type": "Hiber3D::Transform",
+        "data": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0.318856,
+            "z": 0,
+            "w": 0.947803
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "type": "Hiber3D::Name",
+        "data": "Collectible"
+      },
+      {
+        "type": "Hiber3D::ScriptInstance",
+        "data": {
+          "scripts": [
+            "scripts\\Collectible.js",
+            "scripts\\Magnetizable.js",
+            "scripts\\Rotate.js"
+          ]
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": 3146778,
+        "components": [
+          {
+            "type": "Hiber3D::Transform",
+            "data": {
+              "position": {
+                "x": -0.03,
+                "y": 0,
+                "z": -0.03
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            }
+          },
+          {
+            "type": "Hiber3D::Name",
+            "data": "offset"
+          }
+        ],
+        "children": [
+          {
+            "id": 3145892,
+            "components": [
+              {
+                "type": "Hiber3D::Transform",
+                "data": {
+                  "position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "w": 1
+                  },
+                  "scale": {
+                    "x": 1.6,
+                    "y": 1.6,
+                    "z": 1.6
+                  }
+                }
+              },
+              {
+                "type": "Hiber3D::Name",
+                "data": "base"
+              },
+              {
+                "type": "Hiber3D::SceneRoot",
+                "data": {
+                  "scene": "glbs\\collectible.glb#scene0"
+                }
+              }
+            ],
+            "children": [
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

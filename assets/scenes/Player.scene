@@ -109,6 +109,7 @@
             "scripts\\Running.js",
             "scripts\\Jump.js",
             "scripts\\AutoRunTemp.js",
+            "scripts\\MagnetTemp.js",
             "scripts\\OnDeath.js",
             "scripts\\Player.js",
             "scripts\\RunningAnimations.js",
