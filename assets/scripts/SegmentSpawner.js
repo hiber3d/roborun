@@ -173,7 +173,6 @@ const PICK_UP_DEPTH = {
               obstacle: "scenes/obstacles/ObstacleBlockLane.scene",
               obstacleLane: [LANE.LEFT, LANE.MID, LANE.RIGHT],
               pickUps: [
-               
                 {
                   probability: 1,
                   pickUpHeights: [PICK_UP_HEIGHT.RUN],
@@ -186,11 +185,10 @@ const PICK_UP_DEPTH = {
               obstacle: "scenes/obstacles/ObstacleProcessor.scene",
               obstacleLane: [LANE.MID],
               pickUps: [
-               
                 {
                   probability: 1,
                   pickUpHeights: [PICK_UP_HEIGHT.SLIDE],
-                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT,PICK_UP_LANE_BEHAVIOR.MID,PICK_UP_LANE_BEHAVIOR.RIGHT],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
                 }
               ],
             },
@@ -214,6 +212,7 @@ const PICK_UP_DEPTH = {
         {
           probability: 0.025,
           segment: "scenes/segments/SegmentStraightHole.scene",
+          tag: ["SEGMENT_INCLUDES_OBSTACLE"],
           rooms: STRAIGHT_ROOMS,
           obstacles: [
             {
@@ -256,7 +255,20 @@ const PICK_UP_DEPTH = {
   obstaclelessStraightsInARowCounter: 0,
   latestSegmentSceneEntity: undefined,
   segmentIndex: 0,
-  getRandomElement(list) {
+  ignoreElement(element, ignoreTags) {
+    if (ignoreTags === undefined || element.tag === undefined) {
+      return false;
+    }
+    for (var i = 0; i < ignoreTags.length; i++) {
+      for (var j = 0; j < element.tag.length; j++) {
+        if (ignoreTags[i] === element.tag[j]) {
+          return true;
+        }
+      }
+    }
+    return false;
+  },
+  getRandomElement(list, ignoreTags) {
     if (list === undefined) {
       hiber3d.print("SegmentSpawner::getRandomElement() - ERROR: No list found");
       return undefined;
@@ -270,14 +282,20 @@ const PICK_UP_DEPTH = {
       const object = list[Object.keys(list)[i]];
       if (object.probability === undefined) {
         hiber3d.print("SegmentSpawner::getRandomElement() - ERROR: No probability found for element: " + JSON.stringify(object));
-      } else {
-        cumulativeProbability += object.probability;
+        continue;
       }
+      if (this.ignoreElement(object, ignoreTags)) {
+        continue;
+      }
+      cumulativeProbability += object.probability;
     }
     const outcome = Math.random() * cumulativeProbability;
     var iteratedProbability = 0;
     for (var i = 0; i < length; i++) {
       const object = list[Object.keys(list)[i]];
+      if (this.ignoreElement(object, ignoreTags)) {
+        continue;
+      }
       iteratedProbability += object.probability;
       if (iteratedProbability >= outcome) {
         return object;
@@ -327,7 +345,7 @@ const PICK_UP_DEPTH = {
 
     // segmentPath
     const segmentTypeBlock = useStraight ? this.SPAWNABLE_STUFF.straight : this.SPAWNABLE_STUFF.turn;
-    const segmentBlock = useFirstSegment ? segmentTypeBlock.segments[0] : this.getRandomElement(segmentTypeBlock.segments);
+    const segmentBlock = useFirstSegment ? segmentTypeBlock.segments[0] : this.getRandomElement(segmentTypeBlock.segments, useObstacle ? undefined : ["SEGMENT_INCLUDES_OBSTACLE"]);
     const segmentPath = segmentBlock.segment;
 
     // roomPath
@@ -363,7 +381,7 @@ const PICK_UP_DEPTH = {
         const pickUpBlock = this.getRandomElement(this.POWER_UPS);
         pickUpPath = pickUpBlock.powerUp;
         pickUpDepth = PICK_UP_DEPTH.MID;
-      } else if(useCollectible){
+      } else if (useCollectible) {
         pickUpPath =
           (pickUpHeight === PICK_UP_HEIGHT.SLIDE) ? "scenes/collectibles/CollectiblesDip.scene" :
             (pickUpHeight === PICK_UP_HEIGHT.RUN) ? "scenes/collectibles/CollectiblesLine.scene" :
@@ -385,7 +403,7 @@ const PICK_UP_DEPTH = {
     this.straightInARowCounter = useStraight ? this.straightInARowCounter + 1 : 0;
     this.obstaclelessStraightsInARowCounter = useObstacle ? 0 : this.obstaclelessStraightsInARowCounter + 1;
 
-    return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth};
+    return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth };
   },
   spawnSegmentScene(transform) {
     const segmentsSceneEntity = hiber3d.getValue("SegmentsState", "segmentsSceneEntity");
