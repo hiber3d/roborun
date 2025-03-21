@@ -2,6 +2,8 @@
   RUN_SPEED: 15,
   RUN_AIR_FACTOR: 0.45,
   AUTO_RUN_FACTOR: 2,
+  RUN_IN_HILL_FACTOR: 1.1, // 2 --> x2 speed downhill
+  SLIDE_IN_HILL_FACTOR: 1.25,
   RUN_DIFFICULTY_BONUS_FACTOR_AT_DIFFICULTY_1: 0.25,
   DEBUG_SPLINE: false,
 
@@ -27,6 +29,13 @@
     if (hiber3d.hasComponents(this.entity, "AutoRun") && hiber3d.getValue(this.entity, "AutoRun", "stage") < 5) {
       speed *= this.AUTO_RUN_FACTOR;
     }
+
+    const rotation = hiber3d.getValue(this.entity, "Hiber3D::Transform", "rotation");
+    const direction = quatUtils.vectorFromQuaternion(rotation);
+    const rawFillFactor = hiber3d.hasComponents(this.entity, "Diving") || hiber3d.hasComponents(this.entity, "Sliding") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
+    const scaledHillFactor = (direction.y < 0 ? rawFillFactor : 1 / rawFillFactor);
+    speed *= Math.abs(scaledHillFactor) > 0.1 ? scaledHillFactor : 1;
+
     if (!hiber3d.hasComponents(this.entity, "OnPath")) {
       const currentStepEntity = segUtils.getCurrentStepEntity();
       const curveFactor = hiber3d.getValue(currentStepEntity, "Step", "curveFactor");

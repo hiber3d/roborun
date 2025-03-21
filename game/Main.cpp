@@ -17,6 +17,7 @@
 #include <Hiber3D/Editor/EditorModule.hpp>
 #include <Hiber3D/Gltf/GltfModule.hpp>
 #include <Hiber3D/Hiber3D.hpp>
+#include <Hiber3D/Hierarchy/Hierarchy.hpp>
 #include <Hiber3D/Hierarchy/HierarchyComponents.hpp>
 #include <Hiber3D/Hierarchy/HierarchyModule.hpp>
 #include <Hiber3D/Interop/InteropModule.hpp>
@@ -72,6 +73,7 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().isPressed(key); }>(context, "keyIsPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justPressed(key); }>(context, "keyJustPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
 
         context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorSettings{.startInPlayMode = true});
 

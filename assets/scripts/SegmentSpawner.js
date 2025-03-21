@@ -444,11 +444,6 @@ const PICK_UP_DEPTH = {
       this.rightInARowCounter += 1;
     }
 
-    hiber3d.print(
-      "this.leftInARowCounter: " + this.leftInARowCounter +
-      " this.rightInARowCounter: " + this.rightInARowCounter +
-    "");
-
     return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth, pickUpScale };
   },
   spawnSegmentScene(transform) {
