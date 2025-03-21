@@ -12,6 +12,7 @@ struct BroadcastPlayerStats {
 struct BroadcastCollectiblePickup {};
 struct BroadcastGameStarted {};
 struct BroadcastPowerupPickup {};
+struct BroadcastPerfectCollectiblePickup {};
 
 HIBER3D_REFLECT(HIBER3D_TYPE(BroadcastPlayerStats), HIBER3D_MEMBER(stats));
 HIBER3D_INTEROP_SEND_TO_JS(BroadcastPlayerStats);
@@ -24,3 +25,6 @@ HIBER3D_INTEROP_SEND_TO_JS(BroadcastGameStarted);
 
 HIBER3D_REFLECT(HIBER3D_TYPE(BroadcastPowerupPickup));
 HIBER3D_INTEROP_SEND_TO_JS(BroadcastPowerupPickup);
+
+HIBER3D_REFLECT(HIBER3D_TYPE(BroadcastPerfectCollectiblePickup));
+HIBER3D_INTEROP_SEND_TO_JS(BroadcastPerfectCollectiblePickup);

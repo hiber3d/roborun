@@ -18,6 +18,7 @@ function isAncestorOf(ancestor, entity) {
   }
 }
 module.exports.isAncestorOf = isAncestorOf;
+
 function getParent(entity) {
   if (hiber3d.hasComponents(entity, "Hiber3D::Parent") !== true) {
     return undefined;
@@ -25,6 +26,15 @@ function getParent(entity) {
   return hiber3d.getValue(entity, "Hiber3D::Parent", "parent");
 }
 module.exports.getParent = getParent;
+
+function getChildren(entity) {
+  if (hiber3d.hasComponents(entity, "Hiber3D::Children") !== true) {
+    return undefined;
+  }
+  return hiber3d.getValue(entity, "Hiber3D::Children", "entities");
+}
+module.exports.getChildren = getChildren;
+
 function getSiblings(entity) {
   const parent = getParent(entity);
   if (parent === undefined) {
@@ -38,6 +48,7 @@ function getSiblings(entity) {
   return hiber3d.getValue(parent, "Hiber3D::Children", "entities");
 }
 module.exports.getSiblings = getSiblings;
+
 function getChildIndexOf(entity) {
   const siblings = getSiblings(entity);
   if (siblings === undefined) {
@@ -51,6 +62,7 @@ function getChildIndexOf(entity) {
   }
   return undefined;
 }
+
 module.exports.getChildIndexOf = getChildIndexOf;
 function isLastChild(entity) {
   const siblings = getSiblings(entity);

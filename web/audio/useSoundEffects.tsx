@@ -43,6 +43,10 @@ export const useSoundEffects = () => {
       return;
     }
 
+    const start = api.onBroadcastGameStarted(() => {
+      sfx.play("tilt_01", { volume: 0.6 });
+    });
+
     const jump = api.onJumpedEvent(() => {
       sfx.play("jump_01", { volume: 0.6 });
     });
@@ -67,6 +71,10 @@ export const useSoundEffects = () => {
       sfx.play("rocket_01", { volume: 0.6 });
     });
 
+    const perfectPickup = api.onBroadcastPerfectCollectiblePickup(() => {
+      sfx.play("success_01", { volume: 0.7 });
+    });
+
     return () => {
       api.removeEventCallback(jump);
       api.removeEventCallback(land);
@@ -74,6 +82,8 @@ export const useSoundEffects = () => {
       api.removeEventCallback(slide);
       api.removeEventCallback(turn);
       api.removeEventCallback(rocket);
+      api.removeEventCallback(start);
+      api.removeEventCallback(perfectPickup);
     };
   }, [api, sfx]);
 };

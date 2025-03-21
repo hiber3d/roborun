@@ -19,6 +19,8 @@
       stats.multiplier = 1 + stats.collectibles / 100;
       hiber3d.setValue(playerEntity, "Stats", stats);
       hiber3d.writeEvent("BroadcastCollectiblePickup", {});
+      const parent = regUtils.getParent(this.entity);
+      regUtils.destroyEntity(parent);
       regUtils.destroyEntity(this.entity);
     }
   },
