@@ -1,11 +1,12 @@
 #include "BroadcastEvents.hpp"
 #include "BroadcastModule.hpp"
 
-#include <RoboRun/RoboRunTypes.hpp>
 #include <Path/PathTypes.hpp>
 
 #include <Hiber3D/Hiber3D.hpp>
 #include <Hiber3D/Scripting/JavaScriptScriptingModule.hpp>
+
+#include <RoboRun/RoboRunTypes.hpp>
 
 static void broadcastStats(
     Hiber3D::Singleton<GameState>               gameState,
@@ -22,5 +23,12 @@ void BroadcastModule::onRegister(Hiber3D::InitContext& context) {
 
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastPlayerStats>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastCollectiblePickup>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastGameStarted>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastPowerupPickup>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastPerfectCollectiblePickup>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastTilted>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastSlided>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastTurned>(context);
     }
 }

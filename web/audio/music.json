@@ -1,0 +1,34 @@
+{
+  "urls": [
+    "assets/audio/music/sprite/music.ogg",
+    "assets/audio/music/sprite/music.m4a",
+    "assets/audio/music/sprite/music.mp3",
+    "assets/audio/music/sprite/music.ac3"
+  ],
+  "sprite": {
+    "bass_01": [
+      0,
+      13766.530612244898
+    ],
+    "bass_02": [
+      15000,
+      13766.5306122449
+    ],
+    "bass_03": [
+      30000,
+      13766.5306122449
+    ],
+    "drums_01": [
+      45000,
+      13766.5306122449
+    ],
+    "drums_02": [
+      60000,
+      13766.530612244893
+    ],
+    "strings_01": [
+      75000,
+      13766.530612244893
+    ]
+  }
+}

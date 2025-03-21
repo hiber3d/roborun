@@ -3,6 +3,8 @@ import { LeaderboardContent } from "./LeaderboardContent";
 import { RoborunUI } from "./RoborunUI";
 import { useLeaderboard } from "./useLeaderboard";
 import { useTouchControls } from "./useTouchControls";
+import { useSoundEffects } from "audio/useSoundEffects";
+import { useMusicMultiTracks } from "audio/useMusicMultiTracks";
 
 const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;
@@ -10,6 +12,8 @@ const tapMode = urlParams.get("tapmode") ? true : false;
 export const RoborunMode = () => {
   const { submitName, state } = useLeaderboard();
   useTouchControls({ tapMode });
+  useSoundEffects();
+  useMusicMultiTracks();
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
