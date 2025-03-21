@@ -15,16 +15,18 @@ const EntryItem = ({
   entry,
   isNewEntry,
   rank = entry.rank,
+  newEntryName,
 }: {
   entry: Entry;
   isNewEntry: boolean;
   rank?: number;
+  newEntryName? : string;
 }) => (
   <tr
     className={twMerge(
-      rank === 1 && "font-bold text-md md:text-2xl text-yellow-400",
+      newEntryName && entry.player_name === newEntryName && "font-bold text-blue-300",
       rank % 2 === 0 ? "bg-gray-600/20" : "bg-gray-500/30",
-      isNewEntry && "bg-cyan-200/40 animate-pulse"
+      isNewEntry && "bg-cyan-50/20 animate-pulse"
     )}
     key={rank}
   >
@@ -105,6 +107,7 @@ export const LeaderboardContent = ({
                     entry={entry}
                     rank={index + 1}
                     isNewEntry={entry.id === state.leaderboard.newEntry?.id}
+                    newEntryName={state.leaderboard.newEntry?.player_name}
                   />
                 ))}
               </tbody>
@@ -113,6 +116,7 @@ export const LeaderboardContent = ({
                   <EntryItem
                     entry={state.leaderboard.newEntry}
                     isNewEntry={true}
+                    newEntryName={state.leaderboard.newEntry?.player_name}
                   />
                 )}
               </tfoot>
