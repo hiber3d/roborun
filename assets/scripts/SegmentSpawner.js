@@ -212,7 +212,7 @@ const PICK_UP_DEPTH = {
         {
           probability: 0.05,
           segment: "scenes/segments/SegmentStraightHole.scene",
-          tag: ["SEGMENT_INCLUDES_OBSTACLE"],
+          tags: ["SEGMENT_INCLUDES_OBSTACLE"],
           rooms: STRAIGHT_ROOMS,
           obstacles: [
             {
@@ -238,11 +238,13 @@ const PICK_UP_DEPTH = {
         {
           probability: 1,
           segment: "scenes/segments/SegmentLeftBase.scene",
+          tags: ["LEFT_TURN"],
           rooms: LEFT_ROOMS,
         },
         {
           probability: 1,
           segment: "scenes/segments/SegmentRightBase.scene",
+          tags: ["RIGHT_TURN"],
           rooms: RIGHT_ROOMS,
         },
       ],
@@ -255,15 +257,25 @@ const PICK_UP_DEPTH = {
   obstaclelessStraightsInARowCounter: 0,
   latestSegmentSceneEntity: undefined,
   segmentIndex: 0,
+  leftInARowCounter: 0,
+  rightInARowCounter: 0,
+  hasTag(element, tag) {
+    if (element === undefined || element.tags === undefined) {
+      return false;
+    }
+    for (var i = 0; i < element.tags.length; i++) {
+      if (element.tags[i] === tag) {
+        return true;
+      }
+    }
+  },
   ignoreElement(element, ignoreTags) {
-    if (ignoreTags === undefined || element.tag === undefined) {
+    if (ignoreTags === undefined || element.tags === undefined) {
       return false;
     }
     for (var i = 0; i < ignoreTags.length; i++) {
-      for (var j = 0; j < element.tag.length; j++) {
-        if (ignoreTags[i] === element.tag[j]) {
-          return true;
-        }
+      if (this.hasTag(element, ignoreTags[i])) {
+        return true;
       }
     }
     return false;
@@ -316,6 +328,8 @@ const PICK_UP_DEPTH = {
     var useObstacle = false;
     var usePowerup = false;
     var useCollectible = false;
+    var allowLeft = false;
+    var allowRight = false;
 
     // useStraight
     if (isAtStart) {
@@ -343,9 +357,25 @@ const PICK_UP_DEPTH = {
     const collectibleChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_0, this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_1, difficulty);
     useCollectible = !usePowerup && collectibleChanceSuccess;
 
+    // allowLeft && allowRight
+    allowLeft = this.leftInARowCounter < 2;
+    allowRight = this.rightInARowCounter < 2;
+
     // segmentPath
     const segmentTypeBlock = useStraight ? this.SPAWNABLE_STUFF.straight : this.SPAWNABLE_STUFF.turn;
-    const segmentBlock = useFirstSegment ? segmentTypeBlock.segments[0] : this.getRandomElement(segmentTypeBlock.segments, useObstacle ? undefined : ["SEGMENT_INCLUDES_OBSTACLE"]);
+    var ignoreTags = [];
+    if (useObstacle) {
+      ignoreTags.push("SEGMENT_INCLUDES_OBSTACLE");
+    }
+    if (!useStraight) {
+      if (!allowLeft) {
+        ignoreTags.push("LEFT_TURN");
+      }
+      if (!allowRight) {
+        ignoreTags.push("RIGHT_TURN")
+      }
+    }
+    const segmentBlock = useFirstSegment ? segmentTypeBlock.segments[0] : this.getRandomElement(segmentTypeBlock.segments, ignoreTags);
     const segmentPath = segmentBlock.segment;
 
     // roomPath
@@ -402,6 +432,19 @@ const PICK_UP_DEPTH = {
 
     this.straightInARowCounter = useStraight ? this.straightInARowCounter + 1 : 0;
     this.obstaclelessStraightsInARowCounter = useObstacle ? 0 : this.obstaclelessStraightsInARowCounter + 1;
+    if (this.hasTag(segmentBlock, "LEFT_TURN")) {
+      this.leftInARowCounter += 1;
+      this.rightInARowCounter = 0;
+    }
+    if (this.hasTag(segmentBlock, "RIGHT_TURN")) {
+      this.leftInARowCounter = 0;
+      this.rightInARowCounter += 1;
+    }
+
+    hiber3d.print(
+      "this.leftInARowCounter: " + this.leftInARowCounter +
+      " this.rightInARowCounter: " + this.rightInARowCounter +
+    "");
 
     return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth };
   },
