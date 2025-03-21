@@ -393,6 +393,7 @@ const PICK_UP_DEPTH = {
     var pickUpLane = undefined;
     var pickUpHeight = undefined;
     var pickUpDepth = undefined;
+    var pickUpScale = undefined;
     if (obstacleBlock !== undefined && (usePowerup || useCollectible)) {
       const pickUpsBlock = this.getRandomElement(obstacleBlock.pickUps);
       const pickUpHeights = (usePowerup || useCollectible) && pickUpsBlock !== undefined ? pickUpsBlock.pickUpHeights : undefined;
@@ -411,6 +412,7 @@ const PICK_UP_DEPTH = {
         const pickUpBlock = this.getRandomElement(this.POWER_UPS);
         pickUpPath = pickUpBlock.powerUp;
         pickUpDepth = PICK_UP_DEPTH.MID;
+        pickUpScale = pickUpHeight === PICK_UP_HEIGHT.SLIDE ? 0.75 : 1;
       } else if (useCollectible) {
         pickUpPath =
           (pickUpHeight === PICK_UP_HEIGHT.SLIDE) ? "scenes/collectibles/CollectiblesDip.scene" :
@@ -420,6 +422,7 @@ const PICK_UP_DEPTH = {
 
         pickUpHeight = PICK_UP_HEIGHT.NONE; // Collectibles have height as part of the scene
         pickUpDepth = PICK_UP_DEPTH.START; // Collectibles have depth as part of the scene
+        pickUpScale = 1;
       }
     }
 
@@ -446,7 +449,7 @@ const PICK_UP_DEPTH = {
       " this.rightInARowCounter: " + this.rightInARowCounter +
     "");
 
-    return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth };
+    return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth, pickUpScale };
   },
   spawnSegmentScene(transform) {
     const segmentsSceneEntity = hiber3d.getValue("SegmentsState", "segmentsSceneEntity");
@@ -460,6 +463,7 @@ const PICK_UP_DEPTH = {
     const pickUpLane = stuffToSpawn.pickUpLane;
     const pickUpHeight = stuffToSpawn.pickUpHeight;
     const pickUpDepth = stuffToSpawn.pickUpDepth;
+    const pickUpScale = stuffToSpawn.pickUpScale;
 
     // Segment
     const segmentSceneEntity = regUtils.createChildToParent(segmentsSceneEntity);
@@ -507,7 +511,7 @@ const PICK_UP_DEPTH = {
           pickUpLane === LANE.RIGHT ? 1 :
             0; // TODO: Get width from scene
       const y =
-        pickUpHeight === PICK_UP_HEIGHT.SLIDE ? 0 :
+        pickUpHeight === PICK_UP_HEIGHT.SLIDE ? 0.25 :
           pickUpHeight === PICK_UP_HEIGHT.RUN ? 0.5 :
             pickUpHeight === PICK_UP_HEIGHT.JUMP ? 2.5 :
               0; // TODO: Get height from scene
@@ -515,6 +519,7 @@ const PICK_UP_DEPTH = {
         pickUpDepth === PICK_UP_DEPTH.MID ? -5 :
           0; // TODO: Get depth from scene
       hiber3d.setValue(pickUpEntity, "Hiber3D::Transform", "position", { x, y, z });
+      hiber3d.setValue(pickUpEntity, "Hiber3D::Transform", "scale", { x: pickUpScale, y: pickUpScale, z: pickUpScale });
     }
 
     this.latestSegmentSceneEntity = segmentSceneEntity;
