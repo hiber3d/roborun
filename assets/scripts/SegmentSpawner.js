@@ -159,7 +159,7 @@ const PICK_UP_DEPTH = {
               ],
             },
             {
-              probability: 0.75,
+              probability: 0.8,
               obstacle: "scenes/obstacles/ObstacleBlockLane.scene",
               obstacleLane: [LANE.LEFT, LANE.MID, LANE.RIGHT],
               pickUps: [
@@ -172,7 +172,7 @@ const PICK_UP_DEPTH = {
               ],
             },
             {
-              probability: 0.0,
+              probability: 0.8,
               obstacle: "scenes/obstacles/ObstacleProcessor.scene",
               obstacleLane: [LANE.MID],
               pickUps: [
@@ -185,12 +185,12 @@ const PICK_UP_DEPTH = {
               ],
             },
             {
-              probability: 0.5,
+              probability: 0.8,
               obstacle: "scenes/obstacles/ObstacleRobotArm1.scene",
               obstacleLane: [LANE.MID],
             },
             {
-              probability: 0.5,
+              probability: 0.8,
               obstacle: "scenes/obstacles/ObstacleRobotArm2.scene",
               obstacleLane: [LANE.MID],
             }
@@ -202,7 +202,7 @@ const PICK_UP_DEPTH = {
           rooms: STRAIGHT_ROOMS,
         },
         {
-          probability: 0.1,
+          probability: 0.025,
           segment: "scenes/segments/SegmentStraightHole.scene",
           rooms: STRAIGHT_ROOMS,
           obstacles: [
