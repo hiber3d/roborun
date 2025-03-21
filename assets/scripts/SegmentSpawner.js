@@ -167,6 +167,42 @@ const PICK_UP_DEPTH = {
                   pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
                 }
               ],
+            },
+            {
+              probability: 0.75,
+              obstacle: "scenes/obstacles/ObstacleBlockLane.scene",
+              obstacleLane: [LANE.LEFT, LANE.MID, LANE.RIGHT],
+              pickUps: [
+               
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHT.RUN],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.ANY_BUT_NOT_SAME_AS_OBSTACLE],
+                }
+              ],
+            },
+            {
+              probability: 0.0,
+              obstacle: "scenes/obstacles/ObstacleProcessor.scene",
+              obstacleLane: [LANE.MID],
+              pickUps: [
+               
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHT.SLIDE],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT,PICK_UP_LANE_BEHAVIOR.MID,PICK_UP_LANE_BEHAVIOR.RIGHT],
+                }
+              ],
+            },
+            {
+              probability: 0.5,
+              obstacle: "scenes/obstacles/ObstacleRobotArm1.scene",
+              obstacleLane: [LANE.MID],
+            },
+            {
+              probability: 0.5,
+              obstacle: "scenes/obstacles/ObstacleRobotArm2.scene",
+              obstacleLane: [LANE.MID],
             }
           ],
         },
@@ -174,6 +210,25 @@ const PICK_UP_DEPTH = {
           probability: 0.1,
           segment: "scenes/segments/SegmentBridgeBase.scene",
           rooms: STRAIGHT_ROOMS,
+        },
+        {
+          probability: 0.1,
+          segment: "scenes/segments/SegmentStraightHole.scene",
+          rooms: STRAIGHT_ROOMS,
+          obstacles: [
+            {
+              probability: 0.75,
+              obstacle: undefined,
+              obstacleLane: [],
+              pickUps: [
+                {
+                  probability: 1,
+                  pickUpHeights: [PICK_UP_HEIGHT.JUMP],
+                  pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
+                },
+              ],
+            },
+          ],
         },
       ],
     },
