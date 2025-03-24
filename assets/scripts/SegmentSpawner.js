@@ -394,19 +394,17 @@ const PICK_UP_DEPTH = {
     var pickUpHeight = undefined;
     var pickUpDepth = undefined;
     var pickUpScale = undefined;
-    if ((usePowerup || useCollectible) &&
-      obstacleBlock !== undefined &&
-      obstacleBlock.pickUps !== undefined &&
-      obstacleBlock.pickUpHeights !== undefined &&
-      obstacleBlock.pickUpLanes !== undefined) {
+    if ((usePowerup || useCollectible) && obstacleBlock !== undefined && obstacleBlock.pickUps !== undefined) {
 
       const pickUpsBlock = this.getRandomElement(obstacleBlock.pickUps);
-      const pickUpHeights = pickUpsBlock.pickUpHeights;
-      if (pickUpsBlock !== undefined && pickUpHeights === undefined) {
+      if (pickUpsBlock !== undefined && pickUpsBlock.pickUpHeights !== undefined && pickUpsBlock.pickUpLanes !== undefined) {
 
-        const pickUpLaneIndex = Math.floor(Math.random() * Object.keys(pickUpsBlock.pickUpLanes).length);
-        pickUpLane = pickUpsBlock.pickUpLanes[pickUpLaneIndex];
-        switch (pickUpLane) {
+        const pickUpHeights = pickUpsBlock.pickUpHeights;
+        const pickUpLanes = pickUpsBlock.pickUpLanes;
+        const pickUpLaneIndex = Math.floor(Math.random() * Object.keys(pickUpLanes).length);
+
+        const pickUpLaneBehavior = pickUpLanes[pickUpLaneIndex];
+        switch (pickUpLaneBehavior) {
           case PICK_UP_LANE_BEHAVIOR.SAME_AS_OBSTACLE:
             pickUpLane = obstacleLane;
             break;
@@ -419,6 +417,8 @@ const PICK_UP_DEPTH = {
           case PICK_UP_LANE_BEHAVIOR.RIGHT_OF_OBSTACLE:
             pickUpLane = (obstacleLane + 1) % 3;
             break;
+          default:
+            pickUpLane = pickUpLaneBehavior;
         }
 
         const pickUpHeightIndex = Math.floor(Math.random() * Object.keys(pickUpHeights).length);
