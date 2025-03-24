@@ -85,6 +85,10 @@
     if (event === "JumpInput") {
       const isAutoRunAir = hiber3d.hasComponents(this.entity, "AutoRun") && hiber3d.getValue(this.entity, "AutoRun", "stage") < 5;
       if (!hiber3d.hasComponents(this.entity, "Jumping") && !isAutoRunAir) {
+        const isAutoRunGround = hiber3d.hasComponents(this.entity, "AutoRun") && hiber3d.getValue(this.entity, "AutoRun", "stage") === 5;
+        if (isAutoRunGround) {
+          regUtils.removeComponentIfPresent(this.entity, "AutoRun");
+        }
         hiber3d.addComponent(this.entity, "Jumping");
         const startHeight = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y");
         hiber3d.setValue(this.entity, "Jumping", "startHeight", startHeight);
