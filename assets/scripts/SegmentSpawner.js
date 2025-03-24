@@ -394,35 +394,52 @@ const PICK_UP_DEPTH = {
     var pickUpHeight = undefined;
     var pickUpDepth = undefined;
     var pickUpScale = undefined;
-    if (obstacleBlock !== undefined && (usePowerup || useCollectible)) {
+    if ((usePowerup || useCollectible) &&
+      obstacleBlock !== undefined &&
+      obstacleBlock.pickUps !== undefined &&
+      obstacleBlock.pickUpHeights !== undefined &&
+      obstacleBlock.pickUpLanes !== undefined) {
+
       const pickUpsBlock = this.getRandomElement(obstacleBlock.pickUps);
-      const pickUpHeights = (usePowerup || useCollectible) && pickUpsBlock !== undefined ? pickUpsBlock.pickUpHeights : undefined;
+      const pickUpHeights = pickUpsBlock.pickUpHeights;
+      if (pickUpsBlock !== undefined && pickUpHeights === undefined) {
 
-      const pickUpLaneIndex = pickUpsBlock !== undefined ? Math.floor(Math.random() * Object.keys(pickUpsBlock.pickUpLanes).length) : undefined;
-      pickUpLane = pickUpsBlock !== undefined ? pickUpsBlock.pickUpLanes[pickUpLaneIndex] : undefined;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.SAME_AS_OBSTACLE ? obstacleLane : pickUpLane;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.ANY_BUT_NOT_SAME_AS_OBSTACLE ? (obstacleLane + Math.ceil(2 * Math.random())) % 3 : pickUpLane;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.LEFT_OF_OBSTACLE ? (obstacleLane + 2) % 3 : pickUpLane;
-      pickUpLane = pickUpLane === PICK_UP_LANE_BEHAVIOR.RIGHT_OF_OBSTACLE ? (obstacleLane + 1) % 3 : pickUpLane;
+        const pickUpLaneIndex = Math.floor(Math.random() * Object.keys(pickUpsBlock.pickUpLanes).length);
+        pickUpLane = pickUpsBlock.pickUpLanes[pickUpLaneIndex];
+        switch (pickUpLane) {
+          case PICK_UP_LANE_BEHAVIOR.SAME_AS_OBSTACLE:
+            pickUpLane = obstacleLane;
+            break;
+          case PICK_UP_LANE_BEHAVIOR.ANY_BUT_NOT_SAME_AS_OBSTACLE:
+            pickUpLane = (obstacleLane + Math.ceil(2 * Math.random())) % 3;
+            break;
+          case PICK_UP_LANE_BEHAVIOR.LEFT_OF_OBSTACLE:
+            pickUpLane = (obstacleLane + 2) % 3;
+            break;
+          case PICK_UP_LANE_BEHAVIOR.RIGHT_OF_OBSTACLE:
+            pickUpLane = (obstacleLane + 1) % 3;
+            break;
+        }
 
-      const pickUpHeightIndex = pickUpHeights !== undefined ? Math.floor(Math.random() * Object.keys(pickUpHeights).length) : undefined;
-      pickUpHeight = pickUpHeights !== undefined ? pickUpHeights[pickUpHeightIndex] : undefined;
+        const pickUpHeightIndex = Math.floor(Math.random() * Object.keys(pickUpHeights).length);
+        pickUpHeight = pickUpHeights[pickUpHeightIndex];
 
-      if (usePowerup) {
-        const pickUpBlock = this.getRandomElement(this.POWER_UPS);
-        pickUpPath = pickUpBlock.powerUp;
-        pickUpDepth = PICK_UP_DEPTH.MID;
-        pickUpScale = pickUpHeight === PICK_UP_HEIGHT.SLIDE ? 0.75 : 1;
-      } else if (useCollectible) {
-        pickUpPath =
-          (pickUpHeight === PICK_UP_HEIGHT.SLIDE) ? "scenes/collectibles/CollectiblesDip.scene" :
-            (pickUpHeight === PICK_UP_HEIGHT.RUN) ? "scenes/collectibles/CollectiblesLine.scene" :
-              (pickUpHeight === PICK_UP_HEIGHT.JUMP) ? "scenes/collectibles/CollectiblesCurve.scene" :
-                undefined;
+        if (usePowerup) {
+          const pickUpBlock = this.getRandomElement(this.POWER_UPS);
+          pickUpPath = pickUpBlock.powerUp;
+          pickUpDepth = PICK_UP_DEPTH.MID;
+          pickUpScale = pickUpHeight === PICK_UP_HEIGHT.SLIDE ? 0.75 : 1;
+        } else if (useCollectible) {
+          pickUpPath =
+            (pickUpHeight === PICK_UP_HEIGHT.SLIDE) ? "scenes/collectibles/CollectiblesDip.scene" :
+              (pickUpHeight === PICK_UP_HEIGHT.RUN) ? "scenes/collectibles/CollectiblesLine.scene" :
+                (pickUpHeight === PICK_UP_HEIGHT.JUMP) ? "scenes/collectibles/CollectiblesCurve.scene" :
+                  undefined;
 
-        pickUpHeight = PICK_UP_HEIGHT.NONE; // Collectibles have height as part of the scene
-        pickUpDepth = PICK_UP_DEPTH.START; // Collectibles have depth as part of the scene
-        pickUpScale = 1;
+          pickUpHeight = PICK_UP_HEIGHT.NONE; // Collectibles have height as part of the scene
+          pickUpDepth = PICK_UP_DEPTH.START; // Collectibles have depth as part of the scene
+          pickUpScale = 1;
+        }
       }
     }
 
