@@ -1,6 +1,6 @@
 // This script will become obsolete and will be removed after [HIB-33606] and [HIB-33679]
 ({
-  AUTO_RUN_DURATION: 4, // full duration
+  AUTO_RUN_DURATION: 3, // full duration
   AUTO_RUN_ASCEND_DURATION: 0.3, // fly up
   AUTO_RUN_DIP_DURATION: 0.3, // slight dip before power-up ends
   AUTO_RUN_DESCEND_DURATION: 0.3, // fly down

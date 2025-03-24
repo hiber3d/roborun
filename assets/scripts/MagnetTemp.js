@@ -1,6 +1,6 @@
 // This script will become obsolete and will be removed after [HIB-33606] and [HIB-33679]
 ({
-  MAGNET_DURATION: 3,
+  MAGNET_DURATION: 7.5,
   OUTRO_DURATION: 2,
   EFFECT_SCALE: 0.1,
 
