@@ -18,14 +18,14 @@ static void updateAnimations(
     for (auto [entity, animationBlend, animationTransition, animated] : animateds.each()) {
         if (const auto* animation = animationAssets->get(animationBlend.layers[0].animation)) {
             const auto currentTime      = animationBlend.layers[0].animationTime;
-            const auto transitionTime   = Hiber3D::Time::fromSeconds(animated.animationData.transitionTimeFrom.value_or(animated.baseAnimationData.transitionTimeTo));
+            const auto transitionTime   = Hiber3D::Time::fromSeconds(animated.currentAnimationData.transitionTimeFrom.value_or(animated.baseAnimationData.transitionTimeTo));
             const auto compensationTime = Hiber3D::Time::fromSeconds(2.0f / 60.0f); // Needed to prevent animation to re-loop
             const auto maxTime          = animation->duration() - transitionTime - compensationTime;
-            if (currentTime >= maxTime && animated.loop == false) {
-                if (animated.animationData.destroyEntityAfterAnimationFinishes) {
+            if (currentTime >= maxTime && animated.currentAnimationData.loop == false) {
+                if (animated.currentAnimationData.destroyEntityAfterAnimationFinishes) {
                     destroyEntityWithChildrenRecursive(registry, entity);
                 } else {
-                    cancelWriter.writeEvent(CancelAnimationEvent{.entity = entity, .animationData = animated.animationData});
+                    cancelWriter.writeEvent(CancelAnimationEvent{.entity = entity, .animationData = animated.currentAnimationData});
                 }
             }
         }
@@ -38,12 +38,15 @@ static void handleCancelAnimationEvent(
     Hiber3D::EventWriter<AnimationFinishedEvent>&         writer) {
     for (const auto& event : events) {
         animateds.withComponent(event.entity, [&](Hiber3D::AnimationTransition& animationTransition, Animated& animated) {
-            if (event.animationData.handle == animated.animationData.handle) {
-                const auto transitionTime = Hiber3D::Time::fromSeconds(animated.animationData.transitionTimeFrom.value_or(animated.baseAnimationData.transitionTimeTo));
-                animationTransition.startTransition(animated.baseAnimationData.handle, transitionTime, animated.baseAnimationData.animationSpeed);
-                animated.animationLayer = AnimationLayer::BASE;
-                animated.animationData  = animated.baseAnimationData;
-                animated.loop           = true;
+            if (event.animationData.handle == animated.currentAnimationData.handle) {
+
+                const auto& newAnimationData = animated.queuedAnimationData.value_or(animated.baseAnimationData);
+                animated.queuedAnimationData = std::nullopt;
+
+                const auto transitionTime = Hiber3D::Time::fromSeconds(animated.currentAnimationData.transitionTimeFrom.value_or(newAnimationData.transitionTimeTo));
+                animationTransition.startTransition(newAnimationData.handle, transitionTime, newAnimationData.animationSpeed);
+                animated.currentAnimationData = newAnimationData;
+
                 writer.writeEvent(AnimationFinishedEvent{.entity = event.entity, .animationData = event.animationData});
             }
         });
@@ -55,16 +58,13 @@ static void handlePlayAnimationEvent(
     Hiber3D::View<Hiber3D::AnimationTransition, Animated> animateds) {
     for (const auto& event : events) {
         animateds.withComponent(event.entity, [&](Hiber3D::AnimationTransition& animationTransition, Animated& animated) {
-            if (event.animationLayer >= animated.animationLayer) {
-                const auto transitionTime = Hiber3D::Time::fromSeconds(animated.animationData.transitionTimeFrom.value_or(event.animationData.transitionTimeTo));
+            if (event.animationData.animationLayer >= animated.currentAnimationData.animationLayer) {
+                const auto transitionTime = Hiber3D::Time::fromSeconds(animated.currentAnimationData.transitionTimeFrom.value_or(event.animationData.transitionTimeTo));
                 animationTransition.startTransition(event.animationData.handle, transitionTime, event.animationData.animationSpeed);
-                animated.animationLayer = event.animationLayer;
-                animated.animationData  = event.animationData;
-                animated.loop           = event.loop;
+                animated.currentAnimationData = event.animationData;
             }
-            if (event.animationLayer == AnimationLayer::BASE) {
+            if (event.animationData.animationLayer == AnimationLayer::BASE) {
                 animated.baseAnimationData = event.animationData;
-                animated.loop              = true;
             }
         });
     }
