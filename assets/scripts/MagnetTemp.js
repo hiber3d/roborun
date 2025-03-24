@@ -22,7 +22,7 @@
         regUtils.destroyEntity(this.effectEntity);
       }
       this.effectEntity = regUtils.createChildToParent(this.entity);
-      hiber3d.addScript(this.effectEntity, "scripts\\Rotate.js");
+      hiber3d.addScript(this.effectEntity, "scripts/Rotate.js");
       hiber3d.addComponent(this.effectEntity, "Hiber3D::Transform");
       hiber3d.setValue(this.effectEntity, "Hiber3D::Transform", "position", { x: 0, y: 0.75, z: 0.25 });
       hiber3d.setValue(this.effectEntity, "Hiber3D::Transform", "scale", { x: this.EFFECT_SCALE, y: this.EFFECT_SCALE, z: this.EFFECT_SCALE});
