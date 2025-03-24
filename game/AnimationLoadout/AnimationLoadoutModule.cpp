@@ -72,12 +72,19 @@ static void handlePlayerCreated(
         loadAnimation(assetServer, "tiltRight", 12, animationLoadout, 0.03f, 0.1f, 1.0f);
         loadAnimation(assetServer, "turnLeft", 13, animationLoadout, 0.1f, 0.25f, 1.25f);
         loadAnimation(assetServer, "turnRight", 14, animationLoadout, 0.1f, 0.25f, 1.25f);
-
-        // loadAnimation(assetServer, "idle", ?, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        // loadAnimation(assetServer, "jumpIdle", 14, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        // loadAnimation(assetServer, "fallIdle", 15, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        // loadAnimation(assetServer, "landIdle", 16, animationLoadout, 0.0f, std::nullopt, 1.0f);
     }
+}
+
+static const AnimationData& getAnimationData(AnimationLoadout& animationLoadout, const std::string& name, const AnimationLayer layer, const bool loop) {
+    auto&      animationVariants                   = animationLoadout.loadout.at(name);
+    const auto index                               = animationVariants.indexOfLatestPlayedAnimation;
+    auto&      animationDatas                      = animationVariants.animationDatas;
+    const auto newIndex                            = (animationVariants.indexOfLatestPlayedAnimation + 1) % animationDatas.size();
+    auto&      animationData                       = animationDatas.at(newIndex);
+    animationData.animationLayer                   = layer;
+    animationData.loop                             = loop;
+    animationVariants.indexOfLatestPlayedAnimation = newIndex;
+    return animationData;
 }
 
 static void handlePlayAnimation(
@@ -104,12 +111,19 @@ static void handlePlayAnimation(
             if (!animationTransitions.contains(entity)) {
                 registry.emplace<Hiber3D::AnimationTransition>(entity);
             }
-            auto&       animationVariants = animationLoadout.loadout.at(event.name);
-            const auto& animationDatas    = animationVariants.animationDatas;
-            const auto  newIndex          = (animationVariants.indexOfLatestPlayedAnimation + 1) % animationDatas.size();
-            const auto& animationData     = animationDatas.at(newIndex);
-            writer.writeEvent({.entity = entity, .animationData = animationData, .animationLayer = event.layer, .loop = event.loop});
-            animationVariants.indexOfLatestPlayedAnimation = newIndex;
+            const auto& animationData = getAnimationData(animationLoadout, event.name, event.layer, event.loop);
+            writer.writeEvent({.entity = entity, .animationData = animationData});
+        });
+    }
+}
+
+static void handleQueueAnimation(
+    Hiber3D::EventView<QueueAnimation>        events,
+    Hiber3D::View<Animated, AnimationLoadout> animateds) {
+    for (const auto& event : events) {
+        const auto entity = event.playAnimation.entity;
+        animateds.withComponent(entity, [&](Animated& animated, AnimationLoadout& animationLoadout) {
+            animated.queuedAnimationData = getAnimationData(animationLoadout, event.playAnimation.name, event.playAnimation.layer, event.playAnimation.loop);
         });
     }
 }
@@ -152,11 +166,13 @@ static void handleAnimationFinished(
 void AnimationLoadoutModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayerCreated);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handlePlayAnimation);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, handleQueueAnimation);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleCancelAnimation);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleAnimationFinished);
 
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayAnimation>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<QueueAnimation>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<CancelAnimation>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<AnimationFinished>(context);
     }

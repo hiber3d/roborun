@@ -14,6 +14,12 @@ struct PlayAnimation {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(PlayAnimation), HIBER3D_MEMBER(entity), HIBER3D_MEMBER(name), HIBER3D_MEMBER(layer), HIBER3D_MEMBER(loop));
 
+struct QueueAnimation {
+    PlayAnimation playAnimation;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(QueueAnimation), HIBER3D_MEMBER(playAnimation));
+
 struct CancelAnimation {
     Hiber3D::Entity entity;
     std::string     name;

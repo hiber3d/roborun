@@ -72,7 +72,7 @@
       this.timeSpentDivingOnGround += dt;
       if (this.timeSpentDivingOnGround >= this.DIVE_DURATION) {
         regUtils.removeComponentIfPresent(this.entity, "Diving");
-        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "dive"});
+        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "dive" });
       }
     } else {
       this.timeSpentDivingOnGround = 0;
@@ -89,13 +89,13 @@
         const startHeight = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y");
         hiber3d.setValue(this.entity, "Jumping", "startHeight", startHeight);
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "jump", layer: ANIMATION_LAYER.ACTION, loop: false });
-        hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "fall", layer: ANIMATION_LAYER.FALL, loop: true });
-        hiber3d.writeEvent("JumpedEvent", {entity: this.entity});
+        hiber3d.writeEvent("QueueAnimation", { playAnimation: { entity: this.entity, name: "fall", layer: ANIMATION_LAYER.FALL, loop: true } });
+        hiber3d.writeEvent("JumpedEvent", { entity: this.entity });
       }
     } else if (event === "DiveInput") {
       if (hiber3d.hasComponents(this.entity, "Jumping") && !hiber3d.hasComponents(this.entity, "AutoRun")) {
         regUtils.addComponentIfNotPresent(this.entity, "Diving");
-        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name:"jump"});
+        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "jump" });
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", layer: ANIMATION_LAYER.ROLL, loop: true });
       }
     }

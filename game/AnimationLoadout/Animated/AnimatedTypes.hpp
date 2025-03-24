@@ -20,7 +20,9 @@ enum class AnimationLayer : uint8_t {
 };
 
 struct AnimationData {
-    Hiber3D::AssetHandle<Hiber3D::Animation> handle;
+    Hiber3D::AssetHandle<Hiber3D::Animation> handle = Hiber3D::AssetHandle<Hiber3D::Animation>::Invalid();
+
+    AnimationLayer animationLayer = AnimationLayer::UNDEFINED;
 
     float                transitionTimeTo   = 0.0f;
     std::optional<float> transitionTimeFrom = std::nullopt;  // If both, 'from' takes precedence
@@ -28,15 +30,17 @@ struct AnimationData {
     float animationSpeed = 1.0f;
 
     bool destroyEntityAfterAnimationFinishes = false;
+
+    bool loop = false;
 };
 
 //HIBER3D_REFLECT(HIBER3D_TYPE(AnimationData), HIBER3D_MEMBER(handle), HIBER3D_MEMBER(transitionTimeTo), HIBER3D_MEMBER(animationSpeed), HIBER3D_MEMBER(destroyEntityAfterAnimationFinishes));
 
 // Consumers shouldn't modify members, use PlayAnimationEvent instead
 struct Animated {
-    AnimationLayer animationLayer = AnimationLayer::UNDEFINED;
-    bool           loop           = false; // Only used for non-BASE layers
-    AnimationData  animationData;
+    AnimationData  currentAnimationData;
+
+    std::optional<AnimationData> queuedAnimationData;
     AnimationData  baseAnimationData;
 };
 

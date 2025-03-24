@@ -8,8 +8,6 @@ struct PlayAnimationEvent {
     Hiber3D::Entity entity;
 
     AnimationData  animationData;
-    AnimationLayer animationLayer;
-    bool           loop;
 };
 
 struct CancelAnimationEvent {
