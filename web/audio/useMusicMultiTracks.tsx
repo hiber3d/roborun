@@ -37,12 +37,14 @@ export const useMusicMultiTracks = () => {
 
   useEffect(() => {
     const initTrack = (track: Track, sound: MusicSounds, play?: boolean) => {
+      console.debug("initTrack: ", { track, sound, play });
       if (track.id) {
         return;
       }
       track.id = music.play(sound, { loop: true, volume: play ? 1 : 0 });
       music.soundSource.current?.volume(play ? 1 : 0, track.id ?? 0);
       track.playing = play || false;
+      console.debug("track initialized: ", track);
     };
 
     initTrack(musicTracks.current.drums, "drums_01", true);
@@ -67,6 +69,7 @@ export const useMusicMultiTracks = () => {
   );
 
   const resetMusic = useCallback(() => {
+    console.debug("resetMusic");
     updateTrack(musicTracks.current.drums, true);
 
     updateTrack(musicTracks.current.drums_02, false);
