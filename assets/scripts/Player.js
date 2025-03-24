@@ -6,8 +6,5 @@
     if (!hiber3d.hasComponents(this.entity, "OnPath")) {
       hiber3d.addComponent(this.entity, "OnPath");
     }
-  },
-  update() {
-    hiber3d.print("test2");
   }
 });
