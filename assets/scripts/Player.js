@@ -7,4 +7,7 @@
       hiber3d.addComponent(this.entity, "OnPath");
     }
   },
+  update() {
+    hiber3d.print("test2");
+  }
 });

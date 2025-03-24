@@ -27,8 +27,8 @@
 
       //  // Setup script that removes the effect after its duration
       //  const scriptRemoverEntity = hiber3d.createEntity();
-      //  regUtils.addScript(scriptRemoverEntity, "scripts\\RemoveScriptOnEntityAfterDelay.js");
-      //  var scriptRemoverScript = hiber3d.getScript(scriptRemoverEntity, "scripts\\RemoveScriptOnEntityAfterDelay.js");
+      //  regUtils.addScript(scriptRemoverEntity, "scripts/RemoveScriptOnEntityAfterDelay.js");
+      //  var scriptRemoverScript = hiber3d.getScript(scriptRemoverEntity, "scripts/RemoveScriptOnEntityAfterDelay.js");
       //  scriptRemoverScript.Script = script;
       //  scriptRemoverScript.Entity = playerEntity;
       //  scriptRemoverScript.Delay = duration;
@@ -47,9 +47,9 @@
 
         // Setup script that removes the effect after its duration
         //const componentRemoverEntity = hiber3d.createEntity();
-        //regUtils.addScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
+        //regUtils.addScript(componentRemoverEntity, "scripts/RemoveComponentOnEntityAfterDelay.js");
 
-        //var componentRemoverScript = hiber3d.getScript(componentRemoverEntity, "scripts\\RemoveComponentOnEntityAfterDelay.js");
+        //var componentRemoverScript = hiber3d.getScript(componentRemoverEntity, "scripts/RemoveComponentOnEntityAfterDelay.js");
         //componentRemoverScript.Component = component;
         //componentRemoverScript.Entity = playerEntity;
         //componentRemoverScript.Delay = duration;
