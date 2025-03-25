@@ -47,13 +47,26 @@ export const useMusicMultiTracks = () => {
       console.debug("track initialized: ", track);
     };
 
-    initTrack(musicTracks.current.drums, "drums_01", true);
-    initTrack(musicTracks.current.drums_02, "drums_02");
-    initTrack(musicTracks.current.bass, "bass_01");
-    initTrack(musicTracks.current.bass_02, "bass_02");
-    initTrack(musicTracks.current.bass_03, "bass_03");
+    const signal = new AbortController();
+    window.addEventListener(
+      "click",
+      () => {
+        initTrack(musicTracks.current.drums, "drums_01", true);
+        initTrack(musicTracks.current.drums_02, "drums_02");
+        initTrack(musicTracks.current.bass, "bass_01");
+        initTrack(musicTracks.current.bass_02, "bass_02");
+        initTrack(musicTracks.current.bass_03, "bass_03");
 
-    initTrack(musicTracks.current.strings, "strings_01");
+        initTrack(musicTracks.current.strings, "strings_01");
+
+        signal.abort();
+      },
+      { signal: signal.signal }
+    );
+
+    return () => {
+      signal.abort();
+    };
   }, [music]);
 
   const updateTrack = useCallback(
