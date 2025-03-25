@@ -32,9 +32,9 @@
         "type": "Hiber3D::ScriptInstance",
         "data": {
           "scripts": [
-            "scripts\\Collectible.js",
-            "scripts\\Magnetizable.js",
-            "scripts\\Rotate.js"
+            "scripts/Collectible.js",
+            "scripts/Magnetizable.js",
+            "scripts/Rotate.js"
           ]
         }
       }
