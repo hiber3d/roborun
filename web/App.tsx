@@ -14,6 +14,10 @@ export const App = () => (
       Shadows: {
         Enabled: false,
       },
+      Editor: {
+        Enabled: false,
+        Mode: "play",
+      },
     }}
   >
     <AudioProvider>
