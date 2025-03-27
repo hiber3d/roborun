@@ -23,7 +23,7 @@ const startValues: Track = {
 };
 
 export const useMusicMultiTracks = () => {
-  const { music } = useAudio();
+  const { music, sfx } = useAudio();
   const { api } = useHiber3D();
 
   const musicTracks = useRef<MusicTracks>({
@@ -34,6 +34,18 @@ export const useMusicMultiTracks = () => {
     bass_03: { ...startValues },
     strings: { ...startValues },
   });
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+    const listener = api.onHiber3DEditorModeChanged((payload) => {
+      music.mute(payload.editMode);
+      sfx.mute(payload.editMode);
+    });
+
+    return () => api.removeEventCallback(listener ?? 1);
+  }, [api, music, sfx]);
 
   useEffect(() => {
     const initTrack = (track: Track, sound: MusicSounds, play?: boolean) => {
