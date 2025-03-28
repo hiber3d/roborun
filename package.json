@@ -4,18 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "compile": "node ./scripts/emscripten.cjs --build --build-webgl",
-    "compile:release": "node ./scripts/emscripten.cjs --build --build-webgl --release",
-    "compile:webgpu": "node ./scripts/emscripten.cjs --build",
-    "compile:webgl": "node ./scripts/emscripten.cjs --build-webgl",
-    "compile:webgpu:release": "node ./scripts/emscripten.cjs --build  --release",
-    "compile:webgl:release": "node ./scripts/emscripten.cjs --build-webgl --release",
+    "compile": "node ./build_scripts/emscripten.cjs --build --build-webgl",
+    "compile:release": "node ./build_scripts/emscripten.cjs --build --build-webgl --release",
+    "compile:webgpu": "node ./build_scripts/emscripten.cjs --build",
+    "compile:webgl": "node ./build_scripts/emscripten.cjs --build-webgl",
+    "compile:webgpu:release": "node ./build_scripts/emscripten.cjs --build  --release",
+    "compile:webgl:release": "node ./build_scripts/emscripten.cjs --build-webgl --release",
     "dev": "vite --configLoader runner",
     "build": "tsc -b && vite build  --configLoader runner",
     "lint": "eslint .",
     "preview": "vite preview --configLoader runner",
-    "audio:sfx": "node ./scripts/create-audio-sprite.cjs sfx ./assets/audio/sfx",
-    "audio:music": "node ./scripts/create-audio-sprite.cjs music ./assets/audio/music"
+    "audio:sfx": "node ./build_scripts/create-audio-sprite.cjs sfx ./assets/audio/sfx",
+    "audio:music": "node ./build_scripts/create-audio-sprite.cjs music ./assets/audio/music"
   },
   "dependencies": {
     "@hiber3d/web": "file:build/web",
