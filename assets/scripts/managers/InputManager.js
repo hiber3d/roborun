@@ -14,6 +14,7 @@ const KEYS = {
 
 ({
   onCreate() {
+    hiber3d.addEventListener(this.entity, "Hiber3D::SwipeEvent");
     hiber3d.addEventListener(this.entity, "SwipedUp");
     hiber3d.addEventListener(this.entity, "SwipedDown");
     hiber3d.addEventListener(this.entity, "SwipedLeft");
@@ -66,23 +67,56 @@ const KEYS = {
       return;
     }
 
-    if (event === "LeftTapped" || event === "SwipedLeft") {
+    if (event === "Hiber3D::SwipeEvent") {
+      hiber3d.print("SwipedEvent");
+      deltaX = payload.currentPosition.x - payload.originalPosition.x;
+      deltaY = payload.currentPosition.y - payload.originalPosition.y;
+      // Would be nice if the angle was already part of the payload, both degrees and radians
+      const angle = Math.atan2(deltaX, deltaY);
+      hiber3d.print(angle);
+      // 0 means down, positive values are on the right, up is +-PI
+      if (-Math.PI / 3 < angle && angle < Math.PI / 3) {
+        hiber3d.print("SwipedEvent:Down");
+        hiber3d.writeEvent("DiveInput", {});
+        hiber3d.writeEvent("SlideInput", {});
+      }
+      else if (2 * Math.PI / 3 < Math.abs(angle) && Math.abs(angle) <= Math.PI) {
+        hiber3d.print("SwipedEvent:Up");
+        hiber3d.writeEvent("JumpInput", {});
+      }
+      if (5 * -Math.PI / 6 < angle && angle < -Math.PI / 6) {
+        hiber3d.print("SwipedEvent:Left");
+        hiber3d.writeEvent("TurnLeftInput", {});
+        hiber3d.writeEvent("LeftLaneInput", {});
+      }
+      else if (Math.PI / 6 < angle && angle < 5 * Math.PI / 6)
+      {
+        hiber3d.print("SwipedEvent:Right");
+        hiber3d.writeEvent("TurnRightInput", {});
+        hiber3d.writeEvent("RightLaneInput", {});
+      }
+    }
+    if (event === "LeftTapped") {
+      hiber3d.print("LeftTapped");
       hiber3d.writeEvent("TurnLeftInput", {});
       hiber3d.writeEvent("LeftLaneInput", {});
     }
-    if (event === "RightTapped" || event === "SwipedRight") {
+    if (event === "RightTapped") {
+      hiber3d.print("RightTapped");
       hiber3d.writeEvent("TurnRightInput", {});
-      hiber3d.writeEvent("RightLaneInput", {});
+      hiber3d.writeEvent("LeftRightInput", {});
     }
-
     if (event === "SwipedUp") {
-      hiber3d.writeEvent("JumpInput", {});
+      hiber3d.print("SwipedUp");
     }
     if (event === "SwipedDown") {
-      hiber3d.writeEvent("DiveInput", {});
+      hiber3d.print("SwipedDown");
     }
-    if (event === "SwipedDown") {
-      hiber3d.writeEvent("SlideInput", {});
+    if (event === "SwipedLeft") {
+      hiber3d.print("SwipedLeft");
+    }
+    if (event === "SwipedRight") {
+      hiber3d.print("SwipedRight");
     }
   },
 });
