@@ -38,7 +38,11 @@ static void handleCancelAnimationEvent(
     Hiber3D::EventWriter<AnimationFinishedEvent>&         writer) {
     for (const auto& event : events) {
         animateds.withComponent(event.entity, [&](Hiber3D::AnimationTransition& animationTransition, Animated& animated) {
-            if (event.animationData.handle == animated.currentAnimationData.handle) {
+
+            if (animated.queuedAnimationData.has_value() && animated.queuedAnimationData.value().handle == event.animationData.handle) {
+                animated.queuedAnimationData = std::nullopt;
+			}
+            if (animated.currentAnimationData.handle == event.animationData.handle) {
 
                 const auto& newAnimationData = animated.queuedAnimationData.value_or(animated.baseAnimationData);
                 animated.queuedAnimationData = std::nullopt;

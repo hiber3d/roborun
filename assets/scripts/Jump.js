@@ -59,6 +59,7 @@
 
       if (landed) {
         hiber3d.removeComponent(this.entity, "Jumping");
+        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "fall" });
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
         hiber3d.writeEvent("LandedEvent", { entity: this.entity });
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", groundHeight);
