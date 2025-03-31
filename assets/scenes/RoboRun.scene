@@ -1,1 +1,400 @@
-{"version":"1.0.0","root":{"id":7340440,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoboRun"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/RoboRun.js"]}}],"children":[{"id":3145906,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":-0.1,"z":-10},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"StartingPlatform"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/DestroyWhenFarAwayFromPlayer.js"]}}],"children":[{"id":3145907,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":20},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":2.65,"y":1,"z":2}}},{"type":"Hiber3D::Name","data":"Platform"},{"type":"Hiber3D::SceneRoot","data":{"scene":"scenes\\segments\\SegmentStraightBase.scene"}}],"children":[]},{"id":3145902,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Room1"},{"type":"Hiber3D::SceneRoot","data":{"scene":"glbs\\rooms\\Room_straight_B.glb#scene0"}}],"children":[]},{"id":6292938,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":10},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Room2"},{"type":"Hiber3D::SceneRoot","data":{"scene":"glbs\\rooms\\Room_straight_B.glb#scene0"}}],"children":[]},{"id":6292939,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":20},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Room3"},{"type":"Hiber3D::SceneRoot","data":{"scene":"glbs\\rooms\\Room_straight_A.glb#scene0"}}],"children":[]}]},{"id":6291738,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Managers.scene"},{"type":"Hiber3D::SceneRoot","data":{"scene":"scenes\\Managers.scene"}}],"children":[]},{"id":6291905,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Player.scene"},{"type":"Hiber3D::SceneRoot","data":{"scene":"scenes\\Player.scene"}}],"children":[]},{"id":6292932,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Camera"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/FollowPlayer.js"]}}],"children":[{"id":7340715,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":4,"z":6},"rotation":{"x":-0.173648,"y":0,"z":0,"w":0.984808},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CameraComponent"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Camera.js"]}},{"type":"Hiber3D::Camera","data":{"priority":1,"fovDegrees":60,"aspect":1}}],"children":[]}]}]}}
+{
+  "version": "1.0.0",
+  "root": {
+    "id": 7340440,
+    "components": [
+      {
+        "type": "Hiber3D::Transform",
+        "data": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "type": "Hiber3D::Name",
+        "data": "RoboRun"
+      },
+      {
+        "type": "Hiber3D::ScriptInstance",
+        "data": {
+          "scripts": [
+            "scripts/state/AnimationLayers.js",
+            "scripts/state/Utils.js"
+          ]
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": 3145906,
+        "components": [
+          {
+            "type": "Hiber3D::Transform",
+            "data": {
+              "position": {
+                "x": 0,
+                "y": -0.1,
+                "z": -10
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            }
+          },
+          {
+            "type": "Hiber3D::Name",
+            "data": "StartingPlatform"
+          },
+          {
+            "type": "Hiber3D::ScriptInstance",
+            "data": {
+              "scripts": [
+                "scripts/DestroyWhenFarAwayFromPlayer.js"
+              ]
+            }
+          }
+        ],
+        "children": [
+          {
+            "id": 3145907,
+            "components": [
+              {
+                "type": "Hiber3D::Transform",
+                "data": {
+                  "position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 20
+                  },
+                  "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "w": 1
+                  },
+                  "scale": {
+                    "x": 2.65,
+                    "y": 1,
+                    "z": 2
+                  }
+                }
+              },
+              {
+                "type": "Hiber3D::Name",
+                "data": "Platform"
+              },
+              {
+                "type": "Hiber3D::SceneRoot",
+                "data": {
+                  "scene": "scenes\\segments\\SegmentStraightBase.scene"
+                }
+              }
+            ],
+            "children": [
+            ]
+          },
+          {
+            "id": 3145902,
+            "components": [
+              {
+                "type": "Hiber3D::Transform",
+                "data": {
+                  "position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "w": 1
+                  },
+                  "scale": {
+                    "x": 1,
+                    "y": 1,
+                    "z": 1
+                  }
+                }
+              },
+              {
+                "type": "Hiber3D::Name",
+                "data": "Room1"
+              },
+              {
+                "type": "Hiber3D::SceneRoot",
+                "data": {
+                  "scene": "glbs\\rooms\\Room_straight_B.glb#scene0"
+                }
+              }
+            ],
+            "children": [
+            ]
+          },
+          {
+            "id": 6292938,
+            "components": [
+              {
+                "type": "Hiber3D::Transform",
+                "data": {
+                  "position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 10
+                  },
+                  "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "w": 1
+                  },
+                  "scale": {
+                    "x": 1,
+                    "y": 1,
+                    "z": 1
+                  }
+                }
+              },
+              {
+                "type": "Hiber3D::Name",
+                "data": "Room2"
+              },
+              {
+                "type": "Hiber3D::SceneRoot",
+                "data": {
+                  "scene": "glbs\\rooms\\Room_straight_B.glb#scene0"
+                }
+              }
+            ],
+            "children": [
+            ]
+          },
+          {
+            "id": 6292939,
+            "components": [
+              {
+                "type": "Hiber3D::Transform",
+                "data": {
+                  "position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 20
+                  },
+                  "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "w": 1
+                  },
+                  "scale": {
+                    "x": 1,
+                    "y": 1,
+                    "z": 1
+                  }
+                }
+              },
+              {
+                "type": "Hiber3D::Name",
+                "data": "Room3"
+              },
+              {
+                "type": "Hiber3D::SceneRoot",
+                "data": {
+                  "scene": "glbs\\rooms\\Room_straight_A.glb#scene0"
+                }
+              }
+            ],
+            "children": [
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6291738,
+        "components": [
+          {
+            "type": "Hiber3D::Transform",
+            "data": {
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            }
+          },
+          {
+            "type": "Hiber3D::Name",
+            "data": "Managers.scene"
+          },
+          {
+            "type": "Hiber3D::SceneRoot",
+            "data": {
+              "scene": "scenes\\Managers.scene"
+            }
+          }
+        ],
+        "children": [
+        ]
+      },
+      {
+        "id": 6291905,
+        "components": [
+          {
+            "type": "Hiber3D::Transform",
+            "data": {
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            }
+          },
+          {
+            "type": "Hiber3D::Name",
+            "data": "Player.scene"
+          },
+          {
+            "type": "Hiber3D::SceneRoot",
+            "data": {
+              "scene": "scenes\\Player.scene"
+            }
+          }
+        ],
+        "children": [
+        ]
+      },
+      {
+        "id": 6292932,
+        "components": [
+          {
+            "type": "Hiber3D::Transform",
+            "data": {
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            }
+          },
+          {
+            "type": "Hiber3D::Name",
+            "data": "Camera"
+          },
+          {
+            "type": "Hiber3D::ScriptInstance",
+            "data": {
+              "scripts": [
+                "scripts/FollowPlayer.js"
+              ]
+            }
+          }
+        ],
+        "children": [
+          {
+            "id": 7340715,
+            "components": [
+              {
+                "type": "Hiber3D::Transform",
+                "data": {
+                  "position": {
+                    "x": 0,
+                    "y": 4,
+                    "z": 6
+                  },
+                  "rotation": {
+                    "x": -0.173648,
+                    "y": 0,
+                    "z": 0,
+                    "w": 0.984808
+                  },
+                  "scale": {
+                    "x": 1,
+                    "y": 1,
+                    "z": 1
+                  }
+                }
+              },
+              {
+                "type": "Hiber3D::Name",
+                "data": "CameraComponent"
+              },
+              {
+                "type": "Hiber3D::ScriptInstance",
+                "data": {
+                  "scripts": [
+                    "scripts/camera/Camera.js"
+                  ]
+                }
+              },
+              {
+                "type": "Hiber3D::Camera",
+                "data": {
+                  "priority": 1,
+                  "fovDegrees": 60,
+                  "aspect": 1
+                }
+              }
+            ],
+            "children": [
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

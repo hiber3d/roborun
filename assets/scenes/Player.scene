@@ -106,13 +106,12 @@
         "type": "Hiber3D::ScriptInstance",
         "data": {
           "scripts": [
+            "scripts/player/Player.js",
             "scripts/Running.js",
             "scripts/Jump.js",
-            "scripts/OnDeath.js",
-            "scripts/Player.js",
             "scripts/RunningAnimations.js",
             "scripts/Slide.js",
-            "scripts/Turn.js",
+            "scripts/player/Turn.js",
             "scripts/Tilt.js"
           ]
         }

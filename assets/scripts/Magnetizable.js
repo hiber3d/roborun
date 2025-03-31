@@ -1,3 +1,4 @@
+// TODO: Remove references to player after [HIB-33913]
 ({
   MAGNET_ATTRACTION_RADIUS: 7,
   MAGNET_ATTRACTION_SPEED: 30,
