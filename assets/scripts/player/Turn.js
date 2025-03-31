@@ -17,7 +17,7 @@
     if (!this.shouldRun()) {
       return;
     }
-    if (hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js")) {
+    if (hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js")) {
       regUtils.addComponentIfNotPresent(this.entity, "OnPath");
     }
     if (hiber3d.hasComponents(this.entity, "OnPath")) {
@@ -52,7 +52,7 @@
       }
     } else if (event === "ToggleAutoRunDebugInput") {
       if (DEBUG) {
-        if (hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js")) {
+        if (hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js")) {
           hiber3d.removeComponent(this.entity, "AutoRun");
         } else {
           hiber3d.addComponent(this.entity, "AutoRun");

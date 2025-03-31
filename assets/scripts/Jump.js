@@ -84,9 +84,9 @@
       return;
     }
     if (event === "JumpInput") {
-      const isAutoRunAir = hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage < 4;
+      const isAutoRunAir = hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage < 4;
       if (!hiber3d.hasComponents(this.entity, "Jumping") && !isAutoRunAir) {
-        const isAutoRunGround = hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage === 5;
+        const isAutoRunGround = hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage === 5;
         if (isAutoRunGround) {
           regUtils.removeComponentIfPresent(this.entity, "AutoRun");
         }
@@ -98,7 +98,7 @@
         hiber3d.writeEvent("JumpedEvent", { entity: this.entity });
       }
     } else if (event === "DiveInput") {
-      if (hiber3d.hasComponents(this.entity, "Jumping") && !hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js")) {
+      if (hiber3d.hasComponents(this.entity, "Jumping") && !hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js")) {
         regUtils.addComponentIfNotPresent(this.entity, "Diving");
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "jump" });
         hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", layer: ANIMATION_LAYER.ROLL, loop: true });
