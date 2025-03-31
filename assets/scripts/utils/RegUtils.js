@@ -195,11 +195,26 @@ function addOrReplaceComponent(entity, component) {
 }
 module.exports.addOrReplaceComponent = addOrReplaceComponent;
 
+function addScriptIfNotPresent(entity, script) {
+  if (hiber3d.hasScript(entity, script) === false) {
+    return hiber3d.addScript(entity, script);
+  }
+  return hiber3d.getScript(entity, script);
+}
+module.exports.addScriptIfNotPresent = addScriptIfNotPresent;
+
+function removeScriptIfPresent(entity, script) {
+  if (hiber3d.hasScript(entity, script) === true) {
+    hiber3d.removeScript(entity, script);
+  }
+}
+module.exports.removeScriptIfPresent = removeScriptIfPresent;
+
 function addOrReplaceScript(entity, script) {
   if (hiber3d.hasScript(entity, script) === true) {
     hiber3d.removeScript(entity, script);
   }
-  hiber3d.addScript(entity, script);
+  return hiber3d.addScript(entity, script);
 }
 module.exports.addOrReplaceScript = addOrReplaceScript;
 
