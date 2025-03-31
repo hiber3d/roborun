@@ -153,13 +153,15 @@
   },
   recordStats(delta) {
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
-    stats.meters += delta;
-    stats.points = stats.points + delta * stats.multiplier;
-    hiber3d.setValue(playerEntity, "Stats", stats);
+    if(this.entity === playerEntity){
+      var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
+      stats.meters += delta;
+      stats.points = stats.points + delta * stats.multiplier;
+      hiber3d.setValue(playerEntity, "Stats", stats);
 
-    const newDistanceFromCurrentStep = hiber3d.getValue("SegmentsState", "distanceFromCurrentStep") + delta;
-    hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", newDistanceFromCurrentStep);
+      const newDistanceFromCurrentStep = hiber3d.getValue("SegmentsState", "distanceFromCurrentStep") + delta;
+      hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", newDistanceFromCurrentStep);
+    }
   },
   onCreate() {
   },
@@ -203,7 +205,10 @@
       //  " fallenOff: " + JSON.stringify(fallenOff)
       //);
       if (fallenOff) {
-        hiber3d.writeEvent("KillPlayer", {}); // TODO: Make player entity agnostic
+        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+        if(this.entity === playerEntity){
+          hiber3d.writeEvent("KillPlayer", {});
+        }
 
       } else {
         // Continue in the current direction

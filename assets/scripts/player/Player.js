@@ -1,3 +1,4 @@
+// TODO: Remove after [HIB-33915]
 ({
   onCreate() {
     hiber3d.writeEvent("PlayerCreated", { entity: this.entity });

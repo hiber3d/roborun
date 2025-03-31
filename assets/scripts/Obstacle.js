@@ -1,3 +1,4 @@
+// TODO: This file will be re-written after [HIB-33451]
 ({
   shouldRun() {
     return hiber3d.getValue("GameState", "playerEntity") !== undefined &&
