@@ -1,7 +1,7 @@
 import { useApi } from "@hiber3d/web";
 import { useCallback, useEffect, useReducer } from "react";
+import { telegramUser } from "utils/telegram";
 import { Stats } from "../../build/web/src/moduleFactory";
-import { isTelegram, telegramUser } from "utils/telegram";
 
 type Score = Stats;
 type Player = {
@@ -69,9 +69,12 @@ const reducer = (state: State, action: Actions): State => {
   }
 };
 
-const loadPlayerName = () => {
-  if (isTelegram && telegramUser) {
-    return telegramUser.username;
+const loadPlayerName = (): Player => {
+  if (telegramUser?.username && telegramUser?.id) {
+    return {
+      name: telegramUser.username,
+      uuid: telegramUser.id.toString(),
+    };
   }
 
   return JSON.parse(localStorage.getItem("player") || "null");
