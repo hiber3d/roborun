@@ -18,6 +18,9 @@ export const App = () => (
         Enabled: false,
         Mode: "play",
       },
+      Assets: {
+        EnableWatcher: import.meta.env.DEV,
+      },
     }}
   >
     <AudioProvider>

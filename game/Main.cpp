@@ -39,8 +39,19 @@
 
 class MainModule : public Hiber3D::Module {
 public:
+    // TODO: Remove when we have proper config handling
+    bool enableWatcher = true;
+    MainModule(int argc, char* argv[]) {
+        for (int i = 0; i < argc; i++) {
+            if (strcmp(argv[i], "Assets.EnableWatcher=false") == 0) {
+                enableWatcher = false;
+                break;
+            }
+        }
+    }
+
     void onRegister(Hiber3D::InitContext& context) override {
-        context.registerModule<Hiber3D::AssetModule>(Hiber3D::AssetModuleSettings{.defaultReaderAssetPath = "", .defaultWriterAssetPath = "", .enableWatcher = true});
+        context.registerModule<Hiber3D::AssetModule>(Hiber3D::AssetModuleSettings{.defaultReaderAssetPath = "", .defaultWriterAssetPath = "", .enableWatcher = enableWatcher});
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::Mesh>(context);
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::StandardMaterial>(context);
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::Cubemap>(context);
@@ -88,6 +99,6 @@ public:
 };
 
 int main(int argc, char* argv[]) {
-    Hiber3D::run("GameTemplate", std::make_unique<MainModule>(), Hiber3D::ApplicationRunMode::GraphicalApp, argc, argv);
+    Hiber3D::run("GameTemplate", std::make_unique<MainModule>(argc, argv), Hiber3D::ApplicationRunMode::GraphicalApp, argc, argv);
     return 0;
 }
