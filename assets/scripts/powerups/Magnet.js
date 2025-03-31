@@ -1,17 +1,24 @@
-// TODO: Will be used after [HIB-33606] and [HIB-33679]
 ({
+  MAGNET_DURATION: 7.5,
+  OUTRO_DURATION: 2,
+  EFFECT_SCALE: 0.1,
+
+  timeSinceStarted: 0,
   shouldRun() {
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    return playerEntity !== undefined &&
-      hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
+    return !hiber3d.getValue("GameState", "paused");
   },
   onCreate() {
   },
-  update() {
+  update(dt) {
     if (!this.shouldRun()) {
       return;
     }
+
+    // Stop
+    if (this.timeSinceStarted >= this.MAGNET_DURATION) {
+      hiber3d.removeScript(this.entity, "scripts/powerups/Magnet.js");
+    }
+    this.timeSinceStarted += dt;
   },
   onEvent(event, payload) {
   }

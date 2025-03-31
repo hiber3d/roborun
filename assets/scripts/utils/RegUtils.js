@@ -138,27 +138,7 @@ function createChildToParent(parent) {
   return child;
 }
 module.exports.createChildToParent = createChildToParent;
-function addScript(entity, scriptPath) {
-  if (!hiber3d.hasComponents(entity, "Hiber3D::ScriptInstance")) {
-    hiber3d.addComponent(entity, "Hiber3D::ScriptInstance");
-  }
-  var scripts = hiber3d.getValue(entity, "Hiber3D::ScriptInstance", "scripts");
-  if(scripts === undefined) {
-    scripts = [];
-  }
-  scripts.push(scriptPath);
-  hiber3d.setValue(entity, "Hiber3D::ScriptInstance", "scripts", scripts);
 
-  // TODO: Temp, just to show in editor
-  if (!hiber3d.hasComponents(entity, "Hiber3D::Transform")) {
-    hiber3d.addComponent(entity, "Hiber3D::Transform");
-  }
-}
-module.exports.addScript = addScript;
-function removeScript(entity) {
-  hiber3d.print("ERROR, regUtils.removeScript() is not implemented yet!");
-}
-module.exports.removeScript = removeScript;
 function destroyEntity(entity) {
   if (!entity) {
     return null;
@@ -199,12 +179,14 @@ function addComponentIfNotPresent(entity, component) {
   return hiber3d.getValue(entity, component);
 }
 module.exports.addComponentIfNotPresent = addComponentIfNotPresent;
+
 function removeComponentIfPresent(entity, component) {
   if (hiber3d.hasComponents(entity, component) === true) {
     hiber3d.removeComponent(entity, component);
   }
 }
 module.exports.removeComponentIfPresent = removeComponentIfPresent;
+
 function addOrReplaceComponent(entity, component) {
   if (hiber3d.hasComponents(entity, component) === true) {
     hiber3d.removeComponent(entity, component);
@@ -212,6 +194,15 @@ function addOrReplaceComponent(entity, component) {
   hiber3d.addComponent(entity, component);
 }
 module.exports.addOrReplaceComponent = addOrReplaceComponent;
+
+function addOrReplaceScript(entity, script) {
+  if (hiber3d.hasScript(entity, script) === true) {
+    hiber3d.removeScript(entity, script);
+  }
+  hiber3d.addScript(entity, script);
+}
+module.exports.addOrReplaceScript = addOrReplaceScript;
+
 function worldToLocalPosition(entity, worldPos) {
   if (entity === undefined || worldPos === undefined) {
     return worldPos;
