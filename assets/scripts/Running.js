@@ -32,9 +32,12 @@
 
     const rotation = hiber3d.getValue(this.entity, "Hiber3D::Transform", "rotation");
     const direction = quatUtils.vectorFromQuaternion(rotation);
-    const rawFillFactor = hiber3d.hasComponents(this.entity, "Diving") || hiber3d.hasComponents(this.entity, "Sliding") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
-    const scaledHillFactor = (direction.y < 0 ? rawFillFactor : 1 / rawFillFactor);
-    speed *= Math.abs(scaledHillFactor) > 0.1 ? scaledHillFactor : 1;
+    if (direction.y !== 0) {
+    const rawHillFactor = hiber3d.hasComponents(this.entity, "Diving") || hiber3d.hasComponents(this.entity, "Sliding") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
+    const scaledHillFactor = (direction.y < 0 ? rawHillFactor : 1 / rawHillFactor);
+    const safeHillFactor = Math.abs(scaledHillFactor) > 0.01 ? scaledHillFactor : 1;
+    speed *= safeHillFactor;
+    }
 
     if (!hiber3d.hasComponents(this.entity, "OnPath")) {
       const currentStepEntity = segUtils.getCurrentStepEntity();

@@ -25,6 +25,13 @@ const STRAIGHT_ROOMS = [
   },
 ];
 
+const INCLINE_ROOMS = [
+  {
+    room: "scenes/rooms/RoomInclineA.scene",
+    probability: 1,
+  },
+];
+
 const LEFT_ROOMS = [
   {
     room: "scenes/rooms/RoomLeftA.scene",
@@ -77,6 +84,9 @@ const PICK_UP_DEPTH = {
   MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_0: 3,
   MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1: 0,
   MAX_STRAIGHTS_IN_ROW: 6, // Should not be too similar to NUM_SEGMENTS --> will cause "end-of-tunnel" visible
+
+  // Inclines
+  MAX_INCLINES_IN_A_ROW: 1,
 
   // Obstacles
   OBSTACLE_CHANCE_AT_DIFFICULTY_0: 0.25,
@@ -205,9 +215,16 @@ const PICK_UP_DEPTH = {
           ],
         },
         {
-          probability: 0.1,
+          probability: 0.25,
           segment: "scenes/segments/SegmentBridgeBase.scene",
+          tags: ["VANILLA"],
           rooms: STRAIGHT_ROOMS,
+        },
+        {
+          probability: 1,
+          segment: "scenes/segments/SegmentInclineBase.scene",
+          tags: ["VANILLA", "INCLINE"],
+          rooms: INCLINE_ROOMS,
         },
         {
           probability: 0.05,
@@ -254,6 +271,7 @@ const PICK_UP_DEPTH = {
 
   startStraightBaseCounter: 0,
   straightInARowCounter: 0,
+  inclincesInARowCounter: 0,
   obstaclelessStraightsInARowCounter: 0,
   latestSegmentSceneEntity: undefined,
   segmentIndex: 0,
@@ -328,6 +346,7 @@ const PICK_UP_DEPTH = {
     var useObstacle = false;
     var usePowerup = false;
     var useCollectible = false;
+    var allowInclines = false;
     var allowLeft = false;
     var allowRight = false;
 
@@ -357,7 +376,8 @@ const PICK_UP_DEPTH = {
     const collectibleChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_0, this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_1, difficulty);
     useCollectible = !usePowerup && collectibleChanceSuccess;
 
-    // allowLeft && allowRight
+    // allows
+    allowInclines = this.inclincesInARowCounter < this.MAX_INCLINES_IN_A_ROW;
     allowLeft = this.leftInARowCounter < 2;
     allowRight = this.rightInARowCounter < 2;
 
@@ -367,6 +387,9 @@ const PICK_UP_DEPTH = {
     if (useObstacle) {
       ignoreTags.push("SEGMENT_INCLUDES_OBSTACLE");
     }
+    if (!allowInclines) {
+      ignoreTags.push("INCLINE");
+    }
     if (!useStraight) {
       if (!allowLeft) {
         ignoreTags.push("LEFT_TURN");
@@ -374,6 +397,9 @@ const PICK_UP_DEPTH = {
       if (!allowRight) {
         ignoreTags.push("RIGHT_TURN")
       }
+    }
+    if (useObstacle || usePowerup || useCollectible) {
+      ignoreTags.push("VANILLA");
     }
     const segmentBlock = useFirstSegment ? segmentTypeBlock.segments[0] : this.getRandomElement(segmentTypeBlock.segments, ignoreTags);
     const segmentPath = segmentBlock.segment;
@@ -452,6 +478,11 @@ const PICK_UP_DEPTH = {
 
     this.straightInARowCounter = useStraight ? this.straightInARowCounter + 1 : 0;
     this.obstaclelessStraightsInARowCounter = useObstacle ? 0 : this.obstaclelessStraightsInARowCounter + 1;
+    if (this.hasTag(segmentBlock, "INCLINE")) {
+      this.inclincesInARowCounter += 1;
+    } else {
+      this.inclincesInARowCounter = 0;
+    }
     if (this.hasTag(segmentBlock, "LEFT_TURN")) {
       this.leftInARowCounter += 1;
       this.rightInARowCounter = 0;
