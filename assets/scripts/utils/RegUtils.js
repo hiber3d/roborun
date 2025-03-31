@@ -196,7 +196,7 @@ function addOrReplaceComponent(entity, component) {
 module.exports.addOrReplaceComponent = addOrReplaceComponent;
 
 function addOrReplaceScript(entity, script) {
-  if (hiber3d.hasScript(entity, script) === true) {
+  if (hiber3d.hasScripts(entity, script) === true) {
     hiber3d.removeScript(entity, script);
   }
   hiber3d.addScript(entity, script);
