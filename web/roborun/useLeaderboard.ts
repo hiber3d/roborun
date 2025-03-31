@@ -1,5 +1,6 @@
 import { useApi } from "@hiber3d/web";
 import { useCallback, useEffect, useReducer } from "react";
+import { telegramUser } from "utils/telegram";
 import { Stats } from "../../build/web/src/moduleFactory";
 
 type Score = Stats;
@@ -68,11 +69,22 @@ const reducer = (state: State, action: Actions): State => {
   }
 };
 
+const loadPlayerName = (): Player => {
+  if (telegramUser?.username && telegramUser?.id) {
+    return {
+      name: telegramUser.username,
+      uuid: telegramUser.id.toString(),
+    };
+  }
+
+  return JSON.parse(localStorage.getItem("player") || "null");
+};
+
 export const useLeaderboard = () => {
   const api = useApi();
   const [state, dispatch] = useReducer(reducer, {
     mode: "hidden",
-    player: JSON.parse(localStorage.getItem("player") || "null"),
+    player: loadPlayerName(),
     leaderboard: { leaderboard: [] },
   });
 
@@ -80,7 +92,9 @@ export const useLeaderboard = () => {
     async (player: Player, score: Score) => {
       const payload = {
         ...score,
-        multiplier: (Math.floor(score.multiplier * 10 + 0.0001) / 10).toFixed(1),
+        multiplier: (Math.floor(score.multiplier * 10 + 0.0001) / 10).toFixed(
+          1
+        ),
         points: Math.round(score.points),
         meters: Math.round(score.meters),
         ...player,
