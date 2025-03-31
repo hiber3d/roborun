@@ -20,7 +20,7 @@
   },
   onEvent(event, payload) {
     // Start sliding
-    if (event === "SlideInput" && !hiber3d.hasComponents(this.entity, "Jumping") && !hiber3d.hasComponents(this.entity, "AutoRun")) {
+    if (event === "SlideInput" && !hiber3d.hasComponents(this.entity, "Jumping") && !hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js")) {
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", layer: ANIMATION_LAYER.ROLL, loop: true });
       hiber3d.writeEvent("BroadcastSlided", {})
       regUtils.addComponentIfNotPresent(this.entity, "Sliding");

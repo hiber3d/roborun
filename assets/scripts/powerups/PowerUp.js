@@ -12,7 +12,6 @@
     if (path === undefined) {
       hiber3d.print("PowerUp.js - getScriptPath() - Unknown power-up name: " + name);
     }
-    hiber3d.print("PowerUp.js: Adding power-up to player: '" + name+"'");
     return path;
   },
   shouldRun() {
@@ -31,8 +30,7 @@
 
       const playerEntity = hiber3d.getValue("GameState", "playerEntity");
       const scriptPath = this.getScriptPath();
-      regUtils.addScript(playerEntity, scriptPath);
-
+      regUtils.addOrReplaceScript(playerEntity, scriptPath);
 
       // Destroy this power-up
       regUtils.destroyEntity(this.entity);

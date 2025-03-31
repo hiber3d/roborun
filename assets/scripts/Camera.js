@@ -30,7 +30,7 @@
       return;
     }
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    const hasAutoRun = hiber3d.hasComponents(playerEntity, "AutoRun") && hiber3d.getValue(playerEntity, "AutoRun", "stage") < 5;
+    const hasAutoRun = hiber3d.hasScript(playerEntity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(playerEntity, "scripts/powerups/AutoRun.js").stage < 4;
 
     // FoV
     if (hasAutoRun) {

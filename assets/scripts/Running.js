@@ -26,7 +26,7 @@
     if (hiber3d.hasComponents(this.entity, "Jumping")) {
       speed *= Math.max(0, Math.pow(this.RUN_AIR_FACTOR, hiber3d.getValue(this.entity, "Jumping", "timeSinceJumped")));
     }
-    if (hiber3d.hasComponents(this.entity, "AutoRun") && hiber3d.getValue(this.entity, "AutoRun", "stage") < 5) {
+    if (hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage < 4) {
       speed *= this.AUTO_RUN_FACTOR;
     }
 
@@ -168,7 +168,7 @@
       return;
     }
 
-    const isOnPath = hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasComponents(this.entity, "AutoRun");
+    const isOnPath = hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js");
     const speed = this.getSpeed();
     this.recordStats(speed * dt);
     const spline = this.getSpline();
@@ -181,7 +181,7 @@
       const tiltedPosition = vectorUtils.addVectors(spline.position, tiltOffset);
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", tiltedPosition);
 
-      const rotationPostPotentialAutoRun = hiber3d.hasComponents(this.entity, "AutoRun") ? quatUtils.flattenQuaternion(spline.rotation) : spline.rotation;
+      const rotationPostPotentialAutoRun = hiber3d.hasScript(this.entity, "scripts/powerups/AutoRun.js") ? quatUtils.flattenQuaternion(spline.rotation) : spline.rotation;
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", rotationPostPotentialAutoRun);
 
     } else {

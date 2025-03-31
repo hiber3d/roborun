@@ -8,14 +8,12 @@
   AUTO_RUN_MAX_HEIGHT: 3.5,
   AUTO_RUN_DIP_HEIGHT_DIFF: 0.5, // 0.5 --> will dip from MAX_HEIGHT down to MAX_HEIGHT - 0.5
 
-  // OBS: Duplicate in PathTypes.hpp
   STAGE: {
-    UNDEFINED: 0,
-    ASCEND: 1,
-    MAX_HEIGHT: 2,
-    DIP: 3,
-    DESCEND: 4,
-    GROUNDED: 5
+    ASCEND: 0,
+    MAX_HEIGHT: 1,
+    DIP: 2,
+    DESCEND: 3,
+    GROUNDED: 4
   },
 
   // Assigned in onCreate()
@@ -32,27 +30,30 @@
   groundedEnd: 0,
   end: 0,
 
+  stage: 0,
+  startingHeight: 0,
+  startingGroundHeight: 0,
+  timeSinceStarted: 0,
+
   shouldRun() {
     return !hiber3d.getValue("GameState", "paused");
   },
-  getAutoRunStage() {
-    const timeSinceStarted = hiber3d.getValue(this.entity, "AutoRun", "timeSinceStarted");
-    if (timeSinceStarted < this.ascendEnd) {
-      return this.STAGE.ASCEND;
+  updateStage() {
+    if (this.timeSinceStarted < this.ascendEnd) {
+      this.stage = this.STAGE.ASCEND;
     }
-    if (timeSinceStarted < this.maxHeightEnd) {
-      return this.STAGE.MAX_HEIGHT;
+    else if (this.timeSinceStarted < this.maxHeightEnd) {
+      this.stage = this.STAGE.MAX_HEIGHT;
     }
-    if (timeSinceStarted < this.dipEnd) {
-      return this.STAGE.DIP;
+    else if (this.timeSinceStarted < this.dipEnd) {
+      this.stage = this.STAGE.DIP;
     }
-    if (timeSinceStarted < this.descendEnd) {
-      return this.STAGE.DESCEND;
+    else if (this.timeSinceStarted < this.descendEnd) {
+      this.stage = this.STAGE.DESCEND;
     }
-    if (timeSinceStarted < this.end) {
-      return this.STAGE.GROUNDED;
+    else if (this.timeSinceStarted < this.end) {
+      this.stage = this.STAGE.GROUNDED;
     }
-    return this.STAGE.UNDEFINED;
   },
   getGroundHeight() {
     if (hiber3d.hasComponents(this.entity, "SplineData")) {
@@ -61,19 +62,17 @@
     return 0;
   },
   getAutoRunHeight(stage) {
-    const timeSinceStarted = hiber3d.getValue(this.entity, "AutoRun", "timeSinceStarted");
-    const startingHeight = hiber3d.getValue(this.entity, "AutoRun", "startingHeight");
     if (stage === this.STAGE.ASCEND) {
-      return scalarUtils.lerpScalar(startingHeight, this.AUTO_RUN_MAX_HEIGHT, timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
+      return scalarUtils.lerpScalar(this.startingHeight, this.AUTO_RUN_MAX_HEIGHT, this.timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
     }
     if (stage === this.STAGE.MAX_HEIGHT) {
       return this.AUTO_RUN_MAX_HEIGHT;
     }
     if (stage === this.STAGE.DIP) {
-      return scalarUtils.lerpScalar(this.AUTO_RUN_MAX_HEIGHT, this.AUTO_RUN_MAX_HEIGHT - this.AUTO_RUN_DIP_HEIGHT_DIFF, (timeSinceStarted - this.dipStart) / this.AUTO_RUN_DIP_DURATION);
+      return scalarUtils.lerpScalar(this.AUTO_RUN_MAX_HEIGHT, this.AUTO_RUN_MAX_HEIGHT - this.AUTO_RUN_DIP_HEIGHT_DIFF, (this.timeSinceStarted - this.dipStart) / this.AUTO_RUN_DIP_DURATION);
     }
     if (stage === this.STAGE.DESCEND) {
-      return scalarUtils.lerpScalar(this.AUTO_RUN_MAX_HEIGHT - this.AUTO_RUN_DIP_HEIGHT_DIFF, this.getGroundHeight(), (timeSinceStarted - this.descendStart) / this.AUTO_RUN_DESCEND_DURATION);
+      return scalarUtils.lerpScalar(this.AUTO_RUN_MAX_HEIGHT - this.AUTO_RUN_DIP_HEIGHT_DIFF, this.getGroundHeight(), (this.timeSinceStarted - this.descendStart) / this.AUTO_RUN_DESCEND_DURATION);
     }
     if (stage === this.STAGE.GROUNDED) {
       return this.getGroundHeight();
@@ -82,8 +81,6 @@
     return 0;
   },
   onCreate() {
-    regUtils.addComponentIfNotPresent(this.entity, "AutoRun");
-
     this.start = 0;
     this.ascendStart = this.start;
     this.ascendEnd = this.start + this.AUTO_RUN_ASCEND_DURATION;
@@ -96,44 +93,33 @@
     this.groundedStart = this.descendEnd;
     this.groundedEnd = this.groundedStart + this.AUTO_RUN_DESCEND_GROUNDED_DURATION;
     this.end = this.AUTO_RUN_DURATION;
+
+    hiber3d.writeEvent("BroadcastPowerupPickup", {});
+    hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
+    this.startingHeight = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position", "y");
+    this.startingGroundHeight = this.getGroundHeight();
   },
   update(dt) {
     if (!this.shouldRun()) {
       return;
     }
-    const timeSinceStarted = hiber3d.getValue(this.entity, "AutoRun", "timeSinceStarted");
-    hiber3d.setValue(this.entity, "AutoRun", "timeSinceStarted", timeSinceStarted + dt);
+    
+    this.timeSinceStarted += dt;
+    this.updateStage();
 
-    // Started auto-running
-    if (timeSinceStarted === 0) {
-      hiber3d.writeEvent("BroadcastPowerupPickup", {});
-      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
-      const startingHeight = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position", "y");
-      hiber3d.setValue(this.entity, "AutoRun", "startingHeight", startingHeight);
-      hiber3d.setValue(this.entity, "AutoRun", "startingGroundHeight", this.getGroundHeight());
-      isAutoRunning = true;
-    }
-
-    const newStage = this.getAutoRunStage();
-    hiber3d.setValue(this.entity, "AutoRun", "stage", newStage);
-
-    if (timeSinceStarted >= this.end) { // End auto-running
-      regUtils.removeComponentIfPresent(this.entity, "AutoRun");
+    if (this.timeSinceStarted >= this.end) { // End auto-running
       hiber3d.removeScript(this.entity, "scripts/powerups/AutoRun.js");
-      hiber3d.print("AutoRun.js: Removing AutoRun component and script on player");
-      isAutoRunning = false;
 
     } else { // Continue auto-running
 
-      if (newStage == this.STAGE.GROUNDED) { // "Land"
+      if (this.stage == this.STAGE.GROUNDED) { // "Land"
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "autoRun" });
       }
 
-      const newHeight = this.getAutoRunHeight(newStage);
-      const startingGroundHeight = hiber3d.getValue(this.entity, "AutoRun", "startingGroundHeight");
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", startingGroundHeight + newHeight);
+      const newHeight = this.getAutoRunHeight(this.stage);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", this.startingGroundHeight + newHeight);
     }
-
+    
   },
   onEvent(event, payload) {
   }

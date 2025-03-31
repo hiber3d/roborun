@@ -13,7 +13,7 @@
       return;
     }
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    if (collisionUtils.collidesWithPlayer(this.entity, 0.4) && !hiber3d.hasComponents(playerEntity, "AutoRun")) {
+    if (collisionUtils.collidesWithPlayer(this.entity, 0.4) && !hiber3d.hasScript(playerEntity, "scripts/powerups/AutoRun.js")) {
       hiber3d.writeEvent("KillPlayer", {});
     }
   },
