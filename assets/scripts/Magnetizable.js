@@ -16,7 +16,7 @@
       return;
     }
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    const playerHasMagnet = hiber3d.hasScript(playerEntity, "scripts/powerups/Magnet.js");
+    const playerHasMagnet = hiber3d.hasScripts(playerEntity, "scripts/powerups/Magnet.js");
     if (playerHasMagnet && collisionUtils.collidesWithPlayerFlat(this.entity, this.MAGNET_ATTRACTION_RADIUS)) {
 
       const worldPosition = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position");
