@@ -7,6 +7,7 @@ export const Mute = () => {
   const isMuted = music.isMuted && sfx.isMuted;
 
   const toggleMute = () => {
+    // if any is unmuted due to unsync with local storage, we mute all. better to mute one time too many
     const shouldMute = !music.isMuted || !sfx.isMuted;
     music.mute(shouldMute);
     sfx.mute(shouldMute);
