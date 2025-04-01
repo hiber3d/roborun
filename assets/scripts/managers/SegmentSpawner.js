@@ -1,26 +1,26 @@
 const STRAIGHT_ROOMS = [
   {
-    room: "scenes/rooms/RoomStraightA.scene",
+    room: "scenes/roomsNEW/RoomStraightA.scene",
     probability: 0.2,
   },
   {
-    room: "scenes/rooms/RoomStraightB.scene",
+    room: "scenes/roomsNEW/RoomStraightB.scene",
     probability: 0.2,
   },
   {
-    room: "scenes/rooms/RoomStraightC.scene",
+    room: "scenes/roomsNEW/RoomStraightC.scene",
     probability: 0.2,
   },
   {
-    room: "scenes/rooms/RoomStraightD.scene",
+    room: "scenes/roomsNEW/RoomStraightD.scene",
     probability: 0.2,
   },
   {
-    room: "scenes/rooms/RoomStraightE.scene",
+    room: "scenes/roomsNEW/RoomStraightE.scene",
     probability: 0.1,
   },
   {
-    room: "scenes/rooms/RoomStraightF.scene",
+    room: "scenes/roomsNEW/RoomStraightF.scene",
     probability: 0.1,
   },
 ];
@@ -34,14 +34,14 @@ const INCLINE_ROOMS = [
 
 const LEFT_ROOMS = [
   {
-    room: "scenes/rooms/RoomLeftA.scene",
+    room: "scenes/roomsNEW/RoomTurnLeftA.scene",
     probability: 1,
   },
 ];
 
 const RIGHT_ROOMS = [
   {
-    room: "scenes/rooms/RoomRightA.scene",
+    room: "scenes/roomsNEW/RoomTurnRightA.scene",
     probability: 1,
   },
 ];
