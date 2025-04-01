@@ -28,6 +28,7 @@
 #include <Hiber3D/Renderer/Light.hpp>
 #include <Hiber3D/Renderer/RenderModule.hpp>
 #include <Hiber3D/Scene/SceneModule.hpp>
+#include <Hiber3D/Scene/SceneManager.hpp>
 #include <Hiber3D/Scene/SceneManagerModule.hpp>
 #include <Hiber3D/Skinning/SkinningModule.hpp>
 #include <Hiber3D/Scripting/ScriptInstance.hpp>
@@ -85,6 +86,7 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justPressed(key); }>(context, "keyJustPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::AssetHandle<Hiber3D::Scene> assetHandle) {registry.singleton<Hiber3D::SceneManager>().changeScene(assetHandle);}>(context, "changeScene");
 
         context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorSettings{.startInPlayMode = true});
 
