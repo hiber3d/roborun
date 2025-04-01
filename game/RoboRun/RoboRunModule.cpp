@@ -94,10 +94,11 @@ void loadEnvironment(
 
 static void handleRestartGame(
     Hiber3D::EventView<RestartGame>           events,
+    Hiber3D::Singleton<Hiber3D::AssetServer>  assetServer,
     Hiber3D::Singleton<Hiber3D::SceneManager> sceneManager,
     Hiber3D::EventWriter<GameRestarted>&      writer) {
     for (const auto& event : events) {
-        sceneManager->changeScene(sceneManager->getCurrentScene());
+        sceneManager->changeScene(assetServer->load<Hiber3D::Scene>("scenes/RoboRun.scene"));
         writer.writeEvent({});
         return;
     }

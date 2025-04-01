@@ -1,5 +1,16 @@
-// TODO: This file will be re-written after [HIB-33451]
 ({
+  // TODO: Temorary solution until we can save modified script values in editor
+  OBSTACLE_TYPES: {
+    "Blockage": "scenes/deaths/Blockage.scene"
+  },
+  getDeathScenePath() {
+    const name = hiber3d.getValue(this.entity, "Hiber3D::Name");
+    const path = this.OBSTACLE_TYPES[name];
+    if (path === undefined) {
+      hiber3d.print("PowerUp.js - getDeathScenePath() - Unknown death scene name: " + name);
+    }
+    return path;
+  },
   shouldRun() {
     return hiber3d.getValue("GameState", "playerEntity") !== undefined &&
       hiber3d.hasComponents(hiber3d.getValue("GameState", "playerEntity"), "Hiber3D::ComputedWorldTransform") &&
@@ -13,9 +24,15 @@
     if (!this.shouldRun()) {
       return;
     }
+
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
     if (collisionUtils.collidesWithPlayer(this.entity, 0.4) && !hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
       hiber3d.writeEvent("KillPlayer", {});
+
+      const deathScenePath = this.getDeathScenePath();
+      if (deathScenePath !== undefined) {
+        hiber3d.call("changeScene", deathScenePath);
+      }
     }
   },
   onEvent(event, payload) {
