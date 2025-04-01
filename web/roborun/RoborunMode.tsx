@@ -1,10 +1,11 @@
+import { useMusicMultiTracks } from "audio/useMusicMultiTracks";
+import { useSoundEffects } from "audio/useSoundEffects";
 import { AnimatePresence } from "framer-motion";
 import { LeaderboardContent } from "./LeaderboardContent";
 import { RoborunUI } from "./RoborunUI";
 import { useLeaderboard } from "./useLeaderboard";
 import { useTouchControls } from "./useTouchControls";
-import { useSoundEffects } from "audio/useSoundEffects";
-import { useMusicMultiTracks } from "audio/useMusicMultiTracks";
+import { Mute } from "./Mute";
 
 const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;
@@ -32,6 +33,7 @@ export const RoborunMode = () => {
         state={state}
         onSubmitName={submitForm}
       />
+      <Mute />
     </AnimatePresence>
   );
 };
