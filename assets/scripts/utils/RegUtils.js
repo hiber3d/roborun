@@ -195,11 +195,18 @@ function addOrReplaceComponent(entity, component) {
 }
 module.exports.addOrReplaceComponent = addOrReplaceComponent;
 
+function removeScriptIfPresent(entity, script) {
+  if (hiber3d.hasScripts(entity, script) === true) {
+    hiber3d.removeScript(entity, script);
+  }
+}
+module.exports.removeScriptIfPresent = removeScriptIfPresent;
+
 function addOrReplaceScript(entity, script) {
   if (hiber3d.hasScripts(entity, script) === true) {
     hiber3d.removeScript(entity, script);
   }
-  hiber3d.addScript(entity, script);
+  return hiber3d.addScript(entity, script);
 }
 module.exports.addOrReplaceScript = addOrReplaceScript;
 
