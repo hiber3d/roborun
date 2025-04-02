@@ -91,6 +91,9 @@
     this.groundedStart = this.descendEnd;
     this.groundedEnd = this.groundedStart + this.AUTO_RUN_DESCEND_GROUNDED_DURATION;
     this.end = this.AUTO_RUN_DURATION;
+    
+    hiber3d.addEventListener(this.entity, "DivedEvent");
+    hiber3d.addEventListener(this.entity, "JumpedEvent");
 
     hiber3d.writeEvent("BroadcastPowerupPickup", {});
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
@@ -118,5 +121,11 @@
     
   },
   onEvent(event, payload) {
+    // Cancel AutoRun if jumping or diving
+    if(event === "JumpedEvent" || event === "DivedEvent"){
+      if(payload.entity === this.entity){
+        hiber3d.removeScript(this.entity, "scripts/powerups/AutoRun.js");
+      }
+    }
   }
 });
