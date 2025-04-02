@@ -58,7 +58,7 @@ static void handlePlayerCreated(
         loadAnimation(assetServer, "slide", 1, animationLoadout, 0.1f, 0.2f, 1.0f);
         loadAnimation(assetServer, "dive", 1, animationLoadout, 0.05f, 0.15f, 1.0f);
         loadAnimation(assetServer, "dying", 2, animationLoadout, 0.1f, std::nullopt, 0.75f);
-        loadAnimation(assetServer, "fall", 3, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        loadAnimation(assetServer, "fall", 3, animationLoadout, 0.1f, std::nullopt, 1.0f);
         loadAnimation(assetServer, "autoRun", 4, animationLoadout, 0.3f, std::nullopt, 1.0f);
 
         loadAnimation(assetServer, "jump", 5, animationLoadout, 0.0f, std::nullopt, 1.0f);
