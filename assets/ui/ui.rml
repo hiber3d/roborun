@@ -5,91 +5,85 @@
             
             body {
                 font-family: Roboto;
-                width: 40%;
-                font-size: 2.5em;
-                margin: auto;
-                margin-top: 40%;
-                /* background: rgb(6, 255, 48); */
-                color: #000;
-                padding: 0;
-                /* margin-left: 0; */
-                /* margin-top: 0; */
-                text-align: center;
-                /* box-shadow: #f00f  40px  30px 25px 0px; */
-                /* transform: scale(1.0); */
-            }
-
-            .outer-health-bar {
-                display: block;
-                width: 100%;
-                height: 50px;
-                background-color: #ff0000;
-                border-radius: 10px;
+                font-size: 50px;
+                font-weight: bold;
+                margin-top: 50px;
+                margin-left: 50px;
             }
             .green {
                 background-color: #00ff00;
-                height: 20px;
-                width: 20px;
+                font-size: 50px;
             }
-
             .red {
                 background-color: #ff0000;
-                height: 20px;
-                width: 20px;
+                font-size: 50px;
+            }
+            .multiplier-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 10%;
+                border-radius: 8px;
+                overflow: hidden;
+                width: 108px;
+                
+            }
+            .rounded-top {
+                border-radius: 12px 12px 0 0;
+            }
+            .rounded-bottom {
+                border-radius: 0 0 12px 12px;
             }
 
-            .inner-health-bar {
-                display: block;
-                width: 50%;
-                height: 100%;
-                background-color: #a4f4cf;
-                /* background-color: #009966; */
-                /* background-color: #00d492; */
-                border-radius: 10px;
-                transition: all 1.6s elastic-in-out 0;
+            .multiplier-bar {
+                background:#002D22;
+                height: 32px;
+                border: 1px #00d492;
+                
+                
             }
-
-            #test {
-                display: block;
-                color: rgb(14, 14, 14);
-                transform: scale(1.2) skew(-30deg, 0deg);
-                transition: all 1.6s elastic-out 0;
-                margin-top: -50px;
+            .filled {
+                background: #00BC7C
             }
-
-            .outer-health-bar:hover > #test {
-                color: #0f0;
-                transform: rotate(90deg) scale(2.5);
+            .ui {
+                display: flex;
+                gap: 40px;
+                margin-bottom: 16px;
             }
-
-            progress.horizontal {
-                margin-top: 10px;
-                width: 100%;
-                height: 50px;
-                background-color: #04110b;
-                transition: all 1.6s elastic-in-out 0;
+            .points {
+                font-size:100px;
             }
-
-            .horizontal fill {
-                background: #369536;
-                /* padding ensures that the decorator has a minimum width when the value is zero */
+            .points-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            h2 {
+                font-size: 50px;
             }
         </style>
 
         
     </head>
-    <body>
-        <div>
-            ROBORUN
-            <div class="outer-health-bar" data-model="stats_model">
-                <span class="green" id="test">points: {{ points }}</span> 
-                <span class="red" id="test">meters: {{ meters }}</span>
-                <span class="green" id="test">multiplier: {{ multiplier }}</span>
-                <span class="red" id="test">collectibles: {{ collectibles }}</span>
+    <body data-model="stats_model">
+        <div class="ui">
+            <div class="multiplier-container">
+                <div class="multiplier-bar rounded-top" data-class-filled="multiplierProgress > 9"></div>
+                <div class="multiplier-bar" data-class-filled="multiplierProgress > 8"></div>
+                <div class="multiplier-bar" data-class-filled="multiplierProgress > 7"></div>
+                <div class="multiplier-bar" data-class-filled="multiplierProgress > 6"></div>
+                <div class="multiplier-bar" data-class-filled="multiplierProgress > 5"></div>
+                <div class="multiplier-bar" data-class-filled="multiplierProgress > 4"></div>
+                <div class="multiplier-bar" data-class-filled="multiplierProgress > 3"></div>
+                <div class="multiplier-bar" data-class-filled="multiplierProgress > 2"></div>
+                <div class="multiplier-bar rounded-bottom " data-class-filled="multiplierProgress > 1"></div>
             </div>
-
-            
-          
+            <div class="points-container">
+                <h1 class="points" id="test">{{ points }}</h1> 
+                <h2 id="test">{{ meters }} meters</h2>
+                <h2 id="test">{{ collectibles }} collectibles</h2>
+            </div>
         </div>
+        <div>x{{ multiplier }}</div>
     </body>
 </rml>
