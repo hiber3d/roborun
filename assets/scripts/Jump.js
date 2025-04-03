@@ -67,7 +67,8 @@
     }
     if (event === "JumpInput") {
       const isAutoRunAir = hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage < 4;
-      if (!hiber3d.hasComponents(this.entity, "Jumping") && !isAutoRunAir) {
+      const isInAir = this.getIsInAir(hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y"));
+      if (!hiber3d.hasComponents(this.entity, "Jumping") && !isAutoRunAir && !isInAir) {
         const isAutoRunGround = hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage === 4;
         if (isAutoRunGround) {
           regUtils.removeScriptIfPresent(this.entity, "scripts/powerups/AutoRun.js");
