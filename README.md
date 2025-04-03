@@ -55,3 +55,9 @@ If you only want to compile the C++ code you can run:
 - WebGL only:
   - `npm run compile:webgl`
   - `npm run compile:webgl:release`
+
+## Working with GLBs
+
+1. Add / remove / modify GLBs in `input_glbs`
+2. Run `npm run pack`
+3. Commit and push

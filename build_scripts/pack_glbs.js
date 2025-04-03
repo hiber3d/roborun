@@ -10,9 +10,11 @@ const execFileAsync = util.promisify(execFile);
 const inputDir = "./input_glbs";
 const outputDir = "./assets/glbs";
 const gltfpackArgs = ["-tc", "-tq", "10", "-cc", "-noq", "-kn", "-km"];
-const gltfpackPath =
+const gltfpackPath = 
   os.platform() === "win32"
     ? "./build_scripts/gltfpack.exe"
+    : os.platform() === "darwin"
+    ? "./build_scripts/gltfpack-mac"
     : "./build_scripts/gltfpack";
 
 // Concurrency limit (how many parallel conversions you want at once):
