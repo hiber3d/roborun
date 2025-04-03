@@ -2,6 +2,7 @@ const KEYS = {
   START: 41, // W
   PAUSE: 40, // V
   UNPAUSE: 40, // V
+  RESTART: 36, // V
 
   JUMP: 1, // SPACE
   DIVE: 37, // S
@@ -53,14 +54,14 @@ const KEYS = {
     if (hiber3d.call("keyJustPressed", KEYS.TURN_RIGHT)) {
       hiber3d.writeEvent("RightLaneInput", {});
     }
-    if (hiber3d.call("keyJustPressed", KEYS.TOGGLE_AUTO_TURN_DEBUG)) {
-      hiber3d.writeEvent("ToggleAutoRunDebugInput", {});
+    if (hiber3d.call("keyJustPressed", KEYS.RESTART)) {
+      hiber3d.writeEvent("RestartInput", {});
     }
   },
   onEvent(event, payload) {
     // Touch events
 
-    // Start game on any non-tilt touch input
+    // Start game on any touch input
     if (hiber3d.getValue("GameState", "paused") === true) {
       hiber3d.writeEvent("StartInput", {});
       return;

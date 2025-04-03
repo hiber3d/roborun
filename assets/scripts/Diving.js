@@ -12,12 +12,6 @@
       !hiber3d.getValue("GameState", "paused") &&
       segUtils.getCurrentStepEntity() !== undefined;
   },
-  getGroundHeight(){
-    return hiber3d.hasComponents(this.entity, "SplineData") ? hiber3d.getValue(this.entity, "SplineData", "position").y : 0;
-  },
-  getIsInAir(height){
-      return height > this.getGroundHeight();
-  },
   getDeltaHeight() {
     return Math.min(1, 1 - Math.pow(1 + this.DIVE_SPEED_BASE, this.timeSpentDivingInAir * this.DIVE_SPEED_ACCELERATION));
   },
@@ -38,22 +32,22 @@
       return;
     }
 
-    if (this.getIsInAir(hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y"))) {
+    if (roboRunUtils.isInAir(this.entity, hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y"))) {
       const newDeltaHeight = this.getDeltaHeight();
       const newDiveHeight = this.diveStartHeight + newDeltaHeight;
 
-      if (this.getIsInAir(newDiveHeight)) {
+      if (roboRunUtils.isInAir(this.entity, newDiveHeight)) {
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newDiveHeight);
       } else {
         // landed
         hiber3d.writeEvent("LandedEvent", { entity: this.entity });
-        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", this.getGroundHeight());
+        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
       }
 
       this.timeSpentDivingInAir += dt;
     } else {
       this.timeSpentDivingOnGround += dt;
-        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", this.getGroundHeight());
+        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
       if (this.timeSpentDivingOnGround >= this.DIVE_DURATION) {
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "dive" });
         hiber3d.removeScript(this.entity, "scripts/Diving.js");
