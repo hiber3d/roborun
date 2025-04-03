@@ -24,8 +24,7 @@
   onCreate() {
     hiber3d.addEventListener(this.entity, "DiveInput");
     
-    regUtils.addOrReplaceComponent(this.entity, "Diving");
-    regUtils.removeComponentIfPresent(this.entity, "Jumping");
+    regUtils.removeScriptIfPresent(this.entity, "scripts/Jumping.js");
     regUtils.removeScriptIfPresent(this.entity, "scripts/powerups/AutoRun.js");
 
     this.diveStartHeight = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y");
@@ -57,7 +56,6 @@
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", this.getGroundHeight());
       if (this.timeSpentDivingOnGround >= this.DIVE_DURATION) {
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "dive" });
-        hiber3d.removeComponent(this.entity, "Diving");
         hiber3d.removeScript(this.entity, "scripts/Diving.js");
       }
     }

@@ -23,8 +23,9 @@
   getSpeed() {
     var speed = this.RUN_SPEED;
 
-    if (hiber3d.hasComponents(this.entity, "Jumping")) {
-      speed *= Math.max(0, Math.pow(this.RUN_AIR_FACTOR, hiber3d.getValue(this.entity, "Jumping", "timeSinceJumped")));
+    const jumpingScript = hiber3d.getScript(this.entity, "scripts/Jumping.js");
+    if (jumpingScript !== undefined && jumpingScript.timeSinceJumped !== undefined) {
+      speed *= Math.max(0, Math.pow(this.RUN_AIR_FACTOR, jumpingScript.timeSinceJumped));
     }
     if (hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage < 4) {
       speed *= this.AUTO_RUN_FACTOR;
@@ -33,7 +34,7 @@
     const rotation = hiber3d.getValue(this.entity, "Hiber3D::Transform", "rotation");
     const direction = quatUtils.vectorFromQuaternion(rotation);
     if (direction.y !== 0) {
-    const rawHillFactor = hiber3d.hasComponents(this.entity, "Diving") || hiber3d.hasComponents(this.entity, "Sliding") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
+    const rawHillFactor = hiber3d.hasScripts(this.entity, "scripts/Diving.js") || hiber3d.hasScripts(this.entity, "scripts/Sliding.js") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
     const scaledHillFactor = (direction.y < 0 ? rawHillFactor : 1 / rawHillFactor);
     const safeHillFactor = Math.abs(scaledHillFactor) > 0.01 ? scaledHillFactor : 1;
     speed *= safeHillFactor;
@@ -167,7 +168,7 @@
     }
   },
   isSettingHeightAvailable(){
-    return !hiber3d.hasComponents(this.entity, "Jumping") &&
+    return !hiber3d.hasScripts(this.entity, "scripts/Jumping.js") &&
     !hiber3d.hasScripts(this.entity, "scripts/Diving.js") &&
     !hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js");
   },
