@@ -1,0 +1,54 @@
+<rml>
+    <head>
+        <style>
+            @keyframes grow {
+                0% { transform: scale(10); opacity: 0; border: 2px rgb(255, 215, 215) }
+                50% { transform: scale(5); opacity: 0.7; }
+                100% { transform: scale(0.1); opacity: 1; border: 2px rgb(255, 0, 0) }
+            }
+            body {
+                font-family: Roboto;
+                margin-top: 65%;
+                margin-left: 50%;
+                transform: translate(-50%, -50%);
+                height: 100px;
+                width: 100px;
+                display: none;
+            }
+            .show {
+                display: block;
+            }
+            .circle {
+                position: absolute;
+                display: block;
+                height: 100px;
+                width: 100px;
+                border-radius: 999999px;
+                animation: 1s quartic infinite forwards grow;
+            }
+            .animation-delay-1 {
+                animation: 1s 0.1s quartic infinite forwards grow;
+            }
+            .animation-delay-2 {
+                animation: 1s 0.2s quartic infinite forwards grow;
+            }
+            .animation-delay-3 {
+                animation: 1s 0.3s quartic infinite forwards grow;
+            }
+            .animation-delay-4 {
+                animation: 1s 0.4s quartic infinite forwards grow;
+            }
+            .animation-delay-5 {
+                animation: 1s 0.5s quartic infinite forwards grow;
+            }
+        </style>
+    </head>
+    <body data-class-show="visible == 1" data-model="magnet_model">
+        {{ visible }}
+        <div class="circle animation-delay-1" width="123"></div>
+        <div class="circle animation-delay-2" width="123"></div>
+        <div class="circle animation-delay-3" width="123"></div>
+        <div class="circle animation-delay-4" width="123"></div>
+        <div class="circle animation-delay-5" width="123"></div>
+    </body>
+</rml>
