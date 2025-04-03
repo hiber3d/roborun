@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Directory that contains glTF files
-INPUT_DIR="assets/input_glbs"
+INPUT_DIR="input_glbs"
 
 # Output directory
 OUTPUT_DIR="assets/glbs"
@@ -19,7 +19,7 @@ find "$INPUT_DIR" -type f -name "*.glb" | while read -r file; do
     mkdir -p "$(dirname "$out")"
 
     # Run gltfpack with desired arguments
-    ./build_scripts/gltfpack -i "$file" -tc -tq 10 -cc -mm -noq -o "$out"
+    ./build_scripts/gltfpack -i "$file" -tc -tq 10 -cc -noq -o "$out"
 
     echo "Converted: $file -> $out"
 done
