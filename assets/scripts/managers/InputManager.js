@@ -32,19 +32,19 @@ const KEYS = {
     if (hiber3d.call("keyJustPressed", KEYS.UNPAUSE) && hiber3d.getValue("GameState", "paused")) {
       hiber3d.writeEvent("UnpauseInput", {});
     }
-    if (hiber3d.call("keyIsPressed", KEYS.JUMP)) {
+    if (hiber3d.call("keyJustPressed", KEYS.JUMP)) {
       hiber3d.writeEvent("JumpInput", {});
     }
-    if (hiber3d.call("keyIsPressed", KEYS.DIVE)) {
+    if (hiber3d.call("keyJustPressed", KEYS.DIVE)) {
       hiber3d.writeEvent("DiveInput", {});
     }
     if (hiber3d.call("keyJustPressed", KEYS.SLIDE)) {
       hiber3d.writeEvent("SlideInput", {});
     }
-    if (hiber3d.call("keyIsPressed", KEYS.TURN_LEFT)) {
+    if (hiber3d.call("keyJustPressed", KEYS.TURN_LEFT)) {
       hiber3d.writeEvent("TurnLeftInput", {});
     }
-    if (hiber3d.call("keyIsPressed", KEYS.TURN_RIGHT)) {
+    if (hiber3d.call("keyJustPressed", KEYS.TURN_RIGHT)) {
       hiber3d.writeEvent("TurnRightInput", {});
     }
     if (hiber3d.call("keyJustPressed", KEYS.TURN_LEFT)) {
