@@ -47,7 +47,6 @@
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newDiveHeight);
       } else {
         // landed
-        regUtils.removeComponentIfPresent(this.entity, "Diving");
         hiber3d.writeEvent("LandedEvent", { entity: this.entity });
         hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", this.getGroundHeight());
       }
