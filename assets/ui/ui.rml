@@ -2,7 +2,6 @@
     <head>
         <title>Demo</title>
         <style>
-            
             body {
                 font-family: Roboto;
                 font-size: 50px;
@@ -38,9 +37,7 @@
             .multiplier-bar {
                 background:#002D22;
                 height: 32px;
-                border: 1px #00d492;
-                
-                
+                border: 1px #00d492;                
             }
             .filled {
                 background: #00BC7C
@@ -68,15 +65,15 @@
     <body data-model="stats_model">
         <div class="ui">
             <div class="multiplier-container">
-                <div class="multiplier-bar rounded-top" data-class-filled="multiplierProgress > 9"></div>
-                <div class="multiplier-bar" data-class-filled="multiplierProgress > 8"></div>
+                <div class="multiplier-bar rounded-top" data-class-filled="multiplierProgress > 8"></div>
                 <div class="multiplier-bar" data-class-filled="multiplierProgress > 7"></div>
                 <div class="multiplier-bar" data-class-filled="multiplierProgress > 6"></div>
                 <div class="multiplier-bar" data-class-filled="multiplierProgress > 5"></div>
                 <div class="multiplier-bar" data-class-filled="multiplierProgress > 4"></div>
                 <div class="multiplier-bar" data-class-filled="multiplierProgress > 3"></div>
                 <div class="multiplier-bar" data-class-filled="multiplierProgress > 2"></div>
-                <div class="multiplier-bar rounded-bottom " data-class-filled="multiplierProgress > 1"></div>
+                <div class="multiplier-bar" data-class-filled="multiplierProgress > 1"></div>
+                <div class="multiplier-bar rounded-bottom" data-class-filled="multiplierProgress > 0"></div>
             </div>
             <div class="points-container">
                 <h1 class="points" id="test">{{ points }}</h1> 
