@@ -4,40 +4,30 @@
         <style>
             body {
                 font-family: Roboto;
-                font-size: 50px;
+                font-size: 40px;
                 font-weight: bold;
-                margin-top: 50px;
-                margin-left: 50px;
+                margin-top: 36px;
+                margin-left: 36px;
+
             }
-            .green {
-                background-color: #00ff00;
-                font-size: 50px;
-            }
-            .red {
-                background-color: #ff0000;
-                font-size: 50px;
-            }
+    
             .multiplier-container {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                height: 10%;
-                border-radius: 8px;
+                justify-content: space-evenly;
+                width: 80px;
+                height: 260px;
+                border: 1px #a4f4cf;       
+                border-radius: 12px;
                 overflow: hidden;
-                width: 108px;
-                
+                position: relative;
+                background: #002c2299;
             }
             .rounded-top {
                 border-radius: 12px 12px 0 0;
             }
             .rounded-bottom {
                 border-radius: 0 0 12px 12px;
-            }
-
-            .multiplier-bar {
-                background:#002D22;
-                height: 32px;
-                border: 1px #00d492;                
             }
             .filled {
                 background: #00BC7C
@@ -56,7 +46,24 @@
                 gap: 10px;
             }
             h2 {
-                font-size: 50px;
+                font-size: 42px;
+            }
+            progress  {
+                background: transparent;
+                width: 82px;
+                transform: translateY(1px);
+                height: 100%;
+                position: absolute;
+            }
+            fill {
+                border-radius: 0 0 12px 12px;
+                background: #00bc7d;
+            }
+            .line {
+                height: 1px;
+                z-index: 1;
+                background: #a4f4cf;
+                opacity: 0.9;
             }
         </style>
 
@@ -65,15 +72,16 @@
     <body data-model="stats_model">
         <div class="ui">
             <div class="multiplier-container">
-                <div class="multiplier-bar rounded-top" data-class-filled="multiplierProgress > 8"></div>
-                <div class="multiplier-bar" data-class-filled="multiplierProgress > 7"></div>
-                <div class="multiplier-bar" data-class-filled="multiplierProgress > 6"></div>
-                <div class="multiplier-bar" data-class-filled="multiplierProgress > 5"></div>
-                <div class="multiplier-bar" data-class-filled="multiplierProgress > 4"></div>
-                <div class="multiplier-bar" data-class-filled="multiplierProgress > 3"></div>
-                <div class="multiplier-bar" data-class-filled="multiplierProgress > 2"></div>
-                <div class="multiplier-bar" data-class-filled="multiplierProgress > 1"></div>
-                <div class="multiplier-bar rounded-bottom" data-class-filled="multiplierProgress > 0"></div>
+                <div class="line" />
+                <div class="line" />
+                <div class="line" />
+                <div class="line" />
+                <div class="line" />
+                <div class="line" />
+                <div class="line" />
+                <div class="line" />
+                <div class="line" />
+                <progress class="rounded-bottom" direction="top" data-value="multiplierProgress" max="10"></progress>
             </div>
             <div class="points-container">
                 <h1 class="points" id="test">{{ points }}</h1> 
