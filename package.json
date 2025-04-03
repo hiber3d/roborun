@@ -16,8 +16,7 @@
     "preview": "vite preview --configLoader runner",
     "audio:sfx": "node ./build_scripts/create-audio-sprite.cjs sfx ./assets/audio/sfx",
     "audio:music": "node ./build_scripts/create-audio-sprite.cjs music ./assets/audio/music",
-    "pack": "node ./build_scripts/pack_glbs.js",
-    "postinstall": "npm run pack"
+    "gltfpack": "node ./build_scripts/pack_glbs.js"
   },
   "dependencies": {
     "@hiber3d/web": "file:build/web",
