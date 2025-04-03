@@ -59,5 +59,5 @@ If you only want to compile the C++ code you can run:
 ## Working with GLBs
 
 1. Add / remove / modify GLBs in `input_glbs`
-2. Run `npm run pack`
+2. Run `npm run gltfpack`
 3. Commit and push
