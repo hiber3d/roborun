@@ -7,12 +7,6 @@
       !hiber3d.getValue("GameState", "paused") &&
       segUtils.getCurrentStepEntity() !== undefined;
   },
-  getGroundHeight(){
-    return hiber3d.hasComponents(this.entity, "SplineData") ? hiber3d.getValue(this.entity, "SplineData", "position").y : 0;
-  },
-  getIsInAir(height){
-      return height > this.getGroundHeight();
-  },
   getDeltaHeight() {
     const maxHeight = 2.5;
     const timeToMaxHeight = 0.2;
@@ -35,8 +29,7 @@
     }
   },
   onCreate() {
-    const isAutoRunGround = hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage === 4;
-    if (isAutoRunGround) {
+    if (roboRunUtils.isAutoRunGround(this.entity)) {
       regUtils.removeScriptIfPresent(this.entity, "scripts/powerups/AutoRun.js");
     }
     regUtils.removeScriptIfPresent(this.entity, "scripts/Diving.js");
@@ -56,14 +49,14 @@
     this.timeSinceJumped += dt;
     const newJumpHeight = this.startHeight + this.getDeltaHeight();
 
-    if (this.getIsInAir(newJumpHeight)) {
+    if (roboRunUtils.isInAir(this.entity, newJumpHeight)) {
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newJumpHeight);
     } else {
       // landed
       hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "fall" });
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
       hiber3d.writeEvent("LandedEvent", { entity: this.entity });
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", this.getGroundHeight());
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
       
       hiber3d.removeScript(this.entity, "scripts/Jumping.js");
     }

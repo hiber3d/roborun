@@ -115,6 +115,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<GameState>(context);
 
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<RestartGame>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerCreated>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<KillPlayer>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerDied>(context);

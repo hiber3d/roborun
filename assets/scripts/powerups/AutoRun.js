@@ -53,12 +53,6 @@
       this.stage = this.STAGE.GROUNDED;
     }
   },
-  getGroundHeight() {
-    if (hiber3d.hasComponents(this.entity, "SplineData")) {
-      return hiber3d.getValue(this.entity, "SplineData", "position", "y");
-    }
-    return 0;
-  },
   getHeightDiff(stage) {
     if (stage === this.STAGE.ASCEND) {
       return scalarUtils.lerpScalar(0, this.AUTO_RUN_MAX_HEIGHT, this.timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
@@ -115,7 +109,7 @@
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "autoRun" });
       }
 
-      const newHeight = this.getGroundHeight() + this.getHeightDiff(this.stage);
+      const newHeight = roboRunUtils.getSplineHeight(this.entity) + this.getHeightDiff(this.stage);
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newHeight);
     }
     
