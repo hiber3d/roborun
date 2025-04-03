@@ -15,7 +15,8 @@
     "lint": "eslint .",
     "preview": "vite preview --configLoader runner",
     "audio:sfx": "node ./build_scripts/create-audio-sprite.cjs sfx ./assets/audio/sfx",
-    "audio:music": "node ./build_scripts/create-audio-sprite.cjs music ./assets/audio/music"
+    "audio:music": "node ./build_scripts/create-audio-sprite.cjs music ./assets/audio/music",
+    "pack": "./build_scripts/pack_glbs.sh"
   },
   "dependencies": {
     "@hiber3d/web": "file:build/web",
