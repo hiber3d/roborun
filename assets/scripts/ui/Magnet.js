@@ -4,6 +4,7 @@
       },
     onCreate() {
         hiber3d.call("rmlCreateDataModel", "magnet_model"); // Getting a Data model already exist
+        // hiber3d.call("rmlLoadFont", "fonts/Roboto-Regular.ttf"); // Need to be formatted like this to work
     },
     update() {
         if (!this.shouldRun()) {

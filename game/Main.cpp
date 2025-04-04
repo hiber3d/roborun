@@ -75,6 +75,7 @@ public:
         context.registerModule<Hiber3D::InputModule>();
 
         context.registerModule<Hiber3D::JavaScriptScriptingModule>();
+        context.registerModule<Hiber3D::RmlUiModule>();
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Transform>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::ComputedWorldTransform>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::SceneRoot>(context);
@@ -89,7 +90,6 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::AssetHandle<Hiber3D::Scene> assetHandle) { registry.singleton<Hiber3D::SceneManager>().changeScene(assetHandle); }>(context, "changeScene");
 
-        context.registerModule<Hiber3D::RmlUiModule>();
         context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorSettings{.startInPlayMode = true});
 
         // Custom modules
