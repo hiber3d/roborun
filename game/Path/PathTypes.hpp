@@ -11,26 +11,6 @@ struct OnPath {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(OnPath), HIBER3D_MEMBER(dummy));
 
-struct Jumping {
-    float deltaHeight;
-    float startHeight;
-    float timeSinceJumped = 0.0f;
-};
-
-HIBER3D_REFLECT(HIBER3D_TYPE(Jumping), HIBER3D_MEMBER(deltaHeight), HIBER3D_MEMBER(startHeight), HIBER3D_MEMBER(timeSinceJumped));
-
-struct Diving {
-    bool dummy;
-};
-
-HIBER3D_REFLECT(HIBER3D_TYPE(Diving), HIBER3D_MEMBER(dummy));
-
-struct Sliding {
-    bool dummy;
-};
-
-HIBER3D_REFLECT(HIBER3D_TYPE(Sliding), HIBER3D_MEMBER(dummy));
-
 struct TiltFactor {
     float factor = 0;
 };

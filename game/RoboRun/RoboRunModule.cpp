@@ -62,19 +62,19 @@ void loadEnvironment(
             };
         });
 
-    renderEnvironment->exposureCompensation = 0.5f;
+    renderEnvironment->exposureCompensation = 0.8f;
 
     renderEnvironment->skybox.cubemap = skybox;
 
     renderEnvironment->lightbox.brightness = 0.1f;
     renderEnvironment->lightbox.cubemap    = lightbox;
 
-    renderEnvironment->reflectionbox.brightness = 1.8f;
+    renderEnvironment->reflectionbox.brightness = 1.0f;
     renderEnvironment->reflectionbox.cubemap    = skybox;
 
     renderEnvironment->fog.enabled        = true;
     renderEnvironment->fog.density        = 0.00005f;
-    renderEnvironment->fog.height         = 30.0f;
+    renderEnvironment->fog.height         = 100000.0f;
     renderEnvironment->fog.color          = Hiber3D::float3{0.2f, 0.35f, 0.4f};
     renderEnvironment->fog.skyboxAlpha    = 1.0f;
     renderEnvironment->fog.skyboxGradient = 0.01f;
@@ -84,8 +84,8 @@ void loadEnvironment(
     renderEnvironment->bloom.blendAlpha         = 0.35f;
 
     renderEnvironment->colorGrading.enabled    = true;
-    renderEnvironment->colorGrading.saturation = 1.05f;
-    renderEnvironment->colorGrading.contrast   = 1.01f;
+    renderEnvironment->colorGrading.saturation = 1.08f;
+    renderEnvironment->colorGrading.contrast   = 1.02f;
 
     renderEnvironment->sun.strength    = 0.0f;
     renderEnvironment->sun.directionWS = Hiber3D::float3{-0.5f, 0.7f, 0.5f};
@@ -115,6 +115,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<GameState>(context);
 
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<RestartGame>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerCreated>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<KillPlayer>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerDied>(context);

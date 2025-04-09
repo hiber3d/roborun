@@ -23,8 +23,9 @@
   getSpeed() {
     var speed = this.RUN_SPEED;
 
-    if (hiber3d.hasComponents(this.entity, "Jumping")) {
-      speed *= Math.max(0, Math.pow(this.RUN_AIR_FACTOR, hiber3d.getValue(this.entity, "Jumping", "timeSinceJumped")));
+    const jumpingScript = hiber3d.getScript(this.entity, "scripts/Jumping.js");
+    if (jumpingScript !== undefined && jumpingScript.timeSinceJumped !== undefined) {
+      speed *= Math.max(0, Math.pow(this.RUN_AIR_FACTOR, jumpingScript.timeSinceJumped));
     }
     if (hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js") && hiber3d.getScript(this.entity, "scripts/powerups/AutoRun.js").stage < 4) {
       speed *= this.AUTO_RUN_FACTOR;
@@ -33,7 +34,7 @@
     const rotation = hiber3d.getValue(this.entity, "Hiber3D::Transform", "rotation");
     const direction = quatUtils.vectorFromQuaternion(rotation);
     if (direction.y !== 0) {
-    const rawHillFactor = hiber3d.hasComponents(this.entity, "Diving") || hiber3d.hasComponents(this.entity, "Sliding") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
+    const rawHillFactor = hiber3d.hasScripts(this.entity, "scripts/Diving.js") || hiber3d.hasScripts(this.entity, "scripts/Sliding.js") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
     const scaledHillFactor = (direction.y < 0 ? rawHillFactor : 1 / rawHillFactor);
     const safeHillFactor = Math.abs(scaledHillFactor) > 0.01 ? scaledHillFactor : 1;
     speed *= safeHillFactor;
@@ -166,6 +167,20 @@
       hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", newDistanceFromCurrentStep);
     }
   },
+  isSettingHeightAvailable(){
+    return !hiber3d.hasScripts(this.entity, "scripts/Jumping.js") &&
+    !hiber3d.hasScripts(this.entity, "scripts/Diving.js") &&
+    !hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js");
+  },
+  setPosition(newPosition){
+    const isSettingHeightAvailable = this.isSettingHeightAvailable();
+    if(isSettingHeightAvailable){
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", newPosition);
+    } else {
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "x", newPosition.x);
+      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "z", newPosition.z);
+    }
+  },
   onCreate() {
   },
   update(dt) {
@@ -184,7 +199,7 @@
     if (isOnPath) {
       const tiltOffset = this.getTiltOffset(spline.rotation) !== undefined ? this.getTiltOffset(spline.rotation) : { x: 0, y: 0, z: 0 };
       const tiltedPosition = vectorUtils.addVectors(spline.position, tiltOffset);
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", tiltedPosition);
+      this.setPosition(tiltedPosition);
 
       const rotationPostPotentialAutoRun = hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js") ? quatUtils.flattenQuaternion(spline.rotation) : spline.rotation;
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", rotationPostPotentialAutoRun);
@@ -201,20 +216,12 @@
       const position = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position");
 
       const fallenOff = !vectorUtils.inRangeOfPoints(position, leftWallPosition, rightWallPosition);
-      //hiber3d.print(
-      //  " position: " + vectorUtils.formatVector(position) +
-      //  " leftWallPosition: " + vectorUtils.formatVector(leftWallPosition) +
-      //  " rightWallPosition: " + vectorUtils.formatVector(rightWallPosition) +
-      //  " fallenOff: " + JSON.stringify(fallenOff)
-      //);
       if (fallenOff) {
         const playerEntity = hiber3d.getValue("GameState", "playerEntity");
         if(this.entity === playerEntity){
           hiber3d.writeEvent("KillPlayer", {});
         }
-
       } else {
-        // Continue in the current direction
         const position = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position");
         const direction = hiber3d.getValue("GameState", "direction");
         const newPosition = {
@@ -222,7 +229,7 @@
           y: position.y + direction.y * speed * dt,
           z: position.z + direction.z * speed * dt
         };
-        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", newPosition);
+        this.setPosition(newPosition);
       }
     }
   }

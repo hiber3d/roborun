@@ -12,8 +12,8 @@ function collidesWithPlayer(entity, radius) {
 
   const playerHeight = 1.0; 
   const playerTopPosition = vectorUtils.addVectors(playerBottomPosition, { x: 0, y: playerHeight, z: 0 });
-  const playerIsSliding = hiber3d.hasComponents(playerEntity, "Sliding");
-  const playerIsDiving = hiber3d.hasComponents(playerEntity, "Diving");
+  const playerIsSliding = hiber3d.hasScripts(playerEntity, "scripts/Sliding.js");
+  const playerIsDiving = hiber3d.hasScripts(playerEntity, "scripts/Diving.js");
   return !playerIsSliding && !playerIsDiving && vectorUtils.inRange(position, playerTopPosition, radius);
 }
 module.exports.collidesWithPlayer = collidesWithPlayer;
@@ -31,8 +31,8 @@ function collidesWithPlayerFlat(entity, radius) {
   const playerHeight = 1.0;
   const playerTopPosition = vectorUtils.addVectors(playerBottomPosition, { x: 0, y: playerHeight, z: 0 });
   const playerTopFlatPosition = { x: playerTopPosition.x, y: 0, z: playerTopPosition.z };
-  const playerIsSliding = hiber3d.hasComponents(playerEntity, "Sliding");
-  const playerIsDiving = hiber3d.hasComponents(playerEntity, "Diving");
+  const playerIsSliding = hiber3d.hasScripts(playerEntity, "scripts/Sliding.js");
+  const playerIsDiving = hiber3d.hasScripts(playerEntity, "scripts/Diving.js");
   return !playerIsSliding && !playerIsDiving && vectorUtils.inRange(flatPosition, playerTopFlatPosition, radius);
 }
 module.exports.collidesWithPlayerFlat = collidesWithPlayerFlat;

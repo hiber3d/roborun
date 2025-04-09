@@ -4,6 +4,7 @@ import { RoborunMode } from "roborun/RoborunMode";
 
 export const App = () => (
   <Hiber3D
+    logs={{ showLogsInBrowserConsole: true }}
     config={{
       Editor: {
         Enabled: false,

@@ -29,9 +29,12 @@
     if (collisionUtils.collidesWithPlayer(this.entity, 0.4) && !hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
       hiber3d.writeEvent("KillPlayer", {});
 
-      const deathScenePath = this.getDeathScenePath();
-      if (deathScenePath !== undefined) {
-        hiber3d.call("changeScene", deathScenePath);
+      // TODO: Work-in-progress
+      if(false){
+        const deathScenePath = this.getDeathScenePath();
+        if (deathScenePath !== undefined) {
+          hiber3d.call("changeScene", deathScenePath);
+        }
       }
     }
   },

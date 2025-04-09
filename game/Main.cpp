@@ -69,7 +69,7 @@ public:
         context.registerModule<Hiber3D::WorldTransformModule>();
         context.registerModule<Hiber3D::AnimationModule>();  // after HierarchyModule
         context.registerModule<Hiber3D::SkinningModule>();   // after SceneModule
-        context.registerModule<Hiber3D::RenderModule>();
+        context.registerModule<Hiber3D::RenderModule>(Hiber3D::RenderModuleSettings{.shadowsEnabled = false});
         context.registerModule<Hiber3D::DebugModule>();
         context.registerModule<Hiber3D::InteropModule>();
         context.registerModule<Hiber3D::InputModule>();

@@ -53,12 +53,6 @@
       this.stage = this.STAGE.GROUNDED;
     }
   },
-  getGroundHeight() {
-    if (hiber3d.hasComponents(this.entity, "SplineData")) {
-      return hiber3d.getValue(this.entity, "SplineData", "position", "y");
-    }
-    return 0;
-  },
   getHeightDiff(stage) {
     if (stage === this.STAGE.ASCEND) {
       return scalarUtils.lerpScalar(0, this.AUTO_RUN_MAX_HEIGHT, this.timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
@@ -91,6 +85,9 @@
     this.groundedStart = this.descendEnd;
     this.groundedEnd = this.groundedStart + this.AUTO_RUN_DESCEND_GROUNDED_DURATION;
     this.end = this.AUTO_RUN_DURATION;
+    
+    hiber3d.addEventListener(this.entity, "DivedEvent");
+    hiber3d.addEventListener(this.entity, "JumpedEvent");
 
     hiber3d.writeEvent("BroadcastPowerupPickup", {});
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
@@ -112,11 +109,17 @@
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "autoRun" });
       }
 
-      const newHeight = this.getGroundHeight() + this.getHeightDiff(this.stage);
+      const newHeight = roboRunUtils.getSplineHeight(this.entity) + this.getHeightDiff(this.stage);
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newHeight);
     }
     
   },
   onEvent(event, payload) {
+    // Cancel AutoRun if jumping or diving
+    if(event === "JumpedEvent" || event === "DivedEvent"){
+      if(payload.entity === this.entity){
+        hiber3d.removeScript(this.entity, "scripts/powerups/AutoRun.js");
+      }
+    }
   }
 });

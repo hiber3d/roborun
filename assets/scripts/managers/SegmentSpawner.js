@@ -27,7 +27,7 @@ const STRAIGHT_ROOMS = [
 
 const INCLINE_ROOMS = [
   {
-    room: "scenes/rooms/RoomInclineA.scene",
+    room: "scenes/roomsNEW/RoomInclineA.scene",
     probability: 1,
   },
 ];
@@ -215,7 +215,7 @@ const PICK_UP_DEPTH = {
           ],
         },
         {
-          probability: 0.25,
+          probability: 0.0,
           segment: "scenes/segments/SegmentBridgeBase.scene",
           tags: ["VANILLA"],
           rooms: STRAIGHT_ROOMS,
