@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
     Hiber3D_zip
     DOWNLOAD_EXTRACT_TIMESTAMP TRUE
-    URL https://cdn.hiber3d.com/engine/web/dev/Hiber3D_v1.107.0-dev.zip
+    URL https://cdn.hiber3d.com/engine/web/dev/Hiber3D_v1.108.0-dev.zip
 )
 FetchContent_MakeAvailable(Hiber3D_zip)
 
@@ -52,7 +52,7 @@ set(GAME_FILES
 )
 
 hiber3d_add_game(GameTemplate "${GAME_FILES}")
-hiber3d_game_include_directories(GameTemplate ${CMAKE_CURRENT_SOURCE_DIR}/game)
+target_include_directories(GameTemplate PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/game)
 
 if(DEFINED EMSCRIPTEN)
     hiber3d_game_add_interop(GameTemplate)
