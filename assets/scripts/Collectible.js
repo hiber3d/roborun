@@ -7,6 +7,7 @@
       hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   },
   onCreate() {
+    //hiber3d.addEventListener(this.entity, "Hiber3D::CollisionStarted");
   },
   update() {
     if (this.shouldRun() === false) {
@@ -26,5 +27,8 @@
   },
 
   onEvent(event, payload) {
+    /*if(event === "Hiber3D::CollisionStarted") {
+      hiber3d.print("Collision");
+    }*/
   }
 });

@@ -92,6 +92,33 @@ void loadEnvironment(
     renderEnvironment->sun.color       = Hiber3D::float3{1.0f, 1.0f, 1.0f};
 }
 
+// TODO: Move elsewhere
+static void showDebugLines(Hiber3D::Singleton<Hiber3D::Editor> editor) {
+    editor->setSettings(Hiber3D::EditorSettings{
+        .physicsVisualization = Hiber3D::PhysicsSettings::DebugVisualization{
+            .enabled              = true,
+            .drawWireFrame        = true,
+            .drawVelocity         = true,
+            .drawSupportDirection = false,
+            .drawBoundingBox      = false,
+            .drawCenterOfMass     = true,
+        },
+    });
+}
+
+static void hideDebugLines(Hiber3D::Singleton<Hiber3D::Editor> editor) {
+    editor->setSettings(Hiber3D::EditorSettings{
+        .physicsVisualization = Hiber3D::PhysicsSettings::DebugVisualization{
+            .enabled              = false,
+            .drawWireFrame        = false,
+            .drawVelocity         = false,
+            .drawSupportDirection = false,
+            .drawBoundingBox      = false,
+            .drawCenterOfMass     = false,
+        },
+    });
+}
+
 static void handleRestartGame(
     Hiber3D::EventView<RestartGame>           events,
     Hiber3D::Singleton<Hiber3D::AssetServer>  assetServer,
@@ -108,6 +135,8 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_EXIT, resetSingletons);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleGameRestarted);
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
+    context.addSystem(Hiber3D::Schedule::ON_START_EDIT, showDebugLines);
+    context.addSystem(Hiber3D::Schedule::ON_START, hideDebugLines);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
 
     context.registerSingleton<GameState>();
