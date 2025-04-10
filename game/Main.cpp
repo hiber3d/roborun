@@ -24,6 +24,7 @@
 #include <Hiber3D/Input/InputModule.hpp>
 #include <Hiber3D/Input/Types.hpp>
 #include <Hiber3D/Log/LogModule.hpp>
+#include <Hiber3D/Physics/PhysicsModule.hpp>
 #include <Hiber3D/Renderer/Camera.hpp>
 #include <Hiber3D/Renderer/Light.hpp>
 #include <Hiber3D/Renderer/RenderModule.hpp>
@@ -72,6 +73,7 @@ public:
         context.registerModule<Hiber3D::DebugModule>();
         context.registerModule<Hiber3D::InteropModule>();
         context.registerModule<Hiber3D::InputModule>();
+        context.registerModule<Hiber3D::PhysicsModule>();
 
         context.registerModule<Hiber3D::JavaScriptScriptingModule>();
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Transform>(context);
@@ -88,7 +90,7 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::AssetHandle<Hiber3D::Scene> assetHandle) {registry.singleton<Hiber3D::SceneManager>().changeScene(assetHandle);}>(context, "changeScene");
 
-        context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorSettings{.startInPlayMode = true});
+        context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorModuleSettings{.startInPlayMode = true});
 
         // Custom modules
         context.registerModule<AnimationLoadoutModule>();
