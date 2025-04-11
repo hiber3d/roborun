@@ -27,7 +27,7 @@ export const RoborunMode = () => {
 
   return (
     <AnimatePresence>
-      <RoborunUI key="ui" />
+      {/* <RoborunUI /> */}
       <LeaderboardContent
         key="leaderboard"
         state={state}
