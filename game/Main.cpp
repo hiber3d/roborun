@@ -58,22 +58,19 @@ public:
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::StandardMaterial>(context);
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::Cubemap>(context);
 
+        context.registerModule<Hiber3D::LogModule>(Hiber3D::LogSettings{.logLevel = Hiber3D::LogLevel::INFO});
+        context.registerModule<Hiber3D::HierarchyModule>();
+
         context.registerModule<Hiber3D::SceneModule>();
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::ScriptInstance>(context);
 
-        context.registerModule<Hiber3D::HierarchyModule>();
-
-        context.registerModule<Hiber3D::LogModule>(Hiber3D::LogSettings{.logLevel = Hiber3D::LogLevel::INFO});
-        context.registerModule<Hiber3D::GltfModule>();
         context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "scenes/RoboRun.scene"});
+        context.registerModule<Hiber3D::PhysicsModule>(); // before WorldTransformModule
+        context.registerModule<Hiber3D::GltfModule>();
         context.registerModule<Hiber3D::WorldTransformModule>();
         context.registerModule<Hiber3D::AnimationModule>(); // after HierarchyModule
         context.registerModule<Hiber3D::SkinningModule>(); // after SceneModule
         context.registerModule<Hiber3D::RenderModule>(Hiber3D::RenderModuleSettings{.shadowsEnabled = false});
-        context.registerModule<Hiber3D::DebugModule>();
-        context.registerModule<Hiber3D::InteropModule>();
-        context.registerModule<Hiber3D::InputModule>();
-        context.registerModule<Hiber3D::PhysicsModule>();
 
         context.registerModule<Hiber3D::JavaScriptScriptingModule>();
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Transform>(context);
@@ -85,12 +82,16 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Camera>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Name>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<Hiber3D::CollisionStarted>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<Hiber3D::CollisionPersisted>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().isPressed(key); }>(context, "keyIsPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justPressed(key); }>(context, "keyJustPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::AssetHandle<Hiber3D::Scene> assetHandle) {registry.singleton<Hiber3D::SceneManager>().changeScene(assetHandle);}>(context, "changeScene");
 
+        context.registerModule<Hiber3D::InteropModule>();
+        context.registerModule<Hiber3D::DebugModule>();
+        context.registerModule<Hiber3D::InputModule>();
         context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorModuleSettings{.startInPlayMode = true});
 
         // Custom modules

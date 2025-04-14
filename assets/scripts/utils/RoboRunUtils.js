@@ -33,3 +33,19 @@ function isAutoRunGround(entity){
   return false;
 }
 module.exports.isAutoRunGround = isAutoRunGround;
+function getOtherEntityInCollision(entity, collisionEventPayload) {
+  if (collisionEventPayload.entity1 === entity) {
+    return collisionEventPayload.entity2;
+  }
+  if (collisionEventPayload.entity2 === entity) {
+    return collisionEventPayload.entity1;
+  }
+  return undefined;
+}
+module.exports.getOtherEntityInCollision = getOtherEntityInCollision;
+function isPlayerCollision(entity, collisionEventPayload) {
+  const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+  const otherEntityInCollision = getOtherEntityInCollision(entity, collisionEventPayload);
+  return playerEntity !== undefined && playerEntity === otherEntityInCollision;
+}
+module.exports.isPlayerCollision = isPlayerCollision;

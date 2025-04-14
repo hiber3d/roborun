@@ -101,7 +101,7 @@ function findEntityWithNameInHierarchy(entity, name) {
 }
 module.exports.findEntityWithNameInHierarchy = findEntityWithNameInHierarchy;
 
-function findEntityWithComponentInHierarchy(entity) {
+function findEntityWithComponentInHierarchy(entity, component) {
   if (entity === undefined) {
     return undefined;
   }

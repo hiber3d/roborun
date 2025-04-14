@@ -11,33 +11,27 @@
     }
     return path;
   },
-  shouldRun() {
-    return hiber3d.getValue("GameState", "playerEntity") !== undefined &&
-      hiber3d.hasComponents(hiber3d.getValue("GameState", "playerEntity"), "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused");
-  },
   onCreate() {
+    hiber3d.addEventListener(this.entity, "Hiber3D::CollisionStarted");
   },
   update(dt) {
-    if (!this.shouldRun()) {
-      return;
-    }
+  },
+  onEvent(event, payload) {
+    if (event === "Hiber3D::CollisionStarted") {
+      if (roboRunUtils.isPlayerCollision(this.entity, payload)) {
+        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+        if (!hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
+          hiber3d.writeEvent("KillPlayer", {});
 
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    if (collisionUtils.collidesWithPlayer(this.entity, 0.4) && !hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
-      hiber3d.writeEvent("KillPlayer", {});
-
-      // TODO: Work-in-progress
-      if(false){
-        const deathScenePath = this.getDeathScenePath();
-        if (deathScenePath !== undefined) {
-          hiber3d.call("changeScene", deathScenePath);
+          // TODO: Work-in-progress
+          if (false) {
+            const deathScenePath = this.getDeathScenePath();
+            if (deathScenePath !== undefined) {
+              hiber3d.call("changeScene", deathScenePath);
+            }
+          }
         }
       }
     }
-  },
-  onEvent(event, payload) {
   }
 });

@@ -92,6 +92,19 @@ void loadEnvironment(
     renderEnvironment->sun.color       = Hiber3D::float3{1.0f, 1.0f, 1.0f};
 }
 
+static void handleRestartGame(
+    Hiber3D::EventView<RestartGame>           events,
+    Hiber3D::Singleton<Hiber3D::AssetServer>  assetServer,
+    Hiber3D::Singleton<Hiber3D::SceneManager> sceneManager,
+    Hiber3D::EventWriter<GameRestarted>&      writer) {
+    for (const auto& event : events) {
+        sceneManager->changeScene(assetServer->load<Hiber3D::Scene>("scenes/RoboRun.scene"));
+        writer.writeEvent({});
+        return;
+    }
+}
+
+
 // TODO: Move elsewhere
 static void showDebugLines(Hiber3D::Singleton<Hiber3D::Editor> editor) {
     editor->setSettings(Hiber3D::EditorSettings{
@@ -119,25 +132,16 @@ static void hideDebugLines(Hiber3D::Singleton<Hiber3D::Editor> editor) {
     });
 }
 
-static void handleRestartGame(
-    Hiber3D::EventView<RestartGame>           events,
-    Hiber3D::Singleton<Hiber3D::AssetServer>  assetServer,
-    Hiber3D::Singleton<Hiber3D::SceneManager> sceneManager,
-    Hiber3D::EventWriter<GameRestarted>&      writer) {
-    for (const auto& event : events) {
-        sceneManager->changeScene(assetServer->load<Hiber3D::Scene>("scenes/RoboRun.scene"));
-        writer.writeEvent({});
-        return;
-    }
-}
-
 void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_EXIT, resetSingletons);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleGameRestarted);
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
-    context.addSystem(Hiber3D::Schedule::ON_START_EDIT, showDebugLines);
-    context.addSystem(Hiber3D::Schedule::ON_START, hideDebugLines);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
+
+    // For debugging
+    context.addSystem(Hiber3D::Schedule::ON_START_EDIT, showDebugLines);
+    context.addSystem(Hiber3D::Schedule::ON_START, showDebugLines);
+    // context.addSystem(Hiber3D::Schedule::ON_START, hideDebugLines);
 
     context.registerSingleton<GameState>();
 
@@ -149,7 +153,6 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<KillPlayer>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerDied>(context);
 
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/CollisionUtils.js");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/QuatUtils.js");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/RegUtils.js");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/RoboRunUtils.js");

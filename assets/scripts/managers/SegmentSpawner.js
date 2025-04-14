@@ -95,14 +95,14 @@ const PICK_UP_DEPTH = {
   MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_1: 0,
 
   // PickUps
-  POWERUP_CHANCE_AT_DIFFICULTY_0: 0.01,
+  POWERUP_CHANCE_AT_DIFFICULTY_0: 0.5,
   POWERUP_CHANCE_AT_DIFFICULTY_1: 0.05,
-  COLLECTIBLE_CHANCE_AT_DIFFICULTY_0: 0.25,
+  COLLECTIBLE_CHANCE_AT_DIFFICULTY_0: 1,
   COLLECTIBLE_CHANCE_AT_DIFFICULTY_1: 0.5,
 
   POWER_UPS: [
     {
-      probability: 1,
+      probability: 0,
       powerUp: "scenes/powerups/PowerUpAutoRun.scene",
     }, {
       probability: 1,
