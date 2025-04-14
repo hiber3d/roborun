@@ -49,7 +49,7 @@
     const difficulty = hiber3d.getValue("GameState", "difficulty");
     speed *= (1 + difficulty * this.RUN_DIFFICULTY_BONUS_FACTOR_AT_DIFFICULTY_1);
 
-    return speed;
+    return 0.01;
 
   },
   debugSpline(splinePosition, splineRotation) {
