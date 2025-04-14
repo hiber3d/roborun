@@ -95,9 +95,9 @@ const PICK_UP_DEPTH = {
   MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_1: 0,
 
   // PickUps
-  POWERUP_CHANCE_AT_DIFFICULTY_0: 0.5,
+  POWERUP_CHANCE_AT_DIFFICULTY_0: 0.01,
   POWERUP_CHANCE_AT_DIFFICULTY_1: 0.05,
-  COLLECTIBLE_CHANCE_AT_DIFFICULTY_0: 1,
+  COLLECTIBLE_CHANCE_AT_DIFFICULTY_0: 0.25,
   COLLECTIBLE_CHANCE_AT_DIFFICULTY_1: 0.5,
 
   POWER_UPS: [
@@ -203,12 +203,12 @@ const PICK_UP_DEPTH = {
               ],
             },
             {
-              probability: 0.8,
+              probability: 10000,
               obstacle: "scenes/obstacles/ObstacleRobotArm1.scene",
               obstacleLane: [LANE.MID],
             },
             {
-              probability: 0.8,
+              probability: 10000,
               obstacle: "scenes/obstacles/ObstacleRobotArm2.scene",
               obstacleLane: [LANE.MID],
             }

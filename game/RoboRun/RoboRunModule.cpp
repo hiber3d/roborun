@@ -139,8 +139,8 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
 
     // For debugging
-    context.addSystem(Hiber3D::Schedule::ON_START_EDIT, showDebugLines);
-    context.addSystem(Hiber3D::Schedule::ON_START, showDebugLines);
+    // context.addSystem(Hiber3D::Schedule::ON_START_EDIT, showDebugLines);
+    // context.addSystem(Hiber3D::Schedule::ON_START, showDebugLines);
     // context.addSystem(Hiber3D::Schedule::ON_START, hideDebugLines);
 
     context.registerSingleton<GameState>();

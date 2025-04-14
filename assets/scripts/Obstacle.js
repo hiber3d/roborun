@@ -18,7 +18,7 @@
   },
   onEvent(event, payload) {
     if (event === "Hiber3D::CollisionStarted") {
-      if (roboRunUtils.isPlayerCollision(this.entity, payload)) {
+      if (typeof roboRunUtils !== 'undefined' && roboRunUtils.isPlayerCollision(this.entity, payload)) {
         const playerEntity = hiber3d.getValue("GameState", "playerEntity");
         if (!hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
           hiber3d.writeEvent("KillPlayer", {});
