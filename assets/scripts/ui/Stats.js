@@ -1,12 +1,14 @@
 ({
   shouldRun() {
-    return hiber3d.hasComponents(
-      this.entity,
-      "Hiber3D::ComputedWorldTransform"
+    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+
+    return (
+      hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
+      !regUtils.isNullEntity(playerEntity)
     );
   },
   onCreate() {
-    hiber3d.call("rmlCreateDataModel", "stats_model"); // Getting a Data model already exist
+    hiber3d.call("rmlCreateDataModel", "stats_model");
     hiber3d.call("rmlLoadFont", "fonts/Roboto-Regular.ttf"); // Need to be formatted like this to work
     this.updateStats(0, "points");
     this.updateStats(0, "collectibles");
@@ -23,9 +25,6 @@
       return;
     }
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    if (!playerEntity || playerEntity === 4294967295) {
-      return;
-    }
 
     const stats = hiber3d.getValue(playerEntity, "Stats");
 
