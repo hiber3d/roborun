@@ -203,12 +203,12 @@ const PICK_UP_DEPTH = {
               ],
             },
             {
-              probability: 10000,
+              probability: 0.8,
               obstacle: "scenes/obstacles/ObstacleRobotArm1.scene",
               obstacleLane: [LANE.MID],
             },
             {
-              probability: 10000,
+              probability: 0.8,
               obstacle: "scenes/obstacles/ObstacleRobotArm2.scene",
               obstacleLane: [LANE.MID],
             }
