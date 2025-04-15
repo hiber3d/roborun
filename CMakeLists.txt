@@ -9,7 +9,7 @@ set(TARGET_NAME "GameTemplate")
 include(FetchContent)
 FetchContent_Declare(
     Hiber3D_zip
-    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+    DOWNLOAD_EXTRACT_TIMESTAMP FALSE
     URL https://cdn.hiber3d.com/engine/web/dev/Hiber3D_v1.108.0-dev.zip
 )
 FetchContent_MakeAvailable(Hiber3D_zip)
