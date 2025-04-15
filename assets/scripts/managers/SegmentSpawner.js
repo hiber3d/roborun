@@ -102,7 +102,7 @@ const PICK_UP_DEPTH = {
 
   POWER_UPS: [
     {
-      probability: 0,
+      probability: 1,
       powerUp: "scenes/powerups/PowerUpAutoRun.scene",
     }, {
       probability: 1,

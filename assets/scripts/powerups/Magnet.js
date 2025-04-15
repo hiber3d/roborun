@@ -2,7 +2,7 @@
   MAGNET_DURATION: 7.5,
   OUTRO_DURATION: 2,
   EFFECT_SCALE: 0.1,
-  MAGNET_COLLIDER_OFFSET_HEIGHT: 0.5,
+  MAGNET_COLLIDER_OFFSET_HEIGHT: 1.0,
 
   timeSinceStarted: 0,
   magnetColliderEntity: undefined,
