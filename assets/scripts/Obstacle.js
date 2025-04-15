@@ -22,9 +22,9 @@
         const playerEntity = hiber3d.getValue("GameState", "playerEntity");
         if (!hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
           hiber3d.writeEvent("KillPlayer", {});
-
+          
           // TODO: Work-in-progress
-          if (false) {
+          if (true) {
             const deathScenePath = this.getDeathScenePath();
             if (deathScenePath !== undefined) {
               hiber3d.call("changeScene", deathScenePath);
