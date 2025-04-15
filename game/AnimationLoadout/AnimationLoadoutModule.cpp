@@ -55,23 +55,23 @@ static void handlePlayerCreated(
         auto& animationLoadout = registry.emplace<AnimationLoadout>(entity);
 
         loadAnimation(assetServer, "dead", 0, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "slide", 2, animationLoadout, 0.1f, 0.2f, 1.0f);
-        loadAnimation(assetServer, "dive", 2, animationLoadout, 0.05f, 0.15f, 1.0f);
-        loadAnimation(assetServer, "dying", 3, animationLoadout, 0.1f, std::nullopt, 0.75f);
-        loadAnimation(assetServer, "fall", 4, animationLoadout, 0.1f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "autoRun", 5, animationLoadout, 0.3f, std::nullopt, 1.0f);
+        loadAnimation(assetServer, "slide", 6, animationLoadout, 0.1f, 0.2f, 1.0f);
+        loadAnimation(assetServer, "dive", 6, animationLoadout, 0.05f, 0.15f, 1.0f);
+        loadAnimation(assetServer, "dying", 7, animationLoadout, 0.1f, std::nullopt, 0.75f);
+        loadAnimation(assetServer, "fall", 8, animationLoadout, 0.1f, std::nullopt, 1.0f);
+        loadAnimation(assetServer, "autoRun", 9, animationLoadout, 0.3f, std::nullopt, 1.0f);
 
-        loadAnimation(assetServer, "jump", 6, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "jump", 7, animationLoadout, 0.0f, std::nullopt, 1.0f);
-        loadAnimation(assetServer, "jump", 8, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        loadAnimation(assetServer, "jump", 11, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        loadAnimation(assetServer, "jump", 12, animationLoadout, 0.0f, std::nullopt, 1.0f);
+        loadAnimation(assetServer, "jump", 13, animationLoadout, 0.0f, std::nullopt, 1.0f);
 
-        loadAnimation(assetServer, "land", 9, animationLoadout, 0.05f, 0.3f, 1.25f);
-        loadAnimation(assetServer, "run", 10, animationLoadout, 0.2f, std::nullopt, 1.25f);
+        loadAnimation(assetServer, "land", 14, animationLoadout, 0.05f, 0.3f, 1.25f);
+        loadAnimation(assetServer, "run", 15, animationLoadout, 0.2f, std::nullopt, 1.25f);
 
-        loadAnimation(assetServer, "tiltLeft", 12, animationLoadout, 0.03f, 0.1f, 1.0f);
-        loadAnimation(assetServer, "tiltRight", 13, animationLoadout, 0.03f, 0.1f, 1.0f);
-        loadAnimation(assetServer, "turnLeft", 14, animationLoadout, 0.1f, 0.25f, 1.25f);
-        loadAnimation(assetServer, "turnRight", 15, animationLoadout, 0.1f, 0.25f, 1.25f);
+        loadAnimation(assetServer, "tiltLeft", 17, animationLoadout, 0.03f, 0.1f, 1.0f);
+        loadAnimation(assetServer, "tiltRight", 18, animationLoadout, 0.03f, 0.1f, 1.0f);
+        loadAnimation(assetServer, "turnLeft", 19, animationLoadout, 0.1f, 0.25f, 1.25f);
+        loadAnimation(assetServer, "turnRight", 20, animationLoadout, 0.1f, 0.25f, 1.25f);
     }
 }
 

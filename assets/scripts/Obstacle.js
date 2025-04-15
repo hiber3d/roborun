@@ -30,7 +30,7 @@
       hiber3d.writeEvent("KillPlayer", {});
 
       // TODO: Work-in-progress
-      if(false){
+      if(true){
         const deathScenePath = this.getDeathScenePath();
         if (deathScenePath !== undefined) {
           hiber3d.call("changeScene", deathScenePath);
