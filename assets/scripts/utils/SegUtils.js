@@ -2,7 +2,7 @@
 module.exports = module.exports || {};
 
 function getStepEntity(segmentSceneEntity, stepIndex) {
-  const stepsEntity = regUtils.findEntityWithNameInHierarchy(segmentSceneEntity, "steps");
+  const stepsEntity = regUtils.findEntityWithNameAmongDescendants(segmentSceneEntity, "steps");
   if (stepsEntity == undefined) {
     //hiber3d.print("getStepEntity() - stepsEntity is undefined");
     return undefined;

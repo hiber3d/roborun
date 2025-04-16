@@ -74,19 +74,35 @@ module.exports.getChildIndexOf = getChildIndexOf;
 function isLastChild(entity) {
   const siblings = getSiblings(entity);
   if (siblings === undefined) {
-    hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no siblings");
     return undefined;
   }
   const childIndex = getChildIndexOf(entity);
   if (childIndex === undefined) {
-    hiber3d.print("isLastChild() - entity:'" + entity + "' has no valid index");
     return undefined;
   }
   return childIndex === Object.keys(siblings).length - 1;
 }
 module.exports.isLastChild = isLastChild;
 
-function findEntityWithNameInHierarchy(entity, name) {
+function findEntityWithNameAmongAncestors(entity, name) {
+  if (entity === undefined) {
+    return undefined;
+  }
+  if (hiber3d.hasComponents(entity, "Hiber3D::Name") === true) {
+    if (hiber3d.getValue(entity, "Hiber3D::Name") == name) {
+      return entity;
+    }
+  }
+  const parent = regUtils.getParent(entity);
+  if(parent !== undefined) {
+    const ancestor = findEntityWithNameAmongAncestors(parent, name);
+    return ancestor;
+  }
+  return undefined;
+}
+module.exports.findEntityWithNameAmongAncestors = findEntityWithNameAmongAncestors;
+
+function findEntityWithNameAmongDescendants(entity, name) {
   if (entity === undefined) {
     return undefined;
   }
@@ -98,7 +114,7 @@ function findEntityWithNameInHierarchy(entity, name) {
   if (hiber3d.hasComponents(entity, "Hiber3D::Children")) {
     const children = hiber3d.getValue(entity, "Hiber3D::Children", "entities");
     for (var i = 0; i < Object.keys(children).length; i++) {
-      const recursiveResult = findEntityWithNameInHierarchy(children[i], name);
+      const recursiveResult = findEntityWithNameAmongDescendants(children[i], name);
       if (recursiveResult !== undefined) {
         return recursiveResult;
       }
@@ -106,7 +122,7 @@ function findEntityWithNameInHierarchy(entity, name) {
   }
   return undefined;
 }
-module.exports.findEntityWithNameInHierarchy = findEntityWithNameInHierarchy;
+module.exports.findEntityWithNameAmongDescendants = findEntityWithNameAmongDescendants;
 
 function findEntityWithComponentInHierarchy(entity, component) {
   if (entity === undefined) {

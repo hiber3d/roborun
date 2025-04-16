@@ -2,7 +2,7 @@ const KEYS = {
   START: 41, // W
   PAUSE: 40, // V
   UNPAUSE: 40, // V
-  RESTART: 36, // V
+  RESTART: 36, // R
 
   JUMP: 1, // SPACE
   DIVE: 37, // S
