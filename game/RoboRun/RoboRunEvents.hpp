@@ -35,3 +35,10 @@ struct PlayerDied {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(PlayerDied), HIBER3D_MEMBER(stats));
 HIBER3D_INTEROP_SEND_TO_JS(PlayerDied);
+
+
+struct StartTransition {
+    bool dummy;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(StartTransition), HIBER3D_MEMBER(dummy));

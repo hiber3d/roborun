@@ -37,7 +37,8 @@
             "scripts/managers/PauseManager.js",
             "scripts/managers/SegmentDestroyer.js",
             "scripts/managers/SegmentSpawner.js",
-            "scripts/broadcast/BroadcastPlayerDeath.js"
+            "scripts/broadcast/BroadcastPlayerDeath.js",
+            "scripts/managers/TransitionManager.js"
           ]
         }
       }
