@@ -10,14 +10,15 @@
   onCreate() {
     hiber3d.call("rmlCreateDataModel", "stats_model");
     hiber3d.call("rmlLoadFont", "fonts/Roboto-Regular.ttf"); // Need to be formatted like this to work
-    this.updateStats(0, "points");
-    this.updateStats(0, "collectibles");
-    this.updateStats(0, "meters");
-    this.updateStats("1.0", "multiplier");
-    this.updateStats(0, "multiplierProgress");
+    this.updateStats("points", 0);
+    this.updateStats("collectibles", 0);
+    this.updateStats("meters", 0);
+    this.updateStats("multiplier", "1.0");
+    this.updateStats("multiplierProgress", 0);
+    this.updateStats("visibility", "hidden");
   },
 
-  updateStats(value, key) {
+  updateStats(key, value) {
     hiber3d.call("rmlSetDataModelString", "stats_model", key, value.toString());
   },
   update() {
@@ -25,21 +26,19 @@
       return;
     }
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-
     const stats = hiber3d.getValue(playerEntity, "Stats");
-
     if (stats === undefined) {
       return;
     }
-    this.updateStats(Math.round(stats.points), "points");
-    this.updateStats(stats.collectibles, "collectibles");
-    this.updateStats(Math.round(stats.meters), "meters");
+    this.updateStats("points", Math.round(stats.points));
+    this.updateStats("collectibles", stats.collectibles);
+    this.updateStats("meters", Math.round(stats.meters));
 
     const multiplier = (Math.round(stats.multiplier * 10) / 10).toFixed(1);
-    this.updateStats(multiplier, "multiplier");
-    this.updateStats(
-      stats.collectibles ? stats.collectibles % 10 : 0,
-      "multiplierProgress"
-    );
+    this.updateStats("multiplier", multiplier);
+    this.updateStats("multiplierProgress", stats.collectibles ? stats.collectibles % 10 : 0);
+
+    hiber3d.print(hiber3d.getValue("GameState", "alive") ? "visible" : "hidden");
+    this.updateStats("visibility", hiber3d.getValue("GameState", "alive") ? "visible" : "hidden");
   },
 });
