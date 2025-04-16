@@ -1,6 +1,6 @@
 ({
   DEFAULT_COLLIDER_HEIGHT: 0.75,
-  REDUCED_COLLIDER_HEIGHT: -0.5,
+  REDUCED_COLLIDER_HEIGHT: -0.4,
 
   wasReducedLastTick: false,
   shouldRun() {
@@ -10,9 +10,9 @@
     return true;
   },
   modifyColliderHeight(shouldReduce) {
-    const colliderEntity = regUtils.findEntityWithNameInHierarchy(this.entity, "ColliderShape");
+    const colliderEntity = regUtils.findEntityWithNameInHierarchy(this.entity, "Shape");
     if (colliderEntity === undefined) {
-      hiber3d.print("ReduceColliderHeight.js - ERROR: No 'ColliderShape' found in hierarchy");
+      hiber3d.print("ReduceColliderHeight.js - ERROR: No 'Shape' found in hierarchy");
     }
     if (shouldReduce === true) {
       hiber3d.setValue(colliderEntity, "Hiber3D::Transform", "position", "y", this.REDUCED_COLLIDER_HEIGHT);
