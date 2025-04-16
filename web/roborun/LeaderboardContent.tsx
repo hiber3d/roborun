@@ -85,6 +85,7 @@ export const LeaderboardContent = ({
       key="leaderboard"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
+      transition={{delay:1}}
       className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
     >
       <div className="flex flex-col gap-2 max-w-[95%]">
