@@ -1,6 +1,13 @@
 ﻿const module = module || {};
 module.exports = module.exports || {};
 
+const NULL_ENTITY = 4294967295;
+
+function isNullEntity(entity) {
+  return entity === NULL_ENTITY || entity === undefined || entity === null;
+}
+module.exports.isNullEntity = isNullEntity;
+
 function isAncestorOf(ancestor, entity) {
   if (ancestor === undefined || entity === undefined) {
     return false;
@@ -169,7 +176,7 @@ function destroyEntity(entity) {
     hiber3d.destroyEntity(currentEntity);
   }
   return destroyRecursive(entity);
-};
+}
 module.exports.destroyEntity = destroyEntity;
 
 function addComponentIfNotPresent(entity, component) {
