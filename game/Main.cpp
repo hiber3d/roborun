@@ -83,6 +83,7 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Parent>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Camera>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Name>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AnimationBlend>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<Hiber3D::CollisionStarted>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<Hiber3D::CollisionPersisted>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().isPressed(key); }>(context, "keyIsPressed");
