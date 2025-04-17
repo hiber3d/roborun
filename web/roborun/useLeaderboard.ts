@@ -1,7 +1,6 @@
-import { useApi } from "@hiber3d/web";
+import { Stats, useApi } from "@hiber3d/web";
 import { useCallback, useEffect, useReducer } from "react";
 import { telegramUser } from "utils/telegram";
-import { Stats } from "../../build/web/src/moduleFactory";
 
 type Score = Stats;
 type Player = {
