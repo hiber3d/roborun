@@ -1,6 +1,5 @@
-import { useApi } from "@hiber3d/web";
+import { Stats, useApi } from "@hiber3d/web";
 import { useEffect, useState } from "react";
-import { Stats } from "../../build/web/src/moduleFactory";
 
 export const RoborunUI = () => {
   const api = useApi();

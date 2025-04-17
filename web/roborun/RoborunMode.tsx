@@ -2,7 +2,6 @@ import { useMusicMultiTracks } from "audio/useMusicMultiTracks";
 import { useSoundEffects } from "audio/useSoundEffects";
 import { AnimatePresence } from "framer-motion";
 import { LeaderboardContent } from "./LeaderboardContent";
-import { RoborunUI } from "./RoborunUI";
 import { useLeaderboard } from "./useLeaderboard";
 import { useTouchControls } from "./useTouchControls";
 import { Mute } from "./Mute";
