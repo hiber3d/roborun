@@ -10,8 +10,6 @@
     "compile:webgl": "node ./build_scripts/emscripten.cjs --build-webgl",
     "compile:webgpu:release": "node ./build_scripts/emscripten.cjs --build  --release",
     "compile:webgl:release": "node ./build_scripts/emscripten.cjs --build-webgl --release",
-    "compile:profile": "node ./build_scripts/emscripten.cjs --build --build-webgl --profile",
-    "compile:profile:release": "node ./build_scripts/emscripten.cjs --build --build-webgl --profile --release",
     "dev": "vite --configLoader runner",
     "build": "tsc -b && vite build  --configLoader runner",
     "lint": "eslint .",
