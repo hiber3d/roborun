@@ -4,7 +4,7 @@ export EMSCRIPTEN_VERSION="3.1.64"
 
 # Function to print usage information
 print_usage() {
-    echo "Usage: source $0 [--clean] [--install] [--build] [--build-webgl] [--build-webgpu] [--clean-install] [--debug] [--release]"
+    echo "Usage: source $0 [--clean] [--install] [--build] [--build-webgl] [--build-webgpu] [--clean-install] [--debug] [--release] [--profile]"
     echo "  --clean         Clear CMake cache, build directory, and ccache (always runs first if specified)"
     echo "  --install       Install Emscripten and dependencies"
     echo "  --build         Build for WebGPU only (default)"
@@ -12,6 +12,7 @@ print_usage() {
     echo "  --build-webgl   Build for WebGL"
     echo "  --clean-install Clean and reinstall Emscripten"
     echo "  --debug         Build in Debug mode with -Wl,--lto-O0"
+    echo "  --profile       Build for performance profiling"
     echo "  --release       Build in Release mode"
     echo "You can use multiple flags together. Build installs Emscripten if not present."
     echo "Note: This script should be run with 'source' to set environment variables."
@@ -71,8 +72,9 @@ detect_os() {
 # $1: Platform "windows"/"unix"
 # $2: Graphics backend "webgl"/"webgpu"
 # $3: Build type "Debug"/"Release"
+# $4: Profile mode "true"/"false"
 build() {
-    echo "Building the project for '$1' using '$2' in $3 mode..."
+    echo "Building the project for '$1' using '$2' in $3 mode (profiling: $4)..."
 
     CMAKE_OPTIONAL_ARGS=""
     LINKER_FLAGS=""
@@ -103,6 +105,8 @@ build() {
     if [ "$3" == "Debug" ]; then
         LINKER_FLAGS="-Wl,--lto-O0"
     fi
+    
+    USE_PROFILE="$4"
 
     # Run cmake configure and build
     mkdir -p $BUILD_PATH
@@ -117,6 +121,7 @@ build() {
     cmake -DCMAKE_TOOLCHAIN_FILE="$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake" \
           -G "Ninja" \
           -DHBR_USE_WEBGPU="$USE_WEBGPU" \
+          -DHBR_ENABLE_PROFILE="$USE_PROFILE" \
           -DCMAKE_BUILD_TYPE="$3" \
           $CMAKE_OPTIONAL_ARGS \
           ../.. && \
@@ -151,6 +156,7 @@ fi
 
 # Default build type
 BUILD_TYPE="Debug"
+PROFILE_MODE="false"
 
 # Check for --clean flag first
 for arg in "$@"; do
@@ -160,14 +166,14 @@ for arg in "$@"; do
     fi
 done
 
-# Check for build type flags
+# Check for build type and profile flags
 for arg in "$@"; do
     if [ "$arg" == "--debug" ]; then
         BUILD_TYPE="Debug"
-        break
     elif [ "$arg" == "--release" ]; then
         BUILD_TYPE="Release"
-        break
+    elif [ "$arg" == "--profile" ]; then
+        PROFILE_MODE="true"
     fi
 done
 
@@ -181,15 +187,17 @@ while [ "$1" != "" ]; do
         --clean-install )   clean_install
                             ;;
         --build-webgpu )    ensure_emscripten
-                            build $(detect_os) "webgpu" "$BUILD_TYPE"
+                            build $(detect_os) "webgpu" "$BUILD_TYPE" "$PROFILE_MODE"
                             ;;
         --build-webgl )     ensure_emscripten
-                            build $(detect_os) "webgl" "$BUILD_TYPE"
+                            build $(detect_os) "webgl" "$BUILD_TYPE" "$PROFILE_MODE"
                             ;;
         --build )           ensure_emscripten
-                            build $(detect_os) "webgpu" "$BUILD_TYPE"
+                            build $(detect_os) "webgpu" "$BUILD_TYPE" "$PROFILE_MODE"
                             ;;
         --debug )           # Already handled, skip
+                            ;;
+        --profile )         # Already handled, skip
                             ;;
         --release )         # Already handled, skip
                             ;;
