@@ -136,19 +136,6 @@
     const position = spline.position;
     const rotation = spline.rotation;
 
-    //hiber3d.print(
-    //  " currentStepEntity: " + currentStepEntity +
-    //  ", nextStepEntity: " + nextStepEntity +
-    //  ", currentStepPosition: " + vectorUtils.formatVector(currentStepPosition) + 
-    //  ", currentStepRotation: " + quatUtils.formatQuaternion(currentStepRotation) +
-    //  ", nextStepPosition: " + vectorUtils.formatVector(nextStepPosition) +
-    //  ", nextStepRotation: " + quatUtils.formatQuaternion(nextStepRotation) +
-    //  ", distanceFromCurrentStep: " + distanceFromCurrentStep +
-    //  ", curveFactor: " + curveFactor +
-    //  ", splinePosition: " + vectorUtils.formatVector(position) + 
-    //  ", splineRotation: " + quatUtils.formatQuaternion(rotation) +
-    //  "");
-
     if (this.DEBUG_SPLINE === true) {
       this.debugSpline(position, rotation);
     }
@@ -170,10 +157,6 @@
   },
   recordStats(delta) {
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    //hiber3d.print(
-    //  "playerEntity: " + playerEntity +
-    //  ", this.entity: " + this.entity +
-    //"");
     if(this.entity === playerEntity){
       var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
       stats.meters += delta;
@@ -181,9 +164,6 @@
       hiber3d.setValue(playerEntity, "Stats", stats);
 
       const newDistanceFromCurrentStep = hiber3d.getValue("SegmentsState", "distanceFromCurrentStep") + delta;
-      //hiber3d.print(
-      //  " newDistanceFromCurrentStep: " + newDistanceFromCurrentStep +
-      //"");
       hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", newDistanceFromCurrentStep);
     }
   },
@@ -210,10 +190,6 @@
 
     const isOnPath = hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js");
     const speed = this.getSpeed();
-    //hiber3d.print(
-    //  " speed:" + speed +
-    //  ", dt:" + dt +
-    //  "");
     this.recordStats(speed * dt);
     const spline = this.getSpline();
     regUtils.addComponentIfNotPresent(this.entity, "SplineData");

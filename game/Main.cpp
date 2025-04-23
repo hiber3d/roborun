@@ -2,7 +2,7 @@
 #include <Broadcast/BroadcastModule.hpp>
 #include <Input/InputModule.hpp>
 #include <Path/PathModule.hpp>
-#include <SceneLoader/SceneLoaderModule.hpp>
+#include <ChangeableScene/ChangeableSceneModule.hpp>
 #include <Segment/SegmentModule.hpp>
 
 #include <Hiber3D/Animation/AnimationModule.hpp>
@@ -103,7 +103,7 @@ public:
         context.registerModule<InputModule>();
         context.registerModule<RoboRunModule>();
         context.registerModule<PathModule>();
-        context.registerModule<SceneLoaderModule>();
+        context.registerModule<ChangeableSceneModule>();
         context.registerModule<SegmentModule>();
     }
 };

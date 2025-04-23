@@ -2,7 +2,7 @@
 #include "RoboRunModule.hpp"
 #include "RoboRunTypes.hpp"
 
-#include <SceneLoader/SceneLoaderEvents.hpp>
+#include <ChangeableScene/ChangeableSceneEvents.hpp>
 
 #include <Hiber3D/Asset/AssetServer.hpp>
 #include <Hiber3D/BaseAssets/Cubemap.hpp>
@@ -22,7 +22,6 @@
 
 static void resetSingletons(
     Hiber3D::Singleton<GameState> gameState) {
-    LOG_INFO("RoboRunModule::resetSingletons()");
     *gameState = GameState{};
 }
 
@@ -102,7 +101,7 @@ static void handleRestartGame(
     Hiber3D::EventWriter<ChangeScene>&        changeSceneWriter,
     Hiber3D::EventWriter<GameRestarted>&        gameRestartedWriter) {
     for (const auto& event : events) {
-        changeSceneWriter.writeEvent({.path = "scenes/GameScene.scene"});
+        changeSceneWriter.writeEvent({.path = "scenes/RunningScene.scene"});
         gameRestartedWriter.writeEvent({});
         return;
     }
