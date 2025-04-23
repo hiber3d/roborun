@@ -45,6 +45,11 @@ set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunModule.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunTypes.hpp
     
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/ChangeableScene/ChangeableSceneEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/ChangeableScene/ChangeableSceneModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/ChangeableScene/ChangeableSceneModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/ChangeableScene/ChangeableSceneTypes.hpp
+
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentModule.cpp

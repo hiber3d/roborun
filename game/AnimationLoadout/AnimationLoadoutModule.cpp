@@ -46,6 +46,7 @@ static void handlePlayerCreated(
     Hiber3D::Singleton<Hiber3D::AssetServer> assetServer,
     Hiber3D::EventView<PlayerCreated>        events) {
     for (const auto& event : events) {
+
         const auto entity = event.entity;
         if (gameState->playerEntity != Hiber3D::NULL_ENTITY) {
             LOG_ERROR("AnimationLoadoutModule::handlePlayerCreated() - Received PlayerCreatedEvent with new entity:'{}' but playerEntity:'{}' already exists", entity, gameState->playerEntity);
