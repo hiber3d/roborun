@@ -582,12 +582,7 @@ const PICK_UP_DEPTH = {
   },
 
   onCreate() {
-    const newSegmentsSceneEntity = hiber3d.createEntity();
-    hiber3d.setValue("SegmentsState", "segmentsSceneEntity", newSegmentsSceneEntity);
-    hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Children");
-    hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Name");
-    hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Transform");
-    hiber3d.setValue(newSegmentsSceneEntity, "Hiber3D::Name", "SegmentsScenes");
+    hiber3d.setValue("SegmentsState", "segmentsSceneEntity", this.entity);
 
     var transform = hiber3d.getValue(this.entity, "Hiber3D::Transform");
     var newSegmentEntity = this.spawnSegmentScene(transform);

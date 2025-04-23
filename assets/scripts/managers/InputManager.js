@@ -63,8 +63,15 @@ const KEYS = {
 
     // Start game on any touch input
     if (hiber3d.getValue("GameState", "paused") === true) {
-      hiber3d.writeEvent("StartInput", {});
-      return;
+      if (event === "LeftTapped" ||
+        event === "RightTapped" ||
+        event === "SwipedUp" ||
+        event === "SwipedDown" ||
+        event === "SwipedLeft" ||
+        event === "SwipedRight") {
+        hiber3d.writeEvent("StartInput", {});
+        return;
+      }
     }
 
     if (event === "LeftTapped" || event === "SwipedLeft") {

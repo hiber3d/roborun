@@ -2,6 +2,7 @@
 #include <Broadcast/BroadcastModule.hpp>
 #include <Input/InputModule.hpp>
 #include <Path/PathModule.hpp>
+#include <SceneLoader/SceneLoaderModule.hpp>
 #include <Segment/SegmentModule.hpp>
 
 #include <Hiber3D/Animation/AnimationModule.hpp>
@@ -90,7 +91,6 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justPressed(key); }>(context, "keyJustPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::AssetHandle<Hiber3D::Scene> assetHandle) { registry.singleton<Hiber3D::SceneManager>().changeScene(assetHandle); }>(context, "changeScene");
 
         context.registerModule<Hiber3D::InteropModule>();
         context.registerModule<Hiber3D::DebugModule>();
@@ -103,8 +103,8 @@ public:
         context.registerModule<InputModule>();
         context.registerModule<RoboRunModule>();
         context.registerModule<PathModule>();
+        context.registerModule<SceneLoaderModule>();
         context.registerModule<SegmentModule>();
-        
     }
 };
 

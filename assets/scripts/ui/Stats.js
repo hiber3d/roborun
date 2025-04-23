@@ -1,10 +1,9 @@
 ({
   shouldRun() {
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-
     return (
-      hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
-      !regUtils.isNullEntity(playerEntity)
+      !regUtils.isNullEntity(playerEntity) &&
+      hiber3d.hasComponents(playerEntity, "Stats")
     );
   },
   onCreate() {
@@ -26,10 +25,8 @@
       return;
     }
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+
     const stats = hiber3d.getValue(playerEntity, "Stats");
-    if (stats === undefined) {
-      return;
-    }
     this.updateStats("points", Math.round(stats.points));
     this.updateStats("collectibles", stats.collectibles);
     this.updateStats("meters", Math.round(stats.meters));
@@ -37,8 +34,6 @@
     const multiplier = (Math.round(stats.multiplier * 10) / 10).toFixed(1);
     this.updateStats("multiplier", multiplier);
     this.updateStats("multiplierProgress", stats.collectibles ? stats.collectibles % 10 : 0);
-
-    hiber3d.print(hiber3d.getValue("GameState", "alive") ? "visible" : "hidden");
     this.updateStats("visibility", hiber3d.getValue("GameState", "alive") ? "visible" : "hidden");
   },
 });

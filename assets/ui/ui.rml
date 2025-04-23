@@ -68,7 +68,7 @@
 			.transition-background {
 			width: 100%;
 			height: 100%;
-			background: #000000;
+			background: #1A2B33;
 			position: absolute;
 			z-index: 100;
 			opacity: 1;

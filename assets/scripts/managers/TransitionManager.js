@@ -1,5 +1,5 @@
 ({
-  TRANSITION_DURATION: 0.5,
+  TRANSITION_DURATION: 0.1,
 
   transitionDirection: -1,
   transitionValue: 1,
@@ -13,17 +13,24 @@
     return false;
   },
   onCreate() {
-    hiber3d.addEventListener(this.entity, "StartTransition");
+    hiber3d.addEventListener(this.entity, "FadeToBlack");
+    hiber3d.addEventListener(this.entity, "FadeFromBlack");
+    hiber3d.addEventListener(this.entity, "FadeToAndFromBlack");
     
     hiber3d.call("rmlCreateDataModel", "transition_model");
     this.transitionDirection = -1;
   },
   update(dt) {
-    if(this.transitionDirection !== 0){
-      const delta = dt * this.transitionDirection / this.TRANSITION_DURATION;
+    if (this.transitionDirection !== 0) {
+      const normalizedDirection = this.transitionDirection > 0 ? 1 : -1;
+      const delta = dt * normalizedDirection / this.TRANSITION_DURATION;
       const doneTransitioning = this.passing(0, this.transitionValue, delta) || this.passing(1, this.transitionValue, delta)
-      if(doneTransitioning){
-        this.transitionDirection = 0;
+      if (doneTransitioning) {
+        if (this.transitionDirection === 2) {
+          this.transitionDirection = -1;
+        } else {
+          this.transitionDirection = 0;
+        }
       }
 
       this.transitionValue += delta;
@@ -33,8 +40,14 @@
     }
   },
   onEvent(event, payload) {
-    if (event === "StartTransition") {
+    if (event === "FadeToBlack") {
       this.transitionDirection = 1;
+    }
+    if (event === "FadeFromBlack") {
+      this.transitionDirection = -1;
+    }
+    if (event === "FadeToAndFromBlack") {
+      this.transitionDirection = 2;
     }
   },
 });
