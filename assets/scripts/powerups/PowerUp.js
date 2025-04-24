@@ -22,7 +22,14 @@
       if (roboRunUtils.isPlayerCollision(this.entity, payload)) {
         const playerEntity = hiber3d.getValue("GameState", "playerEntity");
         const scriptPath = this.getScriptPath();
-        regUtils.addOrReplaceScript(playerEntity, scriptPath);
+        if (hiber3d.hasScripts(playerEntity, scriptPath)) {
+          // TODO: Remove after [HIB-33909]
+          var script = hiber3d.getScript(playerEntity, scriptPath);
+          script.timeSinceStarted = 0;
+        } else {
+          regUtils.addOrReplaceScript(playerEntity, scriptPath);
+        }
+        hiber3d.writeEvent("BroadcastPowerupPickup", {});
 
         // Destroy this power-up
         regUtils.destroyEntity(this.entity);
