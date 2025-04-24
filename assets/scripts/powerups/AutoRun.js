@@ -32,6 +32,8 @@
 
   stage: 0,
   timeSinceStarted: 0,
+  startingHeightDiff: 0,
+  latestHeightDiff: 0,
 
   shouldRun() {
     return !hiber3d.getValue("GameState", "paused");
@@ -55,7 +57,7 @@
   },
   getHeightDiff(stage) {
     if (stage === this.STAGE.ASCEND) {
-      return scalarUtils.lerpScalar(0, this.AUTO_RUN_MAX_HEIGHT, this.timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
+      return scalarUtils.lerpScalar(this.startingHeightDiff, this.AUTO_RUN_MAX_HEIGHT, this.timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
     }
     if (stage === this.STAGE.MAX_HEIGHT) {
       return this.AUTO_RUN_MAX_HEIGHT;
@@ -88,13 +90,16 @@
     
     hiber3d.addEventListener(this.entity, "DivedEvent");
     hiber3d.addEventListener(this.entity, "JumpedEvent");
-
-    hiber3d.writeEvent("BroadcastPowerupPickup", {});
-    hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
   },
   update(dt) {
     if (!this.shouldRun()) {
       return;
+    }
+
+    // Handle refresh
+    if (this.timeSinceStarted === 0) {
+      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
+      this.startingHeightDiff = this.latestHeightDiff;
     }
     
     this.timeSinceStarted += dt;
@@ -109,8 +114,10 @@
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "autoRun" });
       }
 
-      const newHeight = roboRunUtils.getSplineHeight(this.entity) + this.getHeightDiff(this.stage);
+      const newHeightDiff = this.getHeightDiff(this.stage);
+      const newHeight = roboRunUtils.getSplineHeight(this.entity) + newHeightDiff;
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newHeight);
+      this.latestHeightDiff = newHeightDiff;
     }
     
   },
