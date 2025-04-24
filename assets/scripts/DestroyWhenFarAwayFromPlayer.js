@@ -1,5 +1,5 @@
 ({
-  DISTANCE: 20,
+  DISTANCE: 50,
   shouldRun() {
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
     return playerEntity !== undefined &&
@@ -15,7 +15,7 @@
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
     const playerPosition = hiber3d.getValue(playerEntity, "Hiber3D::ComputedWorldTransform", "position");
     const position = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position");
-    if(!vectorUtils.inRange(playerPosition, position, this.DISTANCE)) {
+    if (!vectorUtils.inRange(playerPosition, position, this.DISTANCE)) {
       regUtils.destroyEntity(this.entity);
     }
   },
