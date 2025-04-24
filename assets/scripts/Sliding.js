@@ -9,11 +9,13 @@
   },
   onCreate() {
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", layer: ANIMATION_LAYER.ROLL, loop: true });
-    hiber3d.writeEvent("BroadcastSlided", {})
   },
   update(dt) {
     if (!this.shouldRun()) {
       return;
+    }
+    if (this.timeSpentSliding === 0) {
+      hiber3d.writeEvent("BroadcastSlided", {})
     }
     this.timeSpentSliding += dt;
     if (this.timeSpentSliding >= this.SLIDE_DURATION) {

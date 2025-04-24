@@ -18,8 +18,15 @@
       return;
     }
     if (event === "SlideInput") {
-      if(this.canStartSliding()){
-        regUtils.addOrReplaceScript(this.entity, "scripts/Sliding.js");
+      if (this.canStartSliding()) {
+
+        if (hiber3d.hasScripts(this.entity, "scripts/Sliding.js")) {
+          // TODO: Remove after [HIB-33909]
+          var script = hiber3d.getScript(this.entity, "scripts/Sliding.js");
+          script.timeSpentSliding = 0;
+        } else {
+          regUtils.addOrReplaceScript(this.entity, "scripts/Sliding.js");
+        }
       }
     }
   }
