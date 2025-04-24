@@ -370,11 +370,11 @@ const PICK_UP_DEPTH = {
 
     // usePowerup
     const powerupChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.POWERUP_CHANCE_AT_DIFFICULTY_0, this.POWERUP_CHANCE_AT_DIFFICULTY_1, difficulty);
-    usePowerup = powerupChanceSuccess;
+    usePowerup = !useFirstSegment && powerupChanceSuccess;
 
     // useCollectible
     const collectibleChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_0, this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_1, difficulty);
-    useCollectible = !usePowerup && collectibleChanceSuccess;
+    useCollectible = !useFirstSegment && !usePowerup && collectibleChanceSuccess;
 
     // allows
     allowInclines = this.inclincesInARowCounter < this.MAX_INCLINES_IN_A_ROW;
