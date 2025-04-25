@@ -24,8 +24,16 @@
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
       hiber3d.addComponent(entity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(entity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
-      hiber3d.setValue(entity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
+      const sceneRoot = hiber3d.getComponent(entity, "");
+      sceneRoot.scene = "glbs/primitives/cylinder.glb#scene0";
+      hiber3d.setComponent(entity, "Hiber3D::SceneRoot", sceneRoot);
+
+      const transform = hiber3d.getComponent(entity, "Hiber3D::Transform");
+      const scale = transform.scale;
+      scale.x = 0.1;
+      scale.y = 0.4;
+      scale.z = 0.1;
+      hiber3d.setComponent(entity, "Hiber3D::Transform", transform);
     }
   },
 
@@ -81,16 +89,19 @@
       //);
       if (hasPassed) {
         const newStepIndex = regUtils.getChildIndexOf(nextStepEntity);
-        hiber3d.setValue("SegmentsState", "currentStepIndex", newStepIndex);
-        hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", 0);
+        const segmentsState = hiber3d.getSingleton("SegmentsState");
+        segmentsState.currentStepIndex = newStepIndex;
+        segmentsState.distanceFromCurrentStep = 0;
+        hiber3d.setSingleton("SegmentsState", segmentsState);
         hiber3d.writeEvent("NewStepEvent");
         const newNextStepEntity = segUtils.getNextStepEntity();
         const newNextStepIndex = regUtils.getChildIndexOf(newNextStepEntity);
         if (newNextStepIndex === 0) {
           const currentSegmentEntity = hiber3d.getSingleton("SegmentsState").currentSegmentSceneEntity;
           const nextSegmentEntity = hiber3d.getComponent(currentSegmentEntity, "SegmentScene").next;
-          hiber3d.setValue("SegmentsState", "currentSegmentSceneEntity", nextSegmentEntity);
-          hiber3d.setValue("SegmentsState", "currentStepIndex", 0);
+          segmentsState.currentSegmentSceneEntity = nextSegmentEntity;
+          segmentsState.currentStepIndex = 0;
+          hiber3d.setSingleton("SegmentsState", segmentsState);
           hiber3d.writeEvent("NewSegmentEvent");
         }
         if (!segUtils.isPlayerAtForward() && hiber3d.hasComponents(playerEntity, "OnPath")) {

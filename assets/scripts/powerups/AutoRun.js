@@ -110,7 +110,9 @@
       }
 
       const newHeight = roboRunUtils.getSplineHeight(this.entity) + this.getHeightDiff(this.stage);
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newHeight);
+      const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
+      transform.position.y = newHeight;
+      hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
     }
     
   },

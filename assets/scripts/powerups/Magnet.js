@@ -13,13 +13,17 @@
     this.magnetColliderEntity = hiber3d.call("createEntityAsChild", this.entity);
 
     hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D::Transform");
-    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D::Transform", "position", "y", this.MAGNET_COLLIDER_OFFSET_HEIGHT);
+    const transform = hiber3d.getComponent(this.magnetColliderEntity, "Hiber3D::Transform");
+    transform.position.y = this.MAGNET_COLLIDER_OFFSET_HEIGHT;
+    hiber3d.setComponent(this.magnetColliderEntity, "Hiber3D::Transform", transform);
 
     hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D::SceneRoot", "scene", "scenes/powerups/MagnetCollider.scene");
+    const sceneRoot = hiber3d.getComponent(this.magnetColliderEntity, "Hiber3D::SceneRoot");
+    sceneRoot.scene = "scenes/powerups/MagnetCollider.scene";
+    hiber3d.setComponent(this.magnetColliderEntity, "Hiber3D::SceneRoot", sceneRoot);
 
     hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D::Name");
-    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D::Name", "MagnetCollider.scene");
+    hiber3d.setComponent(this.magnetColliderEntity, "Hiber3D::Name", "MagnetCollider.scene");
   },
   update(dt) {
     if (!this.shouldRun()) {

@@ -98,8 +98,10 @@ function takeTurn(left) {
     hiber3d.print("takeTurn() - illegal newIndex value:'" + newIndex + "'");
     return;
   }
-  hiber3d.setValue("SegmentsState", "currentStepIndex", newIndex);
-  hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", 0);
+  const segmentsState = hiber3d.getSingleton("SegmentsState");
+  segmentsState.currentStepIndex = newIndex;
+  segmentsState.distanceFromCurrentStep = 0;
+  hiber3d.setSingleton("SegmentsState", segmentsState);
 
   // Progress to next segment
   if (newIndex == 0) {
@@ -110,7 +112,8 @@ function takeTurn(left) {
     }
     const nextSegmentSceneEntity = hiber3d.getComponent(currentSegmentSceneEntity, "SegmentScene").next;
 
-    hiber3d.setValue("SegmentsState", "currentSegmentSceneEntity", nextSegmentSceneEntity);
+    segmentsState.currentSegmentSceneEntity = nextSegmentSceneEntity;
+    hiber3d.setSingleton("SegmentsState", segmentsState);
   }
 }
 module.exports.takeTurn = takeTurn;
