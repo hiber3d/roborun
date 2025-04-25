@@ -5,6 +5,7 @@ import { LeaderboardContent } from "./LeaderboardContent";
 import { useLeaderboard } from "./useLeaderboard";
 import { useTouchControls } from "./useTouchControls";
 import { Mute } from "./Mute";
+import { MainMenu } from "./MainMenu";
 
 const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;
@@ -26,13 +27,10 @@ export const RoborunMode = () => {
 
   return (
     <AnimatePresence>
+      <MainMenu key="mainmenu" />
       {/* <RoborunUI /> */}
-      <LeaderboardContent
-        key="leaderboard"
-        state={state}
-        onSubmitName={submitForm}
-      />
-      <Mute />
+      <LeaderboardContent key="leaderboard" state={state} onSubmitName={submitForm} />
+      <Mute key="mute" />
     </AnimatePresence>
   );
 };

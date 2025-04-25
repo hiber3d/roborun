@@ -3,6 +3,7 @@
 
   MOST_SUITABLE_LOCATION_X: -2,
 
+  tryReplace: false,
   hasReplaceStartingRobotWithStartingPlayer: false,
   getStartingRobotToReplace() {
     const startingRobots = hiber3d.findEntitiesWithScript("scripts/starting_platform/StartingRobotsCircularTeleportation.js");
@@ -10,6 +11,9 @@
     var closestDistance = Number.MAX_VALUE;
     for (var i = 0; i < startingRobots.length; i++) {
       const startingRobot = startingRobots[i];
+      if (!hiber3d.hasComponents(startingRobot, "Hiber3D::ComputedWorldTransform")) {
+        continue;
+      }
       const position = hiber3d.getValue(startingRobot, "Hiber3D::ComputedWorldTransform", "position");
       const distance = Math.abs(position.x - this.MOST_SUITABLE_LOCATION_X);
       if (distance < closestDistance) {
@@ -26,9 +30,12 @@
     if (this.hasReplaceStartingRobotWithStartingPlayer === true) {
       return;
     }
+    const startingRobotEntityToReplace = this.getStartingRobotToReplace();
+    if (startingRobotEntityToReplace === undefined) {
+      return;
+    }
     this.hasReplaceStartingRobotWithStartingPlayer = true;
 
-    const startingRobotEntityToReplace = this.getStartingRobotToReplace();
     const transformToSpawnPlayerAt = hiber3d.getValue(startingRobotEntityToReplace, "Hiber3D::ComputedWorldTransform");
 
     var playerEntity = regUtils.createChildToParent(this.entity);
@@ -46,12 +53,20 @@
   },
   onCreate() {
     hiber3d.addEventListener(this.entity, "StartInput");
+
+    if (hiber3d.getValue("GameState", "autoStart") === true) {
+      hiber3d.print("AUTOSTART!");
+      hiber3d.writeEvent("StartInput", {});
+    }
   },
   update(dt) {
+    if(this.tryReplace === true && this.hasReplaceStartingRobotWithStartingPlayer === false) {
+      this.replaceStartingRobotWithStartingPlayer();
+    }
   },
   onEvent(event, payload) {
     if (event === "StartInput") {
-      this.replaceStartingRobotWithStartingPlayer();
+      this.tryReplace = true;
     }
   }
 });

@@ -1,12 +1,12 @@
 import { Hiber3D } from "@hiber3d/web";
-import { moduleFactory as moduleFactoryWebGPU } from "GameTemplate_webgpu";
-import { moduleFactory as moduleFactoryWebGL } from "GameTemplate_webgl";
+import { moduleFactory as webGPU } from "GameTemplate_webgpu";
+import { moduleFactory as webGL } from "GameTemplate_webgl";
 import { AudioProvider } from "audio/AudioProvider";
 import { RoborunMode } from "roborun/RoborunMode";
 
 export const App = () => (
   <Hiber3D
-    build={{webGPU: moduleFactoryWebGPU as any, webGL: moduleFactoryWebGL as any}}
+    build={{ webGPU, webGL }}
     logs={{ showLogsInBrowserConsole: true }}
     config={{
       Editor: {
