@@ -9,8 +9,10 @@
       segUtils.getCurrentStepEntity() !== undefined;
   },
   onCreate() {
-    hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", layer: ANIMATION_LAYER.ROLL, loop: true });
-    hiber3d.writeEvent("BroadcastSlided", {})
+    const playAnimation = new PlayAnimation();
+    playAnimation.entity = this.entity; playAnimation.name = "slide"; playAnimation.layer = ANIMATION_LAYER.ROLL; playAnimation.loop = true;
+    hiber3d.writeEvent("PlayAnimation", playAnimation);
+    hiber3d.writeEvent("BroadcastSlided", new BroadcastSlided());
   },
   update(dt) {
     if (!this.shouldRun()) {
@@ -18,7 +20,9 @@
     }
     this.timeSpentSliding += dt;
     if (this.timeSpentSliding >= this.SLIDE_DURATION) {
-      hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "slide" });
+      const cancelAnimation = new CancelAnimation();
+      cancelAnimation.entity = this.entity; cancelAnimation.name = "slide";
+      hiber3d.writeEvent("CancelAnimation", cancelAnimation);
       hiber3d.removeScript(this.entity, "scripts/Sliding.js");
     }
   },

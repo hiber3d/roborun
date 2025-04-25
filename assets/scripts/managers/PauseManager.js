@@ -11,11 +11,11 @@
   onEvent(event, payload) {
     const gameState = hiber3d.getSingleton("GameState");
     if (event === "RestartInput") {
-      hiber3d.writeEvent("RestartGame", {});
+      hiber3d.writeEvent("RestartGame", new RestartGame());
     } else if (event === "StartInput" && !this.hasStarted) {
       gameState.paused = false;
       hiber3d.setSingleton("GameState", gameState);
-      hiber3d.writeEvent("BroadcastGameStarted", {})
+      hiber3d.writeEvent("BroadcastGameStarted", new BroadcastGameStarted());
       this.hasStarted = true;
     } else if (event === "PauseInput") {
       gameState.paused = true;

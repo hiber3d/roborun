@@ -15,7 +15,7 @@
         stats.multiplier = 1 + stats.collectibles / 100;
         hiber3d.setComponent(playerEntity, "Stats", stats);
 
-        hiber3d.writeEvent("BroadcastCollectiblePickup", new globalThis["BroadcastCollectiblePickup"]());
+        hiber3d.writeEvent("BroadcastCollectiblePickup", new BroadcastCollectiblePickup());
 
         const parent = hiber3d.getParent(this.entity); // danger zone, replace after [HIB-33859]
         hiber3d.destroyEntity(parent);

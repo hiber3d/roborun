@@ -25,11 +25,16 @@
     this.diveStartHeight = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position.y;
 
     const cancelAnimation = new globalThis["CancelAnimation"]();
-    cancelAnimation.entity = this.entity;
-    cancelAnimation.jump = "jump";
+    cancelAnimation.entity = this.entity; cancelAnimation.jump = "jump";
     hiber3d.writeEvent("CancelAnimation", cancelAnimation);
-    hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", layer: ANIMATION_LAYER.ROLL, loop: true });
-    hiber3d.writeEvent("DivedEvent", { entity: this.entity });
+
+    const playAnimation = new globalThis["PlayAnimation"]();
+    playAnimation.entity = this.entity; playAnimation.name = "dive"; playAnimation.layer = ANIMATION_LAYER.ROLL; playAnimation.loop = true;
+    hiber3d.writeEvent("PlayAnimation", playAnimation);
+
+    const divedEvent = new globalThis["DivedEvent"]();
+    divedEvent.entity = this.entity;
+    hiber3d.writeEvent("DivedEvent", divedEvent);
   },
   update(dt) {
     if (!this.shouldRun()) {
@@ -46,7 +51,9 @@
         hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
       } else {
         // landed
-        hiber3d.writeEvent("LandedEvent", { entity: this.entity });
+        const landedEvent = new globalThis["LandedEvent"]();
+        landedEvent.entity = this.entity;
+        hiber3d.writeEvent("LandedEvent", landedEvent);
         transform.position.y = roboRunUtils.getSplineHeight(this.entity);
         hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
       }
@@ -57,7 +64,9 @@
       transform.position.y = roboRunUtils.getSplineHeight(this.entity);
       hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
       if (this.timeSpentDivingOnGround >= this.DIVE_DURATION) {
-        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "dive" });
+        const cancelAnimation = new globalThis["CancelAnimation"]();
+        cancelAnimation.entity = this.entity; cancelAnimation.name = "dive";
+        hiber3d.writeEvent("CancelAnimation", cancelAnimation);
         hiber3d.removeScript(this.entity, "scripts/Diving.js");
       }
     }

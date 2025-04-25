@@ -85,18 +85,24 @@
     this.groundedStart = this.descendEnd;
     this.groundedEnd = this.groundedStart + this.AUTO_RUN_DESCEND_GROUNDED_DURATION;
     this.end = this.AUTO_RUN_DURATION;
-    
+
     hiber3d.addEventListener(this.entity, "DivedEvent");
     hiber3d.addEventListener(this.entity, "JumpedEvent");
 
-    hiber3d.writeEvent("BroadcastPowerupPickup", {});
-    hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "autoRun", layer: ANIMATION_LAYER.ROLL, loop: true });
+    hiber3d.writeEvent("BroadcastPowerupPickup", new BroadcastPowerupPickup());
+
+    const playAnimation = new PlayAnimation();
+    playAnimation.entity = this.entity;
+    playAnimation.name = "autoRun";
+    playAnimation.layer = ANIMATION_LAYER.ROLL;
+    playAnimation.loop = true;
+    hiber3d.writeEvent("PlayAnimation", playAnimation);
   },
   update(dt) {
     if (!this.shouldRun()) {
       return;
     }
-    
+
     this.timeSinceStarted += dt;
     this.updateStage();
 
@@ -106,7 +112,10 @@
     } else { // Continue auto-running
 
       if (this.stage == this.STAGE.GROUNDED) { // "Land"
-        hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "autoRun" });
+        const cancelAnimation = new CancelAnimation();
+        cancelAnimation.entity = this.entity;
+        cancelAnimation.name = "autoRun";
+        hiber3d.writeEvent("CancelAnimation", cancelAnimation);
       }
 
       const newHeight = roboRunUtils.getSplineHeight(this.entity) + this.getHeightDiff(this.stage);
@@ -114,12 +123,12 @@
       transform.position.y = newHeight;
       hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
     }
-    
+
   },
   onEvent(event, payload) {
     // Cancel AutoRun if jumping or diving
-    if(event === "JumpedEvent" || event === "DivedEvent"){
-      if(payload.entity === this.entity){
+    if (event === "JumpedEvent" || event === "DivedEvent") {
+      if (payload.entity === this.entity) {
         hiber3d.removeScript(this.entity, "scripts/powerups/AutoRun.js");
       }
     }

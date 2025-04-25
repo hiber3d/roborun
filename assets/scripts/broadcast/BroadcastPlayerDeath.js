@@ -13,7 +13,9 @@
         hiber3d.setSingleton("GameState", gameState);
 
         const stats = hiber3d.getComponent(gameState.playerEntity, "Stats");
-        hiber3d.writeEvent("PlayerDied", { stats });
+        const playerDied = new PlayerDied();
+        playerDied.stats = stats;
+        hiber3d.writeEvent("PlayerDied", playerDied);
       }
     }
 
@@ -21,14 +23,14 @@
       hiber3d.print("!!GAME OVER!! - points:'" + Math.round(payload.stats.points) + "' | collectibles:'" + payload.stats.collectibles + "'| meters:'" + Math.round(payload.stats.meters) + "' | multiplier at end: 'x" + (Math.floor(payload.stats.multiplier * 10 + 0.0001) / 10).toFixed(1) + "'");
       const playerEntity = gameState.playerEntity;
 
-      const playAnimationEvent = new globalThis["PlayAnimation"];
+      const playAnimationEvent = new PlayAnimation();
       playAnimationEvent.entity = playerEntity;
       playAnimationEvent.name = "dying";
       playAnimationEvent.layer = ANIMATION_LAYER.DYING;
       playAnimationEvent.loop = false;
       hiber3d.writeEvent("PlayAnimation", playAnimationEvent);
 
-      const queueAnimationEvent = new globalThis["QueueAnimation"];
+      const queueAnimationEvent = new QueueAnimation();
       const playAnimation = queueAnimationEvent.playAnimation;
       playAnimation.entity = playerEntity;
       playAnimation.name = "dead";

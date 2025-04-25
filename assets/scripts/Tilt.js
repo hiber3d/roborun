@@ -32,13 +32,17 @@
     if (
       this.tiltFactor < 0 && this.tiltFactorPreviousTick === 0 ||
       this.tiltFactor < 1 && this.tiltFactorPreviousTick === 1) {
-      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "tiltLeft", layer: ANIMATION_LAYER.ACTION, loop: false });
-      hiber3d.writeEvent("BroadcastTilted", {})
+      const playAnimation = new PlayAnimation();
+      playAnimation.entity = this.entity; playAnimation.name = "tiltLeft"; playAnimation.layer = ANIMATION_LAYER.ACTION; playAnimation.loop = false;
+      hiber3d.writeEvent("PlayAnimation", playAnimation);
+      hiber3d.writeEvent("BroadcastTilted", new BroadcastTilted())
     } else if (
       this.tiltFactor > 0 && this.tiltFactorPreviousTick === 0 ||
       this.tiltFactor > -1 && this.tiltFactorPreviousTick === -1) {
-      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "tiltRight", layer: ANIMATION_LAYER.ACTION, loop: false });
-      hiber3d.writeEvent("BroadcastTilted", {})
+      const playAnimation = new PlayAnimation();
+      playAnimation.entity = this.entity; playAnimation.name = "tiltRight"; playAnimation.layer = ANIMATION_LAYER.ACTION; playAnimation.loop = false
+      hiber3d.writeEvent("PlayAnimation", playAnimation);
+      hiber3d.writeEvent("BroadcastTilted", new BroadcastTilted())
 
     }
 

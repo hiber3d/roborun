@@ -37,10 +37,22 @@
 
     this.startHeight = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position.y;
 
-    hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "slide" });
-    hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "jump", layer: ANIMATION_LAYER.ACTION, loop: false });
-    hiber3d.writeEvent("QueueAnimation", { playAnimation: { entity: this.entity, name: "fall", layer: ANIMATION_LAYER.FALL, loop: true } });
-    hiber3d.writeEvent("JumpedEvent", { entity: this.entity });
+    const cancelAnimation = new globalThis["CancelAnimation"]();
+    cancelAnimation.entity = this.entity; cancelAnimation.name = "slide";
+    hiber3d.writeEvent("CancelAnimation", cancelAnimation);
+
+    const playAnimation = new globalThis["PlayAnimation"]();
+    playAnimation.entity = this.entity; playAnimation.name = "jump"; playAnimation.layer = ANIMATION_LAYER.ACTION; playAnimation.loop = false;
+    hiber3d.writeEvent("PlayAnimation", playAnimation);
+
+    const queueAnimation = new globalThis["QueueAnimation"]();
+    const playAnimation2 = queueAnimation.playAnimation;
+    playAnimation2.entity = this.entity; playAnimation2.name = "fall"; playAnimation2.layer = ANIMATION_LAYER.FALL; playAnimation2.loop = true;
+    hiber3d.writeEvent("QueueAnimation", queueAnimation);
+
+    const jumpedEvent = new globalThis["JumpedEvent"]();
+    jumpedEvent.entity = this.entity;
+    hiber3d.writeEvent("JumpedEvent", jumpedEvent);
   },
   update(dt) {
     if (!this.shouldRun()) {
@@ -56,9 +68,19 @@
       hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
     } else {
       // landed
-      hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "fall" });
-      hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
-      hiber3d.writeEvent("LandedEvent", { entity: this.entity });
+
+      const cancelAnimation = new globalThis["CancelAnimation"]();
+      cancelAnimation.entity = this.entity; cancelAnimation.name = "fall";
+      hiber3d.writeEvent("CancelAnimation", cancelAnimation);
+
+      const playAnimation = new globalThis["PlayAnimation"]();
+      playAnimation.entity = this.entity; playAnimation.name = "land"; playAnimation.layer = ANIMATION_LAYER.ACTION; playAnimation.loop = false;
+      hiber3d.writeEvent("PlayAnimation", playAnimation);
+
+      const landedEvent = new globalThis["LandedEvent"]();
+      landedEvent.entity = this.entity;
+      hiber3d.writeEvent("LandedEvent", landedEvent);
+
       transform.position.y = roboRunUtils.getSplineHeight(this.entity);
       hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
 

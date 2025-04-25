@@ -243,7 +243,7 @@
       if (fallenOff) {
         const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
         if (this.entity === playerEntity) {
-          hiber3d.writeEvent("KillPlayer", {});
+          hiber3d.writeEvent("KillPlayer", new KillPlayer());
         }
       } else {
         const position = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position;

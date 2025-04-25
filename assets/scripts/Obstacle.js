@@ -17,12 +17,12 @@
     for (var i = 0; i < Object.keys(this.OBSTACLE_TYPES).length; i++) {
       const key = Object.keys(this.OBSTACLE_TYPES)[i];
       const ancestor = regUtils.findEntityWithNameAmongAncestors(this.entity, key);
-      if(ancestor !== undefined) {
+      if (ancestor !== undefined) {
         const path = this.OBSTACLE_TYPES[key];
         return path;
       }
     }
-        return undefined;
+    return undefined;
   },
   onCreate() {
     hiber3d.addEventListener(this.entity, "Hiber3D::CollisionStarted");
@@ -34,12 +34,12 @@
       if (typeof roboRunUtils !== 'undefined' && roboRunUtils.isPlayerCollision(this.entity, payload)) {
         const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
         if (!hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
-          hiber3d.writeEvent("KillPlayer", {});
-          
+          hiber3d.writeEvent("KillPlayer", new KillPlayer());
+
           const deathScenePath = this.getDeathScenePath();
           if (deathScenePath !== undefined) {
             hiber3d.call("changeScene", deathScenePath);
-            hiber3d.writeEvent("StartTransition", {});
+            hiber3d.writeEvent("StartTransition", new StartTransition());
           }
         }
       }

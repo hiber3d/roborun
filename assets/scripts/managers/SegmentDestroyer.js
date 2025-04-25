@@ -93,7 +93,7 @@
         segmentsState.currentStepIndex = newStepIndex;
         segmentsState.distanceFromCurrentStep = 0;
         hiber3d.setSingleton("SegmentsState", segmentsState);
-        hiber3d.writeEvent("NewStepEvent");
+        hiber3d.writeEvent("NewStepEvent", new NewStepEvent());
         const newNextStepEntity = segUtils.getNextStepEntity();
         const newNextStepIndex = regUtils.getChildIndexOf(newNextStepEntity);
         if (newNextStepIndex === 0) {
@@ -102,7 +102,7 @@
           segmentsState.currentSegmentSceneEntity = nextSegmentEntity;
           segmentsState.currentStepIndex = 0;
           hiber3d.setSingleton("SegmentsState", segmentsState);
-          hiber3d.writeEvent("NewSegmentEvent");
+          hiber3d.writeEvent("NewSegmentEvent", new NewSegmentEvent());
         }
         if (!segUtils.isPlayerAtForward() && hiber3d.hasComponents(playerEntity, "OnPath")) {
           hiber3d.removeComponent(playerEntity, "OnPath");

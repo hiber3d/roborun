@@ -25,37 +25,37 @@ const KEYS = {
   update(dt) {
     // Keyboard events
     if (hiber3d.call("keyJustPressed", KEYS.START)) {
-      hiber3d.writeEvent("StartInput", {});
+      hiber3d.writeEvent("StartInput", new StartInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.PAUSE) && !hiber3d.getSingleton("GameState").paused) {
-      hiber3d.writeEvent("PauseInput", {});
+      hiber3d.writeEvent("PauseInput", new PauseInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.UNPAUSE) && hiber3d.getSingleton("GameState").paused) {
-      hiber3d.writeEvent("UnpauseInput", {});
+      hiber3d.writeEvent("UnpauseInput", new UnpauseInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.JUMP)) {
-      hiber3d.writeEvent("JumpInput", {});
+      hiber3d.writeEvent("JumpInput", new JumpInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.DIVE)) {
-      hiber3d.writeEvent("DiveInput", {});
+      hiber3d.writeEvent("DiveInput", new DiveInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.SLIDE)) {
-      hiber3d.writeEvent("SlideInput", {});
+      hiber3d.writeEvent("SlideInput", new SlideInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.TURN_LEFT)) {
-      hiber3d.writeEvent("TurnLeftInput", {});
+      hiber3d.writeEvent("TurnLeftInput", new TurnLeftInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.TURN_RIGHT)) {
-      hiber3d.writeEvent("TurnRightInput", {});
+      hiber3d.writeEvent("TurnRightInput", new TurnRightInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.TURN_LEFT)) {
-      hiber3d.writeEvent("LeftLaneInput", {});
+      hiber3d.writeEvent("LeftLaneInput", new LeftLaneInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.TURN_RIGHT)) {
-      hiber3d.writeEvent("RightLaneInput", {});
+      hiber3d.writeEvent("RightLaneInput", new RightLaneInput());
     }
     if (hiber3d.call("keyJustPressed", KEYS.RESTART)) {
-      hiber3d.writeEvent("RestartInput", {});
+      hiber3d.writeEvent("RestartInput", new RestartInput());
     }
   },
   onEvent(event, payload) {
@@ -63,27 +63,27 @@ const KEYS = {
 
     // Start game on any touch input
     if (hiber3d.getSingleton("GameState").paused === true) {
-      hiber3d.writeEvent("StartInput", {});
+      hiber3d.writeEvent("StartInput", new StartInput());
       return;
     }
 
     if (event === "LeftTapped" || event === "SwipedLeft") {
-      hiber3d.writeEvent("TurnLeftInput", {});
-      hiber3d.writeEvent("LeftLaneInput", {});
+      hiber3d.writeEvent("TurnLeftInput", new TurnLeftInput());
+      hiber3d.writeEvent("LeftLaneInput", new LeftLaneInput());
     }
     if (event === "RightTapped" || event === "SwipedRight") {
-      hiber3d.writeEvent("TurnRightInput", {});
-      hiber3d.writeEvent("RightLaneInput", {});
+      hiber3d.writeEvent("TurnRightInput", new TurnRightInput());
+      hiber3d.writeEvent("RightLaneInput", new RightLaneInput());
     }
 
     if (event === "SwipedUp") {
-      hiber3d.writeEvent("JumpInput", {});
+      hiber3d.writeEvent("JumpInput", new JumpInput());
     }
     if (event === "SwipedDown") {
-      hiber3d.writeEvent("DiveInput", {});
+      hiber3d.writeEvent("DiveInput", new DiveInput());
     }
     if (event === "SwipedDown") {
-      hiber3d.writeEvent("SlideInput", {});
+      hiber3d.writeEvent("SlideInput", new SlideInput());
     }
   },
 });
