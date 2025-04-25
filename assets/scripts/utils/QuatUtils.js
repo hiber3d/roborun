@@ -32,47 +32,78 @@ function inverseQuaternion(q) {
   // First, calculate the squared length
   const lengthSq = q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w;
 
+  const result = new globalThis["Hiber3D::Quaternion"]();
+
   // Handle zero-length quaternion
   if (lengthSq < 0.000001) {
     hiber3d.print("inverseQuaternion() - cannot invert zero quaternion");
-    return { x: 0, y: 0, z: 0, w: 1 };
+    return result;
   }
 
   // Calculate the inverse by dividing conjugate by lengthSq
-  return { x: -q.x / lengthSq, y: -q.y / lengthSq, z: -q.z / lengthSq, w: q.w / lengthSq };
+  result.x = -q.x / lengthSq;
+  result.y = -q.y / lengthSq;
+  result.z = -q.z / lengthSq;
+  result.w = q.w / lengthSq;
+  return result;
 }
 module.exports.inverseQuaternion = inverseQuaternion;
 function absQuaternion(q) {
-  return { x: Math.abs(q.x), y: Math.abs(q.y), z: Math.abs(q.z), w: Math.abs(q.w) };
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.x = Math.abs(q.x);
+  result.y = Math.abs(q.y);
+  result.z = Math.abs(q.z);
+  result.w = Math.abs(q.w);
+  return result;
 }
 module.exports.absQuaternion = absQuaternion;
 function addQuaternions(q1, q2) {
-  return { x: q1.x + q2.x, y: q1.y + q2.y, z: q1.z + q2.z, w: q1.w + q2.w };
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.x = q1.x + q2.x;
+  result.y = q1.y + q2.y;
+  result.z = q1.z + q2.z;
+  result.w = q1.w + q2.w;
+  return result;
 }
 module.exports.addQuaternions = addQuaternions;
 function subtractQuaternions(q1, q2) {
-  return { x: q1.x - q2.x, y: q1.y - q2.y, z: q1.z - q2.z, w: q1.w - q2.w };
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.x = q1.x - q2.x;
+  result.y = q1.y - q2.y;
+  result.z = q1.z - q2.z;
+  result.w = q1.w - q2.w;
+  return result;
 }
 module.exports.subtractQuaternions = subtractQuaternions;
 function divideQuaternion(q, s) {
+  const result = new globalThis["Hiber3D::Quaternion"]();
   if (s === 0) {
     hiber3d.print("divideVector() - division by zero");
-    return { x: 0, y: 0, z: 0, w: 0 };
+    return result;
   }
-  return { x: q.x / s, y: q.y / s, z: q.z / s, w: q.w / s };
+  result.x = q.x / s;
+  result.y = q.y / s;
+  result.z = q.z / s;
+  result.w = q.w / s;
+  return result;
 }
 module.exports.divideQuaternion = divideQuaternion;
 function multiplyQuaternion(q1, s) {
-  return { w: q1.w * s, x: q1.w * s, y: q1.w * s, z: q1.w * s, };
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.x = q1.x * s;
+  result.y = q1.y * s;
+  result.z = q1.z * s;
+  result.w = q1.w * s;
+  return result;
 }
 module.exports.multiplyQuaternion = multiplyQuaternion;
 function multiplyQuaternions(q1, q2) {
-  return {
-    w: q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z,
-    x: q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y,
-    y: q1.w * q2.y - q1.x * q2.z + q1.y * q2.w + q1.z * q2.x,
-    z: q1.w * q2.z + q1.x * q2.y - q1.y * q2.x + q1.z * q2.w,
-  };
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.x = q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y;
+  result.y = q1.w * q2.y - q1.x * q2.z + q1.y * q2.w + q1.z * q2.x;
+  result.z = q1.w * q2.z + q1.x * q2.y - q1.y * q2.x + q1.z * q2.w;
+  result.w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
+  return result;
 }
 module.exports.multiplyQuaternions = multiplyQuaternions;
 
@@ -81,13 +112,29 @@ function dotProductQuaternion(q1, q2) {
 }
 module.exports.dotProductQuaternion = dotProductQuaternion;
 function quaternionElementWiseMultiplication(q1, q2) {
-  return { x: q1.x * q2.x, y: q1.y * q2.y, z: q1.z * q2.z, w: q1.w * q2.w }
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.x = q1.x * q2.x;
+  result.y = q1.y * q2.y;
+  result.z = q1.z * q2.z;
+  result.w = q1.w * q2.w;
+  return result;
 }
 module.exports.quaternionElementWiseMultiplication = quaternionElementWiseMultiplication;
 
 function lerpQuaternionWithDistance(q1, q2, d) {
   const dot = q1.x * q2.x + q1.y * q2.y + q1.z * q2.z + q1.w * q2.w;
-  const q2Adjusted = dot < 0 ? { x: -q2.x, y: -q2.y, z: -q2.z, w: -q2.w } : q2;
+  const q2Adjusted = new globalThis["Hiber3D::Quaternion"]();
+  if (dot < 0) {
+    q2Adjusted.x = -q2.x;
+    q2Adjusted.y = -q2.y;
+    q2Adjusted.z = -q2.z;
+    q2Adjusted.w = -q2.w;
+  } else {
+    q2Adjusted.x = q2.x;
+    q2Adjusted.y = q2.y;
+    q2Adjusted.z = q2.z;
+    q2Adjusted.w = q2.w;
+  }
 
   const angle = Math.acos(Math.min(Math.abs(dot < 0 ? -dot : dot), 1.0));
 
@@ -111,12 +158,12 @@ function lerpQuaternionWithDistance(q1, q2, d) {
     const s0 = Math.sin((1.0 - t) * angle) * invSinAngle;
     const s1 = Math.sin(t * angle) * invSinAngle;
 
-    return {
-      x: s0 * q1.x + s1 * q2Adjusted.x,
-      y: s0 * q1.y + s1 * q2Adjusted.y,
-      z: s0 * q1.z + s1 * q2Adjusted.z,
-      w: s0 * q1.w + s1 * q2Adjusted.w
-    };
+    const result = new globalThis["Hiber3D::Quaternion"]();
+    result.x = s0 * q1.x + s1 * q2Adjusted.x;
+    result.y = s0 * q1.y + s1 * q2Adjusted.y;
+    result.z = s0 * q1.z + s1 * q2Adjusted.z;
+    result.w = s0 * q1.w + s1 * q2Adjusted.w;
+    return result;
   }
 }
 module.exports.lerpQuaternionWithDistance = lerpQuaternionWithDistance;
@@ -134,27 +181,30 @@ function flattenQuaternion(q) {
   const lengthSq = flatForward.x * flatForward.x + flatForward.z * flatForward.z;
 
   if (lengthSq < epsilon) {
-    return { x: 0, y: 0, z: 0, w: 1 };
+    return new globalThis["Hiber3D::Quaternion"]();
   }
 
   const yRotation = Math.atan2(flatForward.x, flatForward.z);
   const halfAngle = yRotation / 2;
 
-  return {
-    x: 0,
-    y: Math.sin(halfAngle),
-    z: 0,
-    w: Math.cos(halfAngle)
-  };
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.y = Math.sin(halfAngle);
+  result.w = Math.cos(halfAngle);
+  return result;
+
 }
 module.exports.flattenQuaternion = flattenQuaternion;
 
 function rotateQuaternionAroundY(q, progress) {
   const angle = progress * 2 * Math.PI;
-  const axis = new hiber3d.float3();
-  axis.y = 1;
-  const result = q.copy();
-  result.rotateAroundAxis(axis, angle);
+  const halfAngle = angle / 2;
+  const rotationQ = { x: 0, y: Math.sin(halfAngle), z: 0, w: Math.cos(halfAngle) };
+
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.x = rotationQ.w * q.x + rotationQ.y * q.z;
+  result.y = rotationQ.w * q.y + rotationQ.y * q.w;
+  result.z = rotationQ.w * q.z - rotationQ.y * q.x;
+  result.w = rotationQ.w * q.w - rotationQ.y * q.y;
   return result;
 };
 module.exports.rotateQuaternionAroundY = rotateQuaternionAroundY;
@@ -204,10 +254,16 @@ function quaternionFromVector(direction) {
     // Direction is pointing straight up or down
     if (normalizedDir.y > 0) {
       // Pointing up (+Y), 90 degree rotation around X
-      return { x: Math.sin(Math.PI / 4), y: 0, z: 0, w: Math.cos(Math.PI / 4) };
+      const result = new globalThis["Hiber3D::Quaternion"]();
+      result.x = Math.sin(Math.PI / 4);
+      result.w = Math.cos(Math.PI / 4);
+      return result;
     } else {
       // Pointing down (-Y), -90 degree rotation around X
-      return { x: -Math.sin(Math.PI / 4), y: 0, z: 0, w: Math.cos(Math.PI / 4) };
+      const result = new globalThis["Hiber3D::Quaternion"]();
+      result.x = -Math.sin(Math.PI / 4);
+      result.w = Math.cos(Math.PI / 4);
+      return result;
     }
   }
 
@@ -252,13 +308,12 @@ function quaternionFromVector(direction) {
 
   // Combine the rotations: first yaw, then pitch
   // Using quaternion multiplication: result = yaw * pitch
-  var result = {
-    x: yawQuat.w * pitchQuat.x + yawQuat.x * pitchQuat.w + yawQuat.y * pitchQuat.z - yawQuat.z * pitchQuat.y,
-    y: yawQuat.w * pitchQuat.y - yawQuat.x * pitchQuat.z + yawQuat.y * pitchQuat.w + yawQuat.z * pitchQuat.x,
-    z: yawQuat.w * pitchQuat.z + yawQuat.x * pitchQuat.y - yawQuat.y * pitchQuat.x + yawQuat.z * pitchQuat.w,
-    w: yawQuat.w * pitchQuat.w - yawQuat.x * pitchQuat.x - yawQuat.y * pitchQuat.y - yawQuat.z * pitchQuat.z
-  };
 
+  const result = new globalThis["Hiber3D::Quaternion"]();
+  result.x = yawQuat.w * pitchQuat.x + yawQuat.x * pitchQuat.w + yawQuat.y * pitchQuat.z - yawQuat.z * pitchQuat.y;
+  result.y = yawQuat.w * pitchQuat.y - yawQuat.x * pitchQuat.z + yawQuat.y * pitchQuat.w + yawQuat.z * pitchQuat.x;
+  result.z = yawQuat.w * pitchQuat.z + yawQuat.x * pitchQuat.y - yawQuat.y * pitchQuat.x + yawQuat.z * pitchQuat.w;
+  result.w = yawQuat.w * pitchQuat.w - yawQuat.x * pitchQuat.x - yawQuat.y * pitchQuat.y - yawQuat.z * pitchQuat.z;
   return result;
 } module.exports.quaternionFromVector = quaternionFromVector;
 
