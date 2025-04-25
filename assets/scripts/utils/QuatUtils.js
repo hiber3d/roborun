@@ -39,7 +39,7 @@ function inverseQuaternion(q) {
   }
 
   // Calculate the inverse by dividing conjugate by lengthSq
-  return {x: -q.x / lengthSq, y: -q.y / lengthSq, z: -q.z / lengthSq, w: q.w / lengthSq};
+  return { x: -q.x / lengthSq, y: -q.y / lengthSq, z: -q.z / lengthSq, w: q.w / lengthSq };
 }
 module.exports.inverseQuaternion = inverseQuaternion;
 function absQuaternion(q) {
@@ -88,15 +88,15 @@ module.exports.quaternionElementWiseMultiplication = quaternionElementWiseMultip
 function lerpQuaternionWithDistance(q1, q2, d) {
   const dot = q1.x * q2.x + q1.y * q2.y + q1.z * q2.z + q1.w * q2.w;
   const q2Adjusted = dot < 0 ? { x: -q2.x, y: -q2.y, z: -q2.z, w: -q2.w } : q2;
-  
+
   const angle = Math.acos(Math.min(Math.abs(dot < 0 ? -dot : dot), 1.0));
-  
+
   if (angle <= d) {
     return q2Adjusted;
   }
-  
+
   const t = d / angle;
-  
+
   if (dot > 0.9995) {
     return normalizeQuaternion({
       x: q1.x + t * (q2Adjusted.x - q1.x),
@@ -107,10 +107,10 @@ function lerpQuaternionWithDistance(q1, q2, d) {
   } else {
     const sinAngle = Math.sin(angle);
     const invSinAngle = 1.0 / sinAngle;
-    
+
     const s0 = Math.sin((1.0 - t) * angle) * invSinAngle;
     const s1 = Math.sin(t * angle) * invSinAngle;
-    
+
     return {
       x: s0 * q1.x + s1 * q2Adjusted.x,
       y: s0 * q1.y + s1 * q2Adjusted.y,
@@ -151,14 +151,11 @@ module.exports.flattenQuaternion = flattenQuaternion;
 
 function rotateQuaternionAroundY(q, progress) {
   const angle = progress * 2 * Math.PI;
-  const halfAngle = angle / 2;
-  const rotationQ = { x: 0, y: Math.sin(halfAngle), z: 0, w: Math.cos(halfAngle) };
-  return {
-    x: rotationQ.w * q.x + rotationQ.y * q.z,
-    y: rotationQ.w * q.y + rotationQ.y * q.w,
-    z: rotationQ.w * q.z - rotationQ.y * q.x,
-    w: rotationQ.w * q.w - rotationQ.y * q.y
-  };
+  const axis = new hiber3d.float3();
+  axis.y = 1;
+  const result = q.copy();
+  result.rotateAroundAxis(axis, angle);
+  return result;
 };
 module.exports.rotateQuaternionAroundY = rotateQuaternionAroundY;
 

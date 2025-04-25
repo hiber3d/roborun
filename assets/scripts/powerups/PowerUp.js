@@ -5,7 +5,7 @@
     "Magnet": "scripts/powerups/Magnet.js"
   },
   getScriptPath() {
-    const name = hiber3d.getValue(this.entity, "Hiber3D::Name");
+    const name = hiber3d.getComponent(this.entity, "Hiber3D::Name");
     const path = this.POWER_UPS[name];
     if (path === undefined) {
       hiber3d.print("PowerUp.js - getScriptPath() - Unknown power-up name: " + name);
@@ -20,12 +20,12 @@
   onEvent(event, payload) {
     if (event === "Hiber3D::CollisionStarted") {
       if (roboRunUtils.isPlayerCollision(this.entity, payload)) {
-        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+        const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
         const scriptPath = this.getScriptPath();
         regUtils.addOrReplaceScript(playerEntity, scriptPath);
 
         // Destroy this power-up
-        regUtils.destroyEntity(this.entity);
+        hiber3d.destroyEntity(this.entity);
       }
     }
   },

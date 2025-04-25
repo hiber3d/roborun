@@ -335,7 +335,7 @@ const PICK_UP_DEPTH = {
     return undefined;
   },
   getStuffToSpawn() {
-    const difficulty = hiber3d.getValue("GameState", "difficulty");
+    const difficulty = hiber3d.getSingleton("GameState").difficulty;
 
     const isAtStart = this.startStraightBaseCounter < this.START_STRAIGHT_BASE_LENGTH;
     const tooFewStraightsInARow = this.straightInARowCounter < Math.max(0, Math.ceil(scalarUtils.lerpScalar(this.MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_0, this.MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1, difficulty)));
@@ -495,7 +495,7 @@ const PICK_UP_DEPTH = {
     return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth, pickUpScale };
   },
   spawnSegmentScene(transform) {
-    const segmentsSceneEntity = hiber3d.getValue("SegmentsState", "segmentsSceneEntity");
+    const segmentsSceneEntity = hiber3d.getSingleton("SegmentsState").segmentsSceneEntity;
 
     const stuffToSpawn = this.getStuffToSpawn();
     const segmentPath = stuffToSpawn.segmentPath;
@@ -575,7 +575,7 @@ const PICK_UP_DEPTH = {
     if (out === undefined || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
       return;
     }
-    const outTransform = hiber3d.getValue(out, "Hiber3D::ComputedWorldTransform");
+    const outTransform = hiber3d.getComponent(out, "Hiber3D::ComputedWorldTransform");
     var newSegmentEntity = this.spawnSegmentScene(outTransform)
     hiber3d.setValue(latestSegment, "SegmentScene", "next", newSegmentEntity);
     hiber3d.setValue(newSegmentEntity, "SegmentScene", "prev", latestSegment);
@@ -584,18 +584,17 @@ const PICK_UP_DEPTH = {
   onCreate() {
     const newSegmentsSceneEntity = hiber3d.createEntity();
     hiber3d.setValue("SegmentsState", "segmentsSceneEntity", newSegmentsSceneEntity);
-    hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Children");
     hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Name");
     hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Transform");
     hiber3d.setValue(newSegmentsSceneEntity, "Hiber3D::Name", "SegmentsScenes");
 
-    var transform = hiber3d.getValue(this.entity, "Hiber3D::Transform");
+    var transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
     var newSegmentEntity = this.spawnSegmentScene(transform);
     hiber3d.setValue("SegmentsState", "currentSegmentSceneEntity", newSegmentEntity);
   },
   update() {
     // When too few segments, spawn another
-    const currentSegmentSceneEntity = hiber3d.getValue("SegmentsState", "currentSegmentSceneEntity");
+    const currentSegmentSceneEntity = hiber3d.getSingleton("SegmentsState").currentSegmentSceneEntity;
     if (currentSegmentSceneEntity === undefined) {
       return;
     }

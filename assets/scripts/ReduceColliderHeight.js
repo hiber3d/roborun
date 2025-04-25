@@ -14,11 +14,13 @@
     if (colliderEntity === undefined) {
       hiber3d.print("ReduceColliderHeight.js - ERROR: No 'Shape' found in hierarchy");
     }
+    const transform = hiber3d.getComponent(colliderEntity, "Hiber3D::Transform");
     if (shouldReduce === true) {
-      hiber3d.setValue(colliderEntity, "Hiber3D::Transform", "position", "y", this.REDUCED_COLLIDER_HEIGHT);
+      transform.position.y = this.REDUCED_COLLIDER_HEIGHT;
     } else {
-      hiber3d.setValue(colliderEntity, "Hiber3D::Transform", "position", "y", this.DEFAULT_COLLIDER_HEIGHT);
+      transform.position.y = this.DEFAULT_COLLIDER_HEIGHT;
     }
+    hiber3d.setComponent(colliderEntity, "Hiber3D::Transform", transform);
   },
   onCreate() {
 

@@ -6,11 +6,11 @@
   },
 
   update(dt) {
-    if (hiber3d.getValue("GameState", "paused")) {
+    if (hiber3d.getSingleton("GameState").paused) {
       return;
     }
 
-    var difficulty = hiber3d.getValue("GameState", "difficulty");
+    var difficulty = hiber3d.getSingleton("GameState").difficulty;
     difficulty += dt * (1 / this.TIME_TO_DIFFICULTY_1);
     hiber3d.setValue("GameState", "difficulty", difficulty);
   },

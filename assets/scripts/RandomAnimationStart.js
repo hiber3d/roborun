@@ -8,9 +8,9 @@
     }
     const newFactor = increase === true ? this.speedFactor : 1 / this.speedFactor;
 
-    var animationBlend = hiber3d.getValue(this.entity, "Hiber3D::AnimationBlend");
+    var animationBlend = hiber3d.getComponent(this.entity, "Hiber3D::AnimationBlend");
     animationBlend.layers[0].speed *= newFactor;
-    hiber3d.setValue(this.entity, "Hiber3D::AnimationBlend", animationBlend);
+    hiber3d.setComponent(this.entity, "Hiber3D::AnimationBlend", animationBlend);
   },
   onCreate() {
     this.setSpeedFactor(true);

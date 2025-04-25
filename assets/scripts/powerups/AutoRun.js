@@ -34,7 +34,7 @@
   timeSinceStarted: 0,
 
   shouldRun() {
-    return !hiber3d.getValue("GameState", "paused");
+    return !hiber3d.getSingleton("GameState").paused;
   },
   updateStage() {
     if (this.timeSinceStarted < this.ascendEnd) {

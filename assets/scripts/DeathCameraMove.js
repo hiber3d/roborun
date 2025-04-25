@@ -4,8 +4,9 @@
     },
 
     update(deltaTime) {
-        const x = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "x")
-        hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "x",x+0.001 )
+        const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
+        transform.position.x = transform.position.x + 0.001;
+        hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
     },
 
     onEvent(event, payload) {
@@ -36,12 +37,12 @@ hiber3d.hasComponents(this.entity, "Hiber3D::Transform", "Hiber3D::Renderable")
 hiber3d.findEntitiesWithComponent("Hiber3D::Transform")
 
 // Change component values
-hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "x")
-hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "x", 1)
+hiber3d.getComponent(this.entity, "Hiber3D::Transform").position.x
+hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", "x", 1)
 
 // Get and set singleton values
-hiber3d.getValue("Hiber3D::ActiveCamera", "position")
-hiber3d.setValue("Hiber3D::ActiveCamera", "position", {x:1, y:2, z:3})
+hiber3d.getSingleton("Hiber3D::ActiveCamera", "position")
+hiber3d.setSingleton("Hiber3D::ActiveCamera", "position", {x:1, y:2, z:3})
 
 // Call registered C function
 hiber3d.call("Foo", 1, "hello")

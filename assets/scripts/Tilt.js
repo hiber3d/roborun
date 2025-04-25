@@ -6,11 +6,12 @@
   tiltFactorPreviousTick: 0,
   lerpedTiltFactorPreviousTick: 0,
   shouldRun() {
+    const gameState = hiber3d.getSingleton("GameState");
     return this.TILT_ENABLED &&
       hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       (hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js")) &&
-      hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused") &&
+      gameState.alive &&
+      !gameState.paused &&
       segUtils.getCurrentStepEntity() !== undefined;
   },
   onCreate() {

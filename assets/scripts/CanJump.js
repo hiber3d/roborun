@@ -6,12 +6,13 @@
 
   timeSinceQueuedPreJump: -1, // -1 means no pre-jump queued
   shouldRun() {
-    return hiber3d.getValue("GameState", "alive") && !hiber3d.getValue("GameState", "paused");
+    const gameState = hiber3d.getSingleton("GameState");
+    return gameState.alive && !gameState.paused;
   },
   canStartJumping(){
     const isJumping = hiber3d.hasScripts(this.entity, "scripts/Jumping.js");
     const isAutoRunAir = roboRunUtils.isAutoRunAir(this.entity);
-    const isInAir = roboRunUtils.isInAir(this.entity, hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y"));
+    const isInAir = roboRunUtils.isInAir(this.entity, hiber3d.getComponent(this.entity, "Hiber3D::Transform").position.y);
     return !isJumping && !isAutoRunAir && !isInAir;
   },
   onCreate() {

@@ -17,9 +17,9 @@ latestRotationOffset = 0;
       return;
     }
     const progress = Math.cos(this.timeSinceStart / this.REVOLUTION_TIME);
-    var rotation = { x: 0, y: 0, z: 0, w: 1 };
-    rotation = quatUtils.rotateQuaternionAroundY(rotation, progress);
-    hiber3d.setValue(this.entity, "Hiber3D::Transform", "rotation", rotation);
+    const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
+    transform.rotation = quatUtils.rotateQuaternionAroundY(new globalThis["Hiber3D::Quaternion"](), progress);
+    hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
     this.timeSinceStart += dt;
   },
 

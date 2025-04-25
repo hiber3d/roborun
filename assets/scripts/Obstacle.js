@@ -8,7 +8,7 @@
     "Processor": "scenes/deaths/Processor.scene",
   },
   getDeathScenePath() {
-    const name = hiber3d.getValue(this.entity, "Hiber3D::Name");
+    const name = hiber3d.getComponent(this.entity, "Hiber3D::Name");
     const path = this.OBSTACLE_TYPES[name];
     if (path !== undefined) {
       return path;
@@ -32,7 +32,7 @@
   onEvent(event, payload) {
     if (event === "Hiber3D::CollisionStarted") {
       if (typeof roboRunUtils !== 'undefined' && roboRunUtils.isPlayerCollision(this.entity, payload)) {
-        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+        const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
         if (!hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
           hiber3d.writeEvent("KillPlayer", {});
           

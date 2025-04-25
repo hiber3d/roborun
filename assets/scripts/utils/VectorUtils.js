@@ -1,4 +1,6 @@
-﻿const module = module || {};
+﻿const { transform } = require("typescript");
+
+const module = module || {};
 module.exports = module.exports || {};
 function formatVector(v) {
   if (!v) return 'null';
@@ -10,7 +12,10 @@ function formatVector(v) {
 }
 module.exports.formatVector = formatVector;
 function stripY(v) {
-  return {x:v.x, y: 0, z: v.z };
+  const r = new globalThis["Hiber3D::Transform"]( ); 
+  r.x = v.x;
+  r.z = v.z;
+  return r;
 }
 module.exports.stripY = stripY;
 function getVectorLength(v) {
@@ -36,27 +41,47 @@ function normalizeVector(vector) {
 module.exports.normalizeVector = normalizeVector;
 
 function addVectors(v1, v2) {
-  return { x: v1.x + v2.x, y: v1.y + v2.y, z: v1.z + v2.z};
+  const r = new globalThis["Hiber3D::float3"]();
+  r.x = v1.x + v2.x;
+  r.y = v1.y + v2.y;
+  r.z = v1.z + v2.z;
+  return r;
 }
 module.exports.addVectors = addVectors;
 function subtractVectors(v1, v2) {
-  return { x: v1.x - v2.x, y: v1.y - v2.y, z: v1.z - v2.z};
+  const r = new globalThis["Hiber3D::float3"]();
+  r.x = v1.x - v2.x;
+  r.y = v1.y - v2.y;
+  r.z = v1.z - v2.z;
+  return r;
 }
 module.exports.subtractVectors = subtractVectors;
 function multiplyVector(v, s) {
-  return { x: v.x * s, y: v.y * s, z: v.z * s };
+  const r = new globalThis["Hiber3D::float3"]();
+  r.x = v.x * s;
+  r.y = v.y * s;
+  r.z = v.z * s;
+  return r;
 }
 module.exports.multiplyVector = multiplyVector;
 function divideVector(v, s) {
+  const r = new globalThis["Hiber3D::float3"]();
   if (s === 0) {
     hiber3d.print("divideVector() - division by zero");
-    return { x: 0, y: 0, z: 0 };
+    return r;
   }
-  return { x: v.x / s, y: v.y / s, z: v.z / s };
+  r.x = v.x / s;
+  r.y = v.y / s;
+  r.z = v.z / s;
+  return r;
 }
 module.exports.divideVector = divideVector;
 function lerpVector(v1, v2, t) {
-  return { x: v1.x + t * (v2.x - v1.x), y: v1.y + t * (v2.y - v1.y), z: v1.z + t * (v2.z - v1.z)};
+  const r = new globalThis["Hiber3D::float3"]();
+  r.x = v1.x + t * (v2.x - v1.x);
+  r.y = v1.y + t * (v2.y - v1.y);
+  r.z = v1.z + t * (v2.z - v1.z);
+  return r;
 }
 module.exports.lerpVector = lerpVector;
 
@@ -83,7 +108,11 @@ function dotProduct(v1, v2) {
 }
 module.exports.dotProduct = dotProduct;
 function crossProduct(v1, v2) {
-  return {x: v1.y * v2.z - v1.z * v2.y, y: v1.z * v2.x - v1.x * v2.z, z: v1.x * v2.y - v1.y * v2.x};
+  const r = new globalThis["Hiber3D::float3"]();
+  r.x = v1.y * v2.z - v1.z * v2.y;
+  r.y = v1.z * v2.x - v1.x * v2.z;
+  r.z = v1.x * v2.y - v1.y * v2.x;
+  return r;
 }
 module.exports.crossProduct = crossProduct;
 
@@ -111,13 +140,10 @@ function inRangeOfPoints(v, p1, p2) {
 module.exports.inRangeOfPoints = inRangeOfPoints;
 
 function rotateVectorAroundY(direction, degrees) {
-  var rotated = {
-    x: 0,
-    y: direction.y, // y-component stays the same
-    z: 0
-  };
+  var rotated = new globalThis["Hiber3D::float3"]();
   const radians = (degrees * Math.PI) / 180;
   rotated.x = direction.x * Math.cos(radians) - direction.z * Math.sin(radians);
+  rotated.y = direction.y;
   rotated.z = direction.x * Math.sin(radians) + direction.z * Math.cos(radians);
 
   return rotated;

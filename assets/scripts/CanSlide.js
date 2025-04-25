@@ -1,6 +1,7 @@
 ({
   shouldRun() {
-    return hiber3d.getValue("GameState", "alive") && !hiber3d.getValue("GameState", "paused");
+    const gameState = hiber3d.getSingleton("GameState");
+    return gameState.alive && !gameState.paused;
   },
   canStartSliding(){
     const isJumping = hiber3d.hasScripts(this.entity, "scripts/Jumping.js");

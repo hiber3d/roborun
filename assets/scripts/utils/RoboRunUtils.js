@@ -3,7 +3,7 @@ module.exports = module.exports || {};
 
 
 function getSplineHeight(entity) {
-    return hiber3d.hasComponents(entity, "SplineData") ? hiber3d.getValue(entity, "SplineData", "position").y : 0;
+    return hiber3d.hasComponents(entity, "SplineData") ? hiber3d.getComponent(entity, "SplineData").position.y : 0;
   }
 module.exports.getSplineHeight = getSplineHeight;
 
@@ -44,7 +44,7 @@ function getOtherEntityInCollision(entity, collisionEventPayload) {
 }
 module.exports.getOtherEntityInCollision = getOtherEntityInCollision;
 function isPlayerCollision(entity, collisionEventPayload) {
-  const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+  const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
   const otherEntityInCollision = getOtherEntityInCollision(entity, collisionEventPayload);
   return playerEntity !== undefined && playerEntity === otherEntityInCollision;
 }

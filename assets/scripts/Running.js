@@ -15,9 +15,10 @@
   pausedLastTick: true,
 
   shouldRun() {
+    const gameState = hiber3d.getSingleton("GameState");
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused") &&
+      gameState.alive &&
+      !gameState.paused &&
       segUtils.getCurrentStepEntity() !== undefined;
   },
   getSpeed() {
@@ -31,22 +32,22 @@
       speed *= this.AUTO_RUN_FACTOR;
     }
 
-    const rotation = hiber3d.getValue(this.entity, "Hiber3D::Transform", "rotation");
+    const rotation = hiber3d.getComponent(this.entity, "Hiber3D::Transform").rotation;
     const direction = quatUtils.vectorFromQuaternion(rotation);
     if (direction.y !== 0) {
-    const rawHillFactor = hiber3d.hasScripts(this.entity, "scripts/Diving.js") || hiber3d.hasScripts(this.entity, "scripts/Sliding.js") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
-    const scaledHillFactor = (direction.y < 0 ? rawHillFactor : 1 / rawHillFactor);
-    const safeHillFactor = Math.abs(scaledHillFactor) > 0.01 ? scaledHillFactor : 1;
-    speed *= safeHillFactor;
+      const rawHillFactor = hiber3d.hasScripts(this.entity, "scripts/Diving.js") || hiber3d.hasScripts(this.entity, "scripts/Sliding.js") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
+      const scaledHillFactor = (direction.y < 0 ? rawHillFactor : 1 / rawHillFactor);
+      const safeHillFactor = Math.abs(scaledHillFactor) > 0.01 ? scaledHillFactor : 1;
+      speed *= safeHillFactor;
     }
 
     if (!hiber3d.hasComponents(this.entity, "OnPath")) {
       const currentStepEntity = segUtils.getCurrentStepEntity();
-      const curveFactor = hiber3d.getValue(currentStepEntity, "Step", "curveFactor");
+      const curveFactor = hiber3d.getComponent(currentStepEntity, "Step").curveFactor;
       speed /= scalarUtils.lerpScalar(1, Math.sqrt(2), curveFactor);
     }
 
-    const difficulty = hiber3d.getValue("GameState", "difficulty");
+    const difficulty = hiber3d.getSingleton("GameState").difficulty;
     speed *= (1 + difficulty * this.RUN_DIFFICULTY_BONUS_FACTOR_AT_DIFFICULTY_1);
 
     return speed;
@@ -57,11 +58,20 @@
     if (this.debugSplineEntity === undefined) {
       this.debugSplineEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::Transform");
-      hiber3d.setValue(this.debugSplineEntity, "Hiber3D::Transform", "scale", {x:0.1, y:0.3, z:0.1});
+      const transform = hiber3d.getComponent(this.debugSplineEntity, "Hiber3D::Transform");
+      const scale = transform.scale;
+      scale.x = 0.1;
+      scale.y = 0.3;
+      scale.z = 0.1;
+      hiber3d.setComponent(this.debugSplineEntity, "Hiber3D::Transform", transform);
+
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(this.debugSplineEntity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      const sceneRoot = hiber3d.getComponent(this.debugSplineEntity, "Hiber3D::SceneRoot");
+      sceneRoot.scene = "glbs/primitives/cylinder.glb#scene0";
+      hiber3d.setComponent(this.debugSplineEntity, "Hiber3D::SceneRoot", "scene", sceneRoot );
+
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::Name");
-      hiber3d.setValue(this.debugSplineEntity, "Hiber3D::Name", "DebugSpline");
+      hiber3d.setComponent(this.debugSplineEntity, "Hiber3D::Name", "DebugSpline");
     }
     const offset = { x: 0, y: 0.5, z: 0 };
     hiber3d.setValue(this.debugSplineEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, offset));
@@ -76,7 +86,7 @@
       hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineLeftLaneEntity, "Hiber3D::Name", "DebugSplineLeftLane");
     }
-    const leftLaneOffset = quatUtils.rotateVectorByQuaternion({ x: -hiber3d.getValue(currentStepEntity, "Step", "laneOffsetLeft"), y: 0, z: 0 }, splineRotation);
+    const leftLaneOffset = quatUtils.rotateVectorByQuaternion({ x: -hiber3d.getComponent(currentStepEntity, "Step").laneOffsetLeft, y: 0, z: 0 }, splineRotation);
     hiber3d.setValue(this.debugSplineLeftLaneEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, leftLaneOffset));
     hiber3d.setValue(this.debugSplineLeftLaneEntity, "Hiber3D::Transform", "rotation", splineRotation);
 
@@ -89,7 +99,7 @@
       hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineRightLaneEntity, "Hiber3D::Name", "DebugSplineRightLane");
     }
-    const rightLaneOffset = quatUtils.rotateVectorByQuaternion({ x: hiber3d.getValue(currentStepEntity, "Step", "laneOffsetRight"), y: 0, z: 0 }, splineRotation);
+    const rightLaneOffset = quatUtils.rotateVectorByQuaternion({ x: hiber3d.getComponent(currentStepEntity, "Step").laneOffsetRight, y: 0, z: 0 }, splineRotation);
     hiber3d.setValue(this.debugSplineRightLaneEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, rightLaneOffset));
     hiber3d.setValue(this.debugSplineRightLaneEntity, "Hiber3D::Transform", "rotation", splineRotation);
 
@@ -102,7 +112,7 @@
       hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineLeftWallEntity, "Hiber3D::Name", "DebugSplineLeftWall");
     }
-    const leftWallOffset = quatUtils.rotateVectorByQuaternion({ x: -hiber3d.getValue(currentStepEntity, "Step", "wallOffsetLeft"), y: 0, z: 0 }, splineRotation);
+    const leftWallOffset = quatUtils.rotateVectorByQuaternion({ x: -hiber3d.getComponent(currentStepEntity, "Step").wallOffsetLeft, y: 0, z: 0 }, splineRotation);
     hiber3d.setValue(this.debugSplineLeftWallEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, leftWallOffset));
     hiber3d.setValue(this.debugSplineLeftWallEntity, "Hiber3D::Transform", "rotation", splineRotation);
 
@@ -115,7 +125,7 @@
       hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D::Name");
       hiber3d.setValue(this.debugSplineRightWallEntity, "Hiber3D::Name", "DebugSplineRightWall");
     }
-    const rightWallOffset = quatUtils.rotateVectorByQuaternion({ x: hiber3d.getValue(currentStepEntity, "Step", "wallOffsetRight"), y: 0, z: 0 }, splineRotation);
+    const rightWallOffset = quatUtils.rotateVectorByQuaternion({ x: hiber3d.getComponent(currentStepEntity, "Step").wallOffsetRight, y: 0, z: 0 }, splineRotation);
     hiber3d.setValue(this.debugSplineRightWallEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, rightWallOffset));
     hiber3d.setValue(this.debugSplineRightWallEntity, "Hiber3D::Transform", "rotation", splineRotation);
   },
@@ -126,12 +136,13 @@
       return;
     }
 
-    const currentStepPosition = hiber3d.getValue(currentStepEntity, "Hiber3D::ComputedWorldTransform", "position");
-    const currentStepRotation = hiber3d.getValue(currentStepEntity, "Hiber3D::ComputedWorldTransform", "rotation");
-    const nextStepPosition = hiber3d.getValue(nextStepEntity, "Hiber3D::ComputedWorldTransform", "position");
-    const nextStepRotation = hiber3d.getValue(nextStepEntity, "Hiber3D::ComputedWorldTransform", "rotation");
-    const distanceFromCurrentStep = hiber3d.getValue("SegmentsState", "distanceFromCurrentStep");
-    const curveFactor = hiber3d.getValue(currentStepEntity, "Step", "curveFactor");
+    const computedWorldTransform = hiber3d.getComponent(currentStepEntity, "Hiber3D::ComputedWorldTransform");
+    const currentStepPosition = computedWorldTransform.position;
+    const currentStepRotation = computedWorldTransform.rotation;
+    const nextStepPosition = computedWorldTransform.position;
+    const nextStepRotation = computedWorldTransform.rotation;
+    const distanceFromCurrentStep = hiber3d.getSingleton("SegmentsState").distanceFromCurrentStep;
+    const curveFactor = hiber3d.getComponent(currentStepEntity, "Step").curveFactor;
     const spline = splineUtils.getSpline(currentStepPosition, nextStepPosition, currentStepRotation, nextStepRotation, distanceFromCurrentStep, curveFactor);
     const position = spline.position;
     const rotation = spline.rotation;
@@ -148,33 +159,33 @@
       return undefined;
     }
     regUtils.addComponentIfNotPresent(this.entity, "TiltFactor");
-    const tiltFactor = hiber3d.getValue(this.entity, "TiltFactor", "factor");
+    const tiltFactor = hiber3d.getComponent(this.entity, "TiltFactor").factor;
     const isLeft = tiltFactor < 0;
-    const laneOffset = hiber3d.getValue(currentStepEntity, "Step", isLeft ? "laneOffsetLeft" : "laneOffsetRight");
+    const laneOffset = hiber3d.getComponent(currentStepEntity, "Step")[isLeft ? "laneOffsetLeft" : "laneOffsetRight"];
     const tiltVector = { x: laneOffset * tiltFactor, y: 0, z: 0 };
     const result = quatUtils.rotateVectorByQuaternion(tiltVector, rotation);
     return result;
   },
   recordStats(delta) {
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    if(this.entity === playerEntity){
+    const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
+    if (this.entity === playerEntity) {
       var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
       stats.meters += delta;
       stats.points = stats.points + delta * stats.multiplier;
       hiber3d.setValue(playerEntity, "Stats", stats);
 
-      const newDistanceFromCurrentStep = hiber3d.getValue("SegmentsState", "distanceFromCurrentStep") + delta;
+      const newDistanceFromCurrentStep = hiber3d.getSingleton("SegmentsState").distanceFromCurrentStep + delta;
       hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", newDistanceFromCurrentStep);
     }
   },
-  isSettingHeightAvailable(){
+  isSettingHeightAvailable() {
     return !hiber3d.hasScripts(this.entity, "scripts/Jumping.js") &&
-    !hiber3d.hasScripts(this.entity, "scripts/Diving.js") &&
-    !hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js");
+      !hiber3d.hasScripts(this.entity, "scripts/Diving.js") &&
+      !hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js");
   },
-  setPosition(newPosition){
+  setPosition(newPosition) {
     const isSettingHeightAvailable = this.isSettingHeightAvailable();
-    if(isSettingHeightAvailable){
+    if (isSettingHeightAvailable) {
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", newPosition);
     } else {
       hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "x", newPosition.x);
@@ -207,23 +218,23 @@
     } else {
 
       const currentStepEntity = segUtils.getCurrentStepEntity();
-      const leftWallOffset = hiber3d.getValue(currentStepEntity, "Step", "wallOffsetLeft");
-      const rightWallOffset = hiber3d.getValue(currentStepEntity, "Step", "wallOffsetRight");
+      const leftWallOffset = hiber3d.getComponent(currentStepEntity, "Step").wallOffsetLeft;
+      const rightWallOffset = hiber3d.getComponent(currentStepEntity, "Step").wallOffsetRight;
       const leftWallVectorOffset = quatUtils.rotateVectorByQuaternion({ x: -leftWallOffset, y: 0, z: 0 }, spline.rotation);
       const rightWallVectorOffset = quatUtils.rotateVectorByQuaternion({ x: rightWallOffset, y: 0, z: 0 }, spline.rotation);
       const leftWallPosition = vectorUtils.addVectors(spline.position, leftWallVectorOffset);
       const rightWallPosition = vectorUtils.addVectors(spline.position, rightWallVectorOffset);
-      const position = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position");
+      const position = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position;
 
       const fallenOff = !vectorUtils.inRangeOfPoints(position, leftWallPosition, rightWallPosition);
       if (fallenOff) {
-        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-        if(this.entity === playerEntity){
+        const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
+        if (this.entity === playerEntity) {
           hiber3d.writeEvent("KillPlayer", {});
         }
       } else {
-        const position = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position");
-        const direction = hiber3d.getValue("GameState", "direction");
+        const position = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position;
+        const direction = hiber3d.getSingleton("GameState").direction;
         const newPosition = {
           x: position.x + direction.x * speed * dt,
           y: position.y + direction.y * speed * dt,

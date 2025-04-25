@@ -7,7 +7,7 @@
   timeSinceStarted: 0,
   magnetColliderEntity: undefined,
   shouldRun() {
-    return !hiber3d.getValue("GameState", "paused");
+    return !hiber3d.getSingleton("GameState").paused;
   },
   onCreate() {
     this.magnetColliderEntity = hiber3d.call("createEntityAsChild", this.entity);
@@ -28,7 +28,7 @@
 
     // Stop
     if (this.timeSinceStarted >= this.MAGNET_DURATION) {
-      regUtils.destroyEntity(this.magnetColliderEntity);
+      hiber3d.destroyEntity(this.magnetColliderEntity);
       hiber3d.removeScript(this.entity, "scripts/powerups/Magnet.js");
     }
     this.timeSinceStarted += dt;

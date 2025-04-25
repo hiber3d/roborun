@@ -4,9 +4,10 @@
   TURN_SPEED_MAX: 3600,
 
   shouldRun() {
+    const gameState = hiber3d.getSingleton("GameState");
     return hiber3d.hasComponents(this.entity, "Hiber3D::Transform") &&
-      hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused");
+      gameState.alive &&
+      !gameState.paused;
   },
   onCreate() {
     hiber3d.addEventListener(this.entity, "TurnLeftInput");
@@ -20,7 +21,7 @@
       regUtils.addComponentIfNotPresent(this.entity, "OnPath");
     }
     if (hiber3d.hasComponents(this.entity, "OnPath")) {
-      const rotation = hiber3d.getValue(this.entity, "Hiber3D::Transform", "rotation");
+      const rotation = hiber3d.getComponent(this.entity, "Hiber3D::Transform").rotation;
       hiber3d.setValue("GameState", "direction", quatUtils.vectorFromQuaternion(rotation));
     }
   },
@@ -43,7 +44,7 @@
 
       } else if ((playerTurnsLeft || playerTurnsRight) && !isOnPath) {
         // Player turns without being at a turn
-        const rotation = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "rotation");
+        const rotation = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform").rotation;
         const direction = quatUtils.vectorFromQuaternion(rotation);
         const newDirection = vectorUtils.rotateVectorAroundY(direction, 45 * (playerTurnsLeft ? -1 : 1));
         hiber3d.setValue("GameState", "direction", newDirection);

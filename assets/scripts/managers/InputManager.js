@@ -27,10 +27,10 @@ const KEYS = {
     if (hiber3d.call("keyJustPressed", KEYS.START)) {
       hiber3d.writeEvent("StartInput", {});
     }
-    if (hiber3d.call("keyJustPressed", KEYS.PAUSE) && !hiber3d.getValue("GameState", "paused")) {
+    if (hiber3d.call("keyJustPressed", KEYS.PAUSE) && !hiber3d.getSingleton("GameState").paused) {
       hiber3d.writeEvent("PauseInput", {});
     }
-    if (hiber3d.call("keyJustPressed", KEYS.UNPAUSE) && hiber3d.getValue("GameState", "paused")) {
+    if (hiber3d.call("keyJustPressed", KEYS.UNPAUSE) && hiber3d.getSingleton("GameState").paused) {
       hiber3d.writeEvent("UnpauseInput", {});
     }
     if (hiber3d.call("keyJustPressed", KEYS.JUMP)) {
@@ -62,7 +62,7 @@ const KEYS = {
     // Touch events
 
     // Start game on any touch input
-    if (hiber3d.getValue("GameState", "paused") === true) {
+    if (hiber3d.getSingleton("GameState").paused === true) {
       hiber3d.writeEvent("StartInput", {});
       return;
     }

@@ -2,9 +2,10 @@
   timeSinceJumped: 0,
   startHeight: 0,
   shouldRun() {
+    const gameState = hiber3d.getSingleton("GameState");
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused") &&
+      gameState.alive &&
+      !gameState.paused &&
       segUtils.getCurrentStepEntity() !== undefined;
   },
   getDeltaHeight() {
@@ -34,7 +35,7 @@
     }
     regUtils.removeScriptIfPresent(this.entity, "scripts/Diving.js");
 
-    this.startHeight = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y");
+    this.startHeight = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position.y;
 
     hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "slide" });
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "jump", layer: ANIMATION_LAYER.ACTION, loop: false });
@@ -45,19 +46,22 @@
     if (!this.shouldRun()) {
       return;
     }
-    
+
     this.timeSinceJumped += dt;
     const newJumpHeight = this.startHeight + this.getDeltaHeight();
 
+    const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
     if (roboRunUtils.isInAir(this.entity, newJumpHeight)) {
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newJumpHeight);
+      transform.position.y = newJumpHeight;
+      hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
     } else {
       // landed
       hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "fall" });
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
       hiber3d.writeEvent("LandedEvent", { entity: this.entity });
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
-      
+      transform.position.y = roboRunUtils.getSplineHeight(this.entity);
+      hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
+
       hiber3d.removeScript(this.entity, "scripts/Jumping.js");
     }
   },
