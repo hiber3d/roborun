@@ -38,10 +38,12 @@
     } else {
       this.fovGoal = this.fovStart;
     }
-    const fov = hiber3d.getComponent(this.entity, "Hiber3D::Camera").fovDegrees;
+    const camera = hiber3d.getComponent(this.entity, "Hiber3D::Camera");
+    const fov = camera.fovDegrees;
     if (fov !== this.fovGoal) {
       const newFov = scalarUtils.lerpScalar(fov, this.fovGoal, this.FOV_LERP_SPEED);
-      hiber3d.setValue(this.entity, "Hiber3D::Camera", "fovDegrees", newFov);
+      camera.fovDegrees = newFov;
+      hiber3d.setComponent(this.entity, camera);
     }
     // Zoom
     if (hasAutoRun) {
@@ -53,16 +55,17 @@
 
       const newZoom = scalarUtils.lerpScalar(this.zoomCurrent, this.zoomGoal, this.ZOOM_LERP_SPEED);
       const newZoomFactor = newZoom / this.zoomCurrent;
-      const position = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position;
-      const newPosition = vectorUtils.multiplyVector(position, newZoomFactor);
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", newPosition);
+      const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
+      const newPosition = vectorUtils.multiplyVector(transform.position, newZoomFactor);
+      transform.position = newPosition;
+      hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
       if (!hiber3d.getSingleton("GameState").paused) {
-      hiber3d.print(
-        "zoomCurrent: " + this.zoomCurrent +
-        " zoomGoal: " + this.zoomGoal +
-        " newZoom: " + newZoom +
-        " newZoomFactor: " + newZoomFactor +
-        "");
+        hiber3d.print(
+          "zoomCurrent: " + this.zoomCurrent +
+          " zoomGoal: " + this.zoomGoal +
+          " newZoom: " + newZoom +
+          " newZoomFactor: " + newZoomFactor +
+          "");
       }
 
       this.zoomCurrent = newZoom;

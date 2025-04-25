@@ -9,16 +9,20 @@
   update() {
   },
   onEvent(event, payload) {
+    const gameState = hiber3d.getSingleton("GameState");
     if (event === "RestartInput") {
       hiber3d.writeEvent("RestartGame", {});
-    } else if (event === "StartInput" && !this.hasStarted){
-      hiber3d.setValue("GameState", "paused", false);
+    } else if (event === "StartInput" && !this.hasStarted) {
+      gameState.paused = false;
+      hiber3d.setSingleton("GameState", gameState);
       hiber3d.writeEvent("BroadcastGameStarted", {})
       this.hasStarted = true;
     } else if (event === "PauseInput") {
-      hiber3d.setValue("GameState", "paused", true);
+      gameState.paused = true;
+      hiber3d.setSingleton("GameState", gameState);
     } else if (event === "UnpauseInput") {
-      hiber3d.setValue("GameState", "paused", false);
+      gameState.paused = false;
+      hiber3d.setSingleton("GameState", gameState);
     }
   },
 });

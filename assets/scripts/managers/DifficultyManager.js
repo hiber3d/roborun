@@ -2,7 +2,7 @@
   TIME_TO_DIFFICULTY_1: 60,
 
   onCreate() {
-    //hiber3d.setValue("GameState", "difficulty", 1); // For debugging "late-game"
+
   },
 
   update(dt) {
@@ -10,9 +10,11 @@
       return;
     }
 
-    var difficulty = hiber3d.getSingleton("GameState").difficulty;
+    const gameState = hiber3d.getSingleton("GameState");
+    var difficulty = gameState.difficulty;
     difficulty += dt * (1 / this.TIME_TO_DIFFICULTY_1);
-    hiber3d.setValue("GameState", "difficulty", difficulty);
+    gameState.difficulty = difficulty;
+    hiber3d.setSingleton("GameState", gameState);
   },
 
   onEvent(event, payload) {
