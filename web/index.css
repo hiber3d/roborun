@@ -3,11 +3,6 @@
 @source "../node_modules/@hiber3d/web";
 
 @font-face {
-  font-family: "Kleptocracy Titling";
-  src: url("/ui/menus/kleptocracy titling cd lt.otf") format("opentype");
-}
-
-@font-face {
   font-family: "Kleptocracy Titling Regular";
   src: url("/ui/menus/kleptocracy titling cd rg.otf") format("opentype");
 }
