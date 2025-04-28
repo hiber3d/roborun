@@ -10,7 +10,7 @@ export const LeaderboardButton = ({ player, showLeaderboard }: { player: Player;
         borderImageRepeat: "repeat",
         borderWidth: "42px 70px",
       }}
-    ></div>
+    />
     <div className=" text-roborun font-roborun text-4xl top-[18px] ml-[20px] mr-[65px] relative truncate text-center">
       {player.name}
     </div>

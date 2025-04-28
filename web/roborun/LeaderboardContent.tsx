@@ -80,41 +80,52 @@ export const LeaderboardContent = ({
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0 }}
-          className="flex flex-col gap-2 max-w-[95%]"
+          className="flex flex-col gap-2 max-w-[100%]"
         >
           <div className="">
-            <div className="bg-black/50 rounded-lg flex flex-col overflow-auto max-h-[80vh]">
-              <table>
-                <tbody>
-                  <tr>
-                    <Column>Rank</Column>
-                    <Column>Player</Column>
-                    <Column className="text-end">Points</Column>
-                    <Column className="text-end">Meters</Column>
-                    <Column className="text-end">Collectibles</Column>
-                    <Column className="text-end">Multiplier</Column>
-                  </tr>
+            <div className="flex flex-col  max-h-[80vh] relative">
+              <div
+                className="absolute w-full h-full"
+                style={{
+                  borderImageSource: "url(ui/menus/LeaderboardFrame.webp)",
+                  borderImageSlice: "220 fill",
+                  borderImageRepeat: "stretch",
+                  borderWidth: "90px",
+                }}
+              />
+              <div className="m-[30px] mx-[34px] relative overflow-auto rounded-3x">
+                <table>
+                  <tbody>
+                    <tr className="font-bold">
+                      <Column>Rank</Column>
+                      <Column>Player</Column>
+                      <Column className="text-end">Points</Column>
+                      <Column className="text-end">Meters</Column>
+                      <Column className="text-end">Collectibles</Column>
+                      <Column className="text-end">Multiplier</Column>
+                    </tr>
 
-                  {state.leaderboard.leaderboard.map((entry, index) => (
-                    <EntryItem
-                      key={entry.id}
-                      entry={entry}
-                      rank={index + 1}
-                      isNewEntry={entry.id === state.leaderboard.newEntry?.id}
-                      newEntryName={state.leaderboard.newEntry?.player_name}
-                    />
-                  ))}
-                </tbody>
-                <tfoot>
-                  {state.leaderboard.newEntry && !entryIsInLeaderboard && (
-                    <EntryItem
-                      entry={state.leaderboard.newEntry}
-                      isNewEntry={true}
-                      newEntryName={state.leaderboard.newEntry?.player_name}
-                    />
-                  )}
-                </tfoot>
-              </table>
+                    {state.leaderboard.leaderboard.map((entry, index) => (
+                      <EntryItem
+                        key={entry.id}
+                        entry={entry}
+                        rank={index + 1}
+                        isNewEntry={entry.id === state.leaderboard.newEntry?.id}
+                        newEntryName={state.leaderboard.newEntry?.player_name}
+                      />
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    {state.leaderboard.newEntry && !entryIsInLeaderboard && (
+                      <EntryItem
+                        entry={state.leaderboard.newEntry}
+                        isNewEntry={true}
+                        newEntryName={state.leaderboard.newEntry?.player_name}
+                      />
+                    )}
+                  </tfoot>
+                </table>
+              </div>
             </div>
           </div>
           <div className="flex flex-col items-center">
