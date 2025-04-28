@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 import { Entry, State } from "./useGameState";
 
 const Column = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <td className={twMerge("p-2 md:p-3", className)}>{children}</td>
+  <td className={twMerge("p-2", className)}>{children}</td>
 );
 
 const EntryItem = ({

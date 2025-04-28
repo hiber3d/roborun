@@ -174,7 +174,7 @@ export const useGameState = () => {
         console.error("Failed to submit score:", await result.text());
         return;
       }
-      const leaderboard = await result.json();
+      const leaderboard = (await result.json()) as Leaderboard;
       dispatch({
         action: "SHOW_LEADERBOARD",
         leaderboard,
@@ -225,7 +225,7 @@ export const useGameState = () => {
     }
     try {
       const result = await fetch(`https://filipengberg-gameleaderboardapi.web.val.run/rank?uuid=${state.player.uuid}`);
-      const entry = await result.json();
+      const entry = (await result.json()) as Entry;
       dispatch({
         action: "SET_BEST_ENTRY",
         entry,
@@ -247,7 +247,7 @@ export const useGameState = () => {
 
     try {
       const result = await fetch("https://filipengberg-gameleaderboardapi.web.val.run/leaderboard");
-      const leaderboard = await result.json();
+      const leaderboard = (await result.json()) as Entry[];
       dispatch({
         action: "UPDATE_LEADERBOARD",
         leaderboard: {
