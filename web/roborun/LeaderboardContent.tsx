@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 import { Entry, State } from "./useGameState";
 
 const Column = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <td className={twMerge("p-2", className)}>{children}</td>
+  <td className={twMerge("p-2 py-[6px]", className)}>{children}</td>
 );
 
 const EntryItem = ({
@@ -55,9 +55,18 @@ export const LeaderboardContent = ({
         animate={{ opacity: 1 }}
         className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
       >
-        <form onSubmit={onSubmitName}>
-          <div className="mb-2">Your Name</div>
-          <input type="text" className="bg-black/50 p-4" name="player" autoFocus data-1p-ignore />
+        <form onSubmit={onSubmitName} className="flex flex-col items-center gap-2">
+          <input
+            placeholder="Enter your name"
+            type="text"
+            className="bg-black/50 p-4 outline-none rounded-2xl"
+            name="player"
+            autoFocus
+            data-1p-ignore
+          />
+          <Button className="w-full" type="submit">
+            SUBMIT
+          </Button>
         </form>
       </motion.div>
     );
@@ -99,7 +108,7 @@ export const LeaderboardContent = ({
                 <table
                   className="leaderboard-table"
                   style={{
-                    gridTemplateRows: `1fr fit-content(${state.mode === "showLeaderboard" ? "55vh" : "45vh"}) ${
+                    gridTemplateRows: `1fr fit-content(${state.mode === "showLeaderboard" ? "56vh" : "45vh"}) ${
                       showStickyFooter && "1fr"
                     }`,
                   }}

@@ -1,24 +1,26 @@
 import { useAudio } from "audio/useAudio";
 import { ComponentProps } from "react";
+import { twMerge } from "tailwind-merge";
 
-export const Button = (props: ComponentProps<"button">) => {
+export const Button = ({ children, className, ...props }: ComponentProps<"button">) => {
   const { sfx } = useAudio();
 
   return (
-    <div
-      className="h-[0px] roborun-button select-none"
-      style={{
-        borderImageSource: "url(ui/menus/ButtonA.webp)",
-        borderImageSlice: "50% 300",
-        borderImageRepeat: "repeat",
-        borderWidth: "40px 50px",
-      }}
+    <button
+      className={twMerge("h-[80px] relative block roborun-button", className)}
+      {...props}
+      onPointerDown={() => sfx.play("buttonpress")}
     >
-      <button
-        className="px-8 -mt-[40px] top-[-1px] relative font-roborun text-5xl text-roborun -mx-[40px]"
-        {...props}
-        onPointerDown={() => sfx.play("buttonpress")}
+      <div
+        className="absolute w-full top-0 left-0"
+        style={{
+          borderImageSource: "url(ui/menus/ButtonA.webp)",
+          borderImageSlice: "50% 300",
+          borderImageRepeat: "repeat",
+          borderWidth: "40px 50px",
+        }}
       />
-    </div>
+      <div className="relative mx-[35px] top-[1px] font-roborun text-5xl text-roborun text-center">{children}</div>
+    </button>
   );
 };
