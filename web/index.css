@@ -16,3 +16,15 @@
   --font-roborun: "Kleptocracy Titling Regular", sans-serif;
   --color-roborun: #ffb100;
 }
+
+@utility roborun-button {
+  & * {
+    user-select: none;
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.9);
+    filter: brightness(1.2) contrast(0.8);
+  }
+}

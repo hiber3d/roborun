@@ -17,7 +17,7 @@ export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
 
   return (
     <div
-      className="pointer-events-auto flex flex-col gap-2 text-roborun shrink-0"
+      className="pointer-events-auto flex flex-col gap-2 text-roborun shrink-0 roborun-button"
       style={
         minimal
           ? { position: "absolute", top: "2px", right: "2px", color: "white" }

@@ -1,7 +1,7 @@
 import { Player } from "roborun/useGameState";
 
 export const LeaderboardButton = ({ player, showLeaderboard }: { player: Player; showLeaderboard: () => void }) => (
-  <div className="relative h-[84px] truncate min-w-[150px] cursor-pointer" onClick={showLeaderboard}>
+  <div className="relative h-[84px] truncate min-w-[150px] cursor-pointer roborun-button" onClick={showLeaderboard}>
     <div
       className="absolute w-full h-full"
       style={{
@@ -15,7 +15,7 @@ export const LeaderboardButton = ({ player, showLeaderboard }: { player: Player;
       {player.name}
     </div>
     {player.rank && (
-      <div className="absolute text-roborun font-roborun text-3xl bottom-[8px] right-[10px] w-[48px] text-center ">
+      <div className="absolute text-roborun font-roborun text-3xl bottom-[8px] right-[10px] w-[48px] text-center">
         #{player.rank}
       </div>
     )}

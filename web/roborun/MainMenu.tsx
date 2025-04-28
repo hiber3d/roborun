@@ -35,7 +35,11 @@ export const MainMenu = ({ player, fetchRank, showLeaderboard }: MainMenuProps) 
         {player && <LeaderboardButton player={player} showLeaderboard={showLeaderboard} />}
         <Mute />
       </div>
-      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="flex items-center justify-center">
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        className="flex items-center justify-center pointer-events-none select-none"
+      >
         <img src="ui/menus/RoboRunLogo.webp" className="h-full max-h-[80vh]" />
       </motion.div>
 
