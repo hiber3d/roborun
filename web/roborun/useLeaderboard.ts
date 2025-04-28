@@ -158,7 +158,7 @@ export const useLeaderboard = () => {
       return;
     }
 
-    const listener = api.onGameRestarted(() => {
+    const listener = api.onGameRestarting(() => {
       dispatch({
         action: "HIDE_LEADERBOARD",
       });

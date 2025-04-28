@@ -10,6 +10,13 @@ struct RestartGame {
 HIBER3D_REFLECT(HIBER3D_TYPE(RestartGame));
 HIBER3D_INTEROP_RECEIVE_FROM_JS(RestartGame);
 
+struct GameRestarting {
+    bool dummy = false;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(GameRestarting), HIBER3D_MEMBER(dummy));
+HIBER3D_INTEROP_SEND_TO_JS(GameRestarting);
+
 struct GameRestarted {
     bool dummy = false;
 };
