@@ -1,6 +1,6 @@
 import { useHiber3D } from "@hiber3d/web";
 import { motion } from "framer-motion";
-import { Entry, State } from "./useLeaderboard";
+import { Entry, State } from "./useGameState";
 import { twMerge } from "tailwind-merge";
 import { Button } from "roborun/Button";
 

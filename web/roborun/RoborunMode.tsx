@@ -3,14 +3,14 @@ import { useSoundEffects } from "audio/useSoundEffects";
 import { AnimatePresence } from "framer-motion";
 import { LeaderboardContent } from "./LeaderboardContent";
 import { MainMenu } from "./MainMenu";
-import { useLeaderboard } from "./useLeaderboard";
+import { useGameState } from "./useGameState";
 import { useTouchControls } from "./useTouchControls";
 
 const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;
 
 export const RoborunMode = () => {
-  const { submitName, state, fetchRank, showLeaderboard, showMainMenu } = useLeaderboard();
+  const { submitName, state, fetchRank, showLeaderboard, showMainMenu } = useGameState();
   useTouchControls({ tapMode });
   useSoundEffects();
   useMusicMultiTracks();

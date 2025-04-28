@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Button } from "roborun/Button";
 import { LeaderboardButton } from "roborun/LeaderboardButton";
 import { Mute } from "roborun/Mute";
-import { Player } from "roborun/useLeaderboard";
+import { Player } from "roborun/useGameState";
 
 type MainMenuProps = {
   player?: Player;

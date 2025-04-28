@@ -116,7 +116,7 @@ const loadPlayerName = (): Player => {
   return JSON.parse(localStorage.getItem("player") || "null");
 };
 
-export const useLeaderboard = () => {
+export const useGameState = () => {
   const { api, canvasRef } = useHiber3D();
   const [state, dispatch] = useReducer(reducer, {
     mode: "mainMenu",
