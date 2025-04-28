@@ -96,7 +96,7 @@ export const LeaderboardContent = ({
           <div className="">
             <div className="flex flex-col relative">
               <div
-                className="absolute w-full h-full"
+                className="absolute w-full h-full z-1 pointer-events-none"
                 style={{
                   borderImageSource: "url(ui/menus/LeaderboardFrame.webp)",
                   borderImageSlice: "220 fill",
@@ -104,7 +104,7 @@ export const LeaderboardContent = ({
                   borderWidth: "90px",
                 }}
               />
-              <div className="m-[30px] mx-[34px] relative rounded-2xl overflow-hidden">
+              <div className="m-[30px] mx-[34px] relative overflow-hidden">
                 <table
                   className="leaderboard-table"
                   style={{
