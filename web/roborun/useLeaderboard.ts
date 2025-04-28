@@ -1,4 +1,4 @@
-import { Stats, useApi } from "@hiber3d/web";
+import { Stats, useHiber3D } from "@hiber3d/web";
 import { useCallback, useEffect, useReducer } from "react";
 import { telegramUser } from "utils/telegram";
 
@@ -22,7 +22,7 @@ type Leaderboard = {
 };
 
 export type State = {
-  mode: "hidden" | "addName" | "showLeaderboard";
+  mode: "mainMenu" | "playing" | "addName" | "showLeaderboard" | "showLeaderboardWithRetry";
   pendingScore?: Score;
   player?: Player;
   leaderboard: Leaderboard;
@@ -32,9 +32,17 @@ type Actions =
   | {
       action: "SHOW_LEADERBOARD";
       leaderboard: Leaderboard;
+      mode: "showLeaderboard" | "showLeaderboardWithRetry";
     }
   | {
-      action: "HIDE_LEADERBOARD";
+      action: "UPDATE_LEADERBOARD";
+      leaderboard: Leaderboard;
+    }
+  | {
+      action: "START_PLAYING";
+    }
+  | {
+      action: "SHOW_MAIN_MENU";
     }
   | {
       action: "SHOW_PLAYER_FORM";
@@ -56,12 +64,25 @@ const reducer = (state: State, action: Actions): State => {
         ...state,
         pendingScore: undefined,
         leaderboard: action.leaderboard,
-        mode: "showLeaderboard",
+        mode: action.mode,
       };
-    case "HIDE_LEADERBOARD":
+    case "UPDATE_LEADERBOARD":
       return {
         ...state,
-        mode: "hidden",
+        leaderboard: {
+          ...state.leaderboard,
+          leaderboard: action.leaderboard.leaderboard,
+        },
+      };
+    case "START_PLAYING":
+      return {
+        ...state,
+        mode: "playing",
+      };
+    case "SHOW_MAIN_MENU":
+      return {
+        ...state,
+        mode: "mainMenu",
       };
     case "SHOW_PLAYER_FORM":
       return { ...state, mode: "addName", pendingScore: action.pendingScore };
@@ -96,12 +117,42 @@ const loadPlayerName = (): Player => {
 };
 
 export const useLeaderboard = () => {
-  const api = useApi();
+  const { api, canvasRef } = useHiber3D();
   const [state, dispatch] = useReducer(reducer, {
-    mode: "hidden",
+    mode: "mainMenu",
     player: loadPlayerName(),
     leaderboard: { leaderboard: [] },
   });
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const startGameListener = api.onBroadcastGameStarted(() => {
+      canvasRef?.focus();
+      dispatch({
+        action: "START_PLAYING",
+      });
+    });
+
+    const restartGameListener = api.onGameRestarted((payload) => {
+      if (payload.autoStart) {
+        dispatch({
+          action: "START_PLAYING",
+        });
+      } else {
+        dispatch({
+          action: "SHOW_MAIN_MENU",
+        });
+      }
+    });
+
+    return () => {
+      api.removeEventCallback(restartGameListener);
+      api.removeEventCallback(startGameListener);
+    };
+  }, [api, canvasRef]);
 
   const sendScore = useCallback(
     async (player: Player, score: Score) => {
@@ -124,7 +175,7 @@ export const useLeaderboard = () => {
         return;
       }
       const leaderboard = await result.json();
-      dispatch({ action: "SHOW_LEADERBOARD", leaderboard });
+      dispatch({ action: "SHOW_LEADERBOARD", leaderboard, mode: "showLeaderboardWithRetry" });
     },
     [dispatch]
   );
@@ -180,25 +231,40 @@ export const useLeaderboard = () => {
     }
   }, [state.player?.uuid]);
 
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    const listener = api.onGameRestarted(() => {
-      dispatch({
-        action: "HIDE_LEADERBOARD",
-      });
+  const showLeaderboard = async () => {
+    dispatch({
+      action: "SHOW_LEADERBOARD",
+      leaderboard: {
+        leaderboard: state.leaderboard.leaderboard,
+      },
+      mode: "showLeaderboard",
     });
 
-    return () => {
-      api.removeEventCallback(listener);
-    };
-  }, [api]);
+    try {
+      const result = await fetch("https://filipengberg-gameleaderboardapi.web.val.run/leaderboard");
+      const leaderboard = await result.json();
+      dispatch({
+        action: "UPDATE_LEADERBOARD",
+        leaderboard: {
+          leaderboard,
+        },
+      });
+    } catch (error) {
+      console.error("Failed to fetch leaderboard:", error);
+    }
+  };
+
+  const showMainMenu = () => {
+    dispatch({
+      action: "SHOW_MAIN_MENU",
+    });
+  };
 
   return {
     submitName,
     state,
     fetchRank,
+    showLeaderboard,
+    showMainMenu,
   };
 };

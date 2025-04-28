@@ -2,6 +2,7 @@ import { useHiber3D } from "@hiber3d/web";
 import { motion } from "framer-motion";
 import { Entry, State } from "./useLeaderboard";
 import { twMerge } from "tailwind-merge";
+import { Button } from "roborun/Button";
 
 const Column = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <td className={twMerge("p-2 md:p-3", className)}>{children}</td>
@@ -38,15 +39,13 @@ const EntryItem = ({
 export const LeaderboardContent = ({
   state,
   onSubmitName,
+  showMainMenu,
 }: {
   state: State;
   onSubmitName: (e: React.FormEvent<HTMLFormElement>) => void;
+  showMainMenu: () => void;
 }) => {
   const { api } = useHiber3D();
-
-  if (state.mode === "hidden") {
-    return null;
-  }
 
   if (state.mode === "addName") {
     return (
@@ -71,58 +70,80 @@ export const LeaderboardContent = ({
   return (
     <motion.div
       key="leaderboard"
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
     >
-      <div className="flex flex-col gap-2 max-w-[95%]">
-        <div className="">
-          <div className="bg-black/50 rounded-lg flex flex-col overflow-auto max-h-[80vh]">
-            <table>
-              <tbody>
-                <tr>
-                  <Column>Rank</Column>
-                  <Column>Player</Column>
-                  <Column className="text-end">Points</Column>
-                  <Column className="text-end">Meters</Column>
-                  <Column className="text-end">Collectibles</Column>
-                  <Column className="text-end">Multiplier</Column>
-                </tr>
-
-                {state.leaderboard.leaderboard.map((entry, index) => (
-                  <EntryItem
-                    key={entry.id}
-                    entry={entry}
-                    rank={index + 1}
-                    isNewEntry={entry.id === state.leaderboard.newEntry?.id}
-                    newEntryName={state.leaderboard.newEntry?.player_name}
-                  />
-                ))}
-              </tbody>
-              <tfoot>
-                {state.leaderboard.newEntry && !entryIsInLeaderboard && (
-                  <EntryItem
-                    entry={state.leaderboard.newEntry}
-                    isNewEntry={true}
-                    newEntryName={state.leaderboard.newEntry?.player_name}
-                  />
-                )}
-              </tfoot>
-            </table>
-          </div>
-        </div>
-        <button
-          className="bg-black/50 p-4 rounded-lg font-bold"
-          onClick={() =>
-            api?.writeRestartGame({
-              autoStart: true,
-            })
-          }
+      {!!state.leaderboard.leaderboard.length && (
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0 }}
+          className="flex flex-col gap-2 max-w-[95%]"
         >
-          Play again
-        </button>
-      </div>
+          <div className="">
+            <div className="bg-black/50 rounded-lg flex flex-col overflow-auto max-h-[80vh]">
+              <table>
+                <tbody>
+                  <tr>
+                    <Column>Rank</Column>
+                    <Column>Player</Column>
+                    <Column className="text-end">Points</Column>
+                    <Column className="text-end">Meters</Column>
+                    <Column className="text-end">Collectibles</Column>
+                    <Column className="text-end">Multiplier</Column>
+                  </tr>
+
+                  {state.leaderboard.leaderboard.map((entry, index) => (
+                    <EntryItem
+                      key={entry.id}
+                      entry={entry}
+                      rank={index + 1}
+                      isNewEntry={entry.id === state.leaderboard.newEntry?.id}
+                      newEntryName={state.leaderboard.newEntry?.player_name}
+                    />
+                  ))}
+                </tbody>
+                <tfoot>
+                  {state.leaderboard.newEntry && !entryIsInLeaderboard && (
+                    <EntryItem
+                      entry={state.leaderboard.newEntry}
+                      isNewEntry={true}
+                      newEntryName={state.leaderboard.newEntry?.player_name}
+                    />
+                  )}
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            {state.mode === "showLeaderboardWithRetry" && (
+              <>
+                <Button
+                  onClick={() =>
+                    api?.writeRestartGame({
+                      autoStart: true,
+                    })
+                  }
+                >
+                  Play again
+                </Button>
+                <Button
+                  onClick={() => {
+                    api?.writeRestartGame({
+                      autoStart: false,
+                    });
+                  }}
+                >
+                  Main menu
+                </Button>
+              </>
+            )}
+            {state.mode === "showLeaderboard" && <Button onClick={showMainMenu}>Close</Button>}
+          </div>
+        </motion.div>
+      )}
     </motion.div>
   );
 };

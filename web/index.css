@@ -4,13 +4,11 @@
 
 @font-face {
   font-family: "Kleptocracy Titling";
-  font-display: swap;
   src: url("/ui/menus/kleptocracy titling cd lt.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Kleptocracy Titling Regular";
-  font-display: swap;
   src: url("/ui/menus/kleptocracy titling cd rg.otf") format("opentype");
 }
 
