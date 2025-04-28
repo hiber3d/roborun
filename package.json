@@ -21,7 +21,6 @@
   "dependencies": {
     "@hiber3d/web": "file:build/webgpu/web",
     "@tailwindcss/vite": "^4.0.11",
-    "audiosprite": "^0.7.2",
     "GameTemplate_webgl": "file:build/webgl",
     "GameTemplate_webgpu": "file:build/webgpu",
     "howler": "^2.2.4",
