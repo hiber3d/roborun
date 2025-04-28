@@ -1,7 +1,7 @@
 import { useAudio } from "audio/useAudio";
 import { Volume2, VolumeX } from "lucide-react";
 
-export const Mute = ({ minimal = false }: { minimal: boolean }) => {
+export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
   const { music, sfx } = useAudio();
 
   const isMuted = music.isMuted && sfx.isMuted;

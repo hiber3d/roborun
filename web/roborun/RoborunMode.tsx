@@ -10,7 +10,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;
 
 export const RoborunMode = () => {
-  const { submitName, state } = useLeaderboard();
+  const { submitName, state, fetchRank } = useLeaderboard();
   useTouchControls({ tapMode });
   useSoundEffects();
   useMusicMultiTracks();
@@ -26,7 +26,7 @@ export const RoborunMode = () => {
 
   return (
     <AnimatePresence>
-      <MainMenu key="mainmenu" />
+      <MainMenu key="mainmenu" player={state.player} fetchRank={fetchRank} />
       {/* <RoborunUI /> */}
       <LeaderboardContent key="leaderboard" state={state} onSubmitName={submitForm} />
     </AnimatePresence>

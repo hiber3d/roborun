@@ -3,9 +3,10 @@ import { useCallback, useEffect, useReducer } from "react";
 import { telegramUser } from "utils/telegram";
 
 type Score = Stats;
-type Player = {
+export type Player = {
   name: string;
   uuid: string;
+  rank?: number;
 };
 
 export type Entry = {
@@ -42,6 +43,10 @@ type Actions =
   | {
       action: "CREATE_PLAYER";
       player: Player;
+    }
+  | {
+      action: "SET_PLAYER_RANK";
+      rank: number;
     };
 
 const reducer = (state: State, action: Actions): State => {
@@ -64,6 +69,17 @@ const reducer = (state: State, action: Actions): State => {
       return {
         ...state,
         player: action.player,
+      };
+    case "SET_PLAYER_RANK":
+      if (!state.player) {
+        return state;
+      }
+      return {
+        ...state,
+        player: {
+          ...state.player,
+          rank: action.rank,
+        },
       };
   }
 };
@@ -91,23 +107,18 @@ export const useLeaderboard = () => {
     async (player: Player, score: Score) => {
       const payload = {
         ...score,
-        multiplier: (Math.floor(score.multiplier * 10 + 0.0001) / 10).toFixed(
-          1
-        ),
+        multiplier: (Math.floor(score.multiplier * 10 + 0.0001) / 10).toFixed(1),
         points: Math.round(score.points),
         meters: Math.round(score.meters),
         ...player,
       };
-      const result = await fetch(
-        "https://filipengberg-gameleaderboardapi.web.val.run/submit",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }
-      );
+      const result = await fetch("https://filipengberg-gameleaderboardapi.web.val.run/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
       if (!result.ok) {
         console.error("Failed to submit score:", await result.text());
         return;
@@ -153,6 +164,22 @@ export const useLeaderboard = () => {
     };
   }, [api, sendScore, state.player]);
 
+  const fetchRank = useCallback(async () => {
+    if (!state.player?.uuid) {
+      return;
+    }
+    try {
+      const result = await fetch(`https://filipengberg-gameleaderboardapi.web.val.run/rank?uuid=${state.player.uuid}`);
+      const json = await result.json();
+      dispatch({
+        action: "SET_PLAYER_RANK",
+        rank: json.rank,
+      });
+    } catch (error) {
+      console.error("Failed to fetch rank:", error);
+    }
+  }, [state.player?.uuid]);
+
   useEffect(() => {
     if (!api) {
       return;
@@ -172,5 +199,6 @@ export const useLeaderboard = () => {
   return {
     submitName,
     state,
+    fetchRank,
   };
 };
