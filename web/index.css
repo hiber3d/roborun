@@ -17,9 +17,21 @@
   --color-roborun: #ffb100;
 }
 
+@layer base {
+  thead,
+  tbody,
+  tfoot,
+  tr {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / 7;
+  }
+}
+
 @utility roborun-button {
+  cursor: pointer;
+
   & * {
-    user-select: none;
     cursor: pointer;
   }
 

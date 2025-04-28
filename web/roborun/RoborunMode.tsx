@@ -1,12 +1,11 @@
 import { useMusicMultiTracks } from "audio/useMusicMultiTracks";
 import { useSoundEffects } from "audio/useSoundEffects";
 import { AnimatePresence } from "framer-motion";
+import { Mute } from "roborun/Mute";
 import { LeaderboardContent } from "./LeaderboardContent";
 import { MainMenu } from "./MainMenu";
 import { useGameState } from "./useGameState";
 import { useTouchControls } from "./useTouchControls";
-import { use } from "react";
-import { Mute } from "roborun/Mute";
 
 const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;

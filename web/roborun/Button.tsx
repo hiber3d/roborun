@@ -3,7 +3,7 @@ import { ComponentProps } from "react";
 export const Button = (props: ComponentProps<"button">) => {
   return (
     <div
-      className="h-[0px] roborun-button"
+      className="h-[0px] roborun-button select-none"
       style={{
         borderImageSource: "url(ui/menus/ButtonA.webp)",
         borderImageSlice: "50% 300",

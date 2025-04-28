@@ -1,8 +1,8 @@
 import { useHiber3D } from "@hiber3d/web";
 import { motion } from "framer-motion";
-import { Entry, State } from "./useGameState";
-import { twMerge } from "tailwind-merge";
 import { Button } from "roborun/Button";
+import { twMerge } from "tailwind-merge";
+import { Entry, State } from "./useGameState";
 
 const Column = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <td className={twMerge("p-2 md:p-3", className)}>{children}</td>
@@ -67,6 +67,8 @@ export const LeaderboardContent = ({
     (entry) => entry.id === state.leaderboard?.newEntry?.id
   );
 
+  const showStickyFooter = !entryIsInLeaderboard;
+
   return (
     <motion.div
       key="leaderboard"
@@ -80,10 +82,10 @@ export const LeaderboardContent = ({
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0 }}
-          className="flex flex-col gap-2 max-w-[100%]"
+          className="flex flex-col max-w-[100%] select-none"
         >
           <div className="">
-            <div className="flex flex-col  max-h-[80vh] relative">
+            <div className="flex flex-col relative">
               <div
                 className="absolute w-full h-full"
                 style={{
@@ -93,9 +95,18 @@ export const LeaderboardContent = ({
                   borderWidth: "90px",
                 }}
               />
-              <div className="m-[30px] mx-[34px] relative overflow-auto rounded-3x">
-                <table>
-                  <tbody>
+              <div className="m-[30px] mx-[34px] relative rounded-2xl overflow-hidden">
+                <table
+                  style={{
+                    overflow: "auto",
+                    display: "grid",
+                    gridTemplateColumns: "1fr",
+                    gridTemplateRows: `1fr fit-content(${state.mode === "showLeaderboard" ? "55vh" : "45vh"}) ${
+                      showStickyFooter && "1fr"
+                    }`,
+                  }}
+                >
+                  <thead>
                     <tr className="font-bold">
                       <Column>Rank</Column>
                       <Column>Player</Column>
@@ -104,7 +115,8 @@ export const LeaderboardContent = ({
                       <Column className="text-end">Collectibles</Column>
                       <Column className="text-end">Multiplier</Column>
                     </tr>
-
+                  </thead>
+                  <tbody className="overflow-auto">
                     {state.leaderboard.leaderboard.map((entry, index) => (
                       <EntryItem
                         key={entry.id}
@@ -115,15 +127,15 @@ export const LeaderboardContent = ({
                       />
                     ))}
                   </tbody>
-                  <tfoot>
-                    {state.leaderboard.newEntry && !entryIsInLeaderboard && (
+                  {showStickyFooter && state.leaderboard.newEntry && (
+                    <tfoot>
                       <EntryItem
                         entry={state.leaderboard.newEntry}
                         isNewEntry={true}
-                        newEntryName={state.leaderboard.newEntry?.player_name}
+                        newEntryName={state.leaderboard.newEntry.player_name}
                       />
-                    )}
-                  </tfoot>
+                    </tfoot>
+                  )}
                 </table>
               </div>
             </div>

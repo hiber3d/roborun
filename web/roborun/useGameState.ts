@@ -6,7 +6,7 @@ type Score = Stats;
 export type Player = {
   name: string;
   uuid: string;
-  rank?: number;
+  bestEntry?: Entry;
 };
 
 export type Entry = {
@@ -53,8 +53,8 @@ type Actions =
       player: Player;
     }
   | {
-      action: "SET_PLAYER_RANK";
-      rank: number;
+      action: "SET_BEST_ENTRY";
+      entry: Entry;
     };
 
 const reducer = (state: State, action: Actions): State => {
@@ -91,7 +91,7 @@ const reducer = (state: State, action: Actions): State => {
         ...state,
         player: action.player,
       };
-    case "SET_PLAYER_RANK":
+    case "SET_BEST_ENTRY":
       if (!state.player) {
         return state;
       }
@@ -99,7 +99,7 @@ const reducer = (state: State, action: Actions): State => {
         ...state,
         player: {
           ...state.player,
-          rank: action.rank,
+          bestEntry: action.entry,
         },
       };
   }
@@ -175,7 +175,11 @@ export const useGameState = () => {
         return;
       }
       const leaderboard = await result.json();
-      dispatch({ action: "SHOW_LEADERBOARD", leaderboard, mode: "showLeaderboardWithRetry" });
+      dispatch({
+        action: "SHOW_LEADERBOARD",
+        leaderboard,
+        mode: "showLeaderboardWithRetry",
+      });
     },
     [dispatch]
   );
@@ -221,10 +225,10 @@ export const useGameState = () => {
     }
     try {
       const result = await fetch(`https://filipengberg-gameleaderboardapi.web.val.run/rank?uuid=${state.player.uuid}`);
-      const json = await result.json();
+      const entry = await result.json();
       dispatch({
-        action: "SET_PLAYER_RANK",
-        rank: json.rank,
+        action: "SET_BEST_ENTRY",
+        entry,
       });
     } catch (error) {
       console.error("Failed to fetch rank:", error);
@@ -236,6 +240,7 @@ export const useGameState = () => {
       action: "SHOW_LEADERBOARD",
       leaderboard: {
         leaderboard: state.leaderboard.leaderboard,
+        newEntry: state.player?.bestEntry,
       },
       mode: "showLeaderboard",
     });
