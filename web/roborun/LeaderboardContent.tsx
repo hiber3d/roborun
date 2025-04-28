@@ -97,10 +97,8 @@ export const LeaderboardContent = ({
               />
               <div className="m-[30px] mx-[34px] relative rounded-2xl overflow-hidden">
                 <table
+                  className="leaderboard-table"
                   style={{
-                    overflow: "auto",
-                    display: "grid",
-                    gridTemplateColumns: "1fr",
                     gridTemplateRows: `1fr fit-content(${state.mode === "showLeaderboard" ? "55vh" : "45vh"}) ${
                       showStickyFooter && "1fr"
                     }`,

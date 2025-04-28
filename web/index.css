@@ -17,7 +17,11 @@
   --color-roborun: #ffb100;
 }
 
-@layer base {
+@utility leaderboard-table {
+  display: grid;
+  grid-template-columns: "1fr";
+  overflow: auto;
+
   thead,
   tbody,
   tfoot,
