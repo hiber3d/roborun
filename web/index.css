@@ -1,3 +1,20 @@
 @import "tailwindcss" source("/");
 @import "@hiber3d/web/styles";
 @source "../node_modules/@hiber3d/web";
+
+@font-face {
+  font-family: "Kleptocracy Titling";
+  font-display: swap;
+  src: url("/ui/menus/kleptocracy titling cd lt.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Kleptocracy Titling Regular";
+  font-display: swap;
+  src: url("/ui/menus/kleptocracy titling cd rg.otf") format("opentype");
+}
+
+@theme {
+  --font-roborun: "Kleptocracy Titling Regular", sans-serif;
+  --color-roborun: #ffb100;
+}

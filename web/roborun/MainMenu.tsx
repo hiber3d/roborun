@@ -1,6 +1,8 @@
 import { useHiber3D } from "@hiber3d/web";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Button } from "roborun/Button";
+import { Mute } from "roborun/Mute";
 
 export const MainMenu = () => {
   const { api, canvasRef } = useHiber3D();
@@ -32,16 +34,25 @@ export const MainMenu = () => {
   };
 
   if (!visible) {
-    return null;
+    return (
+      <div className="absolute top-2 right-2">
+        <Mute minimal />
+      </div>
+    );
   }
 
   return (
-    <motion.div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-      <div className="flex flex-col gap-4 items-center">
-        <h1 className="text-6xl font-black text-white">Roborun</h1>
-        <button className="bg-emerald-500 text-white px-4 py-2 rounded-md" onClick={handlePlayButtonClick}>
-          Play
-        </button>
+    <motion.div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between p-2">
+      <div className="flex justify-between">
+        <div>Leaderboard</div>
+        <Mute />
+      </div>
+      <div className="flex items-center justify-center">
+        <img src="ui/menus/RoboRunLogo.webp" className="h-full max-h-[80vh]" />
+      </div>
+
+      <div className="flex items-center justify-center">
+        <Button onClick={handlePlayButtonClick}>Start run</Button>
       </div>
     </motion.div>
   );
