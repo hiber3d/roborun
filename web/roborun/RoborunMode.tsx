@@ -35,7 +35,7 @@ export const RoborunMode = () => {
           <Mute minimal />
         </div>
       )}
-      {["showLeaderboard", "showLeaderboardWithRetry", "addName"].includes(state.mode) && (
+      {state.mode.startsWith("leaderboard") && (
         <LeaderboardContent
           key="leaderboardContent"
           state={state}

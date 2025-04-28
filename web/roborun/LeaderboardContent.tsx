@@ -1,5 +1,6 @@
 import { useHiber3D } from "@hiber3d/web";
 import { motion } from "framer-motion";
+import { LucideLoader2 } from "lucide-react";
 import { Button } from "roborun/Button";
 import { twMerge } from "tailwind-merge";
 import { Entry, State } from "./useGameState";
@@ -47,7 +48,7 @@ export const LeaderboardContent = ({
 }) => {
   const { api } = useHiber3D();
 
-  if (state.mode === "addName") {
+  if (["leaderboardAddName", "leaderboardSubmittingName"].includes(state.mode)) {
     return (
       <motion.div
         key="addName"
@@ -64,9 +65,16 @@ export const LeaderboardContent = ({
             autoFocus
             data-1p-ignore
           />
-          <Button className="w-full" type="submit">
+          <Button className="w-full" type="submit" disabled={state.mode === "leaderboardSubmittingName"}>
             SUBMIT
           </Button>
+          <LucideLoader2
+            className={twMerge(
+              "animate-spin text-roborun",
+              state.mode === "leaderboardSubmittingName" ? "visible" : "invisible"
+            )}
+            size={32}
+          />
         </form>
       </motion.div>
     );
@@ -108,7 +116,7 @@ export const LeaderboardContent = ({
                 <table
                   className="leaderboard-table"
                   style={{
-                    gridTemplateRows: `1fr fit-content(${state.mode === "showLeaderboard" ? "56vh" : "45vh"}) ${
+                    gridTemplateRows: `1fr fit-content(${state.mode === "leaderboard" ? "56vh" : "45vh"}) ${
                       showStickyFooter && "1fr"
                     }`,
                   }}
@@ -148,7 +156,7 @@ export const LeaderboardContent = ({
             </div>
           </div>
           <div className="flex flex-col items-center">
-            {state.mode === "showLeaderboardWithRetry" && (
+            {state.mode === "leaderboardWithRetry" && (
               <>
                 <Button
                   onClick={() =>
@@ -170,7 +178,7 @@ export const LeaderboardContent = ({
                 </Button>
               </>
             )}
-            {state.mode === "showLeaderboard" && <Button onClick={showMainMenu}>Close</Button>}
+            {state.mode === "leaderboard" && <Button onClick={showMainMenu}>Close</Button>}
           </div>
         </motion.div>
       )}

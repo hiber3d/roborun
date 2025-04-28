@@ -22,7 +22,13 @@ type Leaderboard = {
 };
 
 export type State = {
-  mode: "mainMenu" | "playing" | "addName" | "showLeaderboard" | "showLeaderboardWithRetry";
+  mode:
+    | "mainMenu"
+    | "playing"
+    | "leaderboard"
+    | "leaderboardAddName"
+    | "leaderboardSubmittingName"
+    | "leaderboardWithRetry";
   pendingScore?: Score;
   player?: Player;
   leaderboard: Leaderboard;
@@ -32,7 +38,7 @@ type Actions =
   | {
       action: "SHOW_LEADERBOARD";
       leaderboard: Leaderboard;
-      mode: "showLeaderboard" | "showLeaderboardWithRetry";
+      mode: "leaderboard" | "leaderboardWithRetry";
     }
   | {
       action: "UPDATE_LEADERBOARD";
@@ -85,11 +91,12 @@ const reducer = (state: State, action: Actions): State => {
         mode: "mainMenu",
       };
     case "SHOW_PLAYER_FORM":
-      return { ...state, mode: "addName", pendingScore: action.pendingScore };
+      return { ...state, mode: "leaderboardAddName", pendingScore: action.pendingScore };
     case "CREATE_PLAYER":
       return {
         ...state,
         player: action.player,
+        mode: "leaderboardSubmittingName",
       };
     case "SET_BEST_ENTRY":
       if (!state.player) {
@@ -178,13 +185,13 @@ export const useGameState = () => {
       dispatch({
         action: "SHOW_LEADERBOARD",
         leaderboard,
-        mode: "showLeaderboardWithRetry",
+        mode: "leaderboardWithRetry",
       });
     },
     [dispatch]
   );
 
-  const submitName = (name: string) => {
+  const submitName = async (name: string) => {
     const player = {
       name,
       uuid: name.toLowerCase(),
@@ -242,7 +249,7 @@ export const useGameState = () => {
         leaderboard: state.leaderboard.leaderboard,
         newEntry: state.player?.bestEntry,
       },
-      mode: "showLeaderboard",
+      mode: "leaderboard",
     });
 
     try {
