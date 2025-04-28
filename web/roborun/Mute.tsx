@@ -33,6 +33,7 @@ export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
             }
       }
       onClick={toggleMute}
+      onPointerDown={() => sfx.play("buttonpress")}
     >
       {isMuted ? <VolumeX size={size} /> : <Volume2 size={size} />}
     </div>

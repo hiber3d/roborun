@@ -1,6 +1,9 @@
+import { useAudio } from "audio/useAudio";
 import { ComponentProps } from "react";
 
 export const Button = (props: ComponentProps<"button">) => {
+  const { sfx } = useAudio();
+
   return (
     <div
       className="h-[0px] roborun-button select-none"
@@ -14,6 +17,7 @@ export const Button = (props: ComponentProps<"button">) => {
       <button
         className="px-8 -mt-[40px] top-[-1px] relative font-roborun text-5xl text-roborun -mx-[40px]"
         {...props}
+        onPointerDown={() => sfx.play("buttonpress")}
       />
     </div>
   );
