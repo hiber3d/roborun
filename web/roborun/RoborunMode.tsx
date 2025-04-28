@@ -5,6 +5,8 @@ import { LeaderboardContent } from "./LeaderboardContent";
 import { MainMenu } from "./MainMenu";
 import { useGameState } from "./useGameState";
 import { useTouchControls } from "./useTouchControls";
+import { use } from "react";
+import { Mute } from "roborun/Mute";
 
 const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;
@@ -29,7 +31,11 @@ export const RoborunMode = () => {
       {state.mode === "mainMenu" && (
         <MainMenu key="mainmenu" player={state.player} fetchRank={fetchRank} showLeaderboard={showLeaderboard} />
       )}
-      {state.mode === "playing" && <div>JAJ</div>}
+      {state.mode === "playing" && (
+        <div className="absolute top-2 right-2">
+          <Mute minimal />
+        </div>
+      )}
       {["showLeaderboard", "showLeaderboardWithRetry"].includes(state.mode) && (
         <LeaderboardContent
           key="leaderboardContent"
