@@ -13,7 +13,7 @@ type MainMenuProps = {
 };
 
 export const MainMenu = ({ player, fetchRank, showLeaderboard }: MainMenuProps) => {
-  const { api, canvasRef } = useHiber3D();
+  const { api } = useHiber3D();
 
   useEffect(() => {
     fetchRank();
@@ -21,7 +21,6 @@ export const MainMenu = ({ player, fetchRank, showLeaderboard }: MainMenuProps) 
 
   const handlePlayButtonClick = () => {
     api?.writeStartInput();
-    canvasRef?.focus();
   };
 
   return (
@@ -32,7 +31,7 @@ export const MainMenu = ({ player, fetchRank, showLeaderboard }: MainMenuProps) 
       className="absolute top-0 left-0 w-full h-full flex flex-col justify-between p-2"
     >
       <div className="flex justify-between items-start">
-        {player && <LeaderboardButton player={player} showLeaderboard={showLeaderboard} />}
+        <LeaderboardButton player={player} showLeaderboard={showLeaderboard} />
         <Mute />
       </div>
       <motion.div

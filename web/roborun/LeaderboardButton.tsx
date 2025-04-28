@@ -1,8 +1,12 @@
 import { useAudio } from "audio/useAudio";
 import { Player } from "roborun/useGameState";
 
-export const LeaderboardButton = ({ player, showLeaderboard }: { player: Player; showLeaderboard: () => void }) => {
+export const LeaderboardButton = ({ player, showLeaderboard }: { player?: Player; showLeaderboard: () => void }) => {
   const { sfx } = useAudio();
+
+  if (!player) {
+    return <div />;
+  }
 
   return (
     <div
