@@ -55,7 +55,6 @@
     hiber3d.addEventListener(this.entity, "StartInput");
 
     if (hiber3d.getValue("GameState", "autoStart") === true) {
-      hiber3d.print("AUTOSTART!");
       hiber3d.writeEvent("StartInput", {});
     }
   },
