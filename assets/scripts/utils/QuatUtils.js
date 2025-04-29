@@ -63,7 +63,7 @@ function divideQuaternion(q, s) {
 }
 module.exports.divideQuaternion = divideQuaternion;
 function multiplyQuaternion(q1, s) {
-  return { w: q1.w * s, x: q1.w * s, y: q1.w * s, z: q1.w * s, };
+  return { x: q1.x * s, y: q1.y * s, z: q1.z * s, w: q1.w * s, };
 }
 module.exports.multiplyQuaternion = multiplyQuaternion;
 function multiplyQuaternions(q1, q2) {

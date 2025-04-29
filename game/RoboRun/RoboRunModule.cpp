@@ -29,8 +29,9 @@ static void handleGameRestarted(
     Hiber3D::EventView<GameRestarted> events,
     Hiber3D::Singleton<GameState>     gameState) {
     for (const auto& event : events) {
+        const auto autoStart = gameState->autoStart;
         resetSingletons(gameState);
-        gameState->autoStart = event.autoStart;
+        gameState->autoStart = autoStart;
         return;
     }
 }
@@ -96,14 +97,14 @@ void loadEnvironment(
 }
 
 static void handleRestartGame(
-    Hiber3D::EventView<RestartGame>           events,
-    Hiber3D::Singleton<Hiber3D::AssetServer>  assetServer,
-    Hiber3D::Singleton<Hiber3D::SceneManager> sceneManager,
-    Hiber3D::EventWriter<ChangeScene>&        changeSceneWriter,
-    Hiber3D::EventWriter<GameRestarted>&      gameRestartedWriter) {
+    Hiber3D::EventView<RestartGame>       events,
+    Hiber3D::Singleton<GameState>         gameState,
+    Hiber3D::EventWriter<ChangeScene>&    changeSceneWriter,
+    Hiber3D::EventWriter<GameRestarting>& gameRestartingWriter) {
     for (const auto& event : events) {
-        changeSceneWriter.writeEvent({.path = "scenes/RunningScene.scene"});
-        gameRestartedWriter.writeEvent({.autoStart = event.autoStart});
+        changeSceneWriter.writeEvent({.path = "scenes/restart/Restart.scene"});
+        gameRestartingWriter.writeEvent({});
+        gameState->autoStart = event.autoStart;
         return;
     }
 }
@@ -152,6 +153,7 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<GameState>(context);
 
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<RestartGame>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<GameRestarting>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<GameRestarted>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerCreated>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<KillPlayer>(context);

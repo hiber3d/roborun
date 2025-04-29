@@ -1,6 +1,6 @@
 ({
-  POSITION_SPEED: 0.1, // [0, 1]
-  ROTATION_SPEED: 0.1,
+  POSITION_SPEED: 0.01,
+  ROTATION_SPEED: 0.05,
   shouldLerpToZero() {
     const playerEntity = hiber3d.getValue("GameState", "playerEntity");
     return playerEntity !== undefined &&

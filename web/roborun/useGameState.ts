@@ -143,6 +143,12 @@ export const useGameState = () => {
       });
     });
 
+    const restartingGameListener = api.onGameRestarting(() => {
+      dispatch({
+        action: "START_PLAYING",
+      });
+    });
+
     const restartGameListener = api.onGameRestarted((payload) => {
       if (payload.autoStart) {
         dispatch({
@@ -156,6 +162,7 @@ export const useGameState = () => {
     });
 
     return () => {
+      api.removeEventCallback(restartingGameListener);
       api.removeEventCallback(restartGameListener);
       api.removeEventCallback(startGameListener);
     };

@@ -1,7 +1,7 @@
 ({
   PLAYER_SCENE: "scenes/starting_platform/StartingPlayer.scene",
 
-  MOST_SUITABLE_LOCATION_X: -2,
+  MOST_SUITABLE_LOCATION_X: -1.5,
 
   tryReplace: false,
   hasReplaceStartingRobotWithStartingPlayer: false,
