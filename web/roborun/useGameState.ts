@@ -149,16 +149,10 @@ export const useGameState = () => {
       });
     });
 
-    const restartGameListener = api.onGameRestarted((payload) => {
-      if (payload.autoStart) {
-        dispatch({
-          action: "START_PLAYING",
-        });
-      } else {
-        dispatch({
-          action: "SHOW_MAIN_MENU",
-        });
-      }
+    const restartGameListener = api.onGameRestarted(() => {
+      dispatch({
+        action: "SHOW_MAIN_MENU",
+      });
     });
 
     return () => {
