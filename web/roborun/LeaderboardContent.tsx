@@ -1,15 +1,13 @@
 import { useHiber3D } from "@hiber3d/web";
 import { motion } from "framer-motion";
-import { Entry, State } from "./useLeaderboard";
+import { LucideLoader2 } from "lucide-react";
+import { Button } from "roborun/Button";
 import { twMerge } from "tailwind-merge";
+import { Entry, State } from "./useGameState";
 
-const Column = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => <td className={twMerge("p-2 md:p-3", className)}>{children}</td>;
+const Column = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <td className={twMerge("p-2 py-[6px]", className)}>{children}</td>
+);
 
 const EntryItem = ({
   entry,
@@ -20,7 +18,7 @@ const EntryItem = ({
   entry: Entry;
   isNewEntry: boolean;
   rank?: number;
-  newEntryName? : string;
+  newEntryName?: string;
 }) => (
   <tr
     className={twMerge(
@@ -31,9 +29,7 @@ const EntryItem = ({
     key={rank}
   >
     <Column>{rank}</Column>
-    <Column className="truncate max-w-[150px] md:max-w-[300px]">
-      {entry.player_name}
-    </Column>
+    <Column className="truncate max-w-[150px] md:max-w-[300px]">{entry.player_name}</Column>
     <Column className="text-end">{entry.points}</Column>
     <Column className="text-end">{entry.meters}</Column>
     <Column className="text-end">{entry.collectibles}</Column>
@@ -44,17 +40,15 @@ const EntryItem = ({
 export const LeaderboardContent = ({
   state,
   onSubmitName,
+  showMainMenu,
 }: {
   state: State;
   onSubmitName: (e: React.FormEvent<HTMLFormElement>) => void;
+  showMainMenu: () => void;
 }) => {
   const { api } = useHiber3D();
 
-  if (state.mode === "hidden") {
-    return null;
-  }
-
-  if (state.mode === "addName") {
+  if (["leaderboardAddName", "leaderboardSubmittingName"].includes(state.mode)) {
     return (
       <motion.div
         key="addName"
@@ -62,14 +56,24 @@ export const LeaderboardContent = ({
         animate={{ opacity: 1 }}
         className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
       >
-        <form onSubmit={onSubmitName}>
-          <div className="mb-2">Your Name</div>
+        <form onSubmit={onSubmitName} className="flex flex-col items-center gap-2">
           <input
+            placeholder="Enter your name"
             type="text"
-            className="bg-black/50 p-4"
+            className="bg-black/50 p-4 outline-none rounded-2xl"
             name="player"
             autoFocus
             data-1p-ignore
+          />
+          <Button className="w-full" type="submit" disabled={state.mode === "leaderboardSubmittingName"}>
+            SUBMIT
+          </Button>
+          <LucideLoader2
+            className={twMerge(
+              "animate-spin text-roborun",
+              state.mode === "leaderboardSubmittingName" ? "visible" : "invisible"
+            )}
+            size={32}
           />
         </form>
       </motion.div>
@@ -80,57 +84,104 @@ export const LeaderboardContent = ({
     (entry) => entry.id === state.leaderboard?.newEntry?.id
   );
 
+  const showStickyFooter = !entryIsInLeaderboard;
+
   return (
     <motion.div
       key="leaderboard"
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{delay: 1}}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className="absolute w-full h-full flex items-center justify-center backdrop-blur-sm"
     >
-      <div className="flex flex-col gap-2 max-w-[95%]">
-        <div className="">
-          <div className="bg-black/50 rounded-lg flex flex-col overflow-auto max-h-[80vh]">
-            <table>
-              <tbody>
-                <tr>
-                  <Column>Rank</Column>
-                  <Column>Player</Column>
-                  <Column className="text-end">Points</Column>
-                  <Column className="text-end">Meters</Column>
-                  <Column className="text-end">Collectibles</Column>
-                  <Column className="text-end">Multiplier</Column>
-                </tr>
-
-                {state.leaderboard.leaderboard.map((entry, index) => (
-                  <EntryItem
-                    key={entry.id}
-                    entry={entry}
-                    rank={index + 1}
-                    isNewEntry={entry.id === state.leaderboard.newEntry?.id}
-                    newEntryName={state.leaderboard.newEntry?.player_name}
-                  />
-                ))}
-              </tbody>
-              <tfoot>
-                {state.leaderboard.newEntry && !entryIsInLeaderboard && (
-                  <EntryItem
-                    entry={state.leaderboard.newEntry}
-                    isNewEntry={true}
-                    newEntryName={state.leaderboard.newEntry?.player_name}
-                  />
-                )}
-              </tfoot>
-            </table>
-          </div>
-        </div>
-        <button
-          className="bg-black/50 p-4 rounded-lg font-bold"
-          onClick={() => api?.writeRestartGame()}
+      {!!state.leaderboard.leaderboard.length && (
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0 }}
+          className="flex flex-col max-w-[100%] select-none"
         >
-          Play again
-        </button>
-      </div>
+          <div className="">
+            <div className="flex flex-col relative">
+              <div
+                className="absolute w-full h-full z-1 pointer-events-none"
+                style={{
+                  borderImageSource: "url(ui/menus/LeaderboardFrame.webp)",
+                  borderImageSlice: "220 fill",
+                  borderImageRepeat: "stretch",
+                  borderWidth: "90px",
+                }}
+              />
+              <div className="m-[30px] mx-[34px] relative overflow-hidden">
+                <table
+                  className="leaderboard-table"
+                  style={{
+                    gridTemplateRows: `1fr fit-content(${state.mode === "leaderboard" ? "56vh" : "45vh"}) ${
+                      showStickyFooter && "1fr"
+                    }`,
+                  }}
+                >
+                  <thead>
+                    <tr className="font-bold">
+                      <Column>Rank</Column>
+                      <Column>Player</Column>
+                      <Column className="text-end">Points</Column>
+                      <Column className="text-end">Meters</Column>
+                      <Column className="text-end">Collectibles</Column>
+                      <Column className="text-end">Multiplier</Column>
+                    </tr>
+                  </thead>
+                  <tbody className="overflow-auto">
+                    {state.leaderboard.leaderboard.map((entry, index) => (
+                      <EntryItem
+                        key={entry.id}
+                        entry={entry}
+                        rank={index + 1}
+                        isNewEntry={entry.id === state.leaderboard.newEntry?.id}
+                        newEntryName={state.leaderboard.newEntry?.player_name}
+                      />
+                    ))}
+                  </tbody>
+                  {showStickyFooter && state.leaderboard.newEntry && (
+                    <tfoot>
+                      <EntryItem
+                        entry={state.leaderboard.newEntry}
+                        isNewEntry={true}
+                        newEntryName={state.leaderboard.newEntry.player_name}
+                      />
+                    </tfoot>
+                  )}
+                </table>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            {state.mode === "leaderboardWithRetry" && (
+              <>
+                <Button
+                  onClick={() =>
+                    api?.writeRestartGame({
+                      autoStart: true,
+                    })
+                  }
+                >
+                  Play again
+                </Button>
+                <Button
+                  onClick={() => {
+                    api?.writeRestartGame({
+                      autoStart: false,
+                    });
+                  }}
+                >
+                  Main menu
+                </Button>
+              </>
+            )}
+            {state.mode === "leaderboard" && <Button onClick={showMainMenu}>Close</Button>}
+          </div>
+        </motion.div>
+      )}
     </motion.div>
   );
 };

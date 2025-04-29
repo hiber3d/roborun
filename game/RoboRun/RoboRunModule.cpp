@@ -29,7 +29,9 @@ static void handleGameRestarted(
     Hiber3D::EventView<GameRestarted> events,
     Hiber3D::Singleton<GameState>     gameState) {
     for (const auto& event : events) {
+        const auto autoStart = gameState->autoStart;
         resetSingletons(gameState);
+        gameState->autoStart = autoStart;
         return;
     }
 }
@@ -95,12 +97,14 @@ void loadEnvironment(
 }
 
 static void handleRestartGame(
-    Hiber3D::EventView<RestartGame>      events,
-    Hiber3D::EventWriter<ChangeScene>&   changeSceneWriter,
+    Hiber3D::EventView<RestartGame>       events,
+    Hiber3D::Singleton<GameState>         gameState,
+    Hiber3D::EventWriter<ChangeScene>&    changeSceneWriter,
     Hiber3D::EventWriter<GameRestarting>& gameRestartingWriter) {
     for (const auto& event : events) {
         changeSceneWriter.writeEvent({.path = "scenes/restart/Restart.scene"});
         gameRestartingWriter.writeEvent({});
+        gameState->autoStart = event.autoStart;
         return;
     }
 }
