@@ -81,6 +81,25 @@ static void handleChangeScene(
     }
 }
 
+static void onChangingSceneLoaded(
+    Hiber3D::Registry&                                      registry,
+    Hiber3D::EventView<Hiber3D::AssetEvent<Hiber3D::Scene>> assetEvents,
+    Hiber3D::View<ChangeableScene>                          changeableScenes,
+    Hiber3D::Singleton<LoadingChangingScene>                loadingChangingScene,
+    Hiber3D::EventWriter<FadeFromBlack>&                    fadeFromBlackWriter) {
+    for (const auto& event : assetEvents) {
+        if (event.handle == loadingChangingScene->sceneHandle && event.handle != Hiber3D::AssetHandle<Hiber3D::Scene>::Invalid()) {
+            LOG_INFO("ChangeableSceneModule::onChangingSceneLoaded - Asset event for scene '{}' of type '{}'", static_cast<uint32_t>(event.handle), static_cast<uint32_t>(event.type));
+
+            if (event.type == Hiber3D::AssetEventType::LOADED_WITH_DEPENDENCIES) {
+                LOG_INFO("ChangeableSceneModule::onChangingSceneLoaded - Finished loading scene:'{}'", static_cast<uint32_t>(event.handle));
+                switchToScene(registry, changeableScenes, loadingChangingScene, event.handle);
+                fadeFromBlackWriter.writeEvent(FadeFromBlack{});
+            }
+        }
+    }
+}
+
 static void pollSceneLoadedWithDependencies(
     Hiber3D::Registry& registry,
     Hiber3D::View<ChangeableScene>           changeableScenes,
@@ -90,8 +109,8 @@ static void pollSceneLoadedWithDependencies(
     if (loadingChangingScene->loading == true) {
 		const auto& loadStateWithDependencies = assetServer->getLoadedWithDependenciesStatus(loadingChangingScene->sceneHandle.toUntyped());
         if (loadStateWithDependencies == Hiber3D::AssetLoadedWithDependencyStatus::LOADED) {
-            switchToScene(registry, changeableScenes, loadingChangingScene, loadingChangingScene->sceneHandle);
-            fadeFromBlackWriter.writeEvent(FadeFromBlack{});
+            //switchToScene(registry, changeableScenes, loadingChangingScene, loadingChangingScene->sceneHandle);
+            //fadeFromBlackWriter.writeEvent(FadeFromBlack{});
             LOG_INFO("ChangeableSceneModule::pollSceneLoadedWithDependencies - Loading scene:'{}', loadStateWithDependencies:'{}'", static_cast<uint32_t>(loadingChangingScene->sceneHandle.handle), static_cast<uint32_t>(loadStateWithDependencies));
 		} 
 	}
@@ -100,6 +119,7 @@ static void pollSceneLoadedWithDependencies(
 void ChangeableSceneModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_EXIT, resetSingletons);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleChangeScene);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, onChangingSceneLoaded);
     context.addSystem(Hiber3D::Schedule::ON_TICK, pollSceneLoadedWithDependencies);
 
     context.registerSingleton<LoadingChangingScene>();
