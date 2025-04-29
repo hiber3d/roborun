@@ -39,7 +39,7 @@ export const MainMenu = ({ player, fetchRank, showLeaderboard }: MainMenuProps) 
         animate={{ scale: 1 }}
         className="flex items-center justify-center pointer-events-none select-none"
       >
-        <img src="ui/menus/RoboRunLogo.webp" className="h-full max-h-[80vh]" />
+        <img src="ui/menus/RoboRunLogo.svg" className="h-full max-h-[55vh]" />
       </motion.div>
 
       <div className="flex items-center justify-center">
