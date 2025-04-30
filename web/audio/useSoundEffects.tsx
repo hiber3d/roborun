@@ -1,4 +1,4 @@
-import { useHiber3D } from "@hiber3d/web";
+import { useHiber3D } from "./../hiber3d";
 import { useEffect, useRef } from "react";
 import { useAudio } from "./useAudio";
 import { SFXSounds } from "./AudioContext";

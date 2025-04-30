@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback } from "react";
 import { useAudio } from "./useAudio";
-import { useHiber3D } from "@hiber3d/web";
+import { useHiber3D } from "./../hiber3d";
 import { MusicSounds } from "./AudioContext";
 
 type Track = {

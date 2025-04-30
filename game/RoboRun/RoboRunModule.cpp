@@ -109,43 +109,11 @@ static void handleRestartGame(
     }
 }
 
-// TODO: Move elsewhere
-static void showDebugLines(Hiber3D::Singleton<Hiber3D::Editor> editor) {
-    editor->setSettings(Hiber3D::EditorSettings{
-        .physicsVisualization = Hiber3D::PhysicsSettings::DebugVisualization{
-            .enabled              = true,
-            .drawWireFrame        = true,
-            .drawVelocity         = true,
-            .drawSupportDirection = false,
-            .drawBoundingBox      = false,
-            .drawCenterOfMass     = true,
-        },
-    });
-}
-
-static void hideDebugLines(Hiber3D::Singleton<Hiber3D::Editor> editor) {
-    editor->setSettings(Hiber3D::EditorSettings{
-        .physicsVisualization = Hiber3D::PhysicsSettings::DebugVisualization{
-            .enabled              = false,
-            .drawWireFrame        = false,
-            .drawVelocity         = false,
-            .drawSupportDirection = false,
-            .drawBoundingBox      = false,
-            .drawCenterOfMass     = false,
-        },
-    });
-}
-
 void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_EXIT, resetSingletons);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleGameRestarted);
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
-
-    // For debugging
-    // context.addSystem(Hiber3D::Schedule::ON_START_EDIT, showDebugLines);
-    // context.addSystem(Hiber3D::Schedule::ON_START, showDebugLines);
-    // context.addSystem(Hiber3D::Schedule::ON_START, hideDebugLines);
 
     context.registerSingleton<GameState>();
 

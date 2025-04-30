@@ -1,4 +1,4 @@
-import { Stats, useHiber3D } from "@hiber3d/web";
+import { Stats, useHiber3D } from "./../hiber3d";
 import { useCallback, useEffect, useReducer } from "react";
 import { telegramUser } from "utils/telegram";
 

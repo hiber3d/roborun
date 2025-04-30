@@ -1,4 +1,4 @@
-import { useHiber3D } from "@hiber3d/web";
+import { useHiber3D } from "./../hiber3d";
 import { motion } from "framer-motion";
 import { LucideLoader2 } from "lucide-react";
 import { Button } from "roborun/Button";
