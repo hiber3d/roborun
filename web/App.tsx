@@ -1,4 +1,4 @@
-import { Hiber3D, useHiber3D } from "./hiber3d";
+import { Hiber3D } from "./hiber3d";
 import { AudioProvider } from "audio/AudioProvider";
 import { RoborunMode } from "roborun/RoborunMode";
 
