@@ -12,6 +12,21 @@ const COOL_DOWN_TIMER_MS = 1000;
     hiber3d.addEventListener(this.entity, "BroadcastGameStarted");
     hiber3d.addEventListener(this.entity, "BroadcastPerfectCollectiblePickup");
   },
+  createAudioEntity(parent, name, asset, playSpeed, volume) {
+    const sfxEntity = hiber3d.call("createEntityAsChild", parent);
+    hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
+    hiber3d.addComponent(sfxEntity, "Hiber3D::Name"); // This is just to make it easier to trace which sounds have been added
+    hiber3d.addComponent(sfxEntity, "Hiber3D::Transform"); // AudioModule expects entities to have both AudioComponent and Transform
+
+    hiber3d.setValue(sfxEntity, "Hiber3D::Name", name);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", asset);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "playSpeed", playSpeed);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", volume);
+
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false); // Does this prevent SoLoud from causing crashes? Stay tuned! (pun intended)
+
+    hiber3d.addScript(sfxEntity, "scripts/audio/KillOnAudioFinished.js");
+  },
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;
@@ -27,42 +42,14 @@ const COOL_DOWN_TIMER_MS = 1000;
       }
 
       this.lastPickup = now;
-
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
       
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "Collectible" + this.pickupsInARow);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/collectible.wav");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "playSpeed", 0.8 + this.pickupsInARow * 0.04);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.6);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "Collectible" + this.pickupsInARow, "audio/sfx/collectible.mp3", 0.8 + this.pickupsInARow * 0.04, 0.6);
     }
     else if (event === "BroadcastGameStarted") {
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
-      
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "GameStarted");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/tilt_01.mp3");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.6);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "GameStarted", "audio/sfx/tilt_01.mp3", 1, 0.6);
     }
     else if (event === "BroadcastPerfectCollectiblePickup") {
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
-      
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "PerfectPickup");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/success_01.mp3");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.7);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "PerfectPickup", "audio/sfx/success_01.mp3", 1, 0.7);
     }
   }
 });

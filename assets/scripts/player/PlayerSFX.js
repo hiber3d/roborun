@@ -12,82 +12,42 @@ const COOL_DOWN_TIMER_MS = 1000;
     hiber3d.addEventListener(this.entity, "BroadcastTilted");
     hiber3d.addEventListener(this.entity, "BroadcastTurned");
   },
+  createAudioEntity(parent, name, asset, playSpeed, volume) {
+    const sfxEntity = hiber3d.call("createEntityAsChild", parent);
+    hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
+    hiber3d.addComponent(sfxEntity, "Hiber3D::Name"); // This is just to make it easier to trace which sounds have been added
+    hiber3d.addComponent(sfxEntity, "Hiber3D::Transform"); // AudioModule expects entities to have both AudioComponent and Transform
+
+    hiber3d.setValue(sfxEntity, "Hiber3D::Name", name);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", asset);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "playSpeed", playSpeed);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", volume);
+
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false); // Does this prevent SoLoud from causing crashes? Stay tuned! (pun intended)
+
+    hiber3d.addScript(sfxEntity, "scripts/audio/KillOnAudioFinished.js");
+  },
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;
     }
     if (event === "JumpedEvent") {
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
-      
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "Jumped");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/jump_01.mp3");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.6);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "Jumped", "audio/sfx/jump_01.mp3", 1, 0.6);
     }
     else if (event === "LandedEvent") {
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
-      
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "Landed");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/land_01.mp3");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.6);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "Landed", "audio/sfx/land_01.mp3", 1, 0.6);
     }
     else if (event === "BroadcastPowerupPickup") {
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
-      
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "PowerupPickup");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/rocket_01.mp3");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.6);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "PowerupPickup", "audio/sfx/rocket_01.mp3", 1, 0.6);
     }
     else if (event === "BroadcastSlided") {
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
-      
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "Slided");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/roll_01.mp3");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.9);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "Slided", "audio/sfx/roll_01.mp3", 1, 0.9);
     }
     else if (event === "BroadcastTilted") {
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
-      
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "Tilted");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/tilt_01.mp3");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "playSpeed", 0.9 + Math.random() * 0.2); 
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.6);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "Tilted", "audio/sfx/tilt_01.mp3", 0.9 + Math.random() * 0.2, 0.6);
     }
     else if (event === "BroadcastTurned") {
-      const sfxEntity = hiber3d.call("createEntityAsChild", this.entity);
-      hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Name");
-      hiber3d.addComponent(sfxEntity, "Hiber3D::Transform");
-      
-      hiber3d.setValue(sfxEntity, "Hiber3D::Name", "Turned");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", "audio/sfx/turn_0" + Math.floor(1 + Math.random() * 2) + ".mp3");
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false);
-      hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", 0.2);
-      hiber3d.addScript(sfxEntity, "scripts/ui/KillOnAudioFinished.js");
+      this.createAudioEntity(this.entity, "Turned", "audio/sfx/turn_0" + Math.floor(1 + Math.random() * 2) + ".mp3", 1, 0.2);
     }
   }
 });

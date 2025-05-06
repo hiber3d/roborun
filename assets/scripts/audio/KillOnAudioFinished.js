@@ -3,7 +3,7 @@
   },
   onUpdate(dt) {
     if (!hiber3d.hasComponents(this.entity, "Hiber3D::AudioComponent")) {
-      hiber3d.print("KillOnAudioFinished - no AudioComponent");
+      // TODO: Destroy this.entity entity here!
     }
   },
   onEvent(event, payload) {
