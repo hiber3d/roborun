@@ -12,7 +12,7 @@
       return;
     }
     const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
-    transform.position = vectorUtils.addVectors(position, vectorUtils.multiplyVector(this.DIRECTION, this.SPEED * dt)); 
+    transform.position = vectorUtils.addVectors(transform.position, vectorUtils.multiplyVector(this.DIRECTION, this.SPEED * dt)); 
     hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
   },
   onEvent(event, payload) {
