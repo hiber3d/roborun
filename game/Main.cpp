@@ -7,6 +7,9 @@
 
 #include <Hiber3D/Animation/AnimationModule.hpp>
 #include <Hiber3D/Asset/AssetModule.hpp>
+#include <Hiber3D/Audio/AudioAssets.hpp>
+#include <Hiber3D/Audio/AudioComponents.hpp>
+#include <Hiber3D/Audio/AudioModule.hpp>
 #include <Hiber3D/BaseAssets/Cubemap.hpp>
 #include <Hiber3D/BaseAssets/Material.hpp>
 #include <Hiber3D/BaseAssets/Mesh.hpp>
@@ -41,6 +44,26 @@
 #include <RoboRun/RoboRunModule.hpp>
 #include <stdio.h>
 
+static void startMusicWhenReady(
+    Hiber3D::Singleton<Hiber3D::Assets<Hiber3D::Audio>> assets,
+    Hiber3D::View<Hiber3D::AudioComponent>        audioComponents) {
+    bool allLoaded = true;
+
+    for (auto [entity, audio] : audioComponents.each()) {
+        if (audio.isPaused && assets->get(audio.asset) == nullptr) {
+            allLoaded = false;
+        }
+    }
+
+    if (allLoaded) {
+        for (auto [entity, audio] : audioComponents.each()) {
+            if (audio.isPaused) {
+                audio.isPaused = false;
+            }
+        }
+    }
+}
+
 class MainModule : public Hiber3D::Module {
 public:
     // TODO: Remove when we have proper config handling
@@ -60,10 +83,13 @@ public:
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::StandardMaterial>(context);
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::Cubemap>(context);
 
+        context.registerModule<Hiber3D::AudioModule>();
+
         context.registerModule<Hiber3D::LogModule>(Hiber3D::LogSettings{.logLevel = Hiber3D::LogLevel::INFO});
         context.registerModule<Hiber3D::HierarchyModule>();
 
         context.registerModule<Hiber3D::SceneModule>();
+        context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::AudioComponent>(context);
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::ScriptInstance>(context);
 
         context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "scenes/RoboRun.scene"});
@@ -92,6 +118,9 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
 
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioComponent>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioSettings>(context);
+
         context.registerModule<Hiber3D::InteropModule>();
         context.registerModule<Hiber3D::DebugModule>();
         context.registerModule<Hiber3D::InputModule>();
@@ -105,6 +134,8 @@ public:
         context.registerModule<PathModule>();
         context.registerModule<ChangeableSceneModule>();
         context.registerModule<SegmentModule>();
+
+        context.addSystem(Hiber3D::Schedule::ON_FRAME, startMusicWhenReady);
     }
 };
 

@@ -57,13 +57,13 @@ export const useMusicMultiTracks = () => {
       track.playing = play || false;
     };
 
-    initTrack(musicTracks.current.drums, "drums_01", true);
-    initTrack(musicTracks.current.drums_02, "drums_02");
-    initTrack(musicTracks.current.bass, "bass_01");
-    initTrack(musicTracks.current.bass_02, "bass_02");
-    initTrack(musicTracks.current.bass_03, "bass_03");
+    //initTrack(musicTracks.current.drums, "drums_01", true);
+    //initTrack(musicTracks.current.drums_02, "drums_02");
+    //initTrack(musicTracks.current.bass, "bass_01");
+    //initTrack(musicTracks.current.bass_02, "bass_02");
+    //initTrack(musicTracks.current.bass_03, "bass_03");
 
-    initTrack(musicTracks.current.strings, "strings_01");
+    //initTrack(musicTracks.current.strings, "strings_01");
   }, [music]);
 
   const updateTrack = useCallback(

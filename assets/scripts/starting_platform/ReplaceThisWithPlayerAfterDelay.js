@@ -11,6 +11,8 @@
     hiber3d.addComponent(playerEntity, "Hiber3D::Name");
     hiber3d.setValue(playerEntity, "Hiber3D::Name", "PlayerSceneRoot");
 
+    hiber3d.addScript(playerEntity, "scripts/player/PlayerSFX.js");
+
     hiber3d.addComponent(playerEntity, "Hiber3D::SceneRoot");
     hiber3d.setValue(playerEntity, "Hiber3D::SceneRoot", "scene", this.PLAYER_SCENE);
 

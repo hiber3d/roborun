@@ -28,10 +28,10 @@ export const useSoundEffects = () => {
       }
       lastPickup.current = now;
 
-      sfx.play("collectible", {
-        rate: 0.8 + pickupsInARow.current * 0.04,
-        volume: 0.5,
-      });
+      //sfx.play("collectible", {
+      //  rate: 0.8 + pickupsInARow.current * 0.04,
+      //  volume: 0.5,
+      //});
       pickupsInARow.current += 1;
     });
 
@@ -44,35 +44,35 @@ export const useSoundEffects = () => {
     }
 
     const start = api.onBroadcastGameStarted(() => {
-      sfx.play("tilt_01", { volume: 0.6 });
+      //sfx.play("tilt_01", { volume: 0.6 });
     });
 
     const jump = api.onJumpedEvent(() => {
-      sfx.play("jump_01", { volume: 0.6 });
+      //sfx.play("jump_01", { volume: 0.6 });
     });
     const land = api.onLandedEvent(() => {
-      sfx.play("land_01", { volume: 0.6 });
+      //sfx.play("land_01", { volume: 0.6 });
     });
 
     const tilt = api.onBroadcastTilted(() => {
-      sfx.play("tilt_01", { volume: 0.6, rate: 0.9 + Math.random() * 0.2 });
+      //sfx.play("tilt_01", { volume: 0.6, rate: 0.9 + Math.random() * 0.2 });
     });
 
     const slide = api.onBroadcastSlided(() => {
-      sfx.play("roll_01", { volume: 0.9 });
+      //sfx.play("roll_01", { volume: 0.9 });
     });
 
     const turn = api.onBroadcastTurned(() => {
       const randomInt = Math.floor(1 + Math.random() * 2);
-      sfx.play(`turn_0${randomInt}` as SFXSounds, { volume: 0.2, rate: 1 });
+      //sfx.play(`turn_0${randomInt}` as SFXSounds, { volume: 0.2, rate: 1 });
     });
 
     const rocket = api.onBroadcastPowerupPickup(() => {
-      sfx.play("rocket_01", { volume: 0.6 });
+      //sfx.play("rocket_01", { volume: 0.6 });
     });
 
     const perfectPickup = api.onBroadcastPerfectCollectiblePickup(() => {
-      sfx.play("success_01", { volume: 0.7 });
+      //sfx.play("success_01", { volume: 0.7 });
     });
 
     return () => {
