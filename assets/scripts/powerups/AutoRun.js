@@ -32,6 +32,8 @@
 
   stage: 0,
   timeSinceStarted: 0,
+  startingHeightDiff: 0,
+  latestHeightDiff: 0,
 
   shouldRun() {
     return !hiber3d.getSingleton("GameState").paused;
@@ -55,7 +57,7 @@
   },
   getHeightDiff(stage) {
     if (stage === this.STAGE.ASCEND) {
-      return scalarUtils.lerpScalar(0, this.AUTO_RUN_MAX_HEIGHT, this.timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
+      return scalarUtils.lerpScalar(this.startingHeightDiff, this.AUTO_RUN_MAX_HEIGHT, this.timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
     }
     if (stage === this.STAGE.MAX_HEIGHT) {
       return this.AUTO_RUN_MAX_HEIGHT;
@@ -101,6 +103,17 @@
   update(dt) {
     if (!this.shouldRun()) {
       return;
+    }
+
+    // Handle refresh
+    if (this.timeSinceStarted === 0) {
+      const playAnimation = new hiber3d.PlayAnimation();
+      playAnimation.entity = this.entity;
+      playAnimation.name = "autoRun";
+      playAnimation.layer = ANIMATION_LAYER.ROLL;
+      playAnimation.loop = true;
+      hiber3d.writeEvent("PlayAnimation", playAnimation);
+      this.startingHeightDiff = this.latestHeightDiff;
     }
 
     this.timeSinceStarted += dt;

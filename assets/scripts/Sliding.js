@@ -12,11 +12,13 @@
     const playAnimation = new PlayAnimation();
     playAnimation.entity = this.entity; playAnimation.name = "slide"; playAnimation.layer = ANIMATION_LAYER.ROLL; playAnimation.loop = true;
     hiber3d.writeEvent("PlayAnimation", playAnimation);
-    hiber3d.writeEvent("BroadcastSlided", new BroadcastSlided());
   },
   update(dt) {
     if (!this.shouldRun()) {
       return;
+    }
+    if (this.timeSpentSliding === 0) {
+      hiber3d.writeEvent("BroadcastSlided", new BroadcastSlided());
     }
     this.timeSpentSliding += dt;
     if (this.timeSpentSliding >= this.SLIDE_DURATION) {

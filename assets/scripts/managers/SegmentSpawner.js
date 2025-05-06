@@ -80,7 +80,7 @@ const PICK_UP_DEPTH = {
   NUM_SEGMENTS: 13,
 
   // Straights
-  START_STRAIGHT_BASE_LENGTH: 3,
+  START_STRAIGHT_BASE_LENGTH: 5,
   MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_0: 3,
   MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1: 0,
   MAX_STRAIGHTS_IN_ROW: 6, // Should not be too similar to NUM_SEGMENTS --> will cause "end-of-tunnel" visible

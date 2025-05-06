@@ -23,8 +23,11 @@
   },
   update() {
     if (!this.shouldRun()) {
+      this.updateStats("visibility", "hidden");
       return;
     }
+    this.updateStats("visibility", "visible");
+
     const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
     const stats = hiber3d.getComponent(playerEntity, "Stats");
     if (stats === undefined) {
@@ -37,9 +40,5 @@
     const multiplier = (Math.round(stats.multiplier * 10) / 10).toFixed(1);
     this.updateStats("multiplier", multiplier);
     this.updateStats("multiplierProgress", stats.collectibles ? stats.collectibles % 10 : 0);
-
-    const alive = hiber3d.getSingleton("GameState").alive;
-    hiber3d.print(alive ? "visible" : "hidden");
-    this.updateStats("visibility", alive ? "visible" : "hidden");
   },
 });
