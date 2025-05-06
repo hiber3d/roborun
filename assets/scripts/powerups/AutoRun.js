@@ -107,7 +107,7 @@
 
     // Handle refresh
     if (this.timeSinceStarted === 0) {
-      const playAnimation = new hiber3d.PlayAnimation();
+      const playAnimation = new PlayAnimation();
       playAnimation.entity = this.entity;
       playAnimation.name = "autoRun";
       playAnimation.layer = ANIMATION_LAYER.ROLL;
