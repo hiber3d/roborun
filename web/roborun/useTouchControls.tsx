@@ -1,4 +1,4 @@
-import { useHiber3D } from "@hiber3d/web";
+import { useHiber3D } from "./../hiber3d";
 import { useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 

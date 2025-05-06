@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
     Hiber3D_zip
     DOWNLOAD_EXTRACT_TIMESTAMP FALSE
-    URL https://cdn.hiber3d.com/engine/web/dev/Hiber3D_v0.109.0-dev.zip
+    URL https://cdn.hiber3d.com/engine/web/dev/Hiber3D_v0.110.0-dev.zip
 )
 FetchContent_MakeAvailable(Hiber3D_zip)
 
@@ -45,6 +45,11 @@ set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunModule.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/RoboRun/RoboRunTypes.hpp
     
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/ChangeableScene/ChangeableSceneEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/ChangeableScene/ChangeableSceneModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/ChangeableScene/ChangeableSceneModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/ChangeableScene/ChangeableSceneTypes.hpp
+
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentModule.cpp

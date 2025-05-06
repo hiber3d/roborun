@@ -1,3 +1,41 @@
 @import "tailwindcss" source("/");
 @import "@hiber3d/web/styles";
 @source "../node_modules/@hiber3d/web";
+
+@font-face {
+  font-family: "Kleptocracy Titling Regular";
+  src: url("/ui/menus/kleptocracy titling cd rg.otf") format("opentype");
+}
+
+@theme {
+  --font-roborun: "Kleptocracy Titling Regular", sans-serif;
+  --color-roborun: #ffb100;
+}
+
+@utility leaderboard-table {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: auto;
+
+  thead,
+  tbody,
+  tfoot,
+  tr {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / 7;
+  }
+}
+
+@utility roborun-button {
+  cursor: pointer;
+
+  & * {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.9);
+    filter: brightness(1.2) contrast(0.8);
+  }
+}

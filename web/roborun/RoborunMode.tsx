@@ -1,16 +1,17 @@
 import { useMusicMultiTracks } from "audio/useMusicMultiTracks";
 import { useSoundEffects } from "audio/useSoundEffects";
 import { AnimatePresence } from "framer-motion";
+import { Mute } from "roborun/Mute";
 import { LeaderboardContent } from "./LeaderboardContent";
-import { useLeaderboard } from "./useLeaderboard";
+import { MainMenu } from "./MainMenu";
+import { useGameState } from "./useGameState";
 import { useTouchControls } from "./useTouchControls";
-import { Mute } from "./Mute";
 
 const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;
 
 export const RoborunMode = () => {
-  const { submitName, state } = useLeaderboard();
+  const { submitName, state, fetchRank, showLeaderboard, showMainMenu } = useGameState();
   useTouchControls({ tapMode });
   useSoundEffects();
   useMusicMultiTracks();
@@ -26,13 +27,22 @@ export const RoborunMode = () => {
 
   return (
     <AnimatePresence>
-      {/* <RoborunUI /> */}
-      <LeaderboardContent
-        key="leaderboard"
-        state={state}
-        onSubmitName={submitForm}
-      />
-      <Mute />
+      {state.mode === "mainMenu" && (
+        <MainMenu key="mainmenu" player={state.player} fetchRank={fetchRank} showLeaderboard={showLeaderboard} />
+      )}
+      {state.mode === "playing" && (
+        <div className="absolute top-2 right-2">
+          <Mute minimal />
+        </div>
+      )}
+      {state.mode.startsWith("leaderboard") && (
+        <LeaderboardContent
+          key="leaderboardContent"
+          state={state}
+          onSubmitName={submitForm}
+          showMainMenu={showMainMenu}
+        />
+      )}
     </AnimatePresence>
   );
 };

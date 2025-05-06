@@ -1,19 +1,29 @@
 #pragma once
 
-#include <Hiber3D/Core/Registry.hpp>
-#include <Hiber3D/Interop/Defines.hpp>
 #include <Path/PathTypes.hpp>
 
+#include <Hiber3D/Core/Registry.hpp>
+#include <Hiber3D/Interop/Defines.hpp>
+
 struct RestartGame {
+    bool autoStart = false;
 };
 
-HIBER3D_REFLECT(HIBER3D_TYPE(RestartGame));
+HIBER3D_REFLECT(HIBER3D_TYPE(RestartGame), HIBER3D_MEMBER(autoStart));
 HIBER3D_INTEROP_RECEIVE_FROM_JS(RestartGame);
 
-struct GameRestarted {
+struct GameRestarting {
+    bool dummy = false;
 };
 
-HIBER3D_REFLECT(HIBER3D_TYPE(GameRestarted));
+HIBER3D_REFLECT(HIBER3D_TYPE(GameRestarting), HIBER3D_MEMBER(dummy));
+HIBER3D_INTEROP_SEND_TO_JS(GameRestarting);
+
+struct GameRestarted {
+    bool dummy = false;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(GameRestarted), HIBER3D_MEMBER(dummy));
 HIBER3D_INTEROP_SEND_TO_JS(GameRestarted);
 
 // TODO: Move these out of here
@@ -35,10 +45,3 @@ struct PlayerDied {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(PlayerDied), HIBER3D_MEMBER(stats));
 HIBER3D_INTEROP_SEND_TO_JS(PlayerDied);
-
-
-struct StartTransition {
-    bool dummy;
-};
-
-HIBER3D_REFLECT(HIBER3D_TYPE(StartTransition), HIBER3D_MEMBER(dummy));

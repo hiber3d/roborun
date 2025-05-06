@@ -1,7 +1,7 @@
 import { useAudio } from "audio/useAudio";
-import { Volume2, VolumeOff } from "lucide-react";
+import { Volume2, VolumeX } from "lucide-react";
 
-export const Mute = () => {
+export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
   const { music, sfx } = useAudio();
 
   const isMuted = music.isMuted && sfx.isMuted;
@@ -16,12 +16,26 @@ export const Mute = () => {
   const size = 32;
 
   return (
-    <div className="pointer-events-auto flex flex-col gap-2 absolute  text-slate-200 top-0 right-0 p-4 ">
-      {isMuted ? (
-        <VolumeOff size={size} onClick={toggleMute} />
-      ) : (
-        <Volume2 size={size} onClick={toggleMute} />
-      )}
+    <div
+      className="pointer-events-auto flex flex-col gap-2 text-roborun shrink-0 roborun-button"
+      style={
+        minimal
+          ? { position: "absolute", top: "2px", right: "2px", color: "white" }
+          : {
+              aspectRatio: "1.208",
+              width: "80px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundImage: "url(ui/menus/ButtonB.webp)",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }
+      }
+      onClick={toggleMute}
+      onPointerDown={() => sfx.play("buttonpress")}
+    >
+      {isMuted ? <VolumeX size={size} /> : <Volume2 size={size} />}
     </div>
   );
 };

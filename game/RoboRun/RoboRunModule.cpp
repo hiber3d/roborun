@@ -2,6 +2,8 @@
 #include "RoboRunModule.hpp"
 #include "RoboRunTypes.hpp"
 
+#include <ChangeableScene/ChangeableSceneEvents.hpp>
+
 #include <Hiber3D/Asset/AssetServer.hpp>
 #include <Hiber3D/BaseAssets/Cubemap.hpp>
 #include <Hiber3D/Editor/EditorModule.hpp>
@@ -27,7 +29,9 @@ static void handleGameRestarted(
     Hiber3D::EventView<GameRestarted> events,
     Hiber3D::Singleton<GameState>     gameState) {
     for (const auto& event : events) {
+        const auto autoStart = gameState->autoStart;
         resetSingletons(gameState);
+        gameState->autoStart = autoStart;
         return;
     }
 }
@@ -75,7 +79,7 @@ void loadEnvironment(
     renderEnvironment->fog.enabled        = true;
     renderEnvironment->fog.density        = 0.00005f;
     renderEnvironment->fog.height         = 100000.0f;
-    renderEnvironment->fog.color          = Hiber3D::float3{0.2f, 0.35f, 0.4f};
+    renderEnvironment->fog.color          = Hiber3D::float3{0.1f, 0.17f, 0.2f};
     renderEnvironment->fog.skyboxAlpha    = 1.0f;
     renderEnvironment->fog.skyboxGradient = 0.01f;
 
@@ -93,43 +97,16 @@ void loadEnvironment(
 }
 
 static void handleRestartGame(
-    Hiber3D::EventView<RestartGame>           events,
-    Hiber3D::Singleton<Hiber3D::AssetServer>  assetServer,
-    Hiber3D::Singleton<Hiber3D::SceneManager> sceneManager,
-    Hiber3D::EventWriter<GameRestarted>&      writer) {
+    Hiber3D::EventView<RestartGame>       events,
+    Hiber3D::Singleton<GameState>         gameState,
+    Hiber3D::EventWriter<ChangeScene>&    changeSceneWriter,
+    Hiber3D::EventWriter<GameRestarting>& gameRestartingWriter) {
     for (const auto& event : events) {
-        sceneManager->changeScene(assetServer->load<Hiber3D::Scene>("scenes/RoboRun.scene"));
-        writer.writeEvent({});
+        changeSceneWriter.writeEvent({.path = "scenes/restart/Restart.scene"});
+        gameRestartingWriter.writeEvent({});
+        gameState->autoStart = event.autoStart;
         return;
     }
-}
-
-
-// TODO: Move elsewhere
-static void showDebugLines(Hiber3D::Singleton<Hiber3D::Editor> editor) {
-    editor->setSettings(Hiber3D::EditorSettings{
-        .physicsVisualization = Hiber3D::PhysicsSettings::DebugVisualization{
-            .enabled              = true,
-            .drawWireFrame        = true,
-            .drawVelocity         = true,
-            .drawSupportDirection = false,
-            .drawBoundingBox      = false,
-            .drawCenterOfMass     = true,
-        },
-    });
-}
-
-static void hideDebugLines(Hiber3D::Singleton<Hiber3D::Editor> editor) {
-    editor->setSettings(Hiber3D::EditorSettings{
-        .physicsVisualization = Hiber3D::PhysicsSettings::DebugVisualization{
-            .enabled              = false,
-            .drawWireFrame        = false,
-            .drawVelocity         = false,
-            .drawSupportDirection = false,
-            .drawBoundingBox      = false,
-            .drawCenterOfMass     = false,
-        },
-    });
 }
 
 void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
@@ -138,21 +115,17 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
 
-    // For debugging
-    // context.addSystem(Hiber3D::Schedule::ON_START_EDIT, showDebugLines);
-    // context.addSystem(Hiber3D::Schedule::ON_START, showDebugLines);
-    // context.addSystem(Hiber3D::Schedule::ON_START, hideDebugLines);
-
     context.registerSingleton<GameState>();
 
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<GameState>(context);
 
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<RestartGame>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<GameRestarting>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<GameRestarted>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerCreated>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<KillPlayer>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayerDied>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<StartTransition>(context);
 
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/QuatUtils.js");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/RegUtils.js");
