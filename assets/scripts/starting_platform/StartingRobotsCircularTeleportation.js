@@ -5,9 +5,11 @@
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   },
   teleport() {
-    const worldTransform = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position");
+    const worldTransform = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform").position;
     const newPosition = { x: this.RECEIVER_X, y: worldTransform.y, z: worldTransform.z };
-    hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", regUtils.worldToLocalPosition(this.entity, newPosition));
+    const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
+    transform.position = regUtils.worldToLocalPosition(this.entity, newPosition);
+    hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
   },
   onCreate() {
   },
@@ -15,7 +17,7 @@
     if (!this.shouldRun()) {
       return;
     }
-    const currentX = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position", "x");
+    const currentX = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform").position.x;
     if (currentX >= this.SENDER_X) {
       this.teleport();
     }

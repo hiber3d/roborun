@@ -9,10 +9,12 @@
     hiber3d.addComponent(playerEntity, "Hiber3D::Transform");
 
     hiber3d.addComponent(playerEntity, "Hiber3D::Name");
-    hiber3d.setValue(playerEntity, "Hiber3D::Name", "PlayerSceneRoot");
+    hiber3d.setComponent(playerEntity, "Hiber3D::Name", "PlayerSceneRoot");
 
     hiber3d.addComponent(playerEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(playerEntity, "Hiber3D::SceneRoot", "scene", this.PLAYER_SCENE);
+    const sceneRoot = hiber3d.getComponent(playerEntity, "Hiber3D::SceneRoot");
+    sceneRoot.scene = this.PLAYER_SCENE;
+    hiber3d.setComponent(playerEntity, "Hiber3D::SceneRoot", sceneRoot);
 
     regUtils.destroyEntity(this.entity);
   },

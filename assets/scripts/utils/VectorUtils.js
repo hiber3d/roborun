@@ -1,6 +1,4 @@
-﻿const { transform } = require("typescript");
-
-const module = module || {};
+﻿const module = module || {};
 module.exports = module.exports || {};
 function formatVector(v) {
   if (!v) return 'null';

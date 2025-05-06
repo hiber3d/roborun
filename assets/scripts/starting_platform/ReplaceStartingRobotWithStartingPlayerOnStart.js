@@ -14,14 +14,14 @@
       if (!hiber3d.hasComponents(startingRobot, "Hiber3D::ComputedWorldTransform")) {
         continue;
       }
-      const position = hiber3d.getValue(startingRobot, "Hiber3D::ComputedWorldTransform", "position");
+      const position = hiber3d.getComponent(startingRobot, "Hiber3D::ComputedWorldTransform").position;
       const distance = Math.abs(position.x - this.MOST_SUITABLE_LOCATION_X);
       if (distance < closestDistance) {
         closestDistance = distance;
         closestEntity = startingRobot;
       }
     }
-    if(closestEntity === undefined) {
+    if (closestEntity === undefined) {
       hiber3d.print("ReplaceStartingRobotWithStartingPlayerOnStart.js - No starting robot found");
     }
     return closestEntity;
@@ -36,30 +36,36 @@
     }
     this.hasReplaceStartingRobotWithStartingPlayer = true;
 
-    const transformToSpawnPlayerAt = hiber3d.getValue(startingRobotEntityToReplace, "Hiber3D::ComputedWorldTransform");
+    const transformToSpawnPlayerAt = hiber3d.getComponent(startingRobotEntityToReplace, "Hiber3D::ComputedWorldTransform");
 
     var playerEntity = regUtils.createChildToParent(this.entity);
 
     hiber3d.addComponent(playerEntity, "Hiber3D::Transform");
-    hiber3d.setValue(playerEntity, "Hiber3D::Transform", transformToSpawnPlayerAt);
+    const transform = hiber3d.getComponent(playerEntity, "Hiber3D::Transform");
+    transform.position = transformToSpawnPlayerAt.position;
+    transform.scale = transformToSpawnPlayerAt.scale;
+    transform.rotation = transformToSpawnPlayerAt.rotation;
+    hiber3d.setComponent(playerEntity, "Hiber3D::Transform", transform);
 
     hiber3d.addComponent(playerEntity, "Hiber3D::Name");
-    hiber3d.setValue(playerEntity, "Hiber3D::Name", "StartingPlayerSceneRoot");
+    hiber3d.setComponent(playerEntity, "Hiber3D::Name", "StartingPlayerSceneRoot");
 
     hiber3d.addComponent(playerEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(playerEntity, "Hiber3D::SceneRoot", "scene", this.PLAYER_SCENE);
+    const sceneRoot = hiber3d.getComponent(playerEntity, "Hiber3D::SceneRoot");
+    sceneRoot.scene = this.PLAYER_SCENE;
+    hiber3d.setComponent(playerEntity, "Hiber3D::SceneRoot", sceneRoot);
 
     regUtils.destroyEntity(startingRobotEntityToReplace);
   },
   onCreate() {
     hiber3d.addEventListener(this.entity, "StartInput");
 
-    if (hiber3d.getValue("GameState", "autoStart") === true) {
+    if (hiber3d.getSingleton("GameState").autoStart === true) {
       hiber3d.writeEvent("StartInput", {});
     }
   },
   update(dt) {
-    if(this.tryReplace === true && this.hasReplaceStartingRobotWithStartingPlayer === false) {
+    if (this.tryReplace === true && this.hasReplaceStartingRobotWithStartingPlayer === false) {
       this.replaceStartingRobotWithStartingPlayer();
     }
   },
