@@ -4,7 +4,7 @@
 
   timeSinceCreated: 0,
   replaceThisWithPlayer() {
-    var playerEntity = regUtils.createChildToParent(regUtils.getParent(regUtils.getParent(regUtils.getParent(this.entity))));
+    var playerEntity = hiber3d.call("createEntityAsChild", hiber3d.getParent(hiber3d.getParent(hiber3d.getParent(this.entity))));
 
     hiber3d.addComponent(playerEntity, "Hiber3D::Transform");
 

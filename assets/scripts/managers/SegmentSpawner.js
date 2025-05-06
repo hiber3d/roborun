@@ -510,7 +510,7 @@ const PICK_UP_DEPTH = {
 
     // Segment
     {
-      const segmentSceneEntity = regUtils.createChildToParent(segmentsSceneEntity);
+      const segmentSceneEntity = hiber3d.call("createEntityAsChild", segmentsSceneEntity);
       hiber3d.addComponent(segmentSceneEntity, "Hiber3D::SceneRoot");
       const sceneRoot = hiber3d.getComponent(segmentSceneEntity, "Hiber3D::SceneRoot");
       sceneRoot.scene = segmentPath;
@@ -526,7 +526,7 @@ const PICK_UP_DEPTH = {
 
     // Room
     {
-      const roomSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
+      const roomSceneEntity = hiber3d.call("createEntityAsChild", segmentSceneEntity);
       hiber3d.addComponent(roomSceneEntity, "Hiber3D::SceneRoot");
       const sceneRoot = hiber3d.getComponent(roomSceneEntity, "Hiber3D::SceneRoot");
       sceneRoot.scene = roomPath;
@@ -538,7 +538,7 @@ const PICK_UP_DEPTH = {
 
     // Obstacle
     if (obstaclePath !== undefined) {
-      const obstacleEntity = regUtils.createChildToParent(segmentSceneEntity);
+      const obstacleEntity = hiber3d.call("createEntityAsChild", segmentSceneEntity);
       hiber3d.addComponent(obstacleEntity, "Hiber3D::SceneRoot");
       const sceneRoot = hiber3d.getComponent(obstacleEntity, "Hiber3D::SceneRoot");
       sceneRoot.scene = obstaclePath;
@@ -558,7 +558,7 @@ const PICK_UP_DEPTH = {
 
     // PickUp
     if (pickUpPath !== undefined) {
-      const pickUpEntity = regUtils.createChildToParent(segmentSceneEntity);
+      const pickUpEntity = hiber3d.call("createEntityAsChild", segmentSceneEntity);
       hiber3d.addComponent(pickUpEntity, "Hiber3D::SceneRoot");
       const sceneRoot = hiber3d.getComponent(pickUpEntity, "Hiber3D::SceneRoot");
       sceneRoot.scene = pickUpPath;

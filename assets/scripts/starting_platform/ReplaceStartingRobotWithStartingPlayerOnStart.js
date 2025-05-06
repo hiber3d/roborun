@@ -38,7 +38,7 @@
 
     const transformToSpawnPlayerAt = hiber3d.getComponent(startingRobotEntityToReplace, "Hiber3D::ComputedWorldTransform");
 
-    var playerEntity = regUtils.createChildToParent(this.entity);
+    var playerEntity = hiber3d.call("createEntityAsChild", this.entity);
 
     hiber3d.addComponent(playerEntity, "Hiber3D::Transform");
     const transform = hiber3d.getComponent(playerEntity, "Hiber3D::Transform");
