@@ -614,6 +614,7 @@ const PICK_UP_DEPTH = {
     const newSegmentsSceneEntity = hiber3d.createEntity();
     const segmentsState = hiber3d.getSingleton("SegmentsState");
     segmentsState.segmentsSceneEntity = newSegmentsSceneEntity;
+    hiber3d.setSingleton("SegmentsState", segmentsState);
     hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Name");
     hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Transform");
     hiber3d.setComponent(newSegmentsSceneEntity, "Hiber3D::Name", "SegmentsScenes");
