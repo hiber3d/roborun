@@ -1,13 +1,14 @@
 ({
   onCreate() {
   },
-  onUpdate(dt) {
+  update(dt) {
     if (!hiber3d.hasComponents(this.entity, "Hiber3D::AudioComponent")) {
-      // TODO: Destroy this.entity entity here!
+      hiber3d.destroyEntity(this.entity);
     }
     else if (hiber3d.hasComponents(this.entity, "Hiber3D::AudioComponent")) {
-      if (hiber3d.getValue(this.entity, "Hiber3D::AudioComponent", "isFinished"));
-      // TODO: Destroy this.entity entity here!
+      if (hiber3d.getValue(this.entity, "Hiber3D::AudioComponent", "isFinished")) {
+        hiber3d.destroyEntity(this.entity);
+      }
     }
   },
   onEvent(event, payload) {
