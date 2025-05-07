@@ -166,7 +166,7 @@ function destroyEntity(entity) {
   if (!entity) {
     return null;
   }
-  hiber3d.call("destroyEntityWithChildren", entity);
+  hiber3d.destroyEntity(entity);
 }
 module.exports.destroyEntity = destroyEntity;
 
