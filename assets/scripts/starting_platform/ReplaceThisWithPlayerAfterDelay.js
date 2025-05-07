@@ -16,7 +16,7 @@
     sceneRoot.scene = this.PLAYER_SCENE;
     hiber3d.setComponent(playerEntity, "Hiber3D::SceneRoot", sceneRoot);
 
-    regUtils.destroyEntity(this.entity);
+    hiber3d.destroyEntity(this.entity);
   },
   onCreate() {
   },

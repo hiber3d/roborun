@@ -62,8 +62,8 @@
 
     // Stop
     if (this.timeSinceStarted >= this.MAGNET_DURATION) {
-      regUtils.destroyEntity(this.magnetColliderEntity);
-      regUtils.destroyEntity(this.magnetEffectEntity);
+      hiber3d.destroyEntity(this.magnetColliderEntity);
+      hiber3d.destroyEntity(this.magnetEffectEntity);
       hiber3d.removeScript(this.entity, "scripts/powerups/Magnet.js");
     } else {
       this.updateMagnetEffectScale();
