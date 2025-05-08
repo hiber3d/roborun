@@ -209,19 +209,35 @@ function rotateQuaternionAroundY(q, progress) {
 };
 module.exports.rotateQuaternionAroundY = rotateQuaternionAroundY;
 
+function qxdir(q) {
+  const r = new globalThis["Hiber3D::float3"]();
+  r.x = q.w * q.w + q.x * q.x - q.y * q.y - q.z * q.z;
+  r.y = (q.x * q.y + q.z * q.w) * 2;
+  r.z = (q.z * q.x - q.y * q.w) * 2;
+  return r;
+}
+
+function qydir(q) {
+  const r = new globalThis["Hiber3D::float3"]();
+  r.x = (q.x * q.y - q.z * q.w) * 2;
+  r.y = q.w * q.w - q.x * q.x + q.y * q.y - q.z * q.z;
+  r.z = (q.y * q.z + q.x * q.w) * 2;
+  return r;
+}
+
+function qzdir(q) {
+  const r = new globalThis["Hiber3D::float3"]();
+  r.x = (q.z * q.x + q.y * q.w) * 2;
+  r.y = (q.y * q.z - q.x * q.w) * 2;
+  r.z = q.w * q.w - q.x * q.x - q.y * q.y + q.z * q.z;
+  return r;
+}
+
 function rotateVectorByQuaternion(v, q) {
-  const qNorm = normalizeQuaternion(q);
-
-  const qx = qNorm.x, qy = qNorm.y, qz = qNorm.z, qw = qNorm.w;
-  const vx = v.x, vy = v.y, vz = v.z;
-
-  const v4 = { x: vx, y: vy, z: vz, w: 0 };
-  const temp = multiplyQuaternions(qNorm, v4);
-
-  const inv = { x: -qx, y: -qy, z: -qz, w: qw };
-  const result = multiplyQuaternions(temp, inv);
-
-  return result;
+  const rx = vectorUtils.multiplyVector(qxdir(q), v.x);
+  const ry = vectorUtils.multiplyVector(qydir(q), v.y);
+  const rz = vectorUtils.multiplyVector(qzdir(q), v.z);
+  return vectorUtils.addVectors(rx, vectorUtils.addVectors(ry, rz));
 }
 module.exports.rotateVectorByQuaternion = rotateVectorByQuaternion;
 
