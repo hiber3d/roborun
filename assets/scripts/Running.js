@@ -140,14 +140,15 @@
     const currentStepEntity = segUtils.getCurrentStepEntity();
     const nextStepEntity = segUtils.getNextStepEntity();
     if (regUtils.isNullEntity(currentStepEntity) || regUtils.isNullEntity(nextStepEntity)) {
-      return;
+      return undefined;
     }
 
     const computedWorldTransform = hiber3d.getComponent(currentStepEntity, "Hiber3D::ComputedWorldTransform");
     const currentStepPosition = computedWorldTransform.position;
     const currentStepRotation = computedWorldTransform.rotation;
-    const nextStepPosition = computedWorldTransform.position;
-    const nextStepRotation = computedWorldTransform.rotation;
+    const nextComputedWorldTransform = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform");
+    const nextStepPosition = nextComputedWorldTransform.position;
+    const nextStepRotation = nextComputedWorldTransform.rotation;
     const distanceFromCurrentStep = hiber3d.getSingleton("SegmentsState").distanceFromCurrentStep;
     const curveFactor = hiber3d.getComponent(currentStepEntity, "Step").curveFactor;
     const spline = splineUtils.getSpline(currentStepPosition, nextStepPosition, currentStepRotation, nextStepRotation, distanceFromCurrentStep, curveFactor);

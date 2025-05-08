@@ -537,8 +537,9 @@ const PICK_UP_DEPTH = {
     }
 
     // Obstacle
+    var obstacleEntity = undefined;
     if (obstaclePath !== undefined) {
-      const obstacleEntity = hiber3d.call("createEntityAsChild", segmentSceneEntity);
+      obstacleEntity = hiber3d.call("createEntityAsChild", segmentSceneEntity);
       hiber3d.addComponent(obstacleEntity, "Hiber3D::SceneRoot");
       const sceneRoot = hiber3d.getComponent(obstacleEntity, "Hiber3D::SceneRoot");
       sceneRoot.scene = obstaclePath;
@@ -578,16 +579,18 @@ const PICK_UP_DEPTH = {
       const z =
         pickUpDepth === PICK_UP_DEPTH.MID ? -5 :
           0; // TODO: Get depth from scene
-      const transform = hiber3d.getComponent(obstacleEntity, "Hiber3D::Transform");
-      const position = transform.position;
-      position.x = x;
-      position.y = y;
-      position.z = z;
-      const scale = transform.scale;
-      scale.x = pickUpScale;
-      scale.y = pickUpScale;
-      scale.z = pickUpScale;
-      hiber3d.setComponent(pickUpEntity, "Hiber3D::Transform", transform);
+      if (obstacleEntity !== undefined) {
+        const transform = hiber3d.getComponent(obstacleEntity, "Hiber3D::Transform");
+        const position = transform.position;
+        position.x = x;
+        position.y = y;
+        position.z = z;
+        const scale = transform.scale;
+        scale.x = pickUpScale;
+        scale.y = pickUpScale;
+        scale.z = pickUpScale;
+        hiber3d.setComponent(pickUpEntity, "Hiber3D::Transform", transform);
+      }
     }
 
     this.latestSegmentSceneEntity = segmentSceneEntity;
