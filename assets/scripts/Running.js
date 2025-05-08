@@ -249,11 +249,10 @@
       } else {
         const position = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position;
         const direction = hiber3d.getSingleton("GameState").direction;
-        const newPosition = {
-          x: position.x + direction.x * speed * dt,
-          y: position.y + direction.y * speed * dt,
-          z: position.z + direction.z * speed * dt
-        };
+        const newPosition = new globalThis["Hiber3D::float3"]();
+        newPosition.x = position.x + direction.x * speed * dt;
+        newPosition.y = position.y + direction.y * speed * dt;
+        newPosition.z = position.z + direction.z * speed * dt;
         this.setPosition(newPosition);
       }
     }
