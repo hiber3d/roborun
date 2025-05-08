@@ -92,7 +92,6 @@ function findEntityWithNameAmongDescendants(entity, name) {
     return undefined;
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Name") === true) {
-    hiber3d.print(hiber3d.getComponent(entity, "Hiber3D::Name"), " == ", name);
     if (hiber3d.getComponent(entity, "Hiber3D::Name") == name) {
       return entity;
     }
