@@ -509,8 +509,8 @@ const PICK_UP_DEPTH = {
     const pickUpScale = stuffToSpawn.pickUpScale;
 
     // Segment
+    const segmentSceneEntity = hiber3d.call("createEntityAsChild", segmentsSceneEntity);
     {
-      const segmentSceneEntity = hiber3d.call("createEntityAsChild", segmentsSceneEntity);
       hiber3d.addComponent(segmentSceneEntity, "Hiber3D::SceneRoot");
       const sceneRoot = hiber3d.getComponent(segmentSceneEntity, "Hiber3D::SceneRoot");
       sceneRoot.scene = segmentPath;
@@ -597,11 +597,15 @@ const PICK_UP_DEPTH = {
   spawnSegmentSceneWithHierarchy() {
     const latestSegment = this.latestSegmentSceneEntity;
     const out = segUtils.getLastStepEntityOf(latestSegment);
-    if (out === undefined || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
+    if (regUtils.isNullEntity(out) || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
       return;
     }
     const outTransform = hiber3d.getComponent(out, "Hiber3D::ComputedWorldTransform");
-    var newSegmentEntity = this.spawnSegmentScene(outTransform);
+    const outTransform2 = new globalThis["Hiber3D::Transform"];
+    outTransform2.position = outTransform.position;
+    outTransform2.rotation = outTransform.rotation;
+    outTransform2.scale = outTransform.scale;
+    var newSegmentEntity = this.spawnSegmentScene(outTransform2);
     const lastSegmentScene = hiber3d.getComponent(latestSegment, "SegmentScene");
     lastSegmentScene.next = newSegmentEntity;
     hiber3d.setComponent(latestSegment, "SegmentScene", lastSegmentScene);
@@ -627,7 +631,7 @@ const PICK_UP_DEPTH = {
   update() {
     // When too few segments, spawn another
     const currentSegmentSceneEntity = hiber3d.getSingleton("SegmentsState").currentSegmentSceneEntity;
-    if (currentSegmentSceneEntity === undefined) {
+    if (regUtils.isNullEntity(currentSegmentSceneEntity)) {
       return;
     }
     if (segUtils.getNumberOfSegments() < this.NUM_SEGMENTS) {

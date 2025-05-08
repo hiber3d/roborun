@@ -61,7 +61,7 @@ module.exports.isLastStepEntity = isLastStepEntity;
 
 function isPlayerAtForward() {
   const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
+  if (regUtils.isNullEntity(currentStepEntity)) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return false;
   }
@@ -70,7 +70,7 @@ function isPlayerAtForward() {
 module.exports.isPlayerAtForward = isPlayerAtForward;
 function isPlayerAtLeftTurn() {
   const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
+  if (regUtils.isNullEntity(currentStepEntity)) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return false;
   }
@@ -79,7 +79,7 @@ function isPlayerAtLeftTurn() {
 module.exports.isPlayerAtLeftTurn = isPlayerAtLeftTurn;
 function isPlayerAtRightTurn() {
   const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
+  if (regUtils.isNullEntity(currentStepEntity)) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return false;
   }
@@ -89,7 +89,7 @@ module.exports.isPlayerAtRightTurn = isPlayerAtRightTurn;
 
 function takeTurn(left) {
   const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
+  if (regUtils.isNullEntity(currentStepEntity)) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return;
   }

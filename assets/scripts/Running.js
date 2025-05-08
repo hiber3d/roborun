@@ -76,7 +76,7 @@
   },
   debugSpline(splinePosition, splineRotation) {
     const currentStepEntity = segUtils.getCurrentStepEntity();
-    if (this.debugSplineEntity === undefined) {
+    if (regUtils.isNullEntity(this.debugSplineEntity)) {
       this.debugSplineEntity = hiber3d.createEntity();
       debugTransformScale(this.debugSplineEntity, 0.1, 0.3, 0.1);
       debugScene(this.debugSplineEntity);
@@ -88,7 +88,7 @@
       debugUpdateTransform(this.debugSplineEntity, vectorUtils.addVectors(splinePosition, offset), splineRotation);
     }
 
-    if (this.debugSplineLeftLaneEntity === undefined) {
+    if (regUtils.isNullEntity(this.debugSplineLeftLaneEntity)) {
       this.debugSplineLeftLaneEntity = hiber3d.createEntity();
       debugTransformScale(this.debugSplineLeftLaneEntity, 0.1, 0.1, 0.1);
       debugScene(this.debugSplineLeftLaneEntity);
@@ -100,7 +100,7 @@
       debugUpdateTransform(this.debugSplineLeftLaneEntity, vectorUtils.addVectors(splinePosition, leftLaneOffset), splineRotation);
     }
 
-    if (this.debugSplineRightLaneEntity === undefined) {
+    if (regUtils.isNullEntity(this.debugSplineRightLaneEntity)) {
       this.debugSplineRightLaneEntity = hiber3d.createEntity();
       debugTransformScale(this.debugSplineRightLaneEntity, 0.1, 0.1, 0.1);
       debugScene(this.debugSplineRightLaneEntity);
@@ -112,7 +112,7 @@
       debugUpdateTransform(this.debugSplineRightLaneEntity, vectorUtils.addVectors(splinePosition, rightLaneOffset), splineRotation);
     }
 
-    if (this.debugSplineLeftWallEntity === undefined) {
+    if (regUtils.isNullEntity(this.debugSplineLeftWallEntity)) {
       this.debugSplineLeftWallEntity = hiber3d.createEntity();
       debugTransformScale(this.debugSplineLeftWallEntity, 0.2, 0.2, 0.2);
       debugScene(this.debugSplineEntity);
@@ -124,7 +124,7 @@
       debugUpdateTransform(this.debugSplineLeftWallEntity, vectorUtils.addVectors(splinePosition, leftWallOffset), splineRotation);
     }
 
-    if (this.debugSplineRightWallEntity === undefined) {
+    if (regUtils.isNullEntity(this.debugSplineRightWallEntity)) {
       this.debugSplineRightWallEntity = hiber3d.createEntity();
       debugTransformScale(this.debugSplineRightWallEntity, 0.2, 0.2, 0.2);
       debugScene(this.debugSplineEntity);
@@ -139,7 +139,7 @@
   getSpline() {
     const currentStepEntity = segUtils.getCurrentStepEntity();
     const nextStepEntity = segUtils.getNextStepEntity();
-    if (currentStepEntity === undefined || nextStepEntity === undefined) {
+    if (regUtils.isNullEntity(currentStepEntity) || regUtils.isNullEntity(nextStepEntity)) {
       return;
     }
 
@@ -162,7 +162,7 @@
   },
   getTiltOffset(rotation) {
     const currentStepEntity = segUtils.getCurrentStepEntity();
-    if (currentStepEntity === undefined) {
+    if (regUtils.isNullEntity(currentStepEntity)) {
       return undefined;
     }
     regUtils.addComponentIfNotPresent(this.entity, "TiltFactor");
@@ -217,7 +217,7 @@
     const splineData = hiber3d.getComponent(this.entity, "SplineData");
     splineData.position = spline.position;
     splineData.rotation = spline.rotation;
-    hiber3d.setComponent(this.entity, splineData);
+    hiber3d.setComponent(this.entity, "SplineData", splineData);
 
     if (isOnPath) {
       const tiltOffset = this.getTiltOffset(spline.rotation) !== undefined ? this.getTiltOffset(spline.rotation) : { x: 0, y: 0, z: 0 };

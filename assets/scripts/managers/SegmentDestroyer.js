@@ -5,7 +5,7 @@
 
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
-    if (playerEntity === undefined ||
+    if (regUtils.isNullEntity(playerEntity) ||
       !hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") ||
       !hiber3d.hasComponents(playerEntity, "SplineData")) {
       return false;
@@ -47,7 +47,7 @@
     }
 
     const nextStepEntity = segUtils.getNextStepEntity();
-    if (nextStepEntity === undefined) {
+    if (regUtils.isNullEntity(nextStepEntity)) {
       return;
     }
     const playerEntity = hiber3d.getSingleton("GameState").playerEntity;

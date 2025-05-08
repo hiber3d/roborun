@@ -21,7 +21,7 @@
         closestEntity = startingRobot;
       }
     }
-    if (closestEntity === undefined) {
+    if (regUtils.isNullEntity(closestEntity)) {
       hiber3d.print("ReplaceStartingRobotWithStartingPlayerOnStart.js - No starting robot found");
     }
     return closestEntity;
@@ -31,7 +31,7 @@
       return;
     }
     const startingRobotEntityToReplace = this.getStartingRobotToReplace();
-    if (startingRobotEntityToReplace === undefined) {
+    if (regUtils.isNullEntity(startingRobotEntityToReplace) ) {
       return;
     }
     this.hasReplaceStartingRobotWithStartingPlayer = true;

@@ -9,14 +9,14 @@ function isNullEntity(entity) {
 module.exports.isNullEntity = isNullEntity;
 
 function isAncestorOf(ancestor, entity) {
-  if (ancestor === undefined || entity === undefined) {
+  if (isNullEntity(ancestor) || isNullEntity(entity)) {
     return false;
   }
   if (ancestor === entity) {
     return true;
   }
   var parent = hiber3d.getParent(entity);
-  if (parent === undefined) {
+  if (isNullEntity(parent)) {
     return false;
   } else if (parent === ancestor) {
     return true;
@@ -28,7 +28,7 @@ module.exports.isAncestorOf = isAncestorOf;
 
 function getSiblings(entity) {
   const parent = hiber3d.getParent(entity);
-  if (parent === undefined) {
+  if (isNullEntity(parent)) {
     hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no parent");
     return undefined;
   }
@@ -70,7 +70,7 @@ function isLastChild(entity) {
 module.exports.isLastChild = isLastChild;
 
 function findEntityWithNameAmongAncestors(entity, name) {
-  if (entity === undefined) {
+  if (isNullEntity(entity)) {
     return undefined;
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Name") === true) {
@@ -88,10 +88,11 @@ function findEntityWithNameAmongAncestors(entity, name) {
 module.exports.findEntityWithNameAmongAncestors = findEntityWithNameAmongAncestors;
 
 function findEntityWithNameAmongDescendants(entity, name) {
-  if (entity === undefined) {
+  if (isNullEntity(entity)) {
     return undefined;
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Name") === true) {
+    hiber3d.print(hiber3d.getComponent(entity, "Hiber3D::Name"), " == ", name);
     if (hiber3d.getComponent(entity, "Hiber3D::Name") == name) {
       return entity;
     }
@@ -108,7 +109,7 @@ function findEntityWithNameAmongDescendants(entity, name) {
 module.exports.findEntityWithNameAmongDescendants = findEntityWithNameAmongDescendants;
 
 function findEntityWithComponentInHierarchy(entity, component) {
-  if (entity === undefined) {
+  if (isNullEntity(entity)) {
     return undefined;
   }
   if (hiber3d.hasComponents(entity, component) === true) {
@@ -164,14 +165,14 @@ function addOrReplaceScript(entity, script) {
 module.exports.addOrReplaceScript = addOrReplaceScript;
 
 function worldToLocalPosition(entity, worldPos) {
-  if (entity === undefined || worldPos === undefined) {
+  if (isNullEntity(entity) || worldPos === undefined) {
     return worldPos;
   }
 
   // Get the entity's parent
   var parent = hiber3d.getParent(entity);
 
-  if (parent === undefined) {
+  if (isNullEntity(parent)) {
     // No parent, just return the world position
     return worldPos;
   }

@@ -11,7 +11,7 @@
   },
   modifyColliderHeight(shouldReduce) {
     const colliderEntity = regUtils.findEntityWithNameAmongDescendants(this.entity, "Shape");
-    if (colliderEntity === undefined) {
+    if (regUtils.isNullEntity(colliderEntity) ) {
       hiber3d.print("ReduceColliderHeight.js - ERROR: No 'Shape' found in hierarchy");
     }
     const transform = hiber3d.getComponent(colliderEntity, "Hiber3D::Transform");
