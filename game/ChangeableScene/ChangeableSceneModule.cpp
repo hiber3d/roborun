@@ -30,7 +30,7 @@ static void switchToScene(
     Hiber3D::AssetHandle<Hiber3D::Scene>     sceneHandle) {
     // LOG_INFO("ChangeableSceneModule::switchToScene - Switching to scene:'{}'", static_cast<uint32_t>(sceneHandle.handle));
     for (auto [entity] : changeableScenes.each()) {
-        for (auto child : registry.getOrEmplace<Hiber3D::Children>(entity).entities) {
+        for (auto child : registry.getOrEmplace<Hiber3D::Children>(entity)->entities) {
             // LOG_INFO("ChangeableSceneModule::switchToScene - Destroying child:'{}'", static_cast<uint32_t>(child));
             destroyEntityWithChildrenRecursive(registry, child);
         }

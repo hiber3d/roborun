@@ -98,8 +98,8 @@ static void handlePlayAnimation(
     Hiber3D::View<Hiber3D::AnimationTransition> animationTransitions) {
     for (const auto& event : events) {
         const auto entity = event.entity;
-        animationLoadouts.withComponent(entity, [&](AnimationLoadout& animationLoadout) {
-            if (animationLoadout.loadout.find(event.name) == animationLoadout.loadout.end()) {
+        animationLoadouts.withComponent(entity, [&](Hiber3D::Component<AnimationLoadout> animationLoadout) {
+            if (animationLoadout->loadout.find(event.name) == animationLoadout->loadout.end()) {
                 LOG_ERROR("AnimationLoadoutModule::handlePlayAnimation() - Animation:'{}' not found in animationLoadout", event.name);
                 return;
             }
@@ -112,7 +112,7 @@ static void handlePlayAnimation(
             if (!animationTransitions.contains(entity)) {
                 registry.emplace<Hiber3D::AnimationTransition>(entity);
             }
-            const auto& animationData = getAnimationData(animationLoadout, event.name, event.layer, event.loop);
+            const auto& animationData = getAnimationData(animationLoadout.mut(), event.name, event.layer, event.loop);
             writer.writeEvent({.entity = entity, .animationData = animationData});
         });
     }
@@ -123,8 +123,8 @@ static void handleQueueAnimation(
     Hiber3D::View<Animated, AnimationLoadout> animateds) {
     for (const auto& event : events) {
         const auto entity = event.playAnimation.entity;
-        animateds.withComponent(entity, [&](Animated& animated, AnimationLoadout& animationLoadout) {
-            animated.queuedAnimationData = getAnimationData(animationLoadout, event.playAnimation.name, event.playAnimation.layer, event.playAnimation.loop);
+        animateds.withComponent(entity, [&](Hiber3D::Component<Animated> animated, Hiber3D::Component<AnimationLoadout> animationLoadout) {
+            animated.mut().queuedAnimationData = getAnimationData(animationLoadout.mut(), event.playAnimation.name, event.playAnimation.layer, event.playAnimation.loop);
         });
     }
 }
@@ -135,8 +135,8 @@ static void handleCancelAnimation(
     Hiber3D::EventWriter<CancelAnimationEvent>& writer) {
     for (const auto& event : events) {
         const auto entity = event.entity;
-        animateds.withComponent(entity, [&](const Animated& animated, const AnimationLoadout& animationLoadout) {
-            const auto& animationDatas = animationLoadout.loadout.at(event.name).animationDatas;
+        animateds.withComponent(entity, [&](Hiber3D::Component<Animated> animated, Hiber3D::Component<AnimationLoadout> animationLoadout) {
+            const auto& animationDatas = animationLoadout->loadout.at(event.name).animationDatas;
             for (const auto animationData : animationDatas) {
                 writer.writeEvent({.entity = entity, .animationData = animationData});
             }
@@ -150,9 +150,9 @@ static void handleAnimationFinished(
     Hiber3D::EventWriter<AnimationFinished>&   writer) {
     for (const auto& event : events) {
         const auto entity = event.entity;
-        animationLoadouts.withComponent(entity, [&](const AnimationLoadout& animationLoadout) {
+        animationLoadouts.withComponent(entity, [&](Hiber3D::Component<AnimationLoadout> animationLoadout) {
             const auto& handle = event.animationData.handle;
-            for (const auto& [name, animationVariants] : animationLoadout.loadout) {
+            for (const auto& [name, animationVariants] : animationLoadout->loadout) {
                 for (const auto& animationData : animationVariants.animationDatas) {
                     if (animationData.handle == handle) {
                         writer.writeEvent({.entity = entity, .name = name});
