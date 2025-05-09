@@ -23,9 +23,9 @@ const COOL_DOWN_TIMER_MS = 1000;
     hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "playSpeed", playSpeed);
     hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", volume);
 
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", false); // Does this prevent SoLoud from causing crashes? Stay tuned! (pun intended)
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", true); // Does this prevent SoLoud from causing crashes? Stay tuned! (pun intended)
 
-    hiber3d.addScript(sfxEntity, "scripts/audio/KillOnAudioFinished.js");
+    //hiber3d.addScript(sfxEntity, "scripts/audio/KillOnAudioFinished.js");
   },
   onEvent(event, payload) {
     if (!this.shouldRun()) {

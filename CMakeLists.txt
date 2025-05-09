@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
     Hiber3D_zip
     DOWNLOAD_EXTRACT_TIMESTAMP FALSE
-    URL https://cdn.hiberworld.com/hiber2/web/hib-34183-audiomodule-no3d/v0.111.0-hib-34183-audiomodule-no3d/Hiber3D_v0.111.0-hib-34183-audiomodule-no3d.0%2B5d3b4ecb2.zip
+    URL https://cdn.hiberworld.com/hiber2/web/hib-34183-audiomodule-no3d/v0.111.0-hib-34183-audiomodule-no3d/Hiber3D_v0.111.0-hib-34183-audiomodule-no3d.0%2B126f23026.zip
 )
 FetchContent_MakeAvailable(Hiber3D_zip)
 

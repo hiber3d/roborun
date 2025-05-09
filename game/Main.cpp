@@ -50,15 +50,15 @@ static void startMusicWhenReady(
     bool allLoaded = true;
 
     for (auto [entity, audio] : audioComponents.each()) {
-        if (audio.isPaused && assets->get(audio.asset) == nullptr) {
+        if (audio->isPaused && assets->get(audio->asset) == nullptr) {
             allLoaded = false;
         }
     }
 
     if (allLoaded) {
         for (auto [entity, audio] : audioComponents.each()) {
-            if (audio.isPaused) {
-                audio.isPaused = false;
+            if (audio->isPaused) {
+                audio.mut().isPaused = false;
             }
         }
     }
