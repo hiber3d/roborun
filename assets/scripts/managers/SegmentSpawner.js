@@ -510,8 +510,6 @@ const PICK_UP_DEPTH = {
 
     // Segment
     const segmentSceneEntity = regUtils.createChildToParent(segmentsSceneEntity);
-    hiber3d.addComponent(segmentSceneEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(segmentSceneEntity, "Hiber3D::SceneRoot", "scene", segmentPath);
     hiber3d.addComponent(segmentSceneEntity, "SegmentScene");
     hiber3d.addComponent(segmentSceneEntity, "Hiber3D::Name");
     hiber3d.setValue(segmentSceneEntity, "Hiber3D::Name", "SegmentScene" + this.segmentIndex);
@@ -519,6 +517,14 @@ const PICK_UP_DEPTH = {
     if (transform !== undefined) {
       hiber3d.setValue(segmentSceneEntity, "Hiber3D::Transform", transform);
     }
+
+    // Path
+    const pathSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
+    hiber3d.addComponent(pathSceneEntity, "Hiber3D::SceneRoot");
+    hiber3d.setValue(pathSceneEntity, "Hiber3D::SceneRoot", "scene", segmentPath);
+    hiber3d.addComponent(pathSceneEntity, "Hiber3D::Name");
+    hiber3d.setValue(pathSceneEntity, "Hiber3D::Name", "PathScene");
+    hiber3d.addComponent(pathSceneEntity, "Hiber3D::Transform");
 
     // Room
     const roomSceneEntity = regUtils.createChildToParent(segmentSceneEntity);

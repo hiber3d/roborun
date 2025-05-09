@@ -166,32 +166,7 @@ function destroyEntity(entity) {
   if (!entity) {
     return null;
   }
-  if (hiber3d.hasComponents(entity, "Hiber3D::Parent")) {
-    const parent = hiber3d.getValue(entity, "Hiber3D::Parent", "parent");
-    if (hiber3d.hasComponents(parent, "Hiber3D::Children")) {
-      const siblings = hiber3d.getValue(parent, "Hiber3D::Children", "entities");
-      for (var i = 0; i < Object.keys(siblings).length; i++) {
-        if (siblings[i] === entity) {
-          siblings.splice(i, 1);
-          hiber3d.setValue(parent, "Hiber3D::Children", "entities", siblings);
-          break;
-        }
-      }
-    }
-  }
-  function destroyRecursive(currentEntity) {
-    if (!currentEntity) {
-      return;
-    }
-    if (hiber3d.hasComponents(currentEntity, "Hiber3D::Children")) {
-      const children = hiber3d.getValue(currentEntity, "Hiber3D::Children", "entities");
-      for (var i = 0; i < Object.keys(children).length; i++) {
-        destroyRecursive(children[i]);
-      }
-    }
-    hiber3d.destroyEntity(currentEntity);
-  }
-  return destroyRecursive(entity);
+  hiber3d.destroyEntity(entity);
 }
 module.exports.destroyEntity = destroyEntity;
 
