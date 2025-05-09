@@ -79,7 +79,7 @@ function findEntityWithNameAmongAncestors(entity, name) {
     }
   }
   const parent = hiber3d.getParent(entity);
-  if (parent !== undefined) {
+  if (!regUtils.isNullEntity(parent) ) {
     const ancestor = findEntityWithNameAmongAncestors(parent, name);
     return ancestor;
   }
@@ -99,7 +99,7 @@ function findEntityWithNameAmongDescendants(entity, name) {
   const children = hiber3d.getChildren(entity);
   for (var i = 0; i < children.length; i++) {
     const recursiveResult = findEntityWithNameAmongDescendants(children[i], name);
-    if (recursiveResult !== undefined) {
+    if (!regUtils.isNullEntity(recursiveResult) ) {
       return recursiveResult;
     }
   }
@@ -117,7 +117,7 @@ function findEntityWithComponentInHierarchy(entity, component) {
   const children = hiber3d.getChildren(entity);
   for (var i = 0; i < children.length; i++) {
     const recursiveResult = findEntityWithComponentInHierarchy(children[i], component);
-    if (recursiveResult !== undefined) {
+    if (!regUtils.isNullEntity(recursiveResult) ) {
       return recursiveResult;
     }
   }

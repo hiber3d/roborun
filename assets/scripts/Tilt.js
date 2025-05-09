@@ -12,7 +12,7 @@
       (hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js")) &&
       gameState.alive &&
       !gameState.paused &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      !regUtils.isNullEntity(segUtils.getCurrentStepEntity());
   },
   onCreate() {
     hiber3d.addEventListener(this.entity, "LeftLaneInput");

@@ -17,7 +17,7 @@
     for (var i = 0; i < Object.keys(this.OBSTACLE_TYPES).length; i++) {
       const key = Object.keys(this.OBSTACLE_TYPES)[i];
       const ancestor = regUtils.findEntityWithNameAmongAncestors(this.entity, key);
-      if (ancestor !== undefined) {
+      if (!regUtils.isNullEntity(ancestor) ) {
         const path = this.OBSTACLE_TYPES[key];
         return path;
       }

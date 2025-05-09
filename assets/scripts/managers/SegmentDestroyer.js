@@ -19,7 +19,7 @@
       !gameState.paused;
   },
   spawnDebugCylinder(entity) {
-    if (entity !== undefined &&
+    if (!regUtils.isNullEntity(entity) &&
       hiber3d.hasComponents(entity, "Hiber3D::ComputedWorldTransform")) {
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
@@ -124,7 +124,7 @@
       // Going off-path
       if (!segUtils.isPlayerAtForward()) {
         const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
-        if (playerEntity !== undefined && hiber3d.hasComponents(playerEntity, "OnPath")) {
+        if (!regUtils.isNullEntity(playerEntity)  && hiber3d.hasComponents(playerEntity, "OnPath")) {
           hiber3d.removeComponent(playerEntity, "OnPath");
         }
       }

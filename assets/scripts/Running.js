@@ -19,7 +19,7 @@
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       gameState.alive &&
       !gameState.paused &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      !regUtils.isNullEntity(segUtils.getCurrentStepEntity());
   },
   getSpeed() {
     var speed = this.RUN_SPEED;
@@ -183,7 +183,7 @@
       hiber3d.setComponent(playerEntity, "Stats", stats);
 
       const segmentsState = hiber3d.getSingleton("SegmentsState");
-      segmentsState.newDistanceFromCurrentStep = segmentsState.distanceFromCurrentStep + delta;
+      segmentsState.distanceFromCurrentStep = segmentsState.distanceFromCurrentStep + delta;
       hiber3d.setSingleton("SegmentsState", segmentsState);
     }
   },

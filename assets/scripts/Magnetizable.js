@@ -12,7 +12,7 @@
   onEvent(event, payload) {
     if (event === "Hiber3D::CollisionPersisted") {
       const otherEntityInCollision = roboRunUtils.getOtherEntityInCollision(this.entity, payload);
-      if (otherEntityInCollision !== undefined && hiber3d.hasScripts(otherEntityInCollision, "scripts/powerups/MagnetCollider.js")) {
+      if (!regUtils.isNullEntity(otherEntityInCollision)  && hiber3d.hasScripts(otherEntityInCollision, "scripts/powerups/MagnetCollider.js")) {
 
         const worldPosition = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform").position;
         const otherWorldPosition = hiber3d.getComponent(otherEntityInCollision, "Hiber3D::ComputedWorldTransform").position;

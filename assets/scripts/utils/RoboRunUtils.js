@@ -46,6 +46,6 @@ module.exports.getOtherEntityInCollision = getOtherEntityInCollision;
 function isPlayerCollision(entity, collisionEventPayload) {
   const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
   const otherEntityInCollision = getOtherEntityInCollision(entity, collisionEventPayload);
-  return playerEntity !== undefined && playerEntity === otherEntityInCollision;
+  return !regUtils.isNullEntity(playerEntity)  && playerEntity === otherEntityInCollision;
 }
 module.exports.isPlayerCollision = isPlayerCollision;

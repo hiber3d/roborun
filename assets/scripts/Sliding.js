@@ -6,7 +6,7 @@
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       gameState.alive &&
       !gameState.paused &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      !regUtils.isNullEntity(segUtils.getCurrentStepEntity());
   },
   onCreate() {
     const playAnimation = new PlayAnimation();

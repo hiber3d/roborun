@@ -579,7 +579,7 @@ const PICK_UP_DEPTH = {
       const z =
         pickUpDepth === PICK_UP_DEPTH.MID ? -5 :
           0; // TODO: Get depth from scene
-      if (obstacleEntity !== undefined) {
+      if (!regUtils.isNullEntity(obstacleEntity)) {
         const transform = hiber3d.getComponent(obstacleEntity, "Hiber3D::Transform");
         const position = transform.position;
         position.x = x;

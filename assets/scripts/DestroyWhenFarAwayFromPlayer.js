@@ -2,7 +2,7 @@
   DISTANCE: 50,
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
-    return playerEntity !== undefined &&
+    return !regUtils.isNullEntity(playerEntity)  &&
       hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   },

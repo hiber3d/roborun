@@ -14,7 +14,7 @@
 
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
-    return playerEntity !== undefined &&
+    return !regUtils.isNullEntity(playerEntity) &&
       hiber3d.hasComponents(playerEntity, "Hiber3D::Transform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D::Transform");
   },

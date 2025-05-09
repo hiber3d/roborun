@@ -11,7 +11,7 @@
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       gameState.alive &&
       !gameState.paused &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      !regUtils.isNullEntity(segUtils.getCurrentStepEntity()) ;
   },
   getDeltaHeight() {
     return Math.min(1, 1 - Math.pow(1 + this.DIVE_SPEED_BASE, this.timeSpentDivingInAir * this.DIVE_SPEED_ACCELERATION));
