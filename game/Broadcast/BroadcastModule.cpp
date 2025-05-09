@@ -13,8 +13,8 @@ static void broadcastStats(
     Hiber3D::View<Stats>                        stats,
     Hiber3D::EventWriter<BroadcastPlayerStats>& writer) {
     const auto playerEntity = gameState->playerEntity;
-    stats.withComponent(playerEntity, [&](const Stats& stats) {
-        writer.writeEvent({.stats = stats});
+    stats.withComponent(playerEntity, [&](Hiber3D::Component<Stats> stats) {
+        writer.writeEvent({.stats = *stats});
     });
 }
 
