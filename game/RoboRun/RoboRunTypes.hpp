@@ -16,3 +16,10 @@ struct GameState {
 };
 
 HIBER3D_REFLECT(HIBER3D_TYPE(GameState), HIBER3D_MEMBER(difficulty), HIBER3D_MEMBER(tiltFactor), HIBER3D_MEMBER(paused), HIBER3D_MEMBER(onPath), HIBER3D_MEMBER(alive), HIBER3D_MEMBER(playerEntity), HIBER3D_MEMBER(direction), HIBER3D_MEMBER(autoStart));
+
+// TODO: Move somewhere else
+struct DeathScene {
+    std::string path;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(DeathScene), HIBER3D_MEMBER(path));

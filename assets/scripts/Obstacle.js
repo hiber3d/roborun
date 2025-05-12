@@ -3,11 +3,12 @@
   OBSTACLE_TYPES: {
     "Arm1": "scenes/deaths/Arm1.scene",
     "Arm2": "scenes/deaths/Arm2.scene",
-    "Blockage": "scenes/deaths/Blockage.scene",
-    "Grinder": "scenes/deaths/Grinder.scene",
-    "Processor": "scenes/deaths/Processor.scene",
   },
   getDeathScenePath() {
+    if(hiber3d.hasComponents(this.entity, "DeathScene")){
+      return hiber3d.getValue(this.entity, "DeathScene", "path");
+    }
+
     const name = hiber3d.getValue(this.entity, "Hiber3D::Name");
     const path = this.OBSTACLE_TYPES[name];
     if (path !== undefined) {
@@ -22,7 +23,7 @@
         return path;
       }
     }
-        return undefined;
+    return undefined;
   },
   onCreate() {
     hiber3d.addEventListener(this.entity, "Hiber3D::CollisionStarted");

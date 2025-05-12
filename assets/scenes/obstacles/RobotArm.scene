@@ -1,1 +1,863 @@
-{"version":"1.0.0","root":{"id":7340033,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Scene"}],"children":[{"id":7340034,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Armature"},{"type":"Hiber3D::AnimationTargetId","data":9}],"children":[{"id":7340035,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Robot_arm"},{"type":"Hiber3D::AnimationTargetId","data":8},{"type":"Hiber3D::SkeletonRef","data":{"skeletonRoot":7340036}},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/obstacles/Robot_arm.glb#mesh0/primitive0","material":"glbs/obstacles/Robot_arm.glb#material0","castShadows":true}}],"children":[]},{"id":7340036,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":-0.00297866,"z":0},"rotation":{"x":-1,"y":0,"z":0,"w":2.98023e-08},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Root"},{"type":"Hiber3D::AnimationTargetId","data":7},{"type":"Hiber3D::SkinningInfo","data":{"skeleton":"glbs/obstacles/Robot_arm.glb#skin0","joints":[7340036,7340037,7340038,7340039,8389575,9437648,9437627,8389576]}}],"children":[{"id":7340037,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":-0.642451,"z":0},"rotation":{"x":-1,"y":-4.23516e-22,"z":7.54979e-08,"w":3.55271e-15},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Base"},{"type":"Hiber3D::AnimationTargetId","data":6}],"children":[{"id":7340038,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.56,"y":1.40501,"z":0.949511},"rotation":{"x":-4.66494e-08,"y":4.37114e-08,"z":-2.03911e-15,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Bottom"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Obstacle.js"]}},{"type":"Hiber3D::RigidBody","data":{"type":1,"motionQuality":0,"collisionGroup":4,"collisionMask":16,"isSensor":true,"allowSleeping":true,"linearDamping":0.05,"angularDamping":0.05,"gravityFactor":1,"friction":0.2,"restitution":0,"internalSettings":{"allowDynamicOrKinematic":true,"generateNonDynamicContacts":false,"applyGyroscopicForce":false,"maxLinearVelocity":500,"maxAngularVelocity":47.1239,"useManifoldReduction":true,"enhancedInternalEdgeRemoval":false}}},{"type":"Hiber3D::AnimationTargetId","data":5}],"children":[{"id":7340039,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.661036,"y":2.55543,"z":5.50997e-09},"rotation":{"x":0.674187,"y":2.09908e-08,"z":-2.2995e-08,"w":0.738561},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Middle"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Obstacle.js"]}},{"type":"Hiber3D::RigidBody","data":{"type":1,"motionQuality":0,"collisionGroup":4,"collisionMask":16,"isSensor":true,"allowSleeping":true,"linearDamping":0.05,"angularDamping":0.05,"gravityFactor":1,"friction":0.2,"restitution":0,"internalSettings":{"allowDynamicOrKinematic":true,"generateNonDynamicContacts":false,"applyGyroscopicForce":false,"maxLinearVelocity":500,"maxAngularVelocity":47.1239,"useManifoldReduction":true,"enhancedInternalEdgeRemoval":false}}},{"type":"Hiber3D::AnimationTargetId","data":4}],"children":[{"id":8389575,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":8.22054e-09,"y":2.8716,"z":2.92182e-08},"rotation":{"x":0.0455119,"y":-7.46925e-09,"z":0.00172479,"w":0.998962},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Top"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Obstacle.js"]}},{"type":"Hiber3D::RigidBody","data":{"type":1,"motionQuality":0,"collisionGroup":4,"collisionMask":16,"isSensor":true,"allowSleeping":true,"linearDamping":0.05,"angularDamping":0.05,"gravityFactor":1,"friction":0.2,"restitution":0,"internalSettings":{"allowDynamicOrKinematic":true,"generateNonDynamicContacts":false,"applyGyroscopicForce":false,"maxLinearVelocity":500,"maxAngularVelocity":47.1239,"useManifoldReduction":true,"enhancedInternalEdgeRemoval":false}}},{"type":"Hiber3D::AnimationTargetId","data":3}],"children":[{"id":9437648,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-5.00586e-09,"y":0.657458,"z":-2.53774e-07},"rotation":{"x":7.38894e-06,"y":-7.81911e-05,"z":-0.001723,"w":0.999999},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Hand"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Obstacle.js"]}},{"type":"Hiber3D::RigidBody","data":{"type":1,"motionQuality":0,"collisionGroup":4,"collisionMask":16,"isSensor":true,"allowSleeping":true,"linearDamping":0.05,"angularDamping":0.05,"gravityFactor":1,"friction":0.2,"restitution":0,"internalSettings":{"allowDynamicOrKinematic":true,"generateNonDynamicContacts":false,"applyGyroscopicForce":false,"maxLinearVelocity":500,"maxAngularVelocity":47.1239,"useManifoldReduction":true,"enhancedInternalEdgeRemoval":false}}},{"type":"Hiber3D::AnimationTargetId","data":2}],"children":[{"id":9437627,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":4.08869e-07,"y":0.72103,"z":-0.651628},"rotation":{"x":0.122676,"y":-1.61531e-07,"z":5.5995e-08,"w":0.992447},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Claw1"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Obstacle.js"]}},{"type":"Hiber3D::RigidBody","data":{"type":1,"motionQuality":0,"collisionGroup":4,"collisionMask":16,"isSensor":true,"allowSleeping":true,"linearDamping":0.05,"angularDamping":0.05,"gravityFactor":1,"friction":0.2,"restitution":0,"internalSettings":{"allowDynamicOrKinematic":true,"generateNonDynamicContacts":false,"applyGyroscopicForce":false,"maxLinearVelocity":500,"maxAngularVelocity":47.1239,"useManifoldReduction":true,"enhancedInternalEdgeRemoval":false}}},{"type":"Hiber3D::AnimationTargetId","data":0}],"children":[{"id":8389928,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-1.27293e-08,"y":0.444972,"z":0.0562024},"rotation":{"x":0.703468,"y":-6.25605e-09,"z":2.08861e-07,"w":0.710727},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Shape"},{"type":"Hiber3D::Shape","data":{"shape":{"type":"Hiber3D::BoxShape","value":{"extents":{"x":0.2,"y":0.2,"z":0.7},"density":1000}}}}],"children":[]}]},{"id":8389576,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-3.99976e-07,"y":0.717992,"z":0.652962},"rotation":{"x":-0.122866,"y":0.00563866,"z":0.0359844,"w":0.991755},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Claw2"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Obstacle.js"]}},{"type":"Hiber3D::RigidBody","data":{"type":1,"motionQuality":0,"collisionGroup":4,"collisionMask":16,"isSensor":true,"allowSleeping":true,"linearDamping":0.05,"angularDamping":0.05,"gravityFactor":1,"friction":0.2,"restitution":0,"internalSettings":{"allowDynamicOrKinematic":true,"generateNonDynamicContacts":false,"applyGyroscopicForce":false,"maxLinearVelocity":500,"maxAngularVelocity":47.1239,"useManifoldReduction":true,"enhancedInternalEdgeRemoval":false}}},{"type":"Hiber3D::AnimationTargetId","data":1}],"children":[{"id":8389926,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.038574,"y":0.473621,"z":-0.0468362},"rotation":{"x":-0.693407,"y":0.0505873,"z":-0.00162857,"w":0.718766},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Shape"},{"type":"Hiber3D::Shape","data":{"shape":{"type":"Hiber3D::BoxShape","value":{"extents":{"x":0.2,"y":0.2,"z":0.7},"density":1000}}}}],"children":[]}]},{"id":8389920,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":2.09875e-09,"y":0.223066,"z":-5.3183e-08},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Shape"},{"type":"Hiber3D::Shape","data":{"shape":{"type":"Hiber3D::BoxShape","value":{"extents":{"x":0.3,"y":0.6,"z":0.4},"density":1000}}}}],"children":[]}]}]},{"id":8389923,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.0291574,"y":1.35252,"z":-0.144911},"rotation":{"x":0.0389635,"y":-2.22045e-16,"z":-6.66134e-16,"w":0.999241},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Shape"},{"type":"Hiber3D::Shape","data":{"shape":{"type":"Hiber3D::BoxShape","value":{"extents":{"x":0.3,"y":1.8,"z":0.4},"density":1000}}}}],"children":[]}]},{"id":8389868,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.0299298,"y":1.27337,"z":-0.0346273},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Shape"},{"type":"Hiber3D::Shape","data":{"shape":{"type":"Hiber3D::BoxShape","value":{"extents":{"x":0.3,"y":1.5,"z":0.5},"density":1000}}}}],"children":[]}]}]}]}]}]}}
+{
+  "version": "1.0.0",
+  "root": {
+    "id": 7340033,
+    "components": [
+      {
+        "type": "Hiber3D::Transform",
+        "data": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      },
+      {
+        "type": "Hiber3D::Name",
+        "data": "RobotArm.scene"
+      }
+    ],
+    "children": [
+      {
+        "id": 7340034,
+        "components": [
+          {
+            "type": "Hiber3D::Transform",
+            "data": {
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            }
+          },
+          {
+            "type": "Hiber3D::Name",
+            "data": "Armature"
+          },
+          {
+            "type": "Hiber3D::AnimationTargetId",
+            "data": 9
+          }
+        ],
+        "children": [
+          {
+            "id": 7340035,
+            "components": [
+              {
+                "type": "Hiber3D::Transform",
+                "data": {
+                  "position": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                  },
+                  "rotation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "w": 1
+                  },
+                  "scale": {
+                    "x": 1,
+                    "y": 1,
+                    "z": 1
+                  }
+                }
+              },
+              {
+                "type": "Hiber3D::Name",
+                "data": "Robot_arm"
+              },
+              {
+                "type": "Hiber3D::AnimationTargetId",
+                "data": 8
+              },
+              {
+                "type": "Hiber3D::SkeletonRef",
+                "data": {
+                  "skeletonRoot": 7340036
+                }
+              },
+              {
+                "type": "Hiber3D::Renderable",
+                "data": {
+                  "mesh": "glbs/obstacles/Robot_arm.glb#mesh0/primitive0",
+                  "material": "glbs/obstacles/Robot_arm.glb#material0",
+                  "castShadows": true
+                }
+              }
+            ],
+            "children": [
+            ]
+          },
+          {
+            "id": 7340036,
+            "components": [
+              {
+                "type": "Hiber3D::Transform",
+                "data": {
+                  "position": {
+                    "x": 0,
+                    "y": -0.00297866,
+                    "z": 0
+                  },
+                  "rotation": {
+                    "x": -1,
+                    "y": 0,
+                    "z": 0,
+                    "w": 2.98023e-08
+                  },
+                  "scale": {
+                    "x": 1,
+                    "y": 1,
+                    "z": 1
+                  }
+                }
+              },
+              {
+                "type": "Hiber3D::Name",
+                "data": "Root"
+              },
+              {
+                "type": "Hiber3D::AnimationTargetId",
+                "data": 7
+              },
+              {
+                "type": "Hiber3D::SkinningInfo",
+                "data": {
+                  "skeleton": "glbs/obstacles/Robot_arm.glb#skin0",
+                  "joints": [
+                    7340036,
+                    7340037,
+                    7340038,
+                    7340039,
+                    8389575,
+                    9437648,
+                    9437627,
+                    8389576
+                  ]
+                }
+              }
+            ],
+            "children": [
+              {
+                "id": 7340037,
+                "components": [
+                  {
+                    "type": "Hiber3D::Transform",
+                    "data": {
+                      "position": {
+                        "x": 0,
+                        "y": -0.642451,
+                        "z": 0
+                      },
+                      "rotation": {
+                        "x": -1,
+                        "y": -4.23516e-22,
+                        "z": 7.54979e-08,
+                        "w": 3.55271e-15
+                      },
+                      "scale": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "Hiber3D::Name",
+                    "data": "Base"
+                  },
+                  {
+                    "type": "Hiber3D::AnimationTargetId",
+                    "data": 6
+                  }
+                ],
+                "children": [
+                  {
+                    "id": 7340038,
+                    "components": [
+                      {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                          "position": {
+                            "x": -0.56,
+                            "y": 1.40501,
+                            "z": 0.949511
+                          },
+                          "rotation": {
+                            "x": -4.66494e-08,
+                            "y": 4.37114e-08,
+                            "z": -2.03911e-15,
+                            "w": 1
+                          },
+                          "scale": {
+                            "x": 1,
+                            "y": 1,
+                            "z": 1
+                          }
+                        }
+                      },
+                      {
+                        "type": "Hiber3D::Name",
+                        "data": "Bottom"
+                      },
+                      {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                          "scripts": [
+                            "scripts/Obstacle.js"
+                          ]
+                        }
+                      },
+                      {
+                        "type": "Hiber3D::RigidBody",
+                        "data": {
+                          "type": 1,
+                          "motionQuality": 0,
+                          "collisionGroup": 4,
+                          "collisionMask": 16,
+                          "isSensor": true,
+                          "allowSleeping": true,
+                          "linearDamping": 0.05,
+                          "angularDamping": 0.05,
+                          "gravityFactor": 1,
+                          "friction": 0.2,
+                          "restitution": 0,
+                          "internalSettings": {
+                            "allowDynamicOrKinematic": true,
+                            "generateNonDynamicContacts": false,
+                            "applyGyroscopicForce": false,
+                            "maxLinearVelocity": 500,
+                            "maxAngularVelocity": 47.1239,
+                            "useManifoldReduction": true,
+                            "enhancedInternalEdgeRemoval": false
+                          }
+                        }
+                      },
+                      {
+                        "type": "Hiber3D::AnimationTargetId",
+                        "data": 5
+                      }
+                    ],
+                    "children": [
+                      {
+                        "id": 7340039,
+                        "components": [
+                          {
+                            "type": "Hiber3D::Transform",
+                            "data": {
+                              "position": {
+                                "x": 0.661036,
+                                "y": 2.55543,
+                                "z": 5.50997e-09
+                              },
+                              "rotation": {
+                                "x": 0.674187,
+                                "y": 2.09908e-08,
+                                "z": -2.2995e-08,
+                                "w": 0.738561
+                              },
+                              "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                              }
+                            }
+                          },
+                          {
+                            "type": "Hiber3D::Name",
+                            "data": "Middle"
+                          },
+                          {
+                            "type": "Hiber3D::ScriptInstance",
+                            "data": {
+                              "scripts": [
+                                "scripts/Obstacle.js"
+                              ]
+                            }
+                          },
+                          {
+                            "type": "Hiber3D::RigidBody",
+                            "data": {
+                              "type": 1,
+                              "motionQuality": 0,
+                              "collisionGroup": 4,
+                              "collisionMask": 16,
+                              "isSensor": true,
+                              "allowSleeping": true,
+                              "linearDamping": 0.05,
+                              "angularDamping": 0.05,
+                              "gravityFactor": 1,
+                              "friction": 0.2,
+                              "restitution": 0,
+                              "internalSettings": {
+                                "allowDynamicOrKinematic": true,
+                                "generateNonDynamicContacts": false,
+                                "applyGyroscopicForce": false,
+                                "maxLinearVelocity": 500,
+                                "maxAngularVelocity": 47.1239,
+                                "useManifoldReduction": true,
+                                "enhancedInternalEdgeRemoval": false
+                              }
+                            }
+                          },
+                          {
+                            "type": "Hiber3D::AnimationTargetId",
+                            "data": 4
+                          }
+                        ],
+                        "children": [
+                          {
+                            "id": 8389575,
+                            "components": [
+                              {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                  "position": {
+                                    "x": 8.22054e-09,
+                                    "y": 2.8716,
+                                    "z": 2.92182e-08
+                                  },
+                                  "rotation": {
+                                    "x": 0.0455119,
+                                    "y": -7.46925e-09,
+                                    "z": 0.00172479,
+                                    "w": 0.998962
+                                  },
+                                  "scale": {
+                                    "x": 1,
+                                    "y": 1,
+                                    "z": 1
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Hiber3D::Name",
+                                "data": "Top"
+                              },
+                              {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                  "scripts": [
+                                    "scripts/Obstacle.js"
+                                  ]
+                                }
+                              },
+                              {
+                                "type": "Hiber3D::RigidBody",
+                                "data": {
+                                  "type": 1,
+                                  "motionQuality": 0,
+                                  "collisionGroup": 4,
+                                  "collisionMask": 16,
+                                  "isSensor": true,
+                                  "allowSleeping": true,
+                                  "linearDamping": 0.05,
+                                  "angularDamping": 0.05,
+                                  "gravityFactor": 1,
+                                  "friction": 0.2,
+                                  "restitution": 0,
+                                  "internalSettings": {
+                                    "allowDynamicOrKinematic": true,
+                                    "generateNonDynamicContacts": false,
+                                    "applyGyroscopicForce": false,
+                                    "maxLinearVelocity": 500,
+                                    "maxAngularVelocity": 47.1239,
+                                    "useManifoldReduction": true,
+                                    "enhancedInternalEdgeRemoval": false
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Hiber3D::AnimationTargetId",
+                                "data": 3
+                              }
+                            ],
+                            "children": [
+                              {
+                                "id": 9437648,
+                                "components": [
+                                  {
+                                    "type": "Hiber3D::Transform",
+                                    "data": {
+                                      "position": {
+                                        "x": -5.00586e-09,
+                                        "y": 0.657458,
+                                        "z": -2.53774e-07
+                                      },
+                                      "rotation": {
+                                        "x": 7.38894e-06,
+                                        "y": -7.81911e-05,
+                                        "z": -0.001723,
+                                        "w": 0.999999
+                                      },
+                                      "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "Hiber3D::Name",
+                                    "data": "Hand"
+                                  },
+                                  {
+                                    "type": "Hiber3D::ScriptInstance",
+                                    "data": {
+                                      "scripts": [
+                                        "scripts/Obstacle.js"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "Hiber3D::RigidBody",
+                                    "data": {
+                                      "type": 1,
+                                      "motionQuality": 0,
+                                      "collisionGroup": 4,
+                                      "collisionMask": 16,
+                                      "isSensor": true,
+                                      "allowSleeping": true,
+                                      "linearDamping": 0.05,
+                                      "angularDamping": 0.05,
+                                      "gravityFactor": 1,
+                                      "friction": 0.2,
+                                      "restitution": 0,
+                                      "internalSettings": {
+                                        "allowDynamicOrKinematic": true,
+                                        "generateNonDynamicContacts": false,
+                                        "applyGyroscopicForce": false,
+                                        "maxLinearVelocity": 500,
+                                        "maxAngularVelocity": 47.1239,
+                                        "useManifoldReduction": true,
+                                        "enhancedInternalEdgeRemoval": false
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "Hiber3D::AnimationTargetId",
+                                    "data": 2
+                                  }
+                                ],
+                                "children": [
+                                  {
+                                    "id": 9437627,
+                                    "components": [
+                                      {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                          "position": {
+                                            "x": 4.08869e-07,
+                                            "y": 0.72103,
+                                            "z": -0.651628
+                                          },
+                                          "rotation": {
+                                            "x": 0.122676,
+                                            "y": -1.61531e-07,
+                                            "z": 5.5995e-08,
+                                            "w": 0.992447
+                                          },
+                                          "scale": {
+                                            "x": 1,
+                                            "y": 1,
+                                            "z": 1
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Claw1"
+                                      },
+                                      {
+                                        "type": "Hiber3D::ScriptInstance",
+                                        "data": {
+                                          "scripts": [
+                                            "scripts/Obstacle.js"
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "Hiber3D::RigidBody",
+                                        "data": {
+                                          "type": 1,
+                                          "motionQuality": 0,
+                                          "collisionGroup": 4,
+                                          "collisionMask": 16,
+                                          "isSensor": true,
+                                          "allowSleeping": true,
+                                          "linearDamping": 0.05,
+                                          "angularDamping": 0.05,
+                                          "gravityFactor": 1,
+                                          "friction": 0.2,
+                                          "restitution": 0,
+                                          "internalSettings": {
+                                            "allowDynamicOrKinematic": true,
+                                            "generateNonDynamicContacts": false,
+                                            "applyGyroscopicForce": false,
+                                            "maxLinearVelocity": 500,
+                                            "maxAngularVelocity": 47.1239,
+                                            "useManifoldReduction": true,
+                                            "enhancedInternalEdgeRemoval": false
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "Hiber3D::AnimationTargetId",
+                                        "data": 0
+                                      }
+                                    ],
+                                    "children": [
+                                      {
+                                        "id": 8389928,
+                                        "components": [
+                                          {
+                                            "type": "Hiber3D::Transform",
+                                            "data": {
+                                              "position": {
+                                                "x": -1.27293e-08,
+                                                "y": 0.444972,
+                                                "z": 0.0562024
+                                              },
+                                              "rotation": {
+                                                "x": 0.703468,
+                                                "y": -6.25605e-09,
+                                                "z": 2.08861e-07,
+                                                "w": 0.710727
+                                              },
+                                              "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "type": "Hiber3D::Name",
+                                            "data": "Shape"
+                                          },
+                                          {
+                                            "type": "Hiber3D::Shape",
+                                            "data": {
+                                              "shape": {
+                                                "type": "Hiber3D::BoxShape",
+                                                "value": {
+                                                  "extents": {
+                                                    "x": 0.2,
+                                                    "y": 0.2,
+                                                    "z": 0.7
+                                                  },
+                                                  "density": 1000
+                                                }
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "children": [
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": 8389576,
+                                    "components": [
+                                      {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                          "position": {
+                                            "x": -3.99976e-07,
+                                            "y": 0.717992,
+                                            "z": 0.652962
+                                          },
+                                          "rotation": {
+                                            "x": -0.122866,
+                                            "y": 0.00563866,
+                                            "z": 0.0359844,
+                                            "w": 0.991755
+                                          },
+                                          "scale": {
+                                            "x": 1,
+                                            "y": 1,
+                                            "z": 1
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Claw2"
+                                      },
+                                      {
+                                        "type": "Hiber3D::ScriptInstance",
+                                        "data": {
+                                          "scripts": [
+                                            "scripts/Obstacle.js"
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "Hiber3D::RigidBody",
+                                        "data": {
+                                          "type": 1,
+                                          "motionQuality": 0,
+                                          "collisionGroup": 4,
+                                          "collisionMask": 16,
+                                          "isSensor": true,
+                                          "allowSleeping": true,
+                                          "linearDamping": 0.05,
+                                          "angularDamping": 0.05,
+                                          "gravityFactor": 1,
+                                          "friction": 0.2,
+                                          "restitution": 0,
+                                          "internalSettings": {
+                                            "allowDynamicOrKinematic": true,
+                                            "generateNonDynamicContacts": false,
+                                            "applyGyroscopicForce": false,
+                                            "maxLinearVelocity": 500,
+                                            "maxAngularVelocity": 47.1239,
+                                            "useManifoldReduction": true,
+                                            "enhancedInternalEdgeRemoval": false
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "Hiber3D::AnimationTargetId",
+                                        "data": 1
+                                      }
+                                    ],
+                                    "children": [
+                                      {
+                                        "id": 8389926,
+                                        "components": [
+                                          {
+                                            "type": "Hiber3D::Transform",
+                                            "data": {
+                                              "position": {
+                                                "x": 0.038574,
+                                                "y": 0.473621,
+                                                "z": -0.0468362
+                                              },
+                                              "rotation": {
+                                                "x": -0.693407,
+                                                "y": 0.0505873,
+                                                "z": -0.00162857,
+                                                "w": 0.718766
+                                              },
+                                              "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "type": "Hiber3D::Name",
+                                            "data": "Shape"
+                                          },
+                                          {
+                                            "type": "Hiber3D::Shape",
+                                            "data": {
+                                              "shape": {
+                                                "type": "Hiber3D::BoxShape",
+                                                "value": {
+                                                  "extents": {
+                                                    "x": 0.2,
+                                                    "y": 0.2,
+                                                    "z": 0.7
+                                                  },
+                                                  "density": 1000
+                                                }
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "children": [
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": 8389920,
+                                    "components": [
+                                      {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                          "position": {
+                                            "x": 2.09875e-09,
+                                            "y": 0.223066,
+                                            "z": -5.3183e-08
+                                          },
+                                          "rotation": {
+                                            "x": 0,
+                                            "y": 0,
+                                            "z": 0,
+                                            "w": 1
+                                          },
+                                          "scale": {
+                                            "x": 1,
+                                            "y": 1,
+                                            "z": 1
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Shape"
+                                      },
+                                      {
+                                        "type": "Hiber3D::Shape",
+                                        "data": {
+                                          "shape": {
+                                            "type": "Hiber3D::BoxShape",
+                                            "value": {
+                                              "extents": {
+                                                "x": 0.3,
+                                                "y": 0.6,
+                                                "z": 0.4
+                                              },
+                                              "density": 1000
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "children": [
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": 8389923,
+                            "components": [
+                              {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                  "position": {
+                                    "x": -0.0291574,
+                                    "y": 1.35252,
+                                    "z": -0.144911
+                                  },
+                                  "rotation": {
+                                    "x": 0.0389635,
+                                    "y": -2.22045e-16,
+                                    "z": -6.66134e-16,
+                                    "w": 0.999241
+                                  },
+                                  "scale": {
+                                    "x": 1,
+                                    "y": 1,
+                                    "z": 1
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Hiber3D::Name",
+                                "data": "Shape"
+                              },
+                              {
+                                "type": "Hiber3D::Shape",
+                                "data": {
+                                  "shape": {
+                                    "type": "Hiber3D::BoxShape",
+                                    "value": {
+                                      "extents": {
+                                        "x": 0.3,
+                                        "y": 1.8,
+                                        "z": 0.4
+                                      },
+                                      "density": 1000
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "children": [
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": 8389868,
+                        "components": [
+                          {
+                            "type": "Hiber3D::Transform",
+                            "data": {
+                              "position": {
+                                "x": 0.0299298,
+                                "y": 1.27337,
+                                "z": -0.0346273
+                              },
+                              "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                              },
+                              "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                              }
+                            }
+                          },
+                          {
+                            "type": "Hiber3D::Name",
+                            "data": "Shape"
+                          },
+                          {
+                            "type": "Hiber3D::Shape",
+                            "data": {
+                              "shape": {
+                                "type": "Hiber3D::BoxShape",
+                                "value": {
+                                  "extents": {
+                                    "x": 0.3,
+                                    "y": 1.5,
+                                    "z": 0.5
+                                  },
+                                  "density": 1000
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "children": [
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
