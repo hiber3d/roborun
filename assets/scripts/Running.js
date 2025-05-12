@@ -69,7 +69,7 @@
     hiber3d.setComponent(entity, "Hiber3D::SceneRoot", "scene", sceneRoot);
   },
   debugUpdateTransform(entity, position, rotation) {
-    const transform = new globalThis["Hiber3D::Transform"];
+    const transform = new globalThis["Hiber3D::Transform"]();
     transform.position = position;
     transform.rotation = rotation;
     hiber3d.setComponent(entity, "Hiber3D::Transform", transform);

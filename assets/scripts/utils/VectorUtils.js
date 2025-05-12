@@ -10,8 +10,9 @@ function formatVector(v) {
 }
 module.exports.formatVector = formatVector;
 function stripY(v) {
-  const r = new globalThis["Hiber3D::Transform"]( ); 
+  const r = new globalThis["Hiber3D::float3"]();
   r.x = v.x;
+  r.y = 0;
   r.z = v.z;
   return r;
 }

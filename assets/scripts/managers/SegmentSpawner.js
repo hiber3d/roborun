@@ -604,7 +604,7 @@ const PICK_UP_DEPTH = {
       return;
     }
     const outTransform = hiber3d.getComponent(out, "Hiber3D::ComputedWorldTransform");
-    const outTransform2 = new globalThis["Hiber3D::Transform"];
+    const outTransform2 = new globalThis["Hiber3D::Transform"]();
     outTransform2.position = outTransform.position;
     outTransform2.rotation = outTransform.rotation;
     outTransform2.scale = outTransform.scale;

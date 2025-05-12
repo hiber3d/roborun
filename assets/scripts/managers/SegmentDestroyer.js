@@ -125,7 +125,7 @@
       // Going off-path
       if (!segUtils.isPlayerAtForward()) {
         const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
-        if (!regUtils.isNullEntity(playerEntity)  && hiber3d.hasComponents(playerEntity, "OnPath")) {
+        if (!regUtils.isNullEntity(playerEntity) && hiber3d.hasComponents(playerEntity, "OnPath")) {
           hiber3d.removeComponent(playerEntity, "OnPath");
         }
       }
@@ -138,17 +138,17 @@
     }
     if (event === "NewSegmentEvent") {
       const current = hiber3d.getSingleton("SegmentsState").currentSegmentSceneEntity;
-      if (current !== undefined && hiber3d.hasComponents(current, "SegmentScene")) {
+      if (!regUtils.isNullEntity(current) && hiber3d.hasComponents(current, "SegmentScene")) {
         const prev = hiber3d.getComponent(current, "SegmentScene").prev;
-        if (prev !== undefined && hiber3d.hasComponents(prev, "SegmentScene")) {
+        if (!regUtils.isNullEntity(prev) && hiber3d.hasComponents(prev, "SegmentScene")) {
           const prevPrev = hiber3d.getComponent(prev, "SegmentScene").prev;
-          if (prevPrev !== undefined && hiber3d.hasComponents(prevPrev, "SegmentScene")) {
+          if (!regUtils.isNullEntity(prevPrev) && hiber3d.hasComponents(prevPrev, "SegmentScene")) {
             const prevPrevPrev = hiber3d.getComponent(prevPrev, "SegmentScene").prev;
-            if (prevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrev, "SegmentScene")) {
+            if (!regUtils.isNullEntity(prevPrevPrev) && hiber3d.hasComponents(prevPrevPrev, "SegmentScene")) {
               const prevPrevPrevPrev = hiber3d.getComponent(prevPrevPrev, "SegmentScene").prev;
-              if (prevPrevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrevPrev, "SegmentScene")) {
+              if (!regUtils.isNullEntity(prevPrevPrevPrev) && hiber3d.hasComponents(prevPrevPrevPrev, "SegmentScene")) {
                 const prevPrevPrevPrevPrev = hiber3d.getComponent(prevPrevPrevPrev, "SegmentScene").prev;
-                if (prevPrevPrevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrevPrevPrev, "SegmentScene")) {
+                if (!regUtils.isNullEntity(prevPrevPrevPrevPrev) && hiber3d.hasComponents(prevPrevPrevPrevPrev, "SegmentScene")) {
                   hiber3d.destroyEntity(prevPrevPrevPrevPrev);
                 }
               }
