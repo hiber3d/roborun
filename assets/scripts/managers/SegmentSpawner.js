@@ -370,11 +370,11 @@ const PICK_UP_DEPTH = {
 
     // usePowerup
     const powerupChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.POWERUP_CHANCE_AT_DIFFICULTY_0, this.POWERUP_CHANCE_AT_DIFFICULTY_1, difficulty);
-    usePowerup = powerupChanceSuccess;
+    usePowerup = !useFirstSegment && powerupChanceSuccess;
 
     // useCollectible
     const collectibleChanceSuccess = Math.random() < scalarUtils.lerpScalar(this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_0, this.COLLECTIBLE_CHANCE_AT_DIFFICULTY_1, difficulty);
-    useCollectible = !usePowerup && collectibleChanceSuccess;
+    useCollectible = !useFirstSegment && !usePowerup && collectibleChanceSuccess;
 
     // allows
     allowInclines = this.inclincesInARowCounter < this.MAX_INCLINES_IN_A_ROW;
@@ -618,13 +618,9 @@ const PICK_UP_DEPTH = {
   },
 
   onCreate() {
-    const newSegmentsSceneEntity = hiber3d.createEntity();
     const segmentsState = hiber3d.getSingleton("SegmentsState");
-    segmentsState.segmentsSceneEntity = newSegmentsSceneEntity;
+    segmentsState.segmentsSceneEntity = this.entity;
     hiber3d.setSingleton("SegmentsState", segmentsState);
-    hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Name");
-    hiber3d.addComponent(newSegmentsSceneEntity, "Hiber3D::Transform");
-    hiber3d.setComponent(newSegmentsSceneEntity, "Hiber3D::Name", "SegmentsScenes");
 
     var transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
     var newSegmentEntity = this.spawnSegmentScene(transform);

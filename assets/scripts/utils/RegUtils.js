@@ -29,12 +29,12 @@ module.exports.isAncestorOf = isAncestorOf;
 function getSiblings(entity) {
   const parent = hiber3d.getParent(entity);
   if (isNullEntity(parent)) {
-    hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no parent");
+    hiber3d.print("getSiblings() - entity:'" + entity + "' has no parent");
     return undefined;
   }
   const children = hiber3d.getChildren(parent);
   if (children.length === 0) {
-    hiber3d.print("getChildIndexOf() - parent:'" + parent + "' has no children");
+    hiber3d.print("getSiblings() - parent:'" + parent + "' has no children");
     return undefined;
   }
   return children;
@@ -58,14 +58,10 @@ function getChildIndexOf(entity) {
 module.exports.getChildIndexOf = getChildIndexOf;
 function isLastChild(entity) {
   const siblings = getSiblings(entity);
-  if (siblings === undefined) {
-    return undefined;
+  if (siblings === undefined || siblings.length === 0) {
+    return false;
   }
-  const childIndex = getChildIndexOf(entity);
-  if (childIndex === undefined) {
-    return undefined;
-  }
-  return childIndex === siblings.length - 1;
+  return siblings[siblings.length - 1] === entity;
 }
 module.exports.isLastChild = isLastChild;
 

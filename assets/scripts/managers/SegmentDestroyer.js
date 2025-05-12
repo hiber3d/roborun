@@ -24,7 +24,7 @@
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
       hiber3d.addComponent(entity, "Hiber3D::SceneRoot");
-      const sceneRoot = hiber3d.getComponent(entity, "");
+      const sceneRoot = hiber3d.getComponent(entity, "Hiber3D::SceneRoot");
       sceneRoot.scene = "glbs/primitives/cylinder.glb#scene0";
       hiber3d.setComponent(entity, "Hiber3D::SceneRoot", sceneRoot);
 
@@ -53,9 +53,9 @@
     const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
     const playerSplineData = hiber3d.getComponent(playerEntity, "SplineData");
     const playerPosition = playerSplineData.position;
-    const computedWorldTransform = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform");
-    const nextStepPosition = computedWorldTransform.position;
-    const nextStepRotation = computedWorldTransform.rotation;
+    const nextComputedWorldTransform = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform");
+    const nextStepPosition = nextComputedWorldTransform.position;
+    const nextStepRotation = nextComputedWorldTransform.rotation;
 
     if (this.playerPositionLastTick !== undefined) {
       const forwardVector = quatUtils.rotateVectorByQuaternion({ x: 0, y: 0, z: -1 }, nextStepRotation);
@@ -99,9 +99,10 @@
         if (newNextStepIndex === 0) {
           const currentSegmentEntity = hiber3d.getSingleton("SegmentsState").currentSegmentSceneEntity;
           const nextSegmentEntity = hiber3d.getComponent(currentSegmentEntity, "SegmentScene").next;
-          segmentsState.currentSegmentSceneEntity = nextSegmentEntity;
-          segmentsState.currentStepIndex = 0;
-          hiber3d.setSingleton("SegmentsState", segmentsState);
+          const segmentsState2 = hiber3d.getSingleton("SegmentsState");
+          segmentsState2.currentSegmentSceneEntity = nextSegmentEntity;
+          segmentsState2.currentStepIndex = 0;
+          hiber3d.setSingleton("SegmentsState", segmentsState2);
           hiber3d.writeEvent("NewSegmentEvent", new NewSegmentEvent());
         }
         if (!segUtils.isPlayerAtForward() && hiber3d.hasComponents(playerEntity, "OnPath")) {
