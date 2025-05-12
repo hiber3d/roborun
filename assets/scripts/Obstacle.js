@@ -38,8 +38,9 @@
 
           const deathScenePath = this.getDeathScenePath();
           if (deathScenePath !== undefined) {
-            hiber3d.call("changeScene", deathScenePath);
-            hiber3d.writeEvent("StartTransition", new StartTransition());
+            const changeSceneEvent = new ChangeScene();
+            changeSceneEvent.path = deathScenePath;
+            hiber3d.writeEvent("ChangeScene", changeSceneEvent);
           }
         }
       }
