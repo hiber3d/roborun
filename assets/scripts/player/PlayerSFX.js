@@ -1,5 +1,3 @@
-const COOL_DOWN_TIMER_MS = 1000;
-
 ({
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
@@ -14,18 +12,15 @@ const COOL_DOWN_TIMER_MS = 1000;
   },
   createAudioEntity(parent, name, asset, playSpeed, volume) {
     const sfxEntity = hiber3d.call("createEntityAsChild", parent);
-    hiber3d.addComponent(sfxEntity, "Hiber3D::AudioComponent");
+    hiber3d.addComponent(sfxEntity, "Hiber3D::AudioSource");
     hiber3d.addComponent(sfxEntity, "Hiber3D::Name"); // This is just to make it easier to trace which sounds have been added
-    hiber3d.addComponent(sfxEntity, "Hiber3D::Transform"); // AudioModule expects entities to have both AudioComponent and Transform
 
     hiber3d.setValue(sfxEntity, "Hiber3D::Name", name);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "asset", asset);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "playSpeed", playSpeed);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "volume", volume);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "asset", asset);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "playSpeed", playSpeed);
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "volume", volume);
 
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioComponent", "removeOnFinished", true); // Does this prevent SoLoud from causing crashes? Stay tuned! (pun intended)
-
-    //hiber3d.addScript(sfxEntity, "scripts/audio/KillOnAudioFinished.js");
+    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "playbackMode", 3);
   },
   onEvent(event, payload) {
     if (!this.shouldRun()) {

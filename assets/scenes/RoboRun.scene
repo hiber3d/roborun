@@ -1,1 +1,631 @@
-{"version":"1.0.0","root":{"id":9437470,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoboRun"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/state/AnimationLayers.js","scripts/state/Utils.js"]}}],"children":[{"id":11534364,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Managers.scene"},{"type":"Hiber3D::SceneRoot","data":{"scene":"scenes\\Managers.scene"}}],"children":[]},{"id":12584953,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Ui"}],"children":[{"id":15730171,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Stats"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/ui/Stats.js"]}},{"type":"Hiber3D::RmlUiDocumentInstance","data":{"document":"ui/ui.rml"}}],"children":[]},{"id":15730192,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"SFX"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/ui/SFX.js"]}}],"children":[]}]},{"id":22020380,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ChangeableScene"},{"type":"ChangeableScene"}],"children":[{"id":11534640,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ChangeableSceneRoot"},{"type":"Hiber3D::SceneRoot","data":{"scene":"scenes/RunningScene.scene"}}],"children":[]}]},{"id":11534374,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"BGM"}],"children":[{"id":11534346,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"bass_01"},{"type":"Hiber3D::AudioComponent","data":{"asset":"audio/music/bass_01.ogg","volume":0,"playSpeed":1,"isFinished":false,"isLooping":true,"isPaused":true,"isProtected":true,"keepPlayingWhenInaudible":true,"replayThisTick":false,"removeOnFinished":false}},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Music.js"]}}],"children":[]},{"id":11534341,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"bass_02"},{"type":"Hiber3D::AudioComponent","data":{"asset":"audio/music/bass_02.ogg","volume":0,"playSpeed":1,"isFinished":false,"isLooping":true,"isPaused":true,"isProtected":true,"keepPlayingWhenInaudible":true,"replayThisTick":false,"removeOnFinished":false}},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Music.js"]}}],"children":[]},{"id":10487529,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"bass_03"},{"type":"Hiber3D::AudioComponent","data":{"asset":"audio/music/bass_03.ogg","volume":0,"playSpeed":1,"isFinished":false,"isLooping":true,"isPaused":true,"isProtected":true,"keepPlayingWhenInaudible":true,"replayThisTick":false,"removeOnFinished":false}},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Music.js"]}}],"children":[]},{"id":17826128,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"drums_01"},{"type":"Hiber3D::AudioComponent","data":{"asset":"audio/music/drums_01.ogg","volume":1,"playSpeed":1,"isFinished":false,"isLooping":true,"isPaused":true,"isProtected":true,"keepPlayingWhenInaudible":true,"replayThisTick":false,"removeOnFinished":false}},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Music.js"]}}],"children":[]},{"id":12584757,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"drums_02"},{"type":"Hiber3D::AudioComponent","data":{"asset":"audio/music/drums_02.ogg","volume":0,"playSpeed":1,"isFinished":false,"isLooping":true,"isPaused":true,"isProtected":true,"keepPlayingWhenInaudible":true,"replayThisTick":false,"removeOnFinished":false}},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Music.js"]}}],"children":[]},{"id":12585030,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"strings_01"},{"type":"Hiber3D::AudioComponent","data":{"asset":"audio/music/strings_01.ogg","volume":0,"playSpeed":1,"isFinished":false,"isLooping":true,"isPaused":true,"isProtected":true,"keepPlayingWhenInaudible":true,"replayThisTick":false,"removeOnFinished":false}},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Music.js"]}}],"children":[]}]}]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 11534337,
+        "components": [
+            {
+                "type": "Hiber3D::Transform",
+                "data": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0,
+                        "w": 1
+                    },
+                    "scale": {
+                        "x": 1,
+                        "y": 1,
+                        "z": 1
+                    }
+                }
+            },
+            {
+                "type": "Hiber3D::Name",
+                "data": "RoboRun"
+            },
+            {
+                "type": "Hiber3D::ScriptInstance",
+                "data": {
+                    "scripts": [
+                        "scripts/state/AnimationLayers.js",
+                        "scripts/state/Utils.js"
+                    ]
+                }
+            }
+        ],
+        "children": [
+            {
+                "id": 11534430,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Managers.scene"
+                    },
+                    {
+                        "type": "Hiber3D::SceneRoot",
+                        "data": {
+                            "scene": "scenes\\Managers.scene"
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 11534338,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Ui"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 11534574,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Stats"
+                            },
+                            {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                    "scripts": [
+                                        "scripts/ui/Stats.js"
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::RmlUiDocumentInstance",
+                                "data": {
+                                    "document": "ui/ui.rml"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 11534576,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "SFX"
+                            },
+                            {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                    "scripts": [
+                                        "scripts/ui/SFX.js"
+                                    ]
+                                }
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 11534542,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "ChangeableScene"
+                    },
+                    {
+                        "type": "ChangeableScene"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 11534343,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "ChangeableSceneRoot"
+                            },
+                            {
+                                "type": "Hiber3D::SceneRoot",
+                                "data": {
+                                    "scene": "scenes/RunningScene.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 11534639,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "BGM"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 11534585,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "bass_01"
+                            },
+                            {
+                                "type": "Hiber3D::AudioSource",
+                                "data": {
+                                    "asset": "audio/music/bass_01.ogg",
+                                    "volume": 0,
+                                    "volumeFadeTime": 0.25,
+                                    "playSpeed": 1,
+                                    "playSpeedFadeTime": 0.25,
+                                    "playbackMode": 1,
+                                    "status": 0,
+                                    "isProtected": true,
+                                    "inaudibleBehavior": 0,
+                                    "loopPoint": 0,
+                                    "replayThisTick": false
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                    "scripts": [
+                                        "scripts/Music.js"
+                                    ]
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 11534346,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "bass_02"
+                            },
+                            {
+                                "type": "Hiber3D::AudioSource",
+                                "data": {
+                                    "asset": "audio/music/bass_02.ogg",
+                                    "volume": 0,
+                                    "volumeFadeTime": 0.25,
+                                    "playSpeed": 1,
+                                    "playSpeedFadeTime": 0.25,
+                                    "playbackMode": 1,
+                                    "status": 0,
+                                    "isProtected": true,
+                                    "inaudibleBehavior": 0,
+                                    "loopPoint": 0,
+                                    "replayThisTick": false
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                    "scripts": [
+                                        "scripts/Music.js"
+                                    ]
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 11534393,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "bass_03"
+                            },
+                            {
+                                "type": "Hiber3D::AudioSource",
+                                "data": {
+                                    "asset": "audio/music/bass_03.ogg",
+                                    "volume": 0,
+                                    "volumeFadeTime": 0.25,
+                                    "playSpeed": 1,
+                                    "playSpeedFadeTime": 0.25,
+                                    "playbackMode": 1,
+                                    "status": 0,
+                                    "isProtected": true,
+                                    "inaudibleBehavior": 0,
+                                    "loopPoint": 0,
+                                    "replayThisTick": false
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                    "scripts": [
+                                        "scripts/Music.js"
+                                    ]
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 11534551,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "drums_01"
+                            },
+                            {
+                                "type": "Hiber3D::AudioSource",
+                                "data": {
+                                    "asset": "audio/music/drums_01.ogg",
+                                    "volume": 1,
+                                    "volumeFadeTime": 0.25,
+                                    "playSpeed": 1,
+                                    "playSpeedFadeTime": 0.25,
+                                    "playbackMode": 1,
+                                    "status": 0,
+                                    "isProtected": true,
+                                    "inaudibleBehavior": 0,
+                                    "loopPoint": 0,
+                                    "replayThisTick": false
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                    "scripts": [
+                                        "scripts/Music.js"
+                                    ]
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 11534553,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "drums_02"
+                            },
+                            {
+                                "type": "Hiber3D::AudioSource",
+                                "data": {
+                                    "asset": "audio/music/drums_02.ogg",
+                                    "volume": 0,
+                                    "volumeFadeTime": 0.25,
+                                    "playSpeed": 1,
+                                    "playSpeedFadeTime": 0.25,
+                                    "playbackMode": 1,
+                                    "status": 0,
+                                    "isProtected": true,
+                                    "inaudibleBehavior": 0,
+                                    "loopPoint": 0,
+                                    "replayThisTick": false
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                    "scripts": [
+                                        "scripts/Music.js"
+                                    ]
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 11534344,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "strings_01"
+                            },
+                            {
+                                "type": "Hiber3D::AudioSource",
+                                "data": {
+                                    "asset": "audio/music/strings_01.ogg",
+                                    "volume": 0,
+                                    "volumeFadeTime": 0.25,
+                                    "playSpeed": 1,
+                                    "playSpeedFadeTime": 0.25,
+                                    "playbackMode": 1,
+                                    "status": 0,
+                                    "isProtected": true,
+                                    "inaudibleBehavior": 0,
+                                    "loopPoint": 0,
+                                    "replayThisTick": false
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::ScriptInstance",
+                                "data": {
+                                    "scripts": [
+                                        "scripts/Music.js"
+                                    ]
+                                }
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}
