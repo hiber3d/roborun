@@ -2,7 +2,7 @@
   POSITION_LERP_FACTOR: 0.5, // 0: follow spline, 1: follow player
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState").playerEntity;
-    return !regUtils.isNullEntity (playerEntity)  &&
+    return !regUtils.isNullEntity(playerEntity) &&
       hiber3d.hasComponents(playerEntity, "SplineData") &&
       hiber3d.hasComponents(playerEntity, "Hiber3D::Transform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D::Transform");

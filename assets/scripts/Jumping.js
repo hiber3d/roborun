@@ -37,20 +37,20 @@
 
     this.startHeight = hiber3d.getComponent(this.entity, "Hiber3D::Transform").position.y;
 
-    const cancelAnimation = new globalThis["CancelAnimation"]();
+    const cancelAnimation = new CancelAnimation();
     cancelAnimation.entity = this.entity; cancelAnimation.name = "slide";
     hiber3d.writeEvent("CancelAnimation", cancelAnimation);
 
-    const playAnimation = new globalThis["PlayAnimation"]();
+    const playAnimation = new PlayAnimation();
     playAnimation.entity = this.entity; playAnimation.name = "jump"; playAnimation.layer = ANIMATION_LAYER.ACTION; playAnimation.loop = false;
     hiber3d.writeEvent("PlayAnimation", playAnimation);
 
-    const queueAnimation = new globalThis["QueueAnimation"]();
+    const queueAnimation = new QueueAnimation();
     const playAnimation2 = queueAnimation.playAnimation;
     playAnimation2.entity = this.entity; playAnimation2.name = "fall"; playAnimation2.layer = ANIMATION_LAYER.FALL; playAnimation2.loop = true;
     hiber3d.writeEvent("QueueAnimation", queueAnimation);
 
-    const jumpedEvent = new globalThis["JumpedEvent"]();
+    const jumpedEvent = new JumpedEvent();
     jumpedEvent.entity = this.entity;
     hiber3d.writeEvent("JumpedEvent", jumpedEvent);
   },
@@ -69,15 +69,15 @@
     } else {
       // landed
 
-      const cancelAnimation = new globalThis["CancelAnimation"]();
+      const cancelAnimation = new CancelAnimation();
       cancelAnimation.entity = this.entity; cancelAnimation.name = "fall";
       hiber3d.writeEvent("CancelAnimation", cancelAnimation);
 
-      const playAnimation = new globalThis["PlayAnimation"]();
+      const playAnimation = new PlayAnimation();
       playAnimation.entity = this.entity; playAnimation.name = "land"; playAnimation.layer = ANIMATION_LAYER.ACTION; playAnimation.loop = false;
       hiber3d.writeEvent("PlayAnimation", playAnimation);
 
-      const landedEvent = new globalThis["LandedEvent"]();
+      const landedEvent = new LandedEvent();
       landedEvent.entity = this.entity;
       hiber3d.writeEvent("LandedEvent", landedEvent);
 
