@@ -70,7 +70,6 @@ static void startMusicWhenReady(
     }
 }
 
-
 class MainModule : public Hiber3D::Module {
 public:
     // TODO: Remove when we have proper config handling
