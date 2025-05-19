@@ -44,16 +44,12 @@
 #include <RoboRun/RoboRunModule.hpp>
 #include <stdio.h>
 
-// TODO: Remove before merging.
-// Needs to be in the game project though
 struct SyncedMusic {
     bool dummy;
 };
 
 // This allows multiple music tracks, each in their own AudioSource,
 // to start simultaneously when all of them have finished loading.
-// Use-case: RoboRun. 
-// TODO: Remove before merging.
 static void startMusicWhenReady(
     Hiber3D::Singleton<Hiber3D::Assets<Hiber3D::Audio>> assets,
     Hiber3D::View<Hiber3D::AudioSource, const SyncedMusic>        audioComponents) {
