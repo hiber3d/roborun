@@ -42,7 +42,6 @@
 #include <Hiber3D/WorldTransform/WorldTransformModule.hpp>
 
 #include <RoboRun/RoboRunModule.hpp>
-#include <stdio.h>
 
 struct SyncedMusic {
     bool dummy;
@@ -56,6 +55,10 @@ static void startMusicWhenReady(
     bool allLoaded = true;
 
     for (auto [entity, audio, syncedMusic] : audioComponents.each()) {
+        // Previously, wavs were loaded when the audio system ran for the first time.
+        // Now, audio assets are loaded when the scene is loaded, and with them, the wavs.
+        // So, once this function runs the first time, all audio assets should already be loaded.
+        // Sooo... do we even need this system anymore?
         if (audio->status == Hiber3D::AudioStatus::PAUSED && assets->get(audio->asset) == nullptr) {
             allLoaded = false;
         }
