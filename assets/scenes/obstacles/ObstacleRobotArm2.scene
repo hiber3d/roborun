@@ -1,164 +1,129 @@
 {
-  "version": "1.0.0",
-  "root": {
-    "id": 11534337,
-    "components": [
-      {
-        "type": "Hiber3D::Transform",
-        "data": {
-          "position": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "rotation": {
-            "x": 0,
-            "y": 0,
-            "z": 0,
-            "w": 1
-          },
-          "scale": {
-            "x": 1,
-            "y": 1,
-            "z": 1
-          }
-        }
-      },
-      {
-        "type": "Hiber3D::Name",
-        "data": "ObstacleRobotArm2"
-      }
-    ],
-    "children": [
-      {
-        "id": 11534338,
+    "version": "1.0.0",
+    "root": {
+        "id": 11534337,
         "components": [
-          {
-            "type": "Hiber3D::Transform",
-            "data": {
-              "position": {
-                "x": -4.47785,
-                "y": -0.208678,
-                "z": 0
-              },
-              "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0,
-                "w": 1
-              },
-              "scale": {
-                "x": 1,
-                "y": 1,
-                "z": 1
-              }
-            }
-          },
-          {
-            "type": "Hiber3D::Name",
-            "data": "Arm2"
-          },
-          {
-            "type": "Hiber3D::SceneRoot",
-            "data": {
-              "scene": "scenes/obstacles/RobotArm.scene"
-            }
-          },
-          {
-            "type": "Hiber3D::ScriptInstance",
-            "data": {
-              "scripts": [
-                "scripts/RandomAnimationStart.js"
-              ]
-            }
-          },
-          {
-            "type": "Hiber3D::AnimationBlend",
-            "data": {
-              "layers": [
-                {
-                  "animation": "glbs\\obstacles\\Robot_arm.glb#animation1",
-                  "playMode": 1,
-                  "blendMode": 0,
-                  "animationTime": 0,
-                  "weight": 1,
-                  "speed": 1,
-                  "animationDuration": 9000
-                },
-                {
-                  "animation": "",
-                  "playMode": 1,
-                  "blendMode": 0,
-                  "animationTime": 0,
-                  "weight": 0,
-                  "speed": 1,
-                  "animationDuration": 0
-                },
-                {
-                  "animation": "",
-                  "playMode": 1,
-                  "blendMode": 0,
-                  "animationTime": 0,
-                  "weight": 0,
-                  "speed": 1,
-                  "animationDuration": 0
-                },
-                {
-                  "animation": "",
-                  "playMode": 1,
-                  "blendMode": 0,
-                  "animationTime": 0,
-                  "weight": 0,
-                  "speed": 1,
-                  "animationDuration": 0
+            {
+                "type": "Hiber3D::AnimationBlend",
+                "data": {
+                    "layers": [
+                        {
+                            "animation": "glbs/obstacles/Robot_arm.glb#animation1",
+                            "playMode": 1,
+                            "blendMode": 0,
+                            "animationTime": 0,
+                            "weight": 1,
+                            "speed": 1,
+                            "animationDuration": 9000
+                        },
+                        {
+                            "animation": "",
+                            "playMode": 1,
+                            "blendMode": 0,
+                            "animationTime": 0,
+                            "weight": 0,
+                            "speed": 1,
+                            "animationDuration": 0
+                        },
+                        {
+                            "animation": "",
+                            "playMode": 1,
+                            "blendMode": 0,
+                            "animationTime": 0,
+                            "weight": 0,
+                            "speed": 1,
+                            "animationDuration": 0
+                        },
+                        {
+                            "animation": "",
+                            "playMode": 1,
+                            "blendMode": 0,
+                            "animationTime": 0,
+                            "weight": 0,
+                            "speed": 1,
+                            "animationDuration": 0
+                        }
+                    ]
                 }
-              ]
             }
-          }
         ],
         "children": [
-        ]
-      },
-      {
-        "id": 11534340,
-        "components": [
-          {
-            "type": "Hiber3D::Transform",
-            "data": {
-              "position": {
-                "x": -4.46924,
-                "y": -1.1359,
-                "z": 0
-              },
-              "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0,
-                "w": 1
-              },
-              "scale": {
-                "x": 1.8268,
-                "y": 0.463198,
-                "z": 1.8268
-              }
+            {
+                "id": 11534338,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": -4.47785,
+                                "y": -0.208678,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Arm2"
+                    },
+                    {
+                        "type": "Hiber3D::SceneRoot",
+                        "data": {
+                            "scene": "scenes/obstacles/RobotArm.scene"
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 11534340,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": -4.46924,
+                                "y": -1.1359,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1.8268,
+                                "y": 0.463198,
+                                "z": 1.8268
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Foundation"
+                    },
+                    {
+                        "type": "Hiber3D::Renderable",
+                        "data": {
+                            "mesh": "glbs/primitives/cylinder.glb#mesh0/primitive0",
+                            "material": "glbs/obstacles/Robot_arm.glb#material0",
+                            "castShadows": true
+                        }
+                    }
+                ],
+                "children": []
             }
-          },
-          {
-            "type": "Hiber3D::Name",
-            "data": "Foundation"
-          },
-          {
-            "type": "Hiber3D::Renderable",
-            "data": {
-              "mesh": "glbs/primitives/cylinder.glb#mesh0/primitive0",
-              "material": "glbs/obstacles/Robot_arm.glb#material0",
-              "castShadows": true
-            }
-          }
-        ],
-        "children": [
         ]
-      }
-    ]
-  }
+    }
 }

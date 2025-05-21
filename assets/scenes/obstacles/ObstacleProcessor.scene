@@ -1,1 +1,187 @@
-{"version":"1.0.0","root":{"id":32505856,"components":[{"type":"DeathScene","data":{"path":"scenes/deaths/Processor.scene"}},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/Obstacle.js"]}},{"type":"Hiber3D::RigidBody","data":{"type":0,"motionQuality":0,"collisionGroup":1,"collisionMask":16,"isSensor":true,"allowSleeping":true,"linearDamping":0.05,"angularDamping":0.05,"gravityFactor":1,"friction":0.2,"restitution":0,"mass":{"type":"Hiber3D::CalculateMassAndInertiaFromShapes","value":{}},"internalSettings":{"allowDynamicOrKinematic":true,"generateNonDynamicContacts":false,"applyGyroscopicForce":false,"maxLinearVelocity":500,"maxAngularVelocity":47.1239,"useManifoldReduction":true,"enhancedInternalEdgeRemoval":false}}}],"children":[{"id":30408947,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ProcessorModel"},{"type":"Hiber3D::SceneRoot","data":{"scene":"glbs\\obstacles\\Processor.glb#scene0"}}],"children":[]},{"id":35651601,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0.355852,"z":-1.07172},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Light"},{"type":"Hiber3D::Light","data":{"type":0,"color":{"x":0.0392157,"y":0.678431,"z":1},"strength":6,"radius":3,"openingAngleDegs":90}}],"children":[]},{"id":37748754,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":2.8,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Shape"},{"type":"Hiber3D::Shape","data":{"shape":{"type":"Hiber3D::BoxShape","value":{"extents":{"x":3,"y":2,"z":1},"density":1000}}}}],"children":[]}]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 32505856,
+        "components": [
+            {
+                "type": "DeathScene",
+                "data": {
+                    "path": "scenes/deaths/Processor.scene"
+                }
+            },
+            {
+                "type": "Hiber3D::ScriptInstance",
+                "data": {
+                    "scripts": [
+                        "scripts/Obstacle.js"
+                    ]
+                }
+            },
+            {
+                "type": "Hiber3D::RigidBody",
+                "data": {
+                    "type": 0,
+                    "motionQuality": 0,
+                    "collisionGroup": 1,
+                    "collisionMask": 16,
+                    "isSensor": true,
+                    "allowSleeping": true,
+                    "linearDamping": 0.05,
+                    "angularDamping": 0.05,
+                    "gravityFactor": 1,
+                    "friction": 0.2,
+                    "restitution": 0,
+                    "mass": {
+                        "type": "Hiber3D::CalculateMassAndInertiaFromShapes",
+                        "value": {}
+                    },
+                    "internalSettings": {
+                        "allowDynamicOrKinematic": true,
+                        "generateNonDynamicContacts": false,
+                        "applyGyroscopicForce": false,
+                        "maxLinearVelocity": 500,
+                        "maxAngularVelocity": 47.1239,
+                        "useManifoldReduction": true,
+                        "enhancedInternalEdgeRemoval": false
+                    }
+                }
+            }
+        ],
+        "children": [
+            {
+                "id": 30408947,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "ProcessorModel"
+                    },
+                    {
+                        "type": "Hiber3D::SceneRoot",
+                        "data": {
+                            "scene": "glbs\\obstacles\\Processor.glb#scene0"
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 35651601,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0.355852,
+                                "z": -1.07172
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Light"
+                    },
+                    {
+                        "type": "Hiber3D::Light",
+                        "data": {
+                            "type": 0,
+                            "color": {
+                                "x": 0.0392157,
+                                "y": 0.678431,
+                                "z": 1
+                            },
+                            "strength": 6,
+                            "radius": 3,
+                            "openingAngleDegs": 90
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 37748754,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 2.8,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Shape"
+                    },
+                    {
+                        "type": "Hiber3D::Shape",
+                        "data": {
+                            "shape": {
+                                "type": "Hiber3D::BoxShape",
+                                "value": {
+                                    "extents": {
+                                        "x": 3,
+                                        "y": 2,
+                                        "z": 1
+                                    },
+                                    "density": 1000
+                                }
+                            },
+                            "offset": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            }
+                        }
+                    }
+                ],
+                "children": []
+            }
+        ]
+    }
+}

@@ -553,7 +553,7 @@ const PICK_UP_DEPTH = {
       hiber3d.addComponent(pickUpEntity, "Hiber3D::SceneRoot");
       hiber3d.setValue(pickUpEntity, "Hiber3D::SceneRoot", "scene", pickUpPath);
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Name");
-      hiber3d.setValue(pickUpEntity, "Hiber3D::Name", "PickUpScene");
+      hiber3d.setValue(pickUpEntity, "Hiber3D::Name", pickUpPath);
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Transform");
       const x =
         pickUpLane === LANE.LEFT ? -1 :
