@@ -6,13 +6,20 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
 set(TARGET_NAME "GameTemplate")
 
+# include(FetchContent)
+# FetchContent_Declare(
+#     Hiber3D_zip
+#     DOWNLOAD_EXTRACT_TIMESTAMP FALSE
+#     URL https://cdn.hiberworld.com/hiber2/web/hib-33859-remove-extra-node/v0.112.0-hib-33859-remove-extra-node/Hiber3D_v0.112.0-hib-33859-remove-extra-node.0%2Bac9357ee0.zip
+# )
+# FetchContent_MakeAvailable(Hiber3D_zip)
+
+set(HBR_USE_WEBGPU true CACHE BOOL "" FORCE)
 include(FetchContent)
-FetchContent_Declare(
-    Hiber3D_zip
-    DOWNLOAD_EXTRACT_TIMESTAMP FALSE
-    URL https://cdn.hiberworld.com/hiber2/web/rc/v0.111.0-rc.3/Hiber3D_v0.111.0-rc.3.zip
-)
-FetchContent_MakeAvailable(Hiber3D_zip)
+FetchContent_Declare(Hiber2
+    GIT_REPOSITORY  https://github.com/HiberWorld/Hiber2.git
+    GIT_TAG         master)
+FetchContent_MakeAvailable(Hiber2)
 
 # Executable (Desktop for IDE auto-complete + Emscripten for web build)
 set(GAME_FILES
