@@ -1,8 +1,8 @@
 ({
   // TODO: Temorary solution until we can save modified script values in editor
   POWER_UPS: {
-    "AutoRun": "scripts/powerups/AutoRun.js",
-    "Magnet": "scripts/powerups/Magnet.js"
+    "scenes/powerups/PowerUpAutoRun.scene": "scripts/powerups/AutoRun.js",
+    "scenes/powerups/PowerUpMagnet.scene": "scripts/powerups/Magnet.js"
   },
   getScriptPath() {
     const name = hiber3d.getValue(this.entity, "Hiber3D::Name");
