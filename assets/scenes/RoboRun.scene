@@ -1,33 +1,8 @@
 {
     "version": "1.0.0",
     "root": {
-        "id": 11534337,
+        "id": 1048577,
         "components": [
-            {
-                "type": "Hiber3D::Transform",
-                "data": {
-                    "position": {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0
-                    },
-                    "rotation": {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0,
-                        "w": 1
-                    },
-                    "scale": {
-                        "x": 1,
-                        "y": 1,
-                        "z": 1
-                    }
-                }
-            },
-            {
-                "type": "Hiber3D::Name",
-                "data": "RoboRun"
-            },
             {
                 "type": "Hiber3D::ScriptInstance",
                 "data": {
@@ -40,7 +15,7 @@
         ],
         "children": [
             {
-                "id": 11534430,
+                "id": 1048578,
                 "components": [
                     {
                         "type": "Hiber3D::Transform",
@@ -77,7 +52,7 @@
                 "children": []
             },
             {
-                "id": 11534338,
+                "id": 1048579,
                 "components": [
                     {
                         "type": "Hiber3D::Transform",
@@ -107,7 +82,7 @@
                 ],
                 "children": [
                     {
-                        "id": 11534574,
+                        "id": 1048580,
                         "components": [
                             {
                                 "type": "Hiber3D::Transform",
@@ -152,7 +127,7 @@
                         "children": []
                     },
                     {
-                        "id": 11534576,
+                        "id": 1048581,
                         "components": [
                             {
                                 "type": "Hiber3D::Transform",
@@ -193,7 +168,7 @@
                 ]
             },
             {
-                "id": 11534542,
+                "id": 1048582,
                 "components": [
                     {
                         "type": "Hiber3D::Transform",
@@ -226,7 +201,7 @@
                 ],
                 "children": [
                     {
-                        "id": 11534343,
+                        "id": 1048608,
                         "components": [
                             {
                                 "type": "Hiber3D::Transform",
@@ -265,7 +240,7 @@
                 ]
             },
             {
-                "id": 11534639,
+                "id": 1048584,
                 "components": [
                     {
                         "type": "Hiber3D::Transform",
@@ -291,340 +266,15 @@
                     {
                         "type": "Hiber3D::Name",
                         "data": "BGM"
+                    },
+                    {
+                        "type": "Hiber3D::SceneRoot",
+                        "data": {
+                            "scene": "BGM.scene"
+                        }
                     }
                 ],
-                "children": [
-                    {
-                        "id": 11534585,
-                        "components": [
-                            {
-                                "type": "Hiber3D::Transform",
-                                "data": {
-                                    "position": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0
-                                    },
-                                    "rotation": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0,
-                                        "w": 1
-                                    },
-                                    "scale": {
-                                        "x": 1,
-                                        "y": 1,
-                                        "z": 1
-                                    }
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::Name",
-                                "data": "bass_01"
-                            },
-                            {
-                                "type": "Hiber3D::AudioSource",
-                                "data": {
-                                    "asset": "audio/music/bass_01.ogg",
-                                    "volume": 0,
-                                    "volumeFadeTime": 0.25,
-                                    "playSpeed": 1,
-                                    "playSpeedFadeTime": 0.25,
-                                    "playbackMode": 1,
-                                    "status": 0,
-                                    "isProtected": true,
-                                    "inaudibleBehavior": 0,
-                                    "loopPoint": 0,
-                                    "replayThisTick": false
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::ScriptInstance",
-                                "data": {
-                                    "scripts": [
-                                        "scripts/Music.js"
-                                    ]
-                                }
-                            }
-                        ],
-                        "children": []
-                    },
-                    {
-                        "id": 11534346,
-                        "components": [
-                            {
-                                "type": "Hiber3D::Transform",
-                                "data": {
-                                    "position": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0
-                                    },
-                                    "rotation": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0,
-                                        "w": 1
-                                    },
-                                    "scale": {
-                                        "x": 1,
-                                        "y": 1,
-                                        "z": 1
-                                    }
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::Name",
-                                "data": "bass_02"
-                            },
-                            {
-                                "type": "Hiber3D::AudioSource",
-                                "data": {
-                                    "asset": "audio/music/bass_02.ogg",
-                                    "volume": 0,
-                                    "volumeFadeTime": 0.25,
-                                    "playSpeed": 1,
-                                    "playSpeedFadeTime": 0.25,
-                                    "playbackMode": 1,
-                                    "status": 0,
-                                    "isProtected": true,
-                                    "inaudibleBehavior": 0,
-                                    "loopPoint": 0,
-                                    "replayThisTick": false
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::ScriptInstance",
-                                "data": {
-                                    "scripts": [
-                                        "scripts/Music.js"
-                                    ]
-                                }
-                            }
-                        ],
-                        "children": []
-                    },
-                    {
-                        "id": 11534393,
-                        "components": [
-                            {
-                                "type": "Hiber3D::Transform",
-                                "data": {
-                                    "position": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0
-                                    },
-                                    "rotation": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0,
-                                        "w": 1
-                                    },
-                                    "scale": {
-                                        "x": 1,
-                                        "y": 1,
-                                        "z": 1
-                                    }
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::Name",
-                                "data": "bass_03"
-                            },
-                            {
-                                "type": "Hiber3D::AudioSource",
-                                "data": {
-                                    "asset": "audio/music/bass_03.ogg",
-                                    "volume": 0,
-                                    "volumeFadeTime": 0.25,
-                                    "playSpeed": 1,
-                                    "playSpeedFadeTime": 0.25,
-                                    "playbackMode": 1,
-                                    "status": 0,
-                                    "isProtected": true,
-                                    "inaudibleBehavior": 0,
-                                    "loopPoint": 0,
-                                    "replayThisTick": false
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::ScriptInstance",
-                                "data": {
-                                    "scripts": [
-                                        "scripts/Music.js"
-                                    ]
-                                }
-                            }
-                        ],
-                        "children": []
-                    },
-                    {
-                        "id": 11534551,
-                        "components": [
-                            {
-                                "type": "Hiber3D::Transform",
-                                "data": {
-                                    "position": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0
-                                    },
-                                    "rotation": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0,
-                                        "w": 1
-                                    },
-                                    "scale": {
-                                        "x": 1,
-                                        "y": 1,
-                                        "z": 1
-                                    }
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::Name",
-                                "data": "drums_01"
-                            },
-                            {
-                                "type": "Hiber3D::AudioSource",
-                                "data": {
-                                    "asset": "audio/music/drums_01.ogg",
-                                    "volume": 1,
-                                    "volumeFadeTime": 0.25,
-                                    "playSpeed": 1,
-                                    "playSpeedFadeTime": 0.25,
-                                    "playbackMode": 1,
-                                    "status": 0,
-                                    "isProtected": true,
-                                    "inaudibleBehavior": 0,
-                                    "loopPoint": 0,
-                                    "replayThisTick": false
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::ScriptInstance",
-                                "data": {
-                                    "scripts": [
-                                        "scripts/Music.js"
-                                    ]
-                                }
-                            }
-                        ],
-                        "children": []
-                    },
-                    {
-                        "id": 11534553,
-                        "components": [
-                            {
-                                "type": "Hiber3D::Transform",
-                                "data": {
-                                    "position": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0
-                                    },
-                                    "rotation": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0,
-                                        "w": 1
-                                    },
-                                    "scale": {
-                                        "x": 1,
-                                        "y": 1,
-                                        "z": 1
-                                    }
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::Name",
-                                "data": "drums_02"
-                            },
-                            {
-                                "type": "Hiber3D::AudioSource",
-                                "data": {
-                                    "asset": "audio/music/drums_02.ogg",
-                                    "volume": 0,
-                                    "volumeFadeTime": 0.25,
-                                    "playSpeed": 1,
-                                    "playSpeedFadeTime": 0.25,
-                                    "playbackMode": 1,
-                                    "status": 0,
-                                    "isProtected": true,
-                                    "inaudibleBehavior": 0,
-                                    "loopPoint": 0,
-                                    "replayThisTick": false
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::ScriptInstance",
-                                "data": {
-                                    "scripts": [
-                                        "scripts/Music.js"
-                                    ]
-                                }
-                            }
-                        ],
-                        "children": []
-                    },
-                    {
-                        "id": 11534344,
-                        "components": [
-                            {
-                                "type": "Hiber3D::Transform",
-                                "data": {
-                                    "position": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0
-                                    },
-                                    "rotation": {
-                                        "x": 0,
-                                        "y": 0,
-                                        "z": 0,
-                                        "w": 1
-                                    },
-                                    "scale": {
-                                        "x": 1,
-                                        "y": 1,
-                                        "z": 1
-                                    }
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::Name",
-                                "data": "strings_01"
-                            },
-                            {
-                                "type": "Hiber3D::AudioSource",
-                                "data": {
-                                    "asset": "audio/music/strings_01.ogg",
-                                    "volume": 0,
-                                    "volumeFadeTime": 0.25,
-                                    "playSpeed": 1,
-                                    "playSpeedFadeTime": 0.25,
-                                    "playbackMode": 1,
-                                    "status": 0,
-                                    "isProtected": true,
-                                    "inaudibleBehavior": 0,
-                                    "loopPoint": 0,
-                                    "replayThisTick": false
-                                }
-                            },
-                            {
-                                "type": "Hiber3D::ScriptInstance",
-                                "data": {
-                                    "scripts": [
-                                        "scripts/Music.js"
-                                    ]
-                                }
-                            }
-                        ],
-                        "children": []
-                    }
-                ]
+                "children": []
             }
         ]
     }
