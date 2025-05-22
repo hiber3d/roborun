@@ -182,6 +182,9 @@ export const useGameState = () => {
         meters: Math.round(score.meters),
         ...player,
       };
+
+      window.postMessage(JSON.stringify({ action: "hiber3d_postScore", payload }));
+
       const result = await fetch("https://filipengberg-gameleaderboardapi.web.val.run/submit", {
         method: "POST",
         headers: {
