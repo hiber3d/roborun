@@ -113,10 +113,21 @@ const reducer = (state: State, action: Actions): State => {
 };
 
 const loadPlayerName = (): Player => {
+  // Get from telegram user
   if (telegramUser?.username && telegramUser?.id) {
     return {
       name: telegramUser.username,
       uuid: telegramUser.id.toString(),
+    };
+  }
+
+  // Get from search username search param
+  const urlParams = new URLSearchParams(window.location.search);
+  const name = urlParams.get("username");
+  if (name) {
+    return {
+      name,
+      uuid: name,
     };
   }
 
