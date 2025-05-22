@@ -130,7 +130,7 @@ export const LeaderboardContent = ({
                     <Column className="text-end">Multiplier</Column>
                   </tr>
                 </thead>
-                <tbody className="overflow-auto">
+                <tbody className="overflow-auto overflow-x-hidden">
                   {state.leaderboard.leaderboard.map((entry, index) => (
                     <EntryItem
                       key={entry.id}
