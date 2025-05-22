@@ -2,6 +2,7 @@ import { useHiber3D } from "./../hiber3d";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { Button } from "roborun/Button";
+import { Fullscreen } from "roborun/Fullscreen";
 import { LeaderboardButton } from "roborun/LeaderboardButton";
 import { Mute } from "roborun/Mute";
 import { Player } from "roborun/useGameState";
@@ -32,7 +33,10 @@ export const MainMenu = ({ player, fetchRank, showLeaderboard }: MainMenuProps) 
     >
       <div className="flex justify-between items-start">
         <LeaderboardButton player={player} showLeaderboard={showLeaderboard} />
-        <Mute />
+        <div className="flex gap-2 items-center">
+          <Fullscreen />
+          <Mute />
+        </div>
       </div>
       <motion.div
         initial={{ scale: 0 }}
