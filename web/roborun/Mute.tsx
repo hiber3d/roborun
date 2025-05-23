@@ -1,5 +1,6 @@
 import { useAudio } from "audio/useAudio";
 import { Volume2, VolumeX } from "lucide-react";
+import { ToggleButton } from "roborun/ToggleButton";
 
 export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
   const { music, sfx } = useAudio();
@@ -16,26 +17,8 @@ export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
   const size = 32;
 
   return (
-    <div
-      className="pointer-events-auto flex flex-col gap-2 text-roborun shrink-0 roborun-button"
-      style={
-        minimal
-          ? { position: "absolute", top: "2px", right: "2px", color: "white" }
-          : {
-              aspectRatio: "1.208",
-              width: "80px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundImage: "url(ui/menus/ButtonB.webp)",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-            }
-      }
-      onClick={toggleMute}
-      onPointerDown={() => sfx.play("buttonpress")}
-    >
+    <ToggleButton onClick={toggleMute} minimal={minimal}>
       {isMuted ? <VolumeX size={size} /> : <Volume2 size={size} />}
-    </div>
+    </ToggleButton>
   );
 };
