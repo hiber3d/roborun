@@ -13,6 +13,9 @@ const COOL_DOWN_TIMER_MS = 1000;
     hiber3d.addEventListener(this.entity, "BroadcastPerfectCollectiblePickup");
   },
   createAudioEntity(parent, name, asset, playSpeed, volume) {
+    // TODO: Move this to the C++ source?
+    hiber3d.setValue("Hiber3D::AudioSettings", "maxActiveVoices", 32);
+
     const sfxEntity = hiber3d.call("createEntityAsChild", parent);
     hiber3d.addComponent(sfxEntity, "Hiber3D::AudioSource");
     hiber3d.addComponent(sfxEntity, "Hiber3D::Name"); // This is just to make it easier to trace which sounds have been added
@@ -23,7 +26,6 @@ const COOL_DOWN_TIMER_MS = 1000;
     hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "volume", volume);
 
     hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "playbackMode", 3);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "inaudibleBehavior", 2);
 
   },
   onEvent(event, payload) {

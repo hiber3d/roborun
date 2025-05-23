@@ -10,10 +10,6 @@
     hiber3d.addEventListener(this.entity, "BroadcastPlayerStats");
     hiber3d.addEventListener(this.entity, "GameRestarted");
   },
-  update() {
-    const audioStats = hiber3d.getValue("Hiber3D::AudioStats");
-    hiber3d.print("Audio Stats: " + JSON.stringify(audioStats));
-  },
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;
