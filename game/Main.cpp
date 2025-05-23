@@ -55,9 +55,9 @@ static void startMusicWhenReady(
     bool allLoaded = true;
 
     for (auto [entity, audio, syncedMusic] : audioComponents.each()) {
-        // Previously, wavs were loaded when the audio system ran for the first time.
-        // Now, audio assets are loaded when the scene is loaded, and with them, the wavs.
-        // So, once this function runs the first time, all audio assets should already be loaded.
+        // Previously, audio were loaded and decoded when the audio played for the first time.
+        // Now, audio assets are loaded and decoded when the scene is loaded.
+        // So, once *this* system runs the first time, all audio assets should already be ready to play.
         // Sooo... do we even need this system anymore?
         if (audio->status == Hiber3D::AudioStatus::PAUSED && assets->get(audio->asset) == nullptr) {
             allLoaded = false;
