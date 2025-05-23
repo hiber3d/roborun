@@ -17,8 +17,7 @@
 
         hiber3d.writeEvent("BroadcastCollectiblePickup", {});
 
-        const parent = regUtils.getParent(this.entity); // danger zone, replace after [HIB-33859]
-        regUtils.destroyEntity(parent);
+        regUtils.destroyEntity(this.entity);
       }
     }
   }
