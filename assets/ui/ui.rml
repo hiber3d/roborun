@@ -73,6 +73,34 @@
 			z-index: 100;
 			opacity: 1;
 			}
+
+			@media (max-width: 1300px)  {
+				body {
+					font-size: 20px;
+				}
+
+				.ui {
+					gap: 16px;
+					margin-bottom: 10px;
+				}
+
+				.points {
+					font-size: 60px;
+				}
+
+				h2 {
+					font-size: 22px;
+				}
+
+				.multiplier-container {
+					width: 45px;
+					height: 160px;
+				}
+
+				progress {
+					width: 42px;
+				}
+			}
 		</style>
 
         
