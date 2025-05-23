@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
     Hiber3D_zip
     DOWNLOAD_EXTRACT_TIMESTAMP FALSE
-    URL https://cdn.hiberworld.com/hiber2/web/hib-34417-inaudiblebehavior/v0.113.0-hib-34417-inaudiblebehavior/Hiber3D_v0.113.0-hib-34417-inaudiblebehavior.0%2Bf96b96fa4.zip
+    URL https://cdn.hiber3d.com/engine/web/dev/Hiber3D_v0.113.0-dev.zip
 )
 FetchContent_MakeAvailable(Hiber3D_zip)
 
