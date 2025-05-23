@@ -117,8 +117,14 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
 
     context.registerSingleton<GameState>();
 
+    if (context.isModuleRegistered<Hiber3D::EditorModule>()) {
+        context.getModule<Hiber3D::EditorModule>().registerComponent<DeathScene>(context);
+    }
+
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<GameState>(context);
+
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<DeathScene>(context);
 
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<RestartGame>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<GameRestarting>(context);
@@ -134,5 +140,9 @@ void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/SegUtils.js");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/SplineUtils.js");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerRequiredScript(context, "scripts/utils/VectorUtils.js");
+    }
+
+    if (context.isModuleRegistered<Hiber3D::SceneModule>()) {
+        context.getModule<Hiber3D::SceneModule>().registerComponent<DeathScene>(context);
     }
 }
