@@ -113,10 +113,21 @@ const reducer = (state: State, action: Actions): State => {
 };
 
 const loadPlayerName = (): Player => {
+  // Get from telegram user
   if (telegramUser?.username && telegramUser?.id) {
     return {
       name: telegramUser.username,
       uuid: telegramUser.id.toString(),
+    };
+  }
+
+  // Get from search username search param
+  const urlParams = new URLSearchParams(window.location.search);
+  const name = urlParams.get("username");
+  if (name) {
+    return {
+      name,
+      uuid: name,
     };
   }
 
@@ -171,6 +182,9 @@ export const useGameState = () => {
         meters: Math.round(score.meters),
         ...player,
       };
+
+      window.postMessage(JSON.stringify({ action: "hiber3d_postScore", payload }));
+
       const result = await fetch("https://filipengberg-gameleaderboardapi.web.val.run/submit", {
         method: "POST",
         headers: {

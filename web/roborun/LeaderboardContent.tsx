@@ -99,63 +99,61 @@ export const LeaderboardContent = ({
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0 }}
-          className="flex flex-col max-w-[100%] select-none"
+          className="flex flex-col max-w-[100%] max-h-[100%] select-none"
         >
-          <div className="">
-            <div className="flex flex-col relative">
-              <div
-                className="absolute w-full h-full z-1 pointer-events-none"
+          <div className="flex flex-col relative">
+            <div
+              className="absolute w-full h-full z-1 pointer-events-none"
+              style={{
+                borderImageSource: "url(ui/menus/LeaderboardFrame.webp)",
+                borderImageSlice: "220 fill",
+                borderImageRepeat: "stretch",
+                borderWidth: "90px",
+              }}
+            />
+            <div className="m-[30px] mx-[34px] relative overflow-hidden">
+              <table
+                className="leaderboard-table"
                 style={{
-                  borderImageSource: "url(ui/menus/LeaderboardFrame.webp)",
-                  borderImageSlice: "220 fill",
-                  borderImageRepeat: "stretch",
-                  borderWidth: "90px",
+                  gridTemplateRows: `1fr fit-content(${state.mode === "leaderboard" ? "50vh" : "42vh"}) ${
+                    showStickyFooter && "1fr"
+                  }`,
                 }}
-              />
-              <div className="m-[30px] mx-[34px] relative overflow-hidden">
-                <table
-                  className="leaderboard-table"
-                  style={{
-                    gridTemplateRows: `1fr fit-content(${state.mode === "leaderboard" ? "56vh" : "45vh"}) ${
-                      showStickyFooter && "1fr"
-                    }`,
-                  }}
-                >
-                  <thead>
-                    <tr className="font-bold">
-                      <Column>Rank</Column>
-                      <Column>Player</Column>
-                      <Column className="text-end">Points</Column>
-                      <Column className="text-end">Meters</Column>
-                      <Column className="text-end">Collectibles</Column>
-                      <Column className="text-end">Multiplier</Column>
-                    </tr>
-                  </thead>
-                  <tbody className="overflow-auto">
-                    {state.leaderboard.leaderboard.map((entry, index) => (
-                      <EntryItem
-                        key={entry.id}
-                        entry={entry}
-                        rank={index + 1}
-                        isNewEntry={entry.id === state.leaderboard.newEntry?.id}
-                        newEntryName={state.leaderboard.newEntry?.player_name}
-                      />
-                    ))}
-                  </tbody>
-                  {showStickyFooter && state.leaderboard.newEntry && (
-                    <tfoot>
-                      <EntryItem
-                        entry={state.leaderboard.newEntry}
-                        isNewEntry={true}
-                        newEntryName={state.leaderboard.newEntry.player_name}
-                      />
-                    </tfoot>
-                  )}
-                </table>
-              </div>
+              >
+                <thead>
+                  <tr className="font-bold">
+                    <Column>Rank</Column>
+                    <Column>Player</Column>
+                    <Column className="text-end">Points</Column>
+                    <Column className="text-end">Meters</Column>
+                    <Column className="text-end">Collectibles</Column>
+                    <Column className="text-end">Multiplier</Column>
+                  </tr>
+                </thead>
+                <tbody className="overflow-auto overflow-x-hidden">
+                  {state.leaderboard.leaderboard.map((entry, index) => (
+                    <EntryItem
+                      key={entry.id}
+                      entry={entry}
+                      rank={index + 1}
+                      isNewEntry={entry.id === state.leaderboard.newEntry?.id}
+                      newEntryName={state.leaderboard.newEntry?.player_name}
+                    />
+                  ))}
+                </tbody>
+                {showStickyFooter && state.leaderboard.newEntry && (
+                  <tfoot>
+                    <EntryItem
+                      entry={state.leaderboard.newEntry}
+                      isNewEntry={true}
+                      newEntryName={state.leaderboard.newEntry.player_name}
+                    />
+                  </tfoot>
+                )}
+              </table>
             </div>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center sm:flex-row justify-center">
             {state.mode === "leaderboardWithRetry" && (
               <>
                 <Button
