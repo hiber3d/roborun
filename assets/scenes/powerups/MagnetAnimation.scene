@@ -1,1 +1,121 @@
-{"version":"1.0.0","root":{"id":9438569,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"MagnetAnimation"}],"children":[{"id":10485761,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Magnet"},{"type":"Hiber3D::SceneRoot","data":{"scene":"glbs/vfx/Magnet_animation.glb#scene0"}},{"type":"Hiber3D::AnimationBlend","data":{"layers":[{"animation":"glbs/vfx/Magnet_animation.glb#animation0","playMode":1,"blendMode":0,"animationTime":0,"weight":1,"speed":1,"animationDuration":4000},{"animation":"","playMode":1,"blendMode":0,"animationTime":0,"weight":0,"speed":1,"animationDuration":0},{"animation":"","playMode":1,"blendMode":0,"animationTime":0,"weight":0,"speed":1,"animationDuration":0},{"animation":"","playMode":1,"blendMode":0,"animationTime":0,"weight":0,"speed":1,"animationDuration":0}]}}],"children":[]}]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 9438569,
+        "components": [],
+        "children": [
+            {
+                "id": 10485762,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Magnet"
+                    },
+                    {
+                        "type": "Hiber3D::AnimationBlend",
+                        "data": {
+                            "layers": [
+                                {
+                                    "animation": "glbs/vfx/Magnet_animation.glb#animation0",
+                                    "playMode": 1,
+                                    "blendMode": 0,
+                                    "animationTime": 0,
+                                    "weight": 1,
+                                    "speed": 1,
+                                    "animationDuration": 4000
+                                },
+                                {
+                                    "animation": "",
+                                    "playMode": 1,
+                                    "blendMode": 0,
+                                    "animationTime": 0,
+                                    "weight": 0,
+                                    "speed": 1,
+                                    "animationDuration": 0
+                                },
+                                {
+                                    "animation": "",
+                                    "playMode": 1,
+                                    "blendMode": 0,
+                                    "animationTime": 0,
+                                    "weight": 0,
+                                    "speed": 1,
+                                    "animationDuration": 0
+                                },
+                                {
+                                    "animation": "",
+                                    "playMode": 1,
+                                    "blendMode": 0,
+                                    "animationTime": 0,
+                                    "weight": 0,
+                                    "speed": 1,
+                                    "animationDuration": 0
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 10485761,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Magnet"
+                            },
+                            {
+                                "type": "Hiber3D::SceneRoot",
+                                "data": {
+                                    "scene": "glbs/vfx/Magnet_animation.glb#scene0"
+                                }
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}
