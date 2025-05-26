@@ -1,6 +1,7 @@
 import { useHiber3D, Stats } from "./../hiber3d";
 import { useCallback, useEffect, useReducer } from "react";
 import { postScores } from "utils/postScore";
+import { sendGaEvent } from "utils/ga";
 import { telegramUser } from "utils/telegram";
 
 type Score = Stats;
@@ -242,6 +243,7 @@ export const useGameState = () => {
       return;
     }
     const listener = api.onPlayerDied((payload) => {
+      sendGaEvent("player_died");
       const pendingScore = {
         ...payload.stats,
       };
