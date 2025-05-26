@@ -6,6 +6,7 @@ import { Fullscreen } from "roborun/Fullscreen";
 import { LeaderboardButton } from "roborun/LeaderboardButton";
 import { Mute } from "roborun/Mute";
 import { Player } from "roborun/useGameState";
+import { sendGaEvent } from "utils/ga";
 
 type MainMenuProps = {
   player?: Player;
@@ -22,6 +23,7 @@ export const MainMenu = ({ player, fetchRank, showLeaderboard }: MainMenuProps) 
 
   const handlePlayButtonClick = () => {
     api?.writeStartInput();
+    sendGaEvent("press_start_button");
   };
 
   return (
