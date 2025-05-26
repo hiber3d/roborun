@@ -36,8 +36,8 @@ export const MainMenu = ({ player, fetchRank, showLeaderboard }: MainMenuProps) 
       <div className="flex justify-between items-start">
         <LeaderboardButton player={player} showLeaderboard={showLeaderboard} />
         <div className="flex gap-2 items-center">
-          <Fullscreen />
           <Mute />
+          <Fullscreen />
         </div>
       </div>
       <motion.div
