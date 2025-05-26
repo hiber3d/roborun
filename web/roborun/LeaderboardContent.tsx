@@ -4,6 +4,7 @@ import { LucideLoader2 } from "lucide-react";
 import { Button } from "roborun/Button";
 import { twMerge } from "tailwind-merge";
 import { Entry, State } from "./useGameState";
+import { sendGaEvent } from "utils/ga";
 
 const Column = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <td className={twMerge("p-2 py-[6px]", className)}>{children}</td>
@@ -157,11 +158,12 @@ export const LeaderboardContent = ({
             {state.mode === "leaderboardWithRetry" && (
               <>
                 <Button
-                  onClick={() =>
+                  onClick={() => {
                     api?.writeRestartGame({
                       autoStart: true,
-                    })
-                  }
+                    });
+                    sendGaEvent("press_play_again_button");
+                  }}
                 >
                   Play again
                 </Button>
