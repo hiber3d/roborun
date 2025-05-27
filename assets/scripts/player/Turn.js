@@ -27,7 +27,7 @@ export default class {
     }
     if (hiber3d.hasComponents(this.entity, "OnPath")) {
       const rotation = hiber3d.getComponent(this.entity, "Hiber3D_Transform", "rotation");
-      hiber3d.setValue("GameState", "direction", quatUtils.vectorFromQuaternion(rotation));
+      hiber3d.setSingleton("GameState", "direction", quatUtils.vectorFromQuaternion(rotation));
     }
   }
   onEvent(event, payload) {
@@ -52,7 +52,7 @@ export default class {
         const rotation = hiber3d.getComponent(this.entity, "Hiber3D_ComputedWorldTransform", "rotation");
         const direction = quatUtils.vectorFromQuaternion(rotation);
         const newDirection = vectorUtils.rotateVectorAroundY(direction, 45 * (playerTurnsLeft ? -1 : 1));
-        hiber3d.setValue("GameState", "direction", newDirection);
+        hiber3d.setSingleton("GameState", "direction", newDirection);
         regUtils.removeComponentIfPresent(this.entity, "OnPath");
       }
     }

@@ -45,7 +45,7 @@ export default class {
     const fov = hiber3d.getComponent(this.entity, "Hiber3D_Camera", "fovDegrees");
     if (fov !== this.fovGoal) {
       const newFov = scalarUtils.lerpScalar(fov, this.fovGoal, this.FOV_LERP_SPEED);
-      hiber3d.setValue(this.entity, "Hiber3D_Camera", "fovDegrees", newFov);
+      hiber3d.setComponent(this.entity, "Hiber3D_Camera", "fovDegrees", newFov);
     }
     // Zoom
     if (hasAutoRun) {
@@ -59,7 +59,7 @@ export default class {
       const newZoomFactor = newZoom / this.zoomCurrent;
       const position = hiber3d.getComponent(this.entity, "Hiber3D_Transform", "position");
       const newPosition = vectorUtils.multiplyVector(position, newZoomFactor);
-      hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", newPosition);
+      hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", newPosition);
       if (!hiber3d.getSingleton("GameState", "paused")) {
       hiber3d.print(
         "zoomCurrent: " + this.zoomCurrent +

@@ -15,13 +15,13 @@ export default class {
     if (event === "RestartInput") {
       hiber3d.writeEvent("RestartGame", {});
     } else if (event === "StartInput" && !this.hasStarted){
-      hiber3d.setValue("GameState", "paused", false);
+      hiber3d.setSingleton("GameState", "paused", false);
       hiber3d.writeEvent("BroadcastGameStarted", {})
       this.hasStarted = true;
     } else if (event === "PauseInput") {
-      hiber3d.setValue("GameState", "paused", true);
+      hiber3d.setSingleton("GameState", "paused", true);
     } else if (event === "UnpauseInput") {
-      hiber3d.setValue("GameState", "paused", false);
+      hiber3d.setSingleton("GameState", "paused", false);
     }
 
     if (event === "GameRestarted") {

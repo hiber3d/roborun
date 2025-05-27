@@ -137,16 +137,16 @@ export function findEntityWithComponentInHierarchy(entity, component) {
 export function createChildToParent(parent) {
   const child = hiber3d.createEntity();
   hiber3d.addComponent(child, "Hiber3D_Parent");
-  hiber3d.setValue(child, "Hiber3D_Parent", "parent", parent);
+  hiber3d.setComponent(child, "Hiber3D_Parent", "parent", parent);
   if (hiber3d.hasComponents(parent, "Hiber3D_Children") !== true) {
     hiber3d.addComponent(parent, "Hiber3D_Children");
   }
   var entities = hiber3d.getComponent(parent, "Hiber3D_Children", "entities");
   if (entities === undefined) {
-    hiber3d.setValue(parent, "Hiber3D_Children", "entities", [child]);
+    hiber3d.setComponent(parent, "Hiber3D_Children", "entities", [child]);
   } else {
     entities.push(child);
-    hiber3d.setValue(parent, "Hiber3D_Children", "entities", entities);
+    hiber3d.setComponent(parent, "Hiber3D_Children", "entities", entities);
   }
   return child;
 }

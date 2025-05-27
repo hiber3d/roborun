@@ -10,7 +10,7 @@ export default class {
 
     var animationBlend = hiber3d.getComponent(this.entity, "Hiber3D_AnimationBlend");
     animationBlend.layers[0].speed *= newFactor;
-    hiber3d.setValue(this.entity, "Hiber3D_AnimationBlend", animationBlend);
+    hiber3d.setComponent(this.entity, "Hiber3D_AnimationBlend", animationBlend);
   }
   onCreate() {
     this.setSpeedFactor(true);

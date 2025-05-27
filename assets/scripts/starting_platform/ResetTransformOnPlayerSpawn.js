@@ -26,7 +26,7 @@ export default class {
     const normalizedScaledRotation = quatUtils.normalizeQuaternion(scaledRotation);
     transform.rotation = normalizedScaledRotation;
 
-    hiber3d.setValue(this.entity, "Hiber3D_Transform", transform);
+    hiber3d.setComponent(this.entity, "Hiber3D_Transform", transform);
   }
   onEvent(event, payload) {
   }

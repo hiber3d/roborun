@@ -43,13 +43,13 @@ export default class {
     var playerEntity = regUtils.createChildToParent(this.entity);
 
     hiber3d.addComponent(playerEntity, "Hiber3D_Transform");
-    hiber3d.setValue(playerEntity, "Hiber3D_Transform", transformToSpawnPlayerAt);
+    hiber3d.setComponent(playerEntity, "Hiber3D_Transform", transformToSpawnPlayerAt);
 
     hiber3d.addComponent(playerEntity, "Hiber3D_Name");
-    hiber3d.setValue(playerEntity, "Hiber3D_Name", "StartingPlayerSceneRoot");
+    hiber3d.setComponent(playerEntity, "Hiber3D_Name", "StartingPlayerSceneRoot");
 
     hiber3d.addComponent(playerEntity, "Hiber3D_SceneRoot");
-    hiber3d.setValue(playerEntity, "Hiber3D_SceneRoot", "scene", this.PLAYER_SCENE);
+    hiber3d.setComponent(playerEntity, "Hiber3D_SceneRoot", "scene", this.PLAYER_SCENE);
 
     regUtils.destroyEntity(startingRobotEntityToReplace);
   }

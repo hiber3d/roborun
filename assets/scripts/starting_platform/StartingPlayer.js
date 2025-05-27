@@ -15,7 +15,7 @@ export default class {
     if (worldPosition.x > 0) {
       hiber3d.removeScript(this.entity, "scripts/Move.js");
       worldPosition.x = 0;
-      hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", regUtils.worldToLocalPosition(this.entity, worldPosition));
+      hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", regUtils.worldToLocalPosition(this.entity, worldPosition));
     }
   }
   onEvent(event, payload) {

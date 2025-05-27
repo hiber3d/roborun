@@ -28,7 +28,7 @@ export default class {
 
     const lerpedTiltFactor = this.lerpedTiltFactorPreviousTick + (this.tiltFactor - this.lerpedTiltFactorPreviousTick) * dt / this.SECONDS_TO_TILT;
     regUtils.addComponentIfNotPresent(this.entity, "TiltFactor")
-    hiber3d.setValue(this.entity, "TiltFactor", "factor", lerpedTiltFactor);
+    hiber3d.setComponent(this.entity, "TiltFactor", "factor", lerpedTiltFactor);
 
     if (
       this.tiltFactor < 0 && this.tiltFactorPreviousTick === 0 ||

@@ -10,7 +10,7 @@ export default class {
   onEvent(event, payload) {
     if (event === "KillPlayer") {
       if (hiber3d.getSingleton("GameState", "alive") === true) {
-        hiber3d.setValue("GameState", "alive", false);
+        hiber3d.setSingleton("GameState", "alive", false);
 
         const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
         const stats = hiber3d.getComponent(playerEntity, "Stats");

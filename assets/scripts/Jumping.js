@@ -55,13 +55,13 @@ export default class {
     const newJumpHeight = this.startHeight + this.getDeltaHeight();
 
     if (roboRunUtils.isInAir(this.entity, newJumpHeight)) {
-      hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", "y", newJumpHeight);
+      hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", "y", newJumpHeight);
     } else {
       // landed
       hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "fall" });
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
       hiber3d.writeEvent("LandedEvent", { entity: this.entity });
-      hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
+      hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
       
       hiber3d.removeScript(this.entity, "scripts/Jumping.js");
     }

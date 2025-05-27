@@ -42,17 +42,17 @@ export default class {
       const newDiveHeight = this.diveStartHeight + newDeltaHeight;
 
       if (roboRunUtils.isInAir(this.entity, newDiveHeight)) {
-        hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", "y", newDiveHeight);
+        hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", "y", newDiveHeight);
       } else {
         // landed
         hiber3d.writeEvent("LandedEvent", { entity: this.entity });
-        hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
+        hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
       }
 
       this.timeSpentDivingInAir += dt;
     } else {
       this.timeSpentDivingOnGround += dt;
-        hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
+        hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
       if (this.timeSpentDivingOnGround >= this.DIVE_DURATION) {
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "dive" });
         hiber3d.removeScript(this.entity, "scripts/Diving.js");

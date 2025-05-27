@@ -9,7 +9,7 @@ export default class {
   teleport() {
     const worldTransform = hiber3d.getComponent(this.entity, "Hiber3D_ComputedWorldTransform", "position");
     const newPosition = { x: this.RECEIVER_X, y: worldTransform.y, z: worldTransform.z };
-    hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", regUtils.worldToLocalPosition(this.entity, newPosition));
+    hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", regUtils.worldToLocalPosition(this.entity, newPosition));
   }
   onCreate() {
   }

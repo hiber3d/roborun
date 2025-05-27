@@ -39,7 +39,7 @@ export default class {
           const newWorldPosition = vectorUtils.addVectors(worldPosition, toMove);
           const newLocalPosition = regUtils.worldToLocalPosition(this.entity, newWorldPosition);
 
-          hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", newLocalPosition);
+          hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", newLocalPosition);
         }
 
         this.MAGNET_ATTRACTION_SPEED += this.MAGNET_ATTRACTION_SPEED_ACCELERATION * this.latestDeltaTime;

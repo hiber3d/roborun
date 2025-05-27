@@ -16,7 +16,7 @@ export default class {
         var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
         stats.collectibles += 1;
         stats.multiplier = 1 + stats.collectibles / 100;
-        hiber3d.setValue(playerEntity, "Stats", stats);
+        hiber3d.setComponent(playerEntity, "Stats", stats);
 
         hiber3d.writeEvent("BroadcastCollectiblePickup", {});
 

@@ -28,8 +28,8 @@ export default class {
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
       hiber3d.addComponent(entity, "Hiber3D_SceneRoot");
-      hiber3d.setValue(entity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
-      hiber3d.setValue(entity, "Hiber3D_Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
+      hiber3d.setComponent(entity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.setComponent(entity, "Hiber3D_Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
     }
   }
 
@@ -84,16 +84,16 @@ export default class {
       //);
       if (hasPassed) {
         const newStepIndex = regUtils.getChildIndexOf(nextStepEntity);
-        hiber3d.setValue("SegmentsState", "currentStepIndex", newStepIndex);
-        hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", 0);
+        hiber3d.setSingleton("SegmentsState", "currentStepIndex", newStepIndex);
+        hiber3d.setSingleton("SegmentsState", "distanceFromCurrentStep", 0);
         hiber3d.writeEvent("NewStepEvent");
         const newNextStepEntity = segUtils.getNextStepEntity();
         const newNextStepIndex = regUtils.getChildIndexOf(newNextStepEntity);
         if (newNextStepIndex === 0) {
           const currentSegmentEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
           const nextSegmentEntity = hiber3d.getComponent(currentSegmentEntity, "SegmentScene", "next");
-          hiber3d.setValue("SegmentsState", "currentSegmentSceneEntity", nextSegmentEntity);
-          hiber3d.setValue("SegmentsState", "currentStepIndex", 0);
+          hiber3d.setSingleton("SegmentsState", "currentSegmentSceneEntity", nextSegmentEntity);
+          hiber3d.setSingleton("SegmentsState", "currentStepIndex", 0);
           hiber3d.writeEvent("NewSegmentEvent");
         }
         if (!segUtils.isPlayerAtForward() && hiber3d.hasComponents(playerEntity, "OnPath")) {

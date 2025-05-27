@@ -22,7 +22,7 @@ export default class {
     const progress = Math.cos(this.timeSinceStart / this.REVOLUTION_TIME);
     var rotation = { x: 0, y: 0, z: 0, w: 1 };
     rotation = quatUtils.rotateQuaternionAroundY(rotation, progress);
-    hiber3d.setValue(this.entity, "Hiber3D_Transform", "rotation", rotation);
+    hiber3d.setComponent(this.entity, "Hiber3D_Transform", "rotation", rotation);
     this.timeSinceStart += dt;
   }
 

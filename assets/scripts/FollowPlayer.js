@@ -24,13 +24,13 @@ export default class {
     const playerPosition = hiber3d.getComponent(playerEntity, "Hiber3D_Transform", "position");
     const splinePosition = playerSplineData.position;
     const lerpedPosition = vectorUtils.lerpVector(splinePosition, playerPosition, this.POSITION_LERP_FACTOR);
-    hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", lerpedPosition);
+    hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", lerpedPosition);
 
     // Rotation
     const isPlayerOnPath = hiber3d.hasComponents(playerEntity, "OnPath");
     if (isPlayerOnPath) {
       const flatRotation = quatUtils.flattenQuaternion(playerSplineData.rotation);
-      hiber3d.setValue(this.entity, "Hiber3D_Transform", "rotation", flatRotation);
+      hiber3d.setComponent(this.entity, "Hiber3D_Transform", "rotation", flatRotation);
     }
   }
   onEvent(event, payload) {

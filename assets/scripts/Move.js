@@ -15,7 +15,7 @@ export default class {
     }
     const position = hiber3d.getComponent(this.entity, "Hiber3D_Transform", "position");
     const newPosition = vectorUtils.addVectors(position, vectorUtils.multiplyVector(this.DIRECTION, this.SPEED * dt)); 
-    hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", newPosition);
+    hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", newPosition);
   }
   onEvent(event, payload) {
   }
