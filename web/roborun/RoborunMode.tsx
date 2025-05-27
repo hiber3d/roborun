@@ -7,7 +7,6 @@ import { MainMenu } from "./MainMenu";
 import { useGameState } from "./useGameState";
 import { useTouchControls } from "./useTouchControls";
 import { Fullscreen } from "roborun/Fullscreen";
-import { Fragment } from "react/jsx-runtime";
 import { RoborunUI } from "roborun/RoborunUI";
 
 const urlParams = new URLSearchParams(window.location.search);
