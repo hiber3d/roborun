@@ -117,7 +117,7 @@ export const LeaderboardContent = ({
               <table
                 className="leaderboard-table"
                 style={{
-                  gridTemplateRows: `1fr fit-content(${state.mode === "leaderboard" ? "50vh" : "42vh"}) ${
+                  gridTemplateRows: `1fr fit-content(${state.mode === "leaderboard" ? "40vh" : "40vh"}) ${
                     showStickyFooter && "1fr"
                   }`,
                 }}
