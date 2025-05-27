@@ -34,7 +34,6 @@
     if (this.timeSinceStarted >= (this.MAGNET_DURATION - this.MAGNET_EFFECT_SCALING_DURATION)) {
       const newScale = 1 - ((this.timeSinceStarted - (this.MAGNET_DURATION - this.MAGNET_EFFECT_SCALING_DURATION)) / this.MAGNET_EFFECT_SCALING_DURATION);
       hiber3d.setValue(this.magnetEffectEntity, "Hiber3D::Transform", "scale", { x: newScale, y: newScale, z: newScale });
-      hiber3d.print("newScale: '" + newScale + "'");
     }
   },
   shouldRun() {

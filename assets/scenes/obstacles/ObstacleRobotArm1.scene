@@ -45,6 +45,14 @@
                         }
                     ]
                 }
+            },
+            {
+                "type": "Hiber3D::ScriptInstance",
+                "data": {
+                    "scripts": [
+                        "scripts/RandomAnimationStart.js"
+                    ]
+                }
             }
         ],
         "children": [
