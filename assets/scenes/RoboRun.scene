@@ -45,7 +45,7 @@
                     {
                         "type": "Hiber3D::SceneRoot",
                         "data": {
-                            "scene": "scenes\\Managers.scene"
+                            "scene": "scenes/Managers.scene"
                         }
                     }
                 ],
