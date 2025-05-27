@@ -1,8 +1,6 @@
 ﻿import * as vectorUtils from "scripts/utils/VectorUtils.js";
 
-const module = module || {};
-module.exports = module.exports || {};
-function formatQuaternion(q) {
+export function formatQuaternion(q) {
   if (!q) return 'null';
   return '{' +
     '"x":' + q.x.toFixed(2) + ',' +
@@ -11,25 +9,25 @@ function formatQuaternion(q) {
     '"w":' + q.w.toFixed(2) +
     '}';
 }
-module.exports.formatQuaternion = formatQuaternion;
-function getQuaternionLength(q) {
+
+export function getQuaternionLength(q) {
   return Math.sqrt(q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w);
 }
-module.exports.getQuaternionLength = getQuaternionLength;
-function getQuaternionDistance(q1, q2) {
+
+export function getQuaternionDistance(q1, q2) {
   const dx = q2.x - q1.x;
   const dy = q2.y - q1.y;
   const dz = q2.z - q1.z;
   const dw = q2.w - q1.w;
   return Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
 }
-module.exports.getQuaternionDistance = getQuaternionDistance;
-function normalizeQuaternion(q) {
+
+export function normalizeQuaternion(q) {
   const length = getQuaternionLength(q);
   return divideQuaternion(q, length);
 }
-module.exports.normalizeQuaternion = normalizeQuaternion;
-function inverseQuaternion(q) {
+
+export function inverseQuaternion(q) {
   // For unit quaternions, the inverse is the same as the conjugate
   // First, calculate the squared length
   const lengthSq = q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w;
@@ -43,32 +41,32 @@ function inverseQuaternion(q) {
   // Calculate the inverse by dividing conjugate by lengthSq
   return {x: -q.x / lengthSq, y: -q.y / lengthSq, z: -q.z / lengthSq, w: q.w / lengthSq};
 }
-module.exports.inverseQuaternion = inverseQuaternion;
-function absQuaternion(q) {
+
+export function absQuaternion(q) {
   return { x: Math.abs(q.x), y: Math.abs(q.y), z: Math.abs(q.z), w: Math.abs(q.w) };
 }
-module.exports.absQuaternion = absQuaternion;
-function addQuaternions(q1, q2) {
+
+export function addQuaternions(q1, q2) {
   return { x: q1.x + q2.x, y: q1.y + q2.y, z: q1.z + q2.z, w: q1.w + q2.w };
 }
-module.exports.addQuaternions = addQuaternions;
-function subtractQuaternions(q1, q2) {
+
+export function subtractQuaternions(q1, q2) {
   return { x: q1.x - q2.x, y: q1.y - q2.y, z: q1.z - q2.z, w: q1.w - q2.w };
 }
-module.exports.subtractQuaternions = subtractQuaternions;
-function divideQuaternion(q, s) {
+
+export function divideQuaternion(q, s) {
   if (s === 0) {
     hiber3d.print("divideVector() - division by zero");
     return { x: 0, y: 0, z: 0, w: 0 };
   }
   return { x: q.x / s, y: q.y / s, z: q.z / s, w: q.w / s };
 }
-module.exports.divideQuaternion = divideQuaternion;
-function multiplyQuaternion(q1, s) {
+
+export function multiplyQuaternion(q1, s) {
   return { x: q1.x * s, y: q1.y * s, z: q1.z * s, w: q1.w * s, };
 }
-module.exports.multiplyQuaternion = multiplyQuaternion;
-function multiplyQuaternions(q1, q2) {
+
+export function multiplyQuaternions(q1, q2) {
   return {
     w: q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z,
     x: q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y,
@@ -76,18 +74,16 @@ function multiplyQuaternions(q1, q2) {
     z: q1.w * q2.z + q1.x * q2.y - q1.y * q2.x + q1.z * q2.w,
   };
 }
-module.exports.multiplyQuaternions = multiplyQuaternions;
 
-function dotProductQuaternion(q1, q2) {
+export function dotProductQuaternion(q1, q2) {
   return q1.x * q2.x + q1.y * q2.y + q1.z * q2.z + q1.w * q2.w;
 }
-module.exports.dotProductQuaternion = dotProductQuaternion;
-function quaternionElementWiseMultiplication(q1, q2) {
+
+export function quaternionElementWiseMultiplication(q1, q2) {
   return { x: q1.x * q2.x, y: q1.y * q2.y, z: q1.z * q2.z, w: q1.w * q2.w }
 }
-module.exports.quaternionElementWiseMultiplication = quaternionElementWiseMultiplication;
 
-function lerpQuaternionWithDistance(q1, q2, d) {
+export function lerpQuaternionWithDistance(q1, q2, d) {
   const dot = q1.x * q2.x + q1.y * q2.y + q1.z * q2.z + q1.w * q2.w;
   const q2Adjusted = dot < 0 ? { x: -q2.x, y: -q2.y, z: -q2.z, w: -q2.w } : q2;
   
@@ -123,9 +119,8 @@ function lerpQuaternionWithDistance(q1, q2, d) {
     };
   }
 }
-module.exports.lerpQuaternionWithDistance = lerpQuaternionWithDistance;
 
-function flattenQuaternion(q) {
+export function flattenQuaternion(q) {
   const forward = forwardVectorFromQuaternion(q);
 
   const flatForward = {
@@ -151,9 +146,8 @@ function flattenQuaternion(q) {
     w: Math.cos(halfAngle)
   };
 }
-module.exports.flattenQuaternion = flattenQuaternion;
 
-function rotateQuaternionAroundY(q, progress) {
+export function rotateQuaternionAroundY(q, progress) {
   const angle = progress * 2 * Math.PI;
   const halfAngle = angle / 2;
   const rotationQ = { x: 0, y: Math.sin(halfAngle), z: 0, w: Math.cos(halfAngle) };
@@ -164,9 +158,8 @@ function rotateQuaternionAroundY(q, progress) {
     w: rotationQ.w * q.w - rotationQ.y * q.y
   };
 };
-module.exports.rotateQuaternionAroundY = rotateQuaternionAroundY;
 
-function rotateVectorByQuaternion(v, q) {
+export function rotateVectorByQuaternion(v, q) {
   const qNorm = normalizeQuaternion(q);
 
   const qx = qNorm.x, qy = qNorm.y, qz = qNorm.z, qw = qNorm.w;
@@ -180,9 +173,8 @@ function rotateVectorByQuaternion(v, q) {
 
   return result;
 }
-module.exports.rotateVectorByQuaternion = rotateVectorByQuaternion;
 
-function quaternionFromVector(direction) {
+export function quaternionFromVector(direction) {
   // Input validation
   if (!direction || typeof direction !== 'object') {
     throw new Error('Vector must be an object');
@@ -267,9 +259,9 @@ function quaternionFromVector(direction) {
   };
 
   return result;
-} module.exports.quaternionFromVector = quaternionFromVector;
+}
 
-function vectorFromQuaternion(quaternion) {
+export function vectorFromQuaternion(quaternion) {
   // Input validation
   if (!quaternion || typeof quaternion !== 'object') {
     throw new Error('Quaternion must be an object');
@@ -321,11 +313,9 @@ function vectorFromQuaternion(quaternion) {
     }
   );
 };
-module.exports.vectorFromQuaternion = vectorFromQuaternion;
-function forwardVectorFromQuaternion(q) {
+export function forwardVectorFromQuaternion(q) {
   const x = 2 * (q.x * q.z + q.w * q.y);
   const y = 2 * (q.y * q.z - q.w * q.x);
   const z = 1 - 2 * (q.x * q.x + q.y * q.y);
   return { x: x, y: y, z: z };
 }
-module.exports.forwardVectorFromQuaternion = forwardVectorFromQuaternion;

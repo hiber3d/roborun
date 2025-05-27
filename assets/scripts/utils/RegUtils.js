@@ -2,17 +2,13 @@
 import * as quatUtils from "scripts/utils/QuatUtils.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 
-const module = module || {};
-module.exports = module.exports || {};
+export const NULL_ENTITY = 4294967295;
 
-const NULL_ENTITY = 4294967295;
-
-function isNullEntity(entity) {
+export function isNullEntity(entity) {
   return entity === NULL_ENTITY || entity === undefined || entity === null;
 }
-module.exports.isNullEntity = isNullEntity;
 
-function isAncestorOf(ancestor, entity) {
+export function isAncestorOf(ancestor, entity) {
   if (ancestor === undefined || entity === undefined) {
     return false;
   }
@@ -28,25 +24,22 @@ function isAncestorOf(ancestor, entity) {
     return isAncestorOf(ancestor, parent);
   }
 }
-module.exports.isAncestorOf = isAncestorOf;
 
-function getParent(entity) {
+export function getParent(entity) {
   if (hiber3d.hasComponents(entity, "Hiber3D::Parent") !== true) {
     return undefined;
   }
   return hiber3d.getComponent(entity, "Hiber3D::Parent", "parent");
 }
-module.exports.getParent = getParent;
 
-function getChildren(entity) {
+export function getChildren(entity) {
   if (hiber3d.hasComponents(entity, "Hiber3D::Children") !== true) {
     return undefined;
   }
   return hiber3d.getComponent(entity, "Hiber3D::Children", "entities");
 }
-module.exports.getChildren = getChildren;
 
-function getSiblings(entity) {
+export function getSiblings(entity) {
   const parent = getParent(entity);
   if (parent === undefined) {
     hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no parent");
@@ -58,9 +51,8 @@ function getSiblings(entity) {
   }
   return hiber3d.getComponent(parent, "Hiber3D::Children", "entities");
 }
-module.exports.getSiblings = getSiblings;
 
-function getChildIndexOf(entity) {
+export function getChildIndexOf(entity) {
   const siblings = getSiblings(entity);
   if (siblings === undefined) {
     hiber3d.print("getChildIndexOf() - entity:'" + entity + "' has no siblings");
@@ -74,8 +66,7 @@ function getChildIndexOf(entity) {
   return undefined;
 }
 
-module.exports.getChildIndexOf = getChildIndexOf;
-function isLastChild(entity) {
+export function isLastChild(entity) {
   const siblings = getSiblings(entity);
   if (siblings === undefined) {
     return undefined;
@@ -86,9 +77,8 @@ function isLastChild(entity) {
   }
   return childIndex === Object.keys(siblings).length - 1;
 }
-module.exports.isLastChild = isLastChild;
 
-function findEntityWithNameAmongAncestors(entity, name) {
+export function findEntityWithNameAmongAncestors(entity, name) {
   if (entity === undefined) {
     return undefined;
   }
@@ -104,9 +94,8 @@ function findEntityWithNameAmongAncestors(entity, name) {
   }
   return undefined;
 }
-module.exports.findEntityWithNameAmongAncestors = findEntityWithNameAmongAncestors;
 
-function findEntityWithNameAmongDescendants(entity, name) {
+export function findEntityWithNameAmongDescendants(entity, name) {
   if (entity === undefined) {
     return undefined;
   }
@@ -126,9 +115,8 @@ function findEntityWithNameAmongDescendants(entity, name) {
   }
   return undefined;
 }
-module.exports.findEntityWithNameAmongDescendants = findEntityWithNameAmongDescendants;
 
-function findEntityWithComponentInHierarchy(entity, component) {
+export function findEntityWithComponentInHierarchy(entity, component) {
   if (entity === undefined) {
     return undefined;
   }
@@ -146,9 +134,8 @@ function findEntityWithComponentInHierarchy(entity, component) {
   }
   return undefined;
 }
-module.exports.findEntityWithComponentInHierarchy = findEntityWithComponentInHierarchy;
 
-function createChildToParent(parent) {
+export function createChildToParent(parent) {
   const child = hiber3d.createEntity();
   hiber3d.addComponent(child, "Hiber3D::Parent");
   hiber3d.setValue(child, "Hiber3D::Parent", "parent", parent);
@@ -164,55 +151,48 @@ function createChildToParent(parent) {
   }
   return child;
 }
-module.exports.createChildToParent = createChildToParent;
 
-function destroyEntity(entity) {
+export function destroyEntity(entity) {
   if (!entity) {
     return null;
   }
   hiber3d.destroyEntity(entity);
 }
-module.exports.destroyEntity = destroyEntity;
 
-function addComponentIfNotPresent(entity, component) {
+export function addComponentIfNotPresent(entity, component) {
   if (hiber3d.hasComponents(entity, component) === false) {
     hiber3d.addComponent(entity, component);
   }
   return hiber3d.getComponent(entity, component);
 }
-module.exports.addComponentIfNotPresent = addComponentIfNotPresent;
 
-function removeComponentIfPresent(entity, component) {
+export function removeComponentIfPresent(entity, component) {
   if (hiber3d.hasComponents(entity, component) === true) {
     hiber3d.removeComponent(entity, component);
   }
 }
-module.exports.removeComponentIfPresent = removeComponentIfPresent;
 
-function addOrReplaceComponent(entity, component) {
+export function addOrReplaceComponent(entity, component) {
   if (hiber3d.hasComponents(entity, component) === true) {
     hiber3d.removeComponent(entity, component);
   }
   hiber3d.addComponent(entity, component);
 }
-module.exports.addOrReplaceComponent = addOrReplaceComponent;
 
-function removeScriptIfPresent(entity, script) {
+export function removeScriptIfPresent(entity, script) {
   if (hiber3d.hasScripts(entity, script) === true) {
     hiber3d.removeScript(entity, script);
   }
 }
-module.exports.removeScriptIfPresent = removeScriptIfPresent;
 
-function addOrReplaceScript(entity, script) {
+export function addOrReplaceScript(entity, script) {
   if (hiber3d.hasScripts(entity, script) === true) {
     hiber3d.removeScript(entity, script);
   }
   return hiber3d.addScript(entity, script);
 }
-module.exports.addOrReplaceScript = addOrReplaceScript;
 
-function worldToLocalPosition(entity, worldPos) {
+export function worldToLocalPosition(entity, worldPos) {
   if (entity === undefined || worldPos === undefined) {
     return worldPos;
   }
@@ -241,4 +221,3 @@ function worldToLocalPosition(entity, worldPos) {
 
   return posInParentSpace;
 }
-module.exports.worldToLocalPosition = worldToLocalPosition;
