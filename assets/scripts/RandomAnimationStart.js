@@ -1,4 +1,4 @@
-export class {
+export default class {
   speedFactor = 0;
   speedingTicksLeft = 1;
   setSpeedFactor(increase){

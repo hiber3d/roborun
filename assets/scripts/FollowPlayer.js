@@ -1,7 +1,7 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as quatUtils from "scripts/utils/QuatUtils.js";
 
-export class {
+export default class {
   POSITION_LERP_FACTOR = 0.5; // 0: follow spline, 1: follow player
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");

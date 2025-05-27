@@ -3,7 +3,7 @@ import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 
-export class {
+export default class {
   timeSinceJumped = 0;
   startHeight = 0;
   shouldRun() {

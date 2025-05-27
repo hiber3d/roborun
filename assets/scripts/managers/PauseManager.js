@@ -1,4 +1,4 @@
-export class {
+export default class {
   hasStarted = false;
   onCreate() {
     hiber3d.addEventListener(this.entity, "StartInput");

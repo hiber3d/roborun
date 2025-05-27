@@ -1,6 +1,6 @@
 import ANIMATION_LAYER from "../state/AnimationLayers.js";
 
-export class {
+export default class {
   onCreate() {
     hiber3d.addEventListener(this.entity, "KillPlayer");
     hiber3d.addEventListener(this.entity, "PlayerDied");

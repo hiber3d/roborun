@@ -1,4 +1,4 @@
-export class {
+export default class {
   onCreate() {
   }
   update(dt) {

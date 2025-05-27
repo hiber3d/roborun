@@ -1,7 +1,7 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 
-export class {
+export default class {
   FOV_LERP_SPEED = 0.05;
   FOV_FACTOR_AUTO_RUN = 1.5;
 

@@ -1,6 +1,6 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 
-export class {
+export default class {
   DIRECTION = { x: 1, y: 0, z: 0 };
   SPEED = 1.5;
 

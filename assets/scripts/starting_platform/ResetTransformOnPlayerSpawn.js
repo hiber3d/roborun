@@ -1,7 +1,7 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as quatUtils from "scripts/utils/QuatUtils.js";
 
-export class {
+export default class {
   POSITION_SPEED = 0.01;
   ROTATION_SPEED = 0.05;
   shouldLerpToZero() {

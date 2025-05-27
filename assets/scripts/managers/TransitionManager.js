@@ -1,6 +1,6 @@
 import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 
-export class {
+export default class {
   TRANSITION_DURATION = 0.1;
 
   transitionDirection = -1;

@@ -1,6 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 
-export class {
+export default class {
   PLAYER_SCENE = "scenes/Player.scene";
   DELAY = 2;
 

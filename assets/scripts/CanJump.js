@@ -1,7 +1,7 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 
-export class {
+export default class {
   // Pre-jump is the concept of the player queueing up a potential future jump while currently in a state unable to jump.
   // Consider the player falling from a previous jump and then attempting a new jump right before hitting the ground.
   // This effect reduces the perception of missed inputs.

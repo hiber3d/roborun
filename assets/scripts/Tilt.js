@@ -2,7 +2,7 @@ import ANIMATION_LAYER from "../state/AnimationLayers.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 
-export class {
+export default class {
   TILT_ENABLED = true;
   SECONDS_TO_TILT = 0.1;
 

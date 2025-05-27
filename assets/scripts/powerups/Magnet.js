@@ -1,6 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 
-export class {
+export default class {
   MAGNET_DURATION = 7.5;
   OUTRO_DURATION = 2;
   MAGNET_COLLIDER_OFFSET_HEIGHT = 1.0;

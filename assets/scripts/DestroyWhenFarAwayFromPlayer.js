@@ -1,7 +1,7 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 
-export class {
+export default class {
   DISTANCE = 50;
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");

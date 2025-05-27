@@ -1,6 +1,6 @@
 import ANIMATION_LAYER from "../state/AnimationLayers.js";
 
-export class {
+export default class {
   pausedLastTick = true;
   onCreate() {
   }

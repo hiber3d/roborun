@@ -1,7 +1,7 @@
 import ANIMATION_LAYER from "../state/AnimationLayers.js";
 
 // TODO: Remove after [HIB-33915]
-export class {
+export default class {
   onCreate() {
     hiber3d.writeEvent("PlayerCreated", { entity: this.entity });
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "idle", layer: ANIMATION_LAYER.BASE, loop: true });

@@ -80,7 +80,7 @@ const PICK_UP_DEPTH = {
   MID: 1,
 };
 
-export class {
+export default class {
   NUM_SEGMENTS = 13;
 
   // Straights

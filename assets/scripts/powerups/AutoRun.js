@@ -2,7 +2,7 @@ import ANIMATION_LAYER from "../state/AnimationLayers.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 
-export class {
+export default class {
   AUTO_RUN_DURATION = 3; // full duration
   AUTO_RUN_ASCEND_DURATION = 0.3; // fly up
   AUTO_RUN_DIP_DURATION = 0.3; // slight dip before power-up ends

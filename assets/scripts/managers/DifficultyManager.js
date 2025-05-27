@@ -1,4 +1,4 @@
-export class {
+export default class {
   TIME_TO_DIFFICULTY_1 = 60;
 
   onCreate() {

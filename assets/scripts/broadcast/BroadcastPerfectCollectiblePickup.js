@@ -1,6 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 
-export class {
+export default class {
     onCreate() {}
 
     update() {

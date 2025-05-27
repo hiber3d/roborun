@@ -5,7 +5,7 @@ import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 import * as splineUtils from "scripts/utils/SplineUtils.js";
 
-export class {
+export default class {
   RUN_SPEED = 15;
   RUN_AIR_FACTOR = 0.45;
   AUTO_RUN_FACTOR = 2;

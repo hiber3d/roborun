@@ -3,7 +3,7 @@ import * as quatUtils from "scripts/utils/QuatUtils.js";
 // TODO: Does this still work?
 latestRotationOffset = 0;
 
-export class {
+export default class {
   REVOLUTION_TIME = 2;
 
   timeSinceStart = 0;

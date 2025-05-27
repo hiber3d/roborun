@@ -1,6 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 
-export class {
+export default class {
   SENDER_X = 12;
   RECEIVER_X = -9;
   shouldRun() {

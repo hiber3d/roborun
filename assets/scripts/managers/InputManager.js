@@ -14,7 +14,7 @@ const KEYS = {
   TOGGLE_AUTO_TURN_DEBUG: 38, // T
 };
 
-export class {
+export default class {
   onCreate() {
     hiber3d.addEventListener(this.entity, "SwipedUp");
     hiber3d.addEventListener(this.entity, "SwipedDown");

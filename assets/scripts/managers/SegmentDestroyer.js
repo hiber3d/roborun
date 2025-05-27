@@ -3,7 +3,7 @@ import * as quatUtils from "scripts/utils/QuatUtils.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 
-export class {
+export default class {
   DEBUG_SEGMENTS = false;
 
   playerPositionLastTick = undefined;

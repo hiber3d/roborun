@@ -1,7 +1,7 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 
-export class {
+export default class {
   // TODO: Temorary solution until we can save modified script values in editor
   OBSTACLE_TYPES = {
     "Arm1": "scenes/deaths/Arm1.scene",

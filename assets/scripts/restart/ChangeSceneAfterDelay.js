@@ -1,4 +1,4 @@
-export class {
+export default class {
   DELAY = 3.5;
   SCENE = "scenes/RunningScene.scene";
 

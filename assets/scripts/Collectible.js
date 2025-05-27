@@ -1,7 +1,7 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 
-export class {
+export default class {
   onCreate() {
     hiber3d.addEventListener(this.entity, "Hiber3D::CollisionStarted");
   }

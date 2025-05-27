@@ -2,7 +2,7 @@ import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 
-export class {
+export default class {
   // TODO: Move these into magnet and keep some factor here?
   MAGNET_ATTRACTION_SPEED = 30;
   MAGNET_ATTRACTION_SPEED_ACCELERATION = 25;

@@ -1,6 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 
-export class {
+export default class {
   DEFAULT_COLLIDER_HEIGHT = 0.75;
   REDUCED_COLLIDER_HEIGHT = -0.4;
 

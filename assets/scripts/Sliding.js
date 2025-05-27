@@ -1,7 +1,7 @@
 import ANIMATION_LAYER from "../state/AnimationLayers.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 
-export class {
+export default class {
   SLIDE_DURATION = 0.5;
   timeSpentSliding = 0;
   shouldRun() {

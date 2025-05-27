@@ -1,6 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 
-export class {
+export default class {
   PLAYER_SCENE = "scenes/starting_platform/StartingPlayer.scene";
 
   MOST_SUITABLE_LOCATION_X = -1.5;

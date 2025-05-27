@@ -4,7 +4,7 @@ import * as quatUtils from "scripts/utils/QuatUtils.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 
-export class {
+export default class {
   TURN_SPEED = 270; // degrees per second
   TURN_SPEED_DIFFICULTY_FACTOR = 1.5;
   TURN_SPEED_MAX = 3600;
