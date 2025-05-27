@@ -53,7 +53,7 @@ export default class {
     const nextStepRotation = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform", "rotation");
 
     if (this.playerPositionLastTick !== undefined) {
-      const forwardVector = quatUtils.rotateVectorByQuaternion({ x: 0, y: 0, z: -1 } nextStepRotation);
+      const forwardVector = quatUtils.rotateVectorByQuaternion({ x: 0, y: 0, z: -1 }, nextStepRotation);
       const lastTickToNextStep = vectorUtils.subtractVectors(nextStepPosition, this.playerPositionLastTick);
       const playerToNextStep = vectorUtils.subtractVectors(nextStepPosition, playerPosition);
       const isLastTickBehind = vectorUtils.dotProduct(lastTickToNextStep, forwardVector) > 0;
