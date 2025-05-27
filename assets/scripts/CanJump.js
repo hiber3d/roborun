@@ -18,7 +18,7 @@ export default class {
     return !isJumping && !isAutoRunAir && !isInAir;
   }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "JumpInput");
+    hiber3d.addEventListener(this, "JumpInput");
   }
   update(dt) {
     if(!this.shouldRun()){

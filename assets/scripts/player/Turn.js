@@ -1,4 +1,4 @@
-﻿import ANIMATION_LAYER from "../state/AnimationLayers.js";
+﻿import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as quatUtils from "scripts/utils/QuatUtils.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
@@ -15,8 +15,8 @@ export default class {
       !hiber3d.getSingleton("GameState", "paused");
   }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "TurnLeftInput");
-    hiber3d.addEventListener(this.entity, "TurnRightInput");
+    hiber3d.addEventListener(this, "TurnLeftInput");
+    hiber3d.addEventListener(this, "TurnRightInput");
   }
   update() {
     if (!this.shouldRun()) {

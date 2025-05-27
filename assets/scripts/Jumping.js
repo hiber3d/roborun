@@ -1,4 +1,4 @@
-import ANIMATION_LAYER from "../state/AnimationLayers.js";
+import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";

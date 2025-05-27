@@ -29,7 +29,7 @@ export default class {
     return undefined;
   }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "Hiber3D_CollisionStarted");
+    hiber3d.addEventListener(this, "Hiber3D_CollisionStarted");
   }
   update(dt) {
   }

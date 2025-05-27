@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
     Hiber3D_zip
     DOWNLOAD_EXTRACT_TIMESTAMP FALSE
-    URL https://cdn.hiberworld.com/hiber2/web/hiberik-quick-js-ng/v0.114.0-hiberik-quick-js-ng/Hiber3D_v0.114.0-hiberik-quick-js-ng.0%2B06e2aa99a.zip
+    URL https://cdn.hiberworld.com/hiber2/web/hiberik-quick-js-ng/v0.114.0-hiberik-quick-js-ng/Hiber3D_v0.114.0-hiberik-quick-js-ng.0%2B53334834e.zip
 )
 FetchContent_MakeAvailable(Hiber3D_zip)
 

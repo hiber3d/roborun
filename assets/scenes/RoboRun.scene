@@ -3,14 +3,6 @@
     "root": {
         "id": 1048577,
         "components": [
-            {
-                "type": "Hiber3D::ScriptInstance",
-                "data": {
-                    "scripts": [
-                        "scripts/state/AnimationLayers.js"
-                    ]
-                }
-            }
         ],
         "children": [
             {

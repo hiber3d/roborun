@@ -1,4 +1,4 @@
-import ANIMATION_LAYER from "../state/AnimationLayers.js";
+import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
@@ -21,7 +21,7 @@ export default class {
     return Math.min(1, 1 - Math.pow(1 + this.DIVE_SPEED_BASE, this.timeSpentDivingInAir * this.DIVE_SPEED_ACCELERATION));
   }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "DiveInput");
+    hiber3d.addEventListener(this, "DiveInput");
     
     regUtils.removeScriptIfPresent(this.entity, "scripts/Jumping.js");
     regUtils.removeScriptIfPresent(this.entity, "scripts/powerups/AutoRun.js");

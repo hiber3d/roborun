@@ -15,9 +15,9 @@ export default class {
     return false;
   }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "FadeToBlack");
-    hiber3d.addEventListener(this.entity, "FadeFromBlack");
-    hiber3d.addEventListener(this.entity, "FadeToAndFromBlack");
+    hiber3d.addEventListener(this, "FadeToBlack");
+    hiber3d.addEventListener(this, "FadeFromBlack");
+    hiber3d.addEventListener(this, "FadeToAndFromBlack");
     
     hiber3d.call("rmlCreateDataModel", "transition_model");
     this.transitionDirection = -1;

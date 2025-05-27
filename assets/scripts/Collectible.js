@@ -3,7 +3,7 @@ import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 
 export default class {
   onCreate() {
-    hiber3d.addEventListener(this.entity, "Hiber3D_CollisionStarted");
+    hiber3d.addEventListener(this, "Hiber3D_CollisionStarted");
   }
   update() {
   }

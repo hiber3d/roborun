@@ -1,4 +1,4 @@
-import ANIMATION_LAYER from "../state/AnimationLayers.js";
+import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 
 export default class {
   pausedLastTick = true;

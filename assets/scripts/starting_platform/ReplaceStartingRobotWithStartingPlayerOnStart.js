@@ -54,7 +54,7 @@ export default class {
     regUtils.destroyEntity(startingRobotEntityToReplace);
   }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "StartInput");
+    hiber3d.addEventListener(this, "StartInput");
 
     if (hiber3d.getSingleton("GameState", "autoStart") === true) {
       hiber3d.writeEvent("StartInput", {});

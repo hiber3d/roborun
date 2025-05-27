@@ -16,12 +16,12 @@ const KEYS = {
 
 export default class {
   onCreate() {
-    hiber3d.addEventListener(this.entity, "SwipedUp");
-    hiber3d.addEventListener(this.entity, "SwipedDown");
-    hiber3d.addEventListener(this.entity, "SwipedLeft");
-    hiber3d.addEventListener(this.entity, "SwipedRight");
-    hiber3d.addEventListener(this.entity, "LeftTapped");
-    hiber3d.addEventListener(this.entity, "RightTapped");
+    hiber3d.addEventListener(this, "SwipedUp");
+    hiber3d.addEventListener(this, "SwipedDown");
+    hiber3d.addEventListener(this, "SwipedLeft");
+    hiber3d.addEventListener(this, "SwipedRight");
+    hiber3d.addEventListener(this, "LeftTapped");
+    hiber3d.addEventListener(this, "RightTapped");
   }
   update(dt) {
     // Keyboard events

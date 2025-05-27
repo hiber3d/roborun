@@ -11,6 +11,7 @@ export default class {
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     if (playerEntity === undefined ||
+      playerEntity === regUtils.NULL_ENTITY ||
       !hiber3d.hasComponents(playerEntity, "Hiber3D_ComputedWorldTransform") ||
       !hiber3d.hasComponents(playerEntity, "SplineData")) {
       return false;
@@ -34,8 +35,8 @@ export default class {
   }
 
   onCreate() {
-    hiber3d.addEventListener(this.entity, "NewStepEvent");
-    hiber3d.addEventListener(this.entity, "NewSegmentEvent");
+    hiber3d.addEventListener(this, "NewStepEvent");
+    hiber3d.addEventListener(this, "NewSegmentEvent");
   }
   update() {
     if (!this.shouldRun()) {

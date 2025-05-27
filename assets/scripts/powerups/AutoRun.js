@@ -1,4 +1,4 @@
-import ANIMATION_LAYER from "../state/AnimationLayers.js";
+import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 
@@ -92,8 +92,8 @@ export default class {
     this.groundedEnd = this.groundedStart + this.AUTO_RUN_DESCEND_GROUNDED_DURATION;
     this.end = this.AUTO_RUN_DURATION;
     
-    hiber3d.addEventListener(this.entity, "DivedEvent");
-    hiber3d.addEventListener(this.entity, "JumpedEvent");
+    hiber3d.addEventListener(this, "DivedEvent");
+    hiber3d.addEventListener(this, "JumpedEvent");
   }
   update(dt) {
     if (!this.shouldRun()) {

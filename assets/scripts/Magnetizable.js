@@ -8,7 +8,7 @@ export default class {
   MAGNET_ATTRACTION_SPEED_ACCELERATION = 25;
   latestDeltaTime = 0;
   onCreate() {
-    hiber3d.addEventListener(this.entity, "Hiber3D_CollisionPersisted");
+    hiber3d.addEventListener(this, "Hiber3D_CollisionPersisted");
   }
   update(dt) {
     this.latestDeltaTime = dt;

@@ -1,4 +1,4 @@
-import ANIMATION_LAYER from "../state/AnimationLayers.js";
+import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 
@@ -18,8 +18,8 @@ export default class {
       segUtils.getCurrentStepEntity() !== undefined;
   }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "LeftLaneInput");
-    hiber3d.addEventListener(this.entity, "RightLaneInput");
+    hiber3d.addEventListener(this, "LeftLaneInput");
+    hiber3d.addEventListener(this, "RightLaneInput");
   }
   update(dt) {
     if (!this.shouldRun()) {

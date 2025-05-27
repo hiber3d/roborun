@@ -11,7 +11,7 @@ export default class {
     return (isJumping || isAutoRunning) && !isDiving;
   }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "DiveInput");
+    hiber3d.addEventListener(this, "DiveInput");
   }
   update(dt) {
   }

@@ -1,12 +1,12 @@
 export default class {
   hasStarted = false;
   onCreate() {
-    hiber3d.addEventListener(this.entity, "StartInput");
-    hiber3d.addEventListener(this.entity, "PauseInput");
-    hiber3d.addEventListener(this.entity, "UnpauseInput");
-    hiber3d.addEventListener(this.entity, "RestartInput");
+    hiber3d.addEventListener(this, "StartInput");
+    hiber3d.addEventListener(this, "PauseInput");
+    hiber3d.addEventListener(this, "UnpauseInput");
+    hiber3d.addEventListener(this, "RestartInput");
 
-    hiber3d.addEventListener(this.entity, "GameRestarted");
+    hiber3d.addEventListener(this, "GameRestarted");
   }
   update() {
   }
