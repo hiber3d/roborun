@@ -1,6 +1,6 @@
 import { useHiber3D, Stats } from "./../hiber3d";
 import { useCallback, useEffect, useReducer } from "react";
-import { postScores } from "utils/postScore";
+import { postScores } from "utils/postMessage";
 import { sendGaEvent } from "utils/ga";
 import { telegramUser } from "utils/telegram";
 
