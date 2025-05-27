@@ -1,4 +1,8 @@
-﻿const module = module || {};
+﻿import * as vectorUtils from "scripts/utils/VectorUtils.js";
+import * as quatUtils from "scripts/utils/QuatUtils.js";
+import * as regUtils from "scripts/utils/RegUtils.js";
+
+const module = module || {};
 module.exports = module.exports || {};
 
 const NULL_ENTITY = 4294967295;
@@ -30,7 +34,7 @@ function getParent(entity) {
   if (hiber3d.hasComponents(entity, "Hiber3D::Parent") !== true) {
     return undefined;
   }
-  return hiber3d.getValue(entity, "Hiber3D::Parent", "parent");
+  return hiber3d.getComponent(entity, "Hiber3D::Parent", "parent");
 }
 module.exports.getParent = getParent;
 
@@ -38,7 +42,7 @@ function getChildren(entity) {
   if (hiber3d.hasComponents(entity, "Hiber3D::Children") !== true) {
     return undefined;
   }
-  return hiber3d.getValue(entity, "Hiber3D::Children", "entities");
+  return hiber3d.getComponent(entity, "Hiber3D::Children", "entities");
 }
 module.exports.getChildren = getChildren;
 
@@ -52,7 +56,7 @@ function getSiblings(entity) {
     hiber3d.print("getChildIndexOf() - parent:'" + parent + "' has no children");
     return undefined;
   }
-  return hiber3d.getValue(parent, "Hiber3D::Children", "entities");
+  return hiber3d.getComponent(parent, "Hiber3D::Children", "entities");
 }
 module.exports.getSiblings = getSiblings;
 
@@ -89,7 +93,7 @@ function findEntityWithNameAmongAncestors(entity, name) {
     return undefined;
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Name") === true) {
-    if (hiber3d.getValue(entity, "Hiber3D::Name") == name) {
+    if (hiber3d.getComponent(entity, "Hiber3D::Name") == name) {
       return entity;
     }
   }
@@ -107,12 +111,12 @@ function findEntityWithNameAmongDescendants(entity, name) {
     return undefined;
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Name") === true) {
-    if (hiber3d.getValue(entity, "Hiber3D::Name") == name) {
+    if (hiber3d.getComponent(entity, "Hiber3D::Name") == name) {
       return entity;
     }
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Children")) {
-    const children = hiber3d.getValue(entity, "Hiber3D::Children", "entities");
+    const children = hiber3d.getComponent(entity, "Hiber3D::Children", "entities");
     for (var i = 0; i < Object.keys(children).length; i++) {
       const recursiveResult = findEntityWithNameAmongDescendants(children[i], name);
       if (recursiveResult !== undefined) {
@@ -132,7 +136,7 @@ function findEntityWithComponentInHierarchy(entity, component) {
     return entity;
   }
   if (hiber3d.hasComponents(entity, "Hiber3D::Children") === true) {
-    const children = hiber3d.getValue(entity, "Hiber3D::Children", "entities");
+    const children = hiber3d.getComponent(entity, "Hiber3D::Children", "entities");
     for (var i = 0; i < Object.keys(children).length; i++) {
       const recursiveResult = findEntityWithComponentInHierarchy(children[i], component);
       if (recursiveResult !== undefined) {
@@ -151,7 +155,7 @@ function createChildToParent(parent) {
   if (hiber3d.hasComponents(parent, "Hiber3D::Children") !== true) {
     hiber3d.addComponent(parent, "Hiber3D::Children");
   }
-  var entities = hiber3d.getValue(parent, "Hiber3D::Children", "entities");
+  var entities = hiber3d.getComponent(parent, "Hiber3D::Children", "entities");
   if (entities === undefined) {
     hiber3d.setValue(parent, "Hiber3D::Children", "entities", [child]);
   } else {
@@ -174,7 +178,7 @@ function addComponentIfNotPresent(entity, component) {
   if (hiber3d.hasComponents(entity, component) === false) {
     hiber3d.addComponent(entity, component);
   }
-  return hiber3d.getValue(entity, component);
+  return hiber3d.getComponent(entity, component);
 }
 module.exports.addComponentIfNotPresent = addComponentIfNotPresent;
 
@@ -216,7 +220,7 @@ function worldToLocalPosition(entity, worldPos) {
   // Get the entity's parent
   var parent = undefined;
   if (hiber3d.hasComponents(entity, "Hiber3D::Parent")) {
-    parent = hiber3d.getValue(entity, "Hiber3D::Parent", "parent");
+    parent = hiber3d.getComponent(entity, "Hiber3D::Parent", "parent");
   }
 
   if (parent === undefined) {
@@ -225,8 +229,8 @@ function worldToLocalPosition(entity, worldPos) {
   }
 
   // Get the parent's world transform
-  const parentWorldPos = hiber3d.getValue(parent, "Hiber3D::ComputedWorldTransform", "position");
-  const parentWorldRot = hiber3d.getValue(parent, "Hiber3D::ComputedWorldTransform", "rotation");
+  const parentWorldPos = hiber3d.getComponent(parent, "Hiber3D::ComputedWorldTransform", "position");
+  const parentWorldRot = hiber3d.getComponent(parent, "Hiber3D::ComputedWorldTransform", "rotation");
 
   // Calculate position relative to parent in world space
   const relativePos = vectorUtils.subtractVectors(worldPos, parentWorldPos);

@@ -7,8 +7,7 @@
                 "type": "Hiber3D::ScriptInstance",
                 "data": {
                     "scripts": [
-                        "scripts/state/AnimationLayers.js",
-                        "scripts/state/Utils.js"
+                        "scripts/state/AnimationLayers.js"
                     ]
                 }
             }

@@ -1,5 +1,7 @@
-({
-    onCreate() {},
+import * as regUtils from "scripts/utils/RegUtils.js";
+
+export class {
+    onCreate() {}
 
     update() {
         const children = regUtils.getChildren(this.entity);
@@ -8,9 +10,9 @@
             regUtils.destroyEntity(this.entity);
             return;
         }
-    },
+    }
 
     onEvent(event, payload) {
 
     }
-});
+}

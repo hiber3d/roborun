@@ -1,4 +1,4 @@
-const ANIMATION_LAYER = {
+export const ANIMATION_LAYER = {
   UNDEFINED: 0,
   BASE: 1,
   FALL: 2,
@@ -7,5 +7,3 @@ const ANIMATION_LAYER = {
   DEAD: 5,
   DYING: 6,
 };
-
-({});

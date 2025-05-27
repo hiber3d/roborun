@@ -1,12 +1,17 @@
-({
-  timeSinceJumped: 0,
-  startHeight: 0,
+import ANIMATION_LAYER from "../state/AnimationLayers.js";
+import * as regUtils from "scripts/utils/RegUtils.js";
+import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
+import * as segUtils from "scripts/utils/SegUtils.js";
+
+export class {
+  timeSinceJumped = 0;
+  startHeight = 0;
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused") &&
+      hiber3d.getSingleton("GameState", "alive") &&
+      !hiber3d.getSingleton("GameState", "paused") &&
       segUtils.getCurrentStepEntity() !== undefined;
-  },
+  }
   getDeltaHeight() {
     const maxHeight = 2.5;
     const timeToMaxHeight = 0.2;
@@ -27,20 +32,20 @@
       result = maxHeight - gravityStrength * Math.pow(timeInFall, 2);
       return result;
     }
-  },
+  }
   onCreate() {
     if (roboRunUtils.isAutoRunGround(this.entity)) {
       regUtils.removeScriptIfPresent(this.entity, "scripts/powerups/AutoRun.js");
     }
     regUtils.removeScriptIfPresent(this.entity, "scripts/Diving.js");
 
-    this.startHeight = hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y");
+    this.startHeight = hiber3d.getComponent(this.entity, "Hiber3D::Transform", "position", "y");
 
     hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "slide" });
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "jump", layer: ANIMATION_LAYER.ACTION, loop: false });
     hiber3d.writeEvent("QueueAnimation", { playAnimation: { entity: this.entity, name: "fall", layer: ANIMATION_LAYER.FALL, loop: true } });
     hiber3d.writeEvent("JumpedEvent", { entity: this.entity });
-  },
+  }
   update(dt) {
     if (!this.shouldRun()) {
       return;
@@ -60,7 +65,7 @@
       
       hiber3d.removeScript(this.entity, "scripts/Jumping.js");
     }
-  },
+  }
   onEvent(event, payload) {
-  },
-});
+  }
+}

@@ -1,14 +1,17 @@
-({
+import * as regUtils from "scripts/utils/RegUtils.js";
+import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
+
+export class {
   onCreate() {
     hiber3d.addEventListener(this.entity, "Hiber3D::CollisionStarted");
-  },
+  }
   update() {
-  },
+  }
 
   onEvent(event, payload) {
     if (event === "Hiber3D::CollisionStarted") {
       if (roboRunUtils.isPlayerCollision(this.entity, payload)) {
-        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+        const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
 
         var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
         stats.collectibles += 1;
@@ -21,4 +24,4 @@
       }
     }
   }
-});
+}

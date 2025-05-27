@@ -1,5 +1,5 @@
-({
-  hasStarted: false,
+export class {
+  hasStarted = false;
   onCreate() {
     hiber3d.addEventListener(this.entity, "StartInput");
     hiber3d.addEventListener(this.entity, "PauseInput");
@@ -7,9 +7,9 @@
     hiber3d.addEventListener(this.entity, "RestartInput");
 
     hiber3d.addEventListener(this.entity, "GameRestarted");
-  },
+  }
   update() {
-  },
+  }
   onEvent(event, payload) {
 
     if (event === "RestartInput") {
@@ -27,5 +27,5 @@
     if (event === "GameRestarted") {
       this.hasStarted = false;
     }
-  },
-});
+  }
+}

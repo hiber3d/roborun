@@ -1,3 +1,7 @@
+import * as regUtils from "scripts/utils/RegUtils.js";
+import * as scalarUtils from "scripts/utils/ScalarUtils.js";
+import * as segUtils from "scripts/utils/SegUtils.js";
+
 const STRAIGHT_ROOMS = [
   {
     room: "scenes/roomsNEW/RoomStraightA.scene",
@@ -22,28 +26,28 @@ const STRAIGHT_ROOMS = [
   {
     room: "scenes/roomsNEW/RoomStraightF.scene",
     probability: 0.1,
-  },
+  }
 ];
 
 const INCLINE_ROOMS = [
   {
     room: "scenes/roomsNEW/RoomInclineA.scene",
     probability: 1,
-  },
+  }
 ];
 
 const LEFT_ROOMS = [
   {
     room: "scenes/roomsNEW/RoomTurnLeftA.scene",
     probability: 1,
-  },
+  }
 ];
 
 const RIGHT_ROOMS = [
   {
     room: "scenes/roomsNEW/RoomTurnRightA.scene",
     probability: 1,
-  },
+  }
 ];
 
 const LANE = {
@@ -76,31 +80,31 @@ const PICK_UP_DEPTH = {
   MID: 1,
 };
 
-({
-  NUM_SEGMENTS: 13,
+export class {
+  NUM_SEGMENTS = 13;
 
   // Straights
-  START_STRAIGHT_BASE_LENGTH: 5,
-  MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_0: 3,
-  MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1: 0,
-  MAX_STRAIGHTS_IN_ROW: 6, // Should not be too similar to NUM_SEGMENTS --> will cause "end-of-tunnel" visible
+  START_STRAIGHT_BASE_LENGTH = 5;
+  MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_0 = 3;
+  MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1 = 0;
+  MAX_STRAIGHTS_IN_ROW = 6; // Should not be too similar to NUM_SEGMENTS --> will cause "end-of-tunnel" visible
 
   // Inclines
-  MAX_INCLINES_IN_A_ROW: 1,
+  MAX_INCLINES_IN_A_ROW = 1;
 
   // Obstacles
-  OBSTACLE_CHANCE_AT_DIFFICULTY_0: 0.25,
-  OBSTACLE_CHANCE_AT_DIFFICULTY_1: 1,
-  MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_0: 2,
-  MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_1: 0,
+  OBSTACLE_CHANCE_AT_DIFFICULTY_0 = 0.25;
+  OBSTACLE_CHANCE_AT_DIFFICULTY_1 = 1;
+  MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_0 = 2;
+  MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_1 = 0;
 
   // PickUps
-  POWERUP_CHANCE_AT_DIFFICULTY_0: 0.01,
-  POWERUP_CHANCE_AT_DIFFICULTY_1: 0.05,
-  COLLECTIBLE_CHANCE_AT_DIFFICULTY_0: 0.25,
-  COLLECTIBLE_CHANCE_AT_DIFFICULTY_1: 0.5,
+  POWERUP_CHANCE_AT_DIFFICULTY_0 = 0.01;
+  POWERUP_CHANCE_AT_DIFFICULTY_1 = 0.05;
+  COLLECTIBLE_CHANCE_AT_DIFFICULTY_0 = 0.25;
+  COLLECTIBLE_CHANCE_AT_DIFFICULTY_1 = 0.5;
 
-  POWER_UPS: [
+  POWER_UPS = [
     {
       probability: 1,
       powerUp: "scenes/powerups/PowerUpAutoRun.scene",
@@ -108,9 +112,9 @@ const PICK_UP_DEPTH = {
       probability: 1,
       powerUp: "scenes/powerups/PowerUpMagnet.scene",
     }
-  ],
+  ];
 
-  SPAWNABLE_STUFF: {
+  SPAWNABLE_STUFF = {
 
     straight: {
       probability: 4,
@@ -129,7 +133,7 @@ const PICK_UP_DEPTH = {
                   probability: 1,
                   pickUpHeights: [PICK_UP_HEIGHT.RUN, PICK_UP_HEIGHT.JUMP],
                   pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
-                },
+                }
               ],
             },
             {
@@ -241,11 +245,11 @@ const PICK_UP_DEPTH = {
                   probability: 1,
                   pickUpHeights: [PICK_UP_HEIGHT.JUMP],
                   pickUpLanes: [PICK_UP_LANE_BEHAVIOR.LEFT, PICK_UP_LANE_BEHAVIOR.MID, PICK_UP_LANE_BEHAVIOR.RIGHT],
-                },
+                }
               ],
-            },
+            }
           ],
-        },
+        }
       ],
     },
 
@@ -263,20 +267,20 @@ const PICK_UP_DEPTH = {
           segment: "scenes/segments/SegmentRightBase.scene",
           tags: ["RIGHT_TURN"],
           rooms: RIGHT_ROOMS,
-        },
+        }
       ],
-    },
+    }
 
-  },
+  };
 
-  startStraightBaseCounter: 0,
-  straightInARowCounter: 0,
-  inclincesInARowCounter: 0,
-  obstaclelessStraightsInARowCounter: 0,
-  latestSegmentSceneEntity: undefined,
-  segmentIndex: 0,
-  leftInARowCounter: 0,
-  rightInARowCounter: 0,
+  startStraightBaseCounter = 0;
+  straightInARowCounter = 0;
+  inclincesInARowCounter = 0;
+  obstaclelessStraightsInARowCounter = 0;
+  latestSegmentSceneEntity = undefined;
+  segmentIndex = 0;
+  leftInARowCounter = 0;
+  rightInARowCounter = 0;
   hasTag(element, tag) {
     if (element === undefined || element.tags === undefined) {
       return false;
@@ -286,7 +290,7 @@ const PICK_UP_DEPTH = {
         return true;
       }
     }
-  },
+  }
   ignoreElement(element, ignoreTags) {
     if (ignoreTags === undefined || element.tags === undefined) {
       return false;
@@ -297,7 +301,7 @@ const PICK_UP_DEPTH = {
       }
     }
     return false;
-  },
+  }
   getRandomElement(list, ignoreTags) {
     if (list === undefined) {
       hiber3d.print("SegmentSpawner::getRandomElement() - ERROR: No list found");
@@ -333,9 +337,9 @@ const PICK_UP_DEPTH = {
     }
     hiber3d.print("SegmentSpawner::getRandomElement() - ERROR: No element found");
     return undefined;
-  },
+  }
   getStuffToSpawn() {
-    const difficulty = hiber3d.getValue("GameState", "difficulty");
+    const difficulty = hiber3d.getSingleton("GameState", "difficulty");
 
     const isAtStart = this.startStraightBaseCounter < this.START_STRAIGHT_BASE_LENGTH;
     const tooFewStraightsInARow = this.straightInARowCounter < Math.max(0, Math.ceil(scalarUtils.lerpScalar(this.MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_0, this.MIN_STRAIGHTS_IN_ROW_AT_DIFFICULTY_1, difficulty)));
@@ -493,9 +497,9 @@ const PICK_UP_DEPTH = {
     }
 
     return { segmentPath, roomPath, obstaclePath, obstacleLane, pickUpPath, pickUpLane, pickUpHeight, pickUpDepth, pickUpScale };
-  },
+  }
   spawnSegmentScene(transform) {
-    const segmentsSceneEntity = hiber3d.getValue("SegmentsState", "segmentsSceneEntity");
+    const segmentsSceneEntity = hiber3d.getSingleton("SegmentsState", "segmentsSceneEntity");
 
     const stuffToSpawn = this.getStuffToSpawn();
     const segmentPath = stuffToSpawn.segmentPath;
@@ -574,36 +578,36 @@ const PICK_UP_DEPTH = {
     this.latestSegmentSceneEntity = segmentSceneEntity;
     this.segmentIndex++;
     return segmentSceneEntity;
-  },
+  }
   spawnSegmentSceneWithHierarchy() {
     const latestSegment = this.latestSegmentSceneEntity;
     const out = segUtils.getLastStepEntityOf(latestSegment);
     if (out === undefined || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
       return;
     }
-    const outTransform = hiber3d.getValue(out, "Hiber3D::ComputedWorldTransform");
+    const outTransform = hiber3d.getComponent(out, "Hiber3D::ComputedWorldTransform");
     var newSegmentEntity = this.spawnSegmentScene(outTransform)
     hiber3d.setValue(latestSegment, "SegmentScene", "next", newSegmentEntity);
     hiber3d.setValue(newSegmentEntity, "SegmentScene", "prev", latestSegment);
-  },
+  }
 
   onCreate() {
     hiber3d.setValue("SegmentsState", "segmentsSceneEntity", this.entity);
 
-    var transform = hiber3d.getValue(this.entity, "Hiber3D::Transform");
+    var transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
     var newSegmentEntity = this.spawnSegmentScene(transform);
     hiber3d.setValue("SegmentsState", "currentSegmentSceneEntity", newSegmentEntity);
-  },
+  }
   update() {
     // When too few segments, spawn another
-    const currentSegmentSceneEntity = hiber3d.getValue("SegmentsState", "currentSegmentSceneEntity");
+    const currentSegmentSceneEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
     if (currentSegmentSceneEntity === undefined) {
       return;
     }
     if (segUtils.getNumberOfSegments() < this.NUM_SEGMENTS) {
       this.spawnSegmentSceneWithHierarchy();
     }
-  },
+  }
   onEvent(event, payload) {
   }
-});
+}

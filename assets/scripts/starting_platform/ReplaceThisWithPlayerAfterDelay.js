@@ -1,8 +1,10 @@
-({
-  PLAYER_SCENE: "scenes/Player.scene",
-  DELAY: 2,
+import * as regUtils from "scripts/utils/RegUtils.js";
 
-  timeSinceCreated: 0,
+export class {
+  PLAYER_SCENE = "scenes/Player.scene";
+  DELAY = 2;
+
+  timeSinceCreated = 0;
   replaceThisWithPlayer() {
     var playerEntity = regUtils.createChildToParent(regUtils.getParent(regUtils.getParent(regUtils.getParent(this.entity))));
 
@@ -15,16 +17,16 @@
     hiber3d.setValue(playerEntity, "Hiber3D::SceneRoot", "scene", this.PLAYER_SCENE);
 
     regUtils.destroyEntity(this.entity);
-  },
+  }
   onCreate() {
-  },
+  }
   update(dt) {
     if (this.timeSinceCreated >= this.DELAY) {
       this.replaceThisWithPlayer();
     } else {
       this.timeSinceCreated += dt;
     }
-  },
+  }
   onEvent(event, payload) {
   }
-});
+}

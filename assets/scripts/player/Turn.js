@@ -1,17 +1,23 @@
-﻿({
-  TURN_SPEED: 270, // degrees per second
-  TURN_SPEED_DIFFICULTY_FACTOR: 1.5,
-  TURN_SPEED_MAX: 3600,
+﻿import ANIMATION_LAYER from "../state/AnimationLayers.js";
+import * as vectorUtils from "scripts/utils/VectorUtils.js";
+import * as quatUtils from "scripts/utils/QuatUtils.js";
+import * as regUtils from "scripts/utils/RegUtils.js";
+import * as segUtils from "scripts/utils/SegUtils.js";
+
+export class {
+  TURN_SPEED = 270; // degrees per second
+  TURN_SPEED_DIFFICULTY_FACTOR = 1.5;
+  TURN_SPEED_MAX = 3600;
 
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::Transform") &&
-      hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused");
-  },
+      hiber3d.getSingleton("GameState", "alive") &&
+      !hiber3d.getSingleton("GameState", "paused");
+  }
   onCreate() {
     hiber3d.addEventListener(this.entity, "TurnLeftInput");
     hiber3d.addEventListener(this.entity, "TurnRightInput");
-  },
+  }
   update() {
     if (!this.shouldRun()) {
       return;
@@ -20,10 +26,10 @@
       regUtils.addComponentIfNotPresent(this.entity, "OnPath");
     }
     if (hiber3d.hasComponents(this.entity, "OnPath")) {
-      const rotation = hiber3d.getValue(this.entity, "Hiber3D::Transform", "rotation");
+      const rotation = hiber3d.getComponent(this.entity, "Hiber3D::Transform", "rotation");
       hiber3d.setValue("GameState", "direction", quatUtils.vectorFromQuaternion(rotation));
     }
-  },
+  }
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;
@@ -43,12 +49,12 @@
 
       } else if ((playerTurnsLeft || playerTurnsRight) && !isOnPath) {
         // Player turns without being at a turn
-        const rotation = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "rotation");
+        const rotation = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform", "rotation");
         const direction = quatUtils.vectorFromQuaternion(rotation);
         const newDirection = vectorUtils.rotateVectorAroundY(direction, 45 * (playerTurnsLeft ? -1 : 1));
         hiber3d.setValue("GameState", "direction", newDirection);
         regUtils.removeComponentIfPresent(this.entity, "OnPath");
       }
     }
-  },
-});
+  }
+}

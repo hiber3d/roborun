@@ -1,4 +1,8 @@
-﻿const module = module || {};
+﻿import * as vectorUtils from "scripts/utils/VectorUtils.js";
+import * as quatUtils from "scripts/utils/QuatUtils.js";
+import * as scalarUtils from "scripts/utils/ScalarUtils.js";
+
+const module = module || {};
 module.exports = module.exports || {};
 
 function getSplineDistance(p1, p2, dir1, dir2, curveFactor) {

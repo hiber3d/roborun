@@ -1,19 +1,22 @@
-({
-  POSITION_SPEED: 0.01,
-  ROTATION_SPEED: 0.05,
+import * as vectorUtils from "scripts/utils/VectorUtils.js";
+import * as quatUtils from "scripts/utils/QuatUtils.js";
+
+export class {
+  POSITION_SPEED = 0.01;
+  ROTATION_SPEED = 0.05;
   shouldLerpToZero() {
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+    const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     return playerEntity !== undefined &&
       hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
-  },
+  }
   onCreate() {
-  },
+  }
   update(dt) {
     if(!this.shouldLerpToZero()) {
       return;
     }
-    var transform = hiber3d.getValue(this.entity, "Hiber3D::Transform");
+    var transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
     transform.position = vectorUtils.divideVector(transform.position, 1 + this.POSITION_SPEED);
 
     const realRotation = { x: transform.rotation.x, y: transform.rotation.y, z: transform.rotation.z };
@@ -23,7 +26,7 @@
     transform.rotation = normalizedScaledRotation;
 
     hiber3d.setValue(this.entity, "Hiber3D::Transform", transform);
-  },
+  }
   onEvent(event, payload) {
   }
-});
+}

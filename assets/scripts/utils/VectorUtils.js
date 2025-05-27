@@ -91,14 +91,6 @@ function inRange(v1, v2, r) {
   return getVectorDistance2(v1, v2) <= r * r;
 }
 module.exports.inRange = inRange;
-function inRangeOfPlane(v1, v2, q, r) {
-  const forward = quatUtils.forwardVectorFromQuaternion(q);
-  const normal = normalizeVector(forward);
-  const toPoint = subtractVectors(v1, v2);
-  const signedDistance = dotProduct(toPoint, normal);
-  return Math.abs(signedDistance) <= r;
-}
-module.exports.inRangeOfPlane = inRangeOfPlane;
 
 function inRangeOfPoints(v, p1, p2) {
   const p1p2 = subtractVectors(p2, p1);

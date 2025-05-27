@@ -1,15 +1,18 @@
-({
-  SLIDE_DURATION: 0.5,
-  timeSpentSliding: 0,
+import ANIMATION_LAYER from "../state/AnimationLayers.js";
+import * as segUtils from "scripts/utils/SegUtils.js";
+
+export class {
+  SLIDE_DURATION = 0.5;
+  timeSpentSliding = 0;
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused") &&
+      hiber3d.getSingleton("GameState", "alive") &&
+      !hiber3d.getSingleton("GameState", "paused") &&
       segUtils.getCurrentStepEntity() !== undefined;
-  },
+  }
   onCreate() {
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", layer: ANIMATION_LAYER.ROLL, loop: true });
-  },
+  }
   update(dt) {
     if (!this.shouldRun()) {
       return;
@@ -22,6 +25,6 @@
       hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "slide" });
       hiber3d.removeScript(this.entity, "scripts/Sliding.js");
     }
-  },
+  }
   onEvent(event, payload) {  }
-});
+}

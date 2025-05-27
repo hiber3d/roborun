@@ -1,4 +1,6 @@
-﻿const module = module || {};
+﻿import * as vectorUtils from "scripts/utils/VectorUtils.js";
+
+const module = module || {};
 module.exports = module.exports || {};
 function formatQuaternion(q) {
   if (!q) return 'null';
@@ -98,12 +100,14 @@ function lerpQuaternionWithDistance(q1, q2, d) {
   const t = d / angle;
   
   if (dot > 0.9995) {
-    return normalizeQuaternion({
+    return normalizeQuaternion(
+      {
       x: q1.x + t * (q2Adjusted.x - q1.x),
       y: q1.y + t * (q2Adjusted.y - q1.y),
       z: q1.z + t * (q2Adjusted.z - q1.z),
       w: q1.w + t * (q2Adjusted.w - q1.w)
-    });
+      }
+    );
   } else {
     const sinAngle = Math.sin(angle);
     const invSinAngle = 1.0 / sinAngle;
@@ -309,11 +313,13 @@ function vectorFromQuaternion(quaternion) {
   const result = multiplyQuaternions(firstMult, conjugate);
 
   // The result quaternion's x,y,z components are our rotated vector
-  return vectorUtils.normalizeVector({
+  return vectorUtils.normalizeVector(
+    {
     x: result.x,
     y: result.y,
     z: result.z
-  });
+    }
+  );
 };
 module.exports.vectorFromQuaternion = vectorFromQuaternion;
 function forwardVectorFromQuaternion(q) {

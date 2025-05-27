@@ -1,6 +1,6 @@
-({
-  speedFactor: 0,
-  speedingTicksLeft: 1,
+export class {
+  speedFactor = 0;
+  speedingTicksLeft = 1;
   setSpeedFactor(increase){
 
     if(increase === true){
@@ -8,14 +8,14 @@
     }
     const newFactor = increase === true ? this.speedFactor : 1 / this.speedFactor;
 
-    var animationBlend = hiber3d.getValue(this.entity, "Hiber3D::AnimationBlend");
+    var animationBlend = hiber3d.getComponent(this.entity, "Hiber3D::AnimationBlend");
     animationBlend.layers[0].speed *= newFactor;
     hiber3d.setValue(this.entity, "Hiber3D::AnimationBlend", animationBlend);
-  },
+  }
   onCreate() {
     this.setSpeedFactor(true);
 
-  },
+  }
 
   update(deltaTime) {
     if(this.speedingTicksLeft >= 0){
@@ -25,9 +25,9 @@
 
       this.speedingTicksLeft -= 1;
     }
-  },
+  }
 
   onEvent(event, payload) {
 
   }
-});
+}
