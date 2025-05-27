@@ -8,4 +8,4 @@ const ANIMATION_LAYER = {
   DYING: 6,
 };
 
-({});
+export default ANIMATION_LAYER;

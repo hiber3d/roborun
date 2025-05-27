@@ -1,7 +1,8 @@
-﻿const module = module || {};
-module.exports = module.exports || {};
+﻿import * as vectorUtils from "scripts/utils/VectorUtils.js";
+import * as quatUtils from "scripts/utils/QuatUtils.js";
+import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 
-function getSplineDistance(p1, p2, dir1, dir2, curveFactor) {
+export function getSplineDistance(p1, p2, dir1, dir2, curveFactor) {
   const distance = vectorUtils.getVectorDistance(p1, p2);
 
   const delta = vectorUtils.subtractVectors(p2, p1);
@@ -12,7 +13,7 @@ function getSplineDistance(p1, p2, dir1, dir2, curveFactor) {
   return scalarUtils.lerpScalar(distance, curvedDistance, curveFactor);
 }
 
-function getSpline(p1, p2, q1, q2, distanceTravelled, curveFactor) {
+export function getSpline(p1, p2, q1, q2, distanceTravelled, curveFactor) {
 
   const dir1 = vectorUtils.normalizeVector(quatUtils.vectorFromQuaternion(q1));
   const dir2 = vectorUtils.normalizeVector(quatUtils.vectorFromQuaternion(q2));
@@ -37,4 +38,3 @@ function getSpline(p1, p2, q1, q2, distanceTravelled, curveFactor) {
   const rotation = lerpedRotation;
   return { position, rotation };
 }
-module.exports.getSpline = getSpline;
