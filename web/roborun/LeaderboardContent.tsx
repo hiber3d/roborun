@@ -5,6 +5,7 @@ import { Button } from "roborun/Button";
 import { twMerge } from "tailwind-merge";
 import { Entry, State } from "./useGameState";
 import { sendGaEvent } from "utils/ga";
+import { postStatus } from "utils/postMessage";
 
 const Column = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <td className={twMerge("p-2 py-[6px]", className)}>{children}</td>
@@ -162,6 +163,7 @@ export const LeaderboardContent = ({
                     api?.writeRestartGame({
                       autoStart: true,
                     });
+                    postStatus();
                     sendGaEvent("press_play_again_button");
                   }}
                 >
