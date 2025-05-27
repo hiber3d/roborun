@@ -5,7 +5,7 @@ export default class {
   SLIDE_DURATION = 0.5;
   timeSpentSliding = 0;
   shouldRun() {
-    return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
+    return hiber3d.hasComponents(this.entity, "Hiber3D_ComputedWorldTransform") &&
       hiber3d.getSingleton("GameState", "alive") &&
       !hiber3d.getSingleton("GameState", "paused") &&
       segUtils.getCurrentStepEntity() !== undefined;

@@ -11,7 +11,7 @@ export default class {
   lerpedTiltFactorPreviousTick = 0;
   shouldRun() {
     return this.TILT_ENABLED &&
-      hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
+      hiber3d.hasComponents(this.entity, "Hiber3D_ComputedWorldTransform") &&
       (hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js")) &&
       hiber3d.getSingleton("GameState", "alive") &&
       !hiber3d.getSingleton("GameState", "paused") &&

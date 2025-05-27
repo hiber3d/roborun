@@ -3,13 +3,13 @@ import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 
 export default class {
   onCreate() {
-    hiber3d.addEventListener(this.entity, "Hiber3D::CollisionStarted");
+    hiber3d.addEventListener(this.entity, "Hiber3D_CollisionStarted");
   }
   update() {
   }
 
   onEvent(event, payload) {
-    if (event === "Hiber3D::CollisionStarted") {
+    if (event === "Hiber3D_CollisionStarted") {
       if (roboRunUtils.isPlayerCollision(this.entity, payload)) {
         const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
 

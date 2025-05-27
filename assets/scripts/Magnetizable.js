@@ -8,18 +8,18 @@ export default class {
   MAGNET_ATTRACTION_SPEED_ACCELERATION = 25;
   latestDeltaTime = 0;
   onCreate() {
-    hiber3d.addEventListener(this.entity, "Hiber3D::CollisionPersisted");
+    hiber3d.addEventListener(this.entity, "Hiber3D_CollisionPersisted");
   }
   update(dt) {
     this.latestDeltaTime = dt;
   }
   onEvent(event, payload) {
-    if (event === "Hiber3D::CollisionPersisted") {
+    if (event === "Hiber3D_CollisionPersisted") {
       const otherEntityInCollision = roboRunUtils.getOtherEntityInCollision(this.entity, payload);
       if (otherEntityInCollision !== undefined && hiber3d.hasScripts(otherEntityInCollision, "scripts/powerups/MagnetCollider.js")) {
 
-        const worldPosition = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform", "position");
-        const otherWorldPosition = hiber3d.getComponent(otherEntityInCollision, "Hiber3D::ComputedWorldTransform", "position");
+        const worldPosition = hiber3d.getComponent(this.entity, "Hiber3D_ComputedWorldTransform", "position");
+        const otherWorldPosition = hiber3d.getComponent(otherEntityInCollision, "Hiber3D_ComputedWorldTransform", "position");
         if (worldPosition === undefined || otherWorldPosition === undefined) {
           return;
         }
@@ -39,7 +39,7 @@ export default class {
           const newWorldPosition = vectorUtils.addVectors(worldPosition, toMove);
           const newLocalPosition = regUtils.worldToLocalPosition(this.entity, newWorldPosition);
 
-          hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", newLocalPosition);
+          hiber3d.setValue(this.entity, "Hiber3D_Transform", "position", newLocalPosition);
         }
 
         this.MAGNET_ATTRACTION_SPEED += this.MAGNET_ATTRACTION_SPEED_ACCELERATION * this.latestDeltaTime;

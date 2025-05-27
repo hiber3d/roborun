@@ -14,7 +14,7 @@ export default class {
   canStartJumping(){
     const isJumping = hiber3d.hasScripts(this.entity, "scripts/Jumping.js");
     const isAutoRunAir = roboRunUtils.isAutoRunAir(this.entity);
-    const isInAir = roboRunUtils.isInAir(this.entity, hiber3d.getComponent(this.entity, "Hiber3D::Transform", "position", "y"));
+    const isInAir = roboRunUtils.isInAir(this.entity, hiber3d.getComponent(this.entity, "Hiber3D_Transform", "position", "y"));
     return !isJumping && !isAutoRunAir && !isInAir;
   }
   onCreate() {

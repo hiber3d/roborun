@@ -12,30 +12,30 @@ export default class {
   createMagnetCollider() { 
     this.magnetColliderEntity = hiber3d.call("createEntityAsChild", this.entity);
 
-    hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D::Transform");
-    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D::Transform", "position", "y", this.MAGNET_COLLIDER_OFFSET_HEIGHT);
+    hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D_Transform");
+    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D_Transform", "position", "y", this.MAGNET_COLLIDER_OFFSET_HEIGHT);
 
-    hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D::SceneRoot", "scene", "scenes/powerups/MagnetCollider.scene");
+    hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D_SceneRoot");
+    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D_SceneRoot", "scene", "scenes/powerups/MagnetCollider.scene");
 
-    hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D::Name");
-    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D::Name", "MagnetCollider.scene");
+    hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D_Name");
+    hiber3d.setValue(this.magnetColliderEntity, "Hiber3D_Name", "MagnetCollider.scene");
   }
   createMagnetEffect() {
     this.magnetEffectEntity = hiber3d.call("createEntityAsChild", this.entity);
 
-    hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D::Transform");
+    hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D_Transform");
 
-    hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(this.magnetEffectEntity, "Hiber3D::SceneRoot", "scene", "scenes/powerups/MagnetActivated.scene");
+    hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D_SceneRoot");
+    hiber3d.setValue(this.magnetEffectEntity, "Hiber3D_SceneRoot", "scene", "scenes/powerups/MagnetActivated.scene");
 
-    hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D::Name");
-    hiber3d.setValue(this.magnetEffectEntity, "Hiber3D::Name", "MagnetEffect.scene");
+    hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D_Name");
+    hiber3d.setValue(this.magnetEffectEntity, "Hiber3D_Name", "MagnetEffect.scene");
   }
   updateMagnetEffectScale() {
     if (this.timeSinceStarted >= (this.MAGNET_DURATION - this.MAGNET_EFFECT_SCALING_DURATION)) {
       const newScale = 1 - ((this.timeSinceStarted - (this.MAGNET_DURATION - this.MAGNET_EFFECT_SCALING_DURATION)) / this.MAGNET_EFFECT_SCALING_DURATION);
-      hiber3d.setValue(this.magnetEffectEntity, "Hiber3D::Transform", "scale", { x: newScale, y: newScale, z: newScale });
+      hiber3d.setValue(this.magnetEffectEntity, "Hiber3D_Transform", "scale", { x: newScale, y: newScale, z: newScale });
     }
   }
   shouldRun() {

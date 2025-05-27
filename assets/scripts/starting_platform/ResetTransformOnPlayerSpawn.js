@@ -1,14 +1,15 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as quatUtils from "scripts/utils/QuatUtils.js";
+import * as regUtils from "scripts/utils/RegUtils.js";
 
 export default class {
   POSITION_SPEED = 0.01;
   ROTATION_SPEED = 0.05;
   shouldLerpToZero() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    return playerEntity !== undefined &&
-      hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
+    return (playerEntity !== undefined && playerEntity !== regUtils.NULL_ENTITY) &&
+      hiber3d.hasComponents(playerEntity, "Hiber3D_ComputedWorldTransform") &&
+      hiber3d.hasComponents(this.entity, "Hiber3D_ComputedWorldTransform");
   }
   onCreate() {
   }
@@ -16,7 +17,7 @@ export default class {
     if(!this.shouldLerpToZero()) {
       return;
     }
-    var transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
+    var transform = hiber3d.getComponent(this.entity, "Hiber3D_Transform");
     transform.position = vectorUtils.divideVector(transform.position, 1 + this.POSITION_SPEED);
 
     const realRotation = { x: transform.rotation.x, y: transform.rotation.y, z: transform.rotation.z };
@@ -25,7 +26,7 @@ export default class {
     const normalizedScaledRotation = quatUtils.normalizeQuaternion(scaledRotation);
     transform.rotation = normalizedScaledRotation;
 
-    hiber3d.setValue(this.entity, "Hiber3D::Transform", transform);
+    hiber3d.setValue(this.entity, "Hiber3D_Transform", transform);
   }
   onEvent(event, payload) {
   }

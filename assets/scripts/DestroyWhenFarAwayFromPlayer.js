@@ -5,9 +5,9 @@ export default class {
   DISTANCE = 50;
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    return playerEntity !== undefined &&
-      hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") &&
-      hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
+    return (playerEntity !== undefined && playerEntity !== regUtils.NULL_ENTITY) &&
+      hiber3d.hasComponents(playerEntity, "Hiber3D_ComputedWorldTransform") &&
+      hiber3d.hasComponents(this.entity, "Hiber3D_ComputedWorldTransform");
   }
   onCreate() {
   }
@@ -16,8 +16,8 @@ export default class {
       return;
     }
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    const playerPosition = hiber3d.getComponent(playerEntity, "Hiber3D::ComputedWorldTransform", "position");
-    const position = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform", "position");
+    const playerPosition = hiber3d.getComponent(playerEntity, "Hiber3D_ComputedWorldTransform", "position");
+    const position = hiber3d.getComponent(this.entity, "Hiber3D_ComputedWorldTransform", "position");
     if (!vectorUtils.inRange(playerPosition, position, this.DISTANCE)) {
       regUtils.destroyEntity(this.entity);
     }

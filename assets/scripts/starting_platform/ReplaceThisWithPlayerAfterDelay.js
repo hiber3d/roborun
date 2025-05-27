@@ -8,13 +8,13 @@ export default class {
   replaceThisWithPlayer() {
     var playerEntity = regUtils.createChildToParent(regUtils.getParent(regUtils.getParent(regUtils.getParent(this.entity))));
 
-    hiber3d.addComponent(playerEntity, "Hiber3D::Transform");
+    hiber3d.addComponent(playerEntity, "Hiber3D_Transform");
 
-    hiber3d.addComponent(playerEntity, "Hiber3D::Name");
-    hiber3d.setValue(playerEntity, "Hiber3D::Name", "PlayerSceneRoot");
+    hiber3d.addComponent(playerEntity, "Hiber3D_Name");
+    hiber3d.setValue(playerEntity, "Hiber3D_Name", "PlayerSceneRoot");
 
-    hiber3d.addComponent(playerEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(playerEntity, "Hiber3D::SceneRoot", "scene", this.PLAYER_SCENE);
+    hiber3d.addComponent(playerEntity, "Hiber3D_SceneRoot");
+    hiber3d.setValue(playerEntity, "Hiber3D_SceneRoot", "scene", this.PLAYER_SCENE);
 
     regUtils.destroyEntity(this.entity);
   }

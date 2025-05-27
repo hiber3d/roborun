@@ -13,10 +13,10 @@ export default class {
     var closestDistance = Number.MAX_VALUE;
     for (var i = 0; i < startingRobots.length; i++) {
       const startingRobot = startingRobots[i];
-      if (!hiber3d.hasComponents(startingRobot, "Hiber3D::ComputedWorldTransform")) {
+      if (!hiber3d.hasComponents(startingRobot, "Hiber3D_ComputedWorldTransform")) {
         continue;
       }
-      const position = hiber3d.getComponent(startingRobot, "Hiber3D::ComputedWorldTransform", "position");
+      const position = hiber3d.getComponent(startingRobot, "Hiber3D_ComputedWorldTransform", "position");
       const distance = Math.abs(position.x - this.MOST_SUITABLE_LOCATION_X);
       if (distance < closestDistance) {
         closestDistance = distance;
@@ -38,18 +38,18 @@ export default class {
     }
     this.hasReplaceStartingRobotWithStartingPlayer = true;
 
-    const transformToSpawnPlayerAt = hiber3d.getComponent(startingRobotEntityToReplace, "Hiber3D::ComputedWorldTransform");
+    const transformToSpawnPlayerAt = hiber3d.getComponent(startingRobotEntityToReplace, "Hiber3D_ComputedWorldTransform");
 
     var playerEntity = regUtils.createChildToParent(this.entity);
 
-    hiber3d.addComponent(playerEntity, "Hiber3D::Transform");
-    hiber3d.setValue(playerEntity, "Hiber3D::Transform", transformToSpawnPlayerAt);
+    hiber3d.addComponent(playerEntity, "Hiber3D_Transform");
+    hiber3d.setValue(playerEntity, "Hiber3D_Transform", transformToSpawnPlayerAt);
 
-    hiber3d.addComponent(playerEntity, "Hiber3D::Name");
-    hiber3d.setValue(playerEntity, "Hiber3D::Name", "StartingPlayerSceneRoot");
+    hiber3d.addComponent(playerEntity, "Hiber3D_Name");
+    hiber3d.setValue(playerEntity, "Hiber3D_Name", "StartingPlayerSceneRoot");
 
-    hiber3d.addComponent(playerEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(playerEntity, "Hiber3D::SceneRoot", "scene", this.PLAYER_SCENE);
+    hiber3d.addComponent(playerEntity, "Hiber3D_SceneRoot");
+    hiber3d.setValue(playerEntity, "Hiber3D_SceneRoot", "scene", this.PLAYER_SCENE);
 
     regUtils.destroyEntity(startingRobotEntityToReplace);
   }

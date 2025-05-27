@@ -515,50 +515,50 @@ export default class {
     // Segment
     const segmentSceneEntity = regUtils.createChildToParent(segmentsSceneEntity);
     hiber3d.addComponent(segmentSceneEntity, "SegmentScene");
-    hiber3d.addComponent(segmentSceneEntity, "Hiber3D::Name");
-    hiber3d.setValue(segmentSceneEntity, "Hiber3D::Name", "SegmentScene" + this.segmentIndex);
-    hiber3d.addComponent(segmentSceneEntity, "Hiber3D::Transform");
+    hiber3d.addComponent(segmentSceneEntity, "Hiber3D_Name");
+    hiber3d.setValue(segmentSceneEntity, "Hiber3D_Name", "SegmentScene" + this.segmentIndex);
+    hiber3d.addComponent(segmentSceneEntity, "Hiber3D_Transform");
     if (transform !== undefined) {
-      hiber3d.setValue(segmentSceneEntity, "Hiber3D::Transform", transform);
+      hiber3d.setValue(segmentSceneEntity, "Hiber3D_Transform", transform);
     }
 
     // Path
     const pathSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
-    hiber3d.addComponent(pathSceneEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(pathSceneEntity, "Hiber3D::SceneRoot", "scene", segmentPath);
-    hiber3d.addComponent(pathSceneEntity, "Hiber3D::Name");
-    hiber3d.setValue(pathSceneEntity, "Hiber3D::Name", "PathScene");
-    hiber3d.addComponent(pathSceneEntity, "Hiber3D::Transform");
+    hiber3d.addComponent(pathSceneEntity, "Hiber3D_SceneRoot");
+    hiber3d.setValue(pathSceneEntity, "Hiber3D_SceneRoot", "scene", segmentPath);
+    hiber3d.addComponent(pathSceneEntity, "Hiber3D_Name");
+    hiber3d.setValue(pathSceneEntity, "Hiber3D_Name", "PathScene");
+    hiber3d.addComponent(pathSceneEntity, "Hiber3D_Transform");
 
     // Room
     const roomSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
-    hiber3d.addComponent(roomSceneEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(roomSceneEntity, "Hiber3D::SceneRoot", "scene", roomPath);
-    hiber3d.addComponent(roomSceneEntity, "Hiber3D::Name");
-    hiber3d.setValue(roomSceneEntity, "Hiber3D::Name", "RoomScene");
-    hiber3d.addComponent(roomSceneEntity, "Hiber3D::Transform");
+    hiber3d.addComponent(roomSceneEntity, "Hiber3D_SceneRoot");
+    hiber3d.setValue(roomSceneEntity, "Hiber3D_SceneRoot", "scene", roomPath);
+    hiber3d.addComponent(roomSceneEntity, "Hiber3D_Name");
+    hiber3d.setValue(roomSceneEntity, "Hiber3D_Name", "RoomScene");
+    hiber3d.addComponent(roomSceneEntity, "Hiber3D_Transform");
 
     // Obstacle
     if (obstaclePath !== undefined) {
       const obstacleEntity = regUtils.createChildToParent(segmentSceneEntity);
-      hiber3d.addComponent(obstacleEntity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(obstacleEntity, "Hiber3D::SceneRoot", "scene", obstaclePath);
-      hiber3d.addComponent(obstacleEntity, "Hiber3D::Name");
-      hiber3d.setValue(obstacleEntity, "Hiber3D::Name", "ObstacleScene");
-      hiber3d.addComponent(obstacleEntity, "Hiber3D::Transform");
+      hiber3d.addComponent(obstacleEntity, "Hiber3D_SceneRoot");
+      hiber3d.setValue(obstacleEntity, "Hiber3D_SceneRoot", "scene", obstaclePath);
+      hiber3d.addComponent(obstacleEntity, "Hiber3D_Name");
+      hiber3d.setValue(obstacleEntity, "Hiber3D_Name", "ObstacleScene");
+      hiber3d.addComponent(obstacleEntity, "Hiber3D_Transform");
       const x = obstacleLane === LANE.LEFT ? -1 : obstacleLane === LANE.RIGHT ? 1 : 0; // TODO: Get width from scene
       const z = -5;
-      hiber3d.setValue(obstacleEntity, "Hiber3D::Transform", "position", { x, y: 0, z });
+      hiber3d.setValue(obstacleEntity, "Hiber3D_Transform", "position", { x, y: 0, z });
     }
 
     // PickUp
     if (pickUpPath !== undefined) {
       const pickUpEntity = regUtils.createChildToParent(segmentSceneEntity);
-      hiber3d.addComponent(pickUpEntity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(pickUpEntity, "Hiber3D::SceneRoot", "scene", pickUpPath);
-      hiber3d.addComponent(pickUpEntity, "Hiber3D::Name");
-      hiber3d.setValue(pickUpEntity, "Hiber3D::Name", pickUpPath);
-      hiber3d.addComponent(pickUpEntity, "Hiber3D::Transform");
+      hiber3d.addComponent(pickUpEntity, "Hiber3D_SceneRoot");
+      hiber3d.setValue(pickUpEntity, "Hiber3D_SceneRoot", "scene", pickUpPath);
+      hiber3d.addComponent(pickUpEntity, "Hiber3D_Name");
+      hiber3d.setValue(pickUpEntity, "Hiber3D_Name", pickUpPath);
+      hiber3d.addComponent(pickUpEntity, "Hiber3D_Transform");
       const x =
         pickUpLane === LANE.LEFT ? -1 :
           pickUpLane === LANE.RIGHT ? 1 :
@@ -571,8 +571,8 @@ export default class {
       const z =
         pickUpDepth === PICK_UP_DEPTH.MID ? -5 :
           0; // TODO: Get depth from scene
-      hiber3d.setValue(pickUpEntity, "Hiber3D::Transform", "position", { x, y, z });
-      hiber3d.setValue(pickUpEntity, "Hiber3D::Transform", "scale", { x: pickUpScale, y: pickUpScale, z: pickUpScale });
+      hiber3d.setValue(pickUpEntity, "Hiber3D_Transform", "position", { x, y, z });
+      hiber3d.setValue(pickUpEntity, "Hiber3D_Transform", "scale", { x: pickUpScale, y: pickUpScale, z: pickUpScale });
     }
 
     this.latestSegmentSceneEntity = segmentSceneEntity;
@@ -582,10 +582,10 @@ export default class {
   spawnSegmentSceneWithHierarchy() {
     const latestSegment = this.latestSegmentSceneEntity;
     const out = segUtils.getLastStepEntityOf(latestSegment);
-    if (out === undefined || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
+    if (out === undefined || !hiber3d.hasComponents(out, "Hiber3D_ComputedWorldTransform")) {
       return;
     }
-    const outTransform = hiber3d.getComponent(out, "Hiber3D::ComputedWorldTransform");
+    const outTransform = hiber3d.getComponent(out, "Hiber3D_ComputedWorldTransform");
     var newSegmentEntity = this.spawnSegmentScene(outTransform)
     hiber3d.setValue(latestSegment, "SegmentScene", "next", newSegmentEntity);
     hiber3d.setValue(newSegmentEntity, "SegmentScene", "prev", latestSegment);
@@ -594,7 +594,7 @@ export default class {
   onCreate() {
     hiber3d.setValue("SegmentsState", "segmentsSceneEntity", this.entity);
 
-    var transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
+    var transform = hiber3d.getComponent(this.entity, "Hiber3D_Transform");
     var newSegmentEntity = this.spawnSegmentScene(transform);
     hiber3d.setValue("SegmentsState", "currentSegmentSceneEntity", newSegmentEntity);
   }

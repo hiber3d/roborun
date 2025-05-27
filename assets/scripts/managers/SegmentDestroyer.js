@@ -11,7 +11,7 @@ export default class {
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     if (playerEntity === undefined ||
-      !hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") ||
+      !hiber3d.hasComponents(playerEntity, "Hiber3D_ComputedWorldTransform") ||
       !hiber3d.hasComponents(playerEntity, "SplineData")) {
       return false;
     }
@@ -24,12 +24,12 @@ export default class {
   }
   spawnDebugCylinder(entity) {
     if (entity !== undefined &&
-      hiber3d.hasComponents(entity, "Hiber3D::ComputedWorldTransform")) {
+      hiber3d.hasComponents(entity, "Hiber3D_ComputedWorldTransform")) {
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
-      hiber3d.addComponent(entity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(entity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
-      hiber3d.setValue(entity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
+      hiber3d.addComponent(entity, "Hiber3D_SceneRoot");
+      hiber3d.setValue(entity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.setValue(entity, "Hiber3D_Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
     }
   }
 
@@ -49,8 +49,8 @@ export default class {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     const playerSplineData = hiber3d.getComponent(playerEntity, "SplineData");
     const playerPosition = playerSplineData.position;
-    const nextStepPosition = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform", "position");
-    const nextStepRotation = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform", "rotation");
+    const nextStepPosition = hiber3d.getComponent(nextStepEntity, "Hiber3D_ComputedWorldTransform", "position");
+    const nextStepRotation = hiber3d.getComponent(nextStepEntity, "Hiber3D_ComputedWorldTransform", "rotation");
 
     if (this.playerPositionLastTick !== undefined) {
       const forwardVector = quatUtils.rotateVectorByQuaternion({ x: 0, y: 0, z: -1 }, nextStepRotation);
@@ -116,7 +116,7 @@ export default class {
       // Going off-path
       if (!segUtils.isPlayerAtForward()) {
         const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-        if (playerEntity !== undefined && hiber3d.hasComponents(playerEntity, "OnPath")) {
+        if ((playerEntity !== undefined && playerEntity !== regUtils.NULL_ENTITY) && hiber3d.hasComponents(playerEntity, "OnPath")) {
           hiber3d.removeComponent(playerEntity, "OnPath");
         }
       }
