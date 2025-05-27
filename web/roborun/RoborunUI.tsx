@@ -43,9 +43,9 @@ export const RoborunUI = () => {
   }
 
   return (
-    <div className="absolute top-0 left-0 p-4 text-white font-black text-xl flex gap-4">
+    <div className="absolute top-0 left-0 p-4 text-white font-black text-xs md:text-xl flex gap-2 md:gap-4">
       <div className="flex flex-col gap-1 items-center">
-        <div className="border-1 flex justify-center flex-col gap-[12px] w-[42px] border-emerald-400 rounded-md relative overflow-hidden bg-emerald-950">
+        <div className="border-1 flex justify-center flex-col w-[30px] gap-[8px] md:gap-[12px]  md:w-[42px] border-emerald-400 rounded-md relative overflow-hidden bg-emerald-950">
           <div
             style={{
               height: `${(stats.collectibles % 10) * 10}%`,
@@ -61,7 +61,7 @@ export const RoborunUI = () => {
         x{(Math.floor(stats.multiplier * 10 + 0.0001) / 10).toFixed(1)}
       </div>
       <div className="flex flex-col gap-2">
-        <div className="text-6xl">{Math.round(stats.points)}</div>
+        <div className="text-4xl md:text-6xl">{Math.round(stats.points)}</div>
         <div>{Math.round(stats.meters)} meters</div>
         <div>{stats.collectibles} collectibles</div>
       </div>
