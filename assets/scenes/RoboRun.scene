@@ -1,1 +1,128 @@
-{"version":"1.0.0","root":{"id":1048577,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoboRun"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/state/AnimationLayers.js","scripts/state/Utils.js"]}}],"children":[{"id":1048578,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Managers.scene"},{"type":"Hiber3D::SceneRoot","data":{"scene":"scenes\\Managers.scene"}}],"children":[]},{"id":1048579,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Ui"}],"children":[{"id":1048580,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Stats"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/ui/Stats.js"]}},{"type":"Hiber3D::RmlUiDocumentInstance","data":{"document":"ui/ui.rml"}}],"children":[]}]},{"id":1048581,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ChangeableScene"},{"type":"ChangeableScene"}],"children":[{"id":1048582,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ChangeableSceneRoot"},{"type":"Hiber3D::SceneRoot","data":{"scene":"scenes/RunningScene.scene"}}],"children":[]}]}]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 1048577,
+        "components": [
+            {
+                "type": "Hiber3D::ScriptInstance",
+                "data": {
+                    "scripts": [
+                        "scripts/state/AnimationLayers.js",
+                        "scripts/state/Utils.js"
+                    ]
+                }
+            }
+        ],
+        "children": [
+            {
+                "id": 1048578,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Managers.scene"
+                    },
+                    {
+                        "type": "Hiber3D::SceneRoot",
+                        "data": {
+                            "scene": "scenes/Managers.scene"
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 1048581,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "ChangeableScene"
+                    },
+                    {
+                        "type": "ChangeableScene"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 1048582,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "ChangeableSceneRoot"
+                            },
+                            {
+                                "type": "Hiber3D::SceneRoot",
+                                "data": {
+                                    "scene": "scenes/RunningScene.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -7,6 +7,8 @@ import { MainMenu } from "./MainMenu";
 import { useGameState } from "./useGameState";
 import { useTouchControls } from "./useTouchControls";
 import { Fullscreen } from "roborun/Fullscreen";
+import { Fragment } from "react/jsx-runtime";
+import { RoborunUI } from "roborun/RoborunUI";
 
 const urlParams = new URLSearchParams(window.location.search);
 const tapMode = urlParams.get("tapmode") ? true : false;
@@ -28,11 +30,12 @@ export const RoborunMode = () => {
 
   return (
     <AnimatePresence>
+      <RoborunUI />
       {state.mode === "mainMenu" && (
         <MainMenu key="mainmenu" player={state.player} fetchRank={fetchRank} showLeaderboard={showLeaderboard} />
       )}
       {state.mode === "playing" && (
-        <div className="absolute top-2 right-2 flex gap-2 items-center">
+        <div key="playing" className="absolute top-2 right-2 flex gap-2 items-center">
           <Mute minimal />
           <Fullscreen minimal />
         </div>
