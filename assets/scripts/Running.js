@@ -83,7 +83,7 @@ export default class {
       hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D_Name", "DebugSplineLeftLane");
     }
-    const leftLaneOffset = quatUtils.rotateVectorByQuaternion({ x: -hiber3d.getComponent(currentStepEntity, "Step", "laneOffsetLeft"), y: 0, z: 0 } splineRotation);
+    const leftLaneOffset = quatUtils.rotateVectorByQuaternion({ x: -hiber3d.getComponent(currentStepEntity, "Step", "laneOffsetLeft"), y: 0, z: 0 }, splineRotation);
     hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D_Transform", "position", vectorUtils.addVectors(splinePosition, leftLaneOffset));
     hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D_Transform", "rotation", splineRotation);
 
@@ -96,7 +96,7 @@ export default class {
       hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D_Name", "DebugSplineRightLane");
     }
-    const rightLaneOffset = quatUtils.rotateVectorByQuaternion({ x: hiber3d.getComponent(currentStepEntity, "Step", "laneOffsetRight"), y: 0, z: 0 } splineRotation);
+    const rightLaneOffset = quatUtils.rotateVectorByQuaternion({ x: hiber3d.getComponent(currentStepEntity, "Step", "laneOffsetRight"), y: 0, z: 0 }, splineRotation);
     hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D_Transform", "position", vectorUtils.addVectors(splinePosition, rightLaneOffset));
     hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D_Transform", "rotation", splineRotation);
 
@@ -109,7 +109,7 @@ export default class {
       hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D_Name", "DebugSplineLeftWall");
     }
-    const leftWallOffset = quatUtils.rotateVectorByQuaternion({ x: -hiber3d.getComponent(currentStepEntity, "Step", "wallOffsetLeft"), y: 0, z: 0 } splineRotation);
+    const leftWallOffset = quatUtils.rotateVectorByQuaternion({ x: -hiber3d.getComponent(currentStepEntity, "Step", "wallOffsetLeft"), y: 0, z: 0 }, splineRotation);
     hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D_Transform", "position", vectorUtils.addVectors(splinePosition, leftWallOffset));
     hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D_Transform", "rotation", splineRotation);
 
@@ -122,7 +122,7 @@ export default class {
       hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineRightWallEntity, "Hiber3D_Name", "DebugSplineRightWall");
     }
-    const rightWallOffset = quatUtils.rotateVectorByQuaternion({ x: hiber3d.getComponent(currentStepEntity, "Step", "wallOffsetRight"), y: 0, z: 0 } splineRotation);
+    const rightWallOffset = quatUtils.rotateVectorByQuaternion({ x: hiber3d.getComponent(currentStepEntity, "Step", "wallOffsetRight"), y: 0, z: 0 }, splineRotation);
     hiber3d.setComponent(this.debugSplineRightWallEntity, "Hiber3D_Transform", "position", vectorUtils.addVectors(splinePosition, rightWallOffset));
     hiber3d.setComponent(this.debugSplineRightWallEntity, "Hiber3D_Transform", "rotation", splineRotation);
   }
@@ -216,8 +216,8 @@ export default class {
       const currentStepEntity = segUtils.getCurrentStepEntity();
       const leftWallOffset = hiber3d.getComponent(currentStepEntity, "Step", "wallOffsetLeft");
       const rightWallOffset = hiber3d.getComponent(currentStepEntity, "Step", "wallOffsetRight");
-      const leftWallVectorOffset = quatUtils.rotateVectorByQuaternion({ x: -leftWallOffset, y: 0, z: 0 } spline.rotation);
-      const rightWallVectorOffset = quatUtils.rotateVectorByQuaternion({ x: rightWallOffset, y: 0, z: 0 } spline.rotation);
+      const leftWallVectorOffset = quatUtils.rotateVectorByQuaternion({ x: -leftWallOffset, y: 0, z: 0 }, spline.rotation);
+      const rightWallVectorOffset = quatUtils.rotateVectorByQuaternion({ x: rightWallOffset, y: 0, z: 0 }, spline.rotation);
       const leftWallPosition = vectorUtils.addVectors(spline.position, leftWallVectorOffset);
       const rightWallPosition = vectorUtils.addVectors(spline.position, rightWallVectorOffset);
       const position = hiber3d.getComponent(this.entity, "Hiber3D_Transform", "position");
