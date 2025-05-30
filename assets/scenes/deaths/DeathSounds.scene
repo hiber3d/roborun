@@ -1,0 +1,97 @@
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 1,
+        "components": [],
+        "children": [
+            {
+                "id": 2,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Dying"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/sfx/Dying.mp3",
+                            "volume": 1,
+                            "volumeFadeTime": 0.5,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.5,
+                            "playbackMode": 0,
+                            "status": 0,
+                            "loopPoint": 0
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 3,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "DeathScene"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/sfx/DeathScene.ogg",
+                            "volume": 1,
+                            "volumeFadeTime": 0.5,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.5,
+                            "playbackMode": 1,
+                            "status": 0,
+                            "loopPoint": 0
+                        }
+                    }
+                ],
+                "children": []
+            }
+        ]
+    }
+}
