@@ -1,5 +1,7 @@
 import { useHiber3D, Stats } from "./../hiber3d";
 import { useCallback, useEffect, useReducer } from "react";
+import { postScores } from "utils/postMessage";
+import { sendGaEvent } from "utils/ga";
 import { telegramUser } from "utils/telegram";
 
 type Score = Stats;
@@ -175,15 +177,33 @@ export const useGameState = () => {
 
   const sendScore = useCallback(
     async (player: Player, score: Score) => {
+      const multiplier = (Math.floor(score.multiplier * 10 + 0.0001) / 10).toFixed(1);
       const payload = {
         ...score,
-        multiplier: (Math.floor(score.multiplier * 10 + 0.0001) / 10).toFixed(1),
+        multiplier,
         points: Math.round(score.points),
         meters: Math.round(score.meters),
         ...player,
       };
 
-      window.postMessage(JSON.stringify({ action: "hiber3d_postScore", payload }));
+      postScores([
+        {
+          type: "POINTS",
+          score: payload.points,
+        },
+        {
+          type: "METERS",
+          score: payload.meters,
+        },
+        {
+          type: "MULTIPLIER",
+          score: parseFloat(multiplier),
+        },
+        {
+          type: "COLLECTIBLES",
+          score: payload.collectibles,
+        },
+      ]);
 
       const result = await fetch("https://filipengberg-gameleaderboardapi.web.val.run/submit", {
         method: "POST",
@@ -223,6 +243,7 @@ export const useGameState = () => {
       return;
     }
     const listener = api.onPlayerDied((payload) => {
+      sendGaEvent("player_died");
       const pendingScore = {
         ...payload.stats,
       };

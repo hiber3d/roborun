@@ -48,6 +48,9 @@ export const useMusicMultiTracks = () => {
   }, [api, music, sfx]);
 
   useEffect(() => {
+    if (!api) {
+      return;
+    }
     const initTrack = (track: Track, sound: MusicSounds, play?: boolean) => {
       if (track.id) {
         return;
@@ -56,15 +59,19 @@ export const useMusicMultiTracks = () => {
       music.soundSource.current?.volume(play ? 1 : 0, track.id ?? 0);
       track.playing = play || false;
     };
+    const listener = api.onBroadcastGameStarted(() => {
+      //initTrack(musicTracks.current.drums, "drums_01", true);
+      //initTrack(musicTracks.current.drums_02, "drums_02");
+      //initTrack(musicTracks.current.bass, "bass_01");
+      //initTrack(musicTracks.current.bass_02, "bass_02");
+      //initTrack(musicTracks.current.bass_03, "bass_03");
+      //initTrack(musicTracks.current.strings, "strings_01");
+    });
 
-    //initTrack(musicTracks.current.drums, "drums_01", true);
-    //initTrack(musicTracks.current.drums_02, "drums_02");
-    //initTrack(musicTracks.current.bass, "bass_01");
-    //initTrack(musicTracks.current.bass_02, "bass_02");
-    //initTrack(musicTracks.current.bass_03, "bass_03");
-
-    //initTrack(musicTracks.current.strings, "strings_01");
-  }, [music]);
+    return () => {
+      api.removeEventCallback(listener);
+    };
+  }, [api, music]);
 
   const updateTrack = useCallback(
     (track: Track, play?: boolean) => {
