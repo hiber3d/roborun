@@ -1,0 +1,97 @@
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 17826423,
+        "components": [],
+        "children": [
+            {
+                "id": 17826421,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Background Sound"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/game/sfx/death.mp3",
+                            "volume": 0.7,
+                            "volumeFadeTime": 1,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.5,
+                            "playbackMode": 1,
+                            "status": 0,
+                            "loopPoint": 0
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 17826422,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "SFX"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/game/sfx/dying.mp3",
+                            "volume": 0.8,
+                            "volumeFadeTime": 0.01,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.5,
+                            "playbackMode": 3,
+                            "status": 0,
+                            "loopPoint": 0
+                        }
+                    }
+                ],
+                "children": []
+            }
+        ]
+    }
+}

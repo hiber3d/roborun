@@ -1,12 +1,14 @@
 #include <AnimationLoadout/AnimationLoadoutModule.hpp>
 #include <Broadcast/BroadcastModule.hpp>
+#include <ChangeableScene/ChangeableSceneModule.hpp>
 #include <Input/InputModule.hpp>
 #include <Path/PathModule.hpp>
-#include <ChangeableScene/ChangeableSceneModule.hpp>
 #include <Segment/SegmentModule.hpp>
 
 #include <Hiber3D/Animation/AnimationModule.hpp>
 #include <Hiber3D/Asset/AssetModule.hpp>
+#include <Hiber3D/Audio/AudioComponents.hpp>
+#include <Hiber3D/Audio/AudioModule.hpp>
 #include <Hiber3D/BaseAssets/Cubemap.hpp>
 #include <Hiber3D/BaseAssets/Material.hpp>
 #include <Hiber3D/BaseAssets/Mesh.hpp>
@@ -66,8 +68,10 @@ public:
         context.registerModule<Hiber3D::SceneModule>();
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::ScriptInstance>(context);
 
+        context.registerModule<Hiber3D::AudioModule>();
+
         context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "scenes/RoboRun.scene"});
-        context.registerModule<Hiber3D::PhysicsModule>(); // before WorldTransformModule
+        context.registerModule<Hiber3D::PhysicsModule>();  // before WorldTransformModule
         context.registerModule<Hiber3D::GltfModule>();
         context.registerModule<Hiber3D::WorldTransformModule>();
         context.registerModule<Hiber3D::AnimationModule>();  // after HierarchyModule
@@ -76,6 +80,10 @@ public:
 
         context.registerModule<Hiber3D::JavaScriptScriptingModule>();
         context.registerModule<Hiber3D::RmlUiModule>();
+
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioSource>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioSettings>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioStats>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Transform>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::ComputedWorldTransform>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::SceneRoot>(context);
@@ -91,6 +99,8 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justPressed(key); }>(context, "keyJustPressed");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
+
+        context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::AudioSource>(context);
 
         context.registerModule<Hiber3D::InteropModule>();
         context.registerModule<Hiber3D::DebugModule>();
