@@ -42,8 +42,6 @@
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
                             "status": 0,
-                            "isProtected": false,
-                            "inaudibleBehavior": 0,
                             "loopPoint": 0
                         }
                     },
@@ -96,8 +94,6 @@
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
                             "status": 0,
-                            "isProtected": false,
-                            "inaudibleBehavior": 0,
                             "loopPoint": 0
                         }
                     },
@@ -150,8 +146,6 @@
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
                             "status": 0,
-                            "isProtected": false,
-                            "inaudibleBehavior": 0,
                             "loopPoint": 0
                         }
                     },
@@ -204,8 +198,6 @@
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
                             "status": 0,
-                            "isProtected": false,
-                            "inaudibleBehavior": 0,
                             "loopPoint": 0
                         }
                     },
@@ -258,8 +250,6 @@
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
                             "status": 0,
-                            "isProtected": false,
-                            "inaudibleBehavior": 0,
                             "loopPoint": 0
                         }
                     },
@@ -312,8 +302,6 @@
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
                             "status": 0,
-                            "isProtected": false,
-                            "inaudibleBehavior": 0,
                             "loopPoint": 0
                         }
                     },
