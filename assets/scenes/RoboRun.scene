@@ -159,6 +159,45 @@
                     }
                 ],
                 "children": []
+            },
+            {
+                "id": 1048584,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "SFX"
+                    },
+                    {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                            "scripts": [
+                                "scripts/ui/SFX.js"
+                            ]
+                        }
+                    }
+                ],
+                "children": []
             }
         ]
     }
