@@ -79,7 +79,7 @@ export function isPlayerAtRightTurn() {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return false;
   }
-  return rightIndex = hiber3d.getComponent(currentStepEntity, "Step", "indexRight") >= 0;
+  return hiber3d.getComponent(currentStepEntity, "Step", "indexRight") >= 0;
 }
 
 export function takeTurn(left) {

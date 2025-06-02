@@ -29,7 +29,7 @@ export default class {
     } else {
       // Falling phase - rapid fall after plateau
       const timeInFall = Math.max(0, this.timeSinceJumped - (timeToMaxHeight + maxHeightDuration));
-      result = maxHeight - gravityStrength * Math.pow(timeInFall, 2);
+      const result = maxHeight - gravityStrength * Math.pow(timeInFall, 2);
       return result;
     }
   }

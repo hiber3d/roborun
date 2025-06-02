@@ -1,3 +1,5 @@
+import * as regUtils from "scripts/utils/RegUtils.js";
+
 export function getSplineHeight(entity) {
     return hiber3d.hasComponents(entity, "SplineData") ? hiber3d.getComponent(entity, "SplineData", "position").y : 0;
   }

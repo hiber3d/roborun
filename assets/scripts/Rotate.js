@@ -1,7 +1,7 @@
 import * as quatUtils from "scripts/utils/QuatUtils.js";
 
 // TODO: Does this still work?
-latestRotationOffset = 0;
+var latestRotationOffset = 0;
 
 export default class {
   REVOLUTION_TIME = 2;
