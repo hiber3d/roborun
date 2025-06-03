@@ -4,7 +4,7 @@ import * as quatUtils from "scripts/utils/QuatUtils.js";
 export const NULL_ENTITY = 4294967295; // TODO: Move to some new "Constants.js"
 
 export function isNullEntity(entity) {
-  return entity === NULL_ENTITY || entity === undefined || entity === null;
+  return entity === 4294967295 || entity === undefined || entity === null;
 }
 
 export function isAncestorOf(ancestor, entity) {
@@ -82,7 +82,7 @@ export function findEntityWithNameAmongAncestors(entity, name) {
     return undefined;
   }
   if (hiber3d.hasComponents(entity, "Hiber3D_Name") === true) {
-    if (hiber3d.getComponent(entity, "Hiber3D_Name") == name) {
+    if (hiber3d.getComponent(entity, "Hiber3D_Name") === name) {
       return entity;
     }
   }

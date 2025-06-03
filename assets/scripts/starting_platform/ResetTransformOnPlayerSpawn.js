@@ -7,7 +7,7 @@ export default class {
   ROTATION_SPEED = 0.05;
   shouldLerpToZero() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    return (playerEntity !== undefined && playerEntity !== regUtils.NULL_ENTITY) &&
+    return !regUtils.isNullEntity(playerEntity) &&
       hiber3d.hasComponents(playerEntity, "Hiber3D_ComputedWorldTransform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D_ComputedWorldTransform");
   }

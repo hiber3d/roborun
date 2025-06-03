@@ -10,8 +10,7 @@ export default class {
 
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    if (playerEntity === undefined ||
-      playerEntity === regUtils.NULL_ENTITY ||
+    if (regUtils.isNullEntity(playerEntity) ||
       !hiber3d.hasComponents(playerEntity, "Hiber3D_ComputedWorldTransform") ||
       !hiber3d.hasComponents(playerEntity, "SplineData")) {
       return false;
@@ -117,7 +116,7 @@ export default class {
       // Going off-path
       if (!segUtils.isPlayerAtForward()) {
         const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-        if ((playerEntity !== undefined && playerEntity !== regUtils.NULL_ENTITY) && hiber3d.hasComponents(playerEntity, "OnPath")) {
+        if (!regUtils.isNullEntity(playerEntity) && hiber3d.hasComponents(playerEntity, "OnPath")) {
           hiber3d.removeComponent(playerEntity, "OnPath");
         }
       }

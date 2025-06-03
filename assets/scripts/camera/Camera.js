@@ -18,7 +18,7 @@ export default class {
 
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    return (playerEntity !== undefined && playerEntity !== regUtils.NULL_ENTITY) &&
+    return !regUtils.isNullEntity(playerEntity) &&
       hiber3d.hasComponents(playerEntity, "Hiber3D_Transform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D_Transform");
   }
