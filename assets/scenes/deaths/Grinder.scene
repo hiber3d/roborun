@@ -33,7 +33,7 @@
                         "data": "scenes\\roomsNEW\\RoomStraightB.scene"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "scenes\\roomsNEW\\RoomStraightB.scene"
                         }
@@ -70,7 +70,7 @@
                         "data": "scenes\\roomsNEW\\RoomStraightA.scene"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "scenes\\roomsNEW\\RoomStraightA.scene"
                         }
@@ -107,7 +107,7 @@
                         "data": "scenes\\segments\\SegmentStraightBase.scene"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "scenes\\segments\\SegmentStraightBase.scene"
                         }
@@ -144,7 +144,7 @@
                         "data": "scenes\\roomsNEW\\RoomTurnRightA.scene"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "scenes\\roomsNEW\\RoomTurnRightA.scene"
                         }
@@ -181,7 +181,7 @@
                         "data": "scenes\\segments\\SegmentRightBase.scene"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "scenes\\segments\\SegmentRightBase.scene"
                         }
@@ -356,7 +356,7 @@
                         "data": "glbs/segments/Segment_straight_B.glb#scene0"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "glbs/segments/Segment_straight_B.glb#scene0"
                         }
@@ -466,7 +466,7 @@
                                 "data": "glbs\\player.glb#scene0"
                             },
                             {
-                                "type": "Hiber3D::SceneRoot",
+                                "type": "Hiber3D::SceneInstance",
                                 "data": {
                                     "scene": "glbs\\player.glb#scene0"
                                 }
@@ -578,7 +578,7 @@
                                 "data": "glbs/obstacles/Grinder.glb#scene0"
                             },
                             {
-                                "type": "Hiber3D::SceneRoot",
+                                "type": "Hiber3D::SceneInstance",
                                 "data": {
                                     "scene": "glbs/obstacles/Grinder.glb#scene0"
                                 }
@@ -690,7 +690,7 @@
                                 "data": "glbs/deathAnimations/Smoke.glb#scene0"
                             },
                             {
-                                "type": "Hiber3D::SceneRoot",
+                                "type": "Hiber3D::SceneInstance",
                                 "data": {
                                     "scene": "glbs/deathAnimations/Smoke.glb#scene0"
                                 }
@@ -802,7 +802,7 @@
                                 "data": "glbs/deathAnimations/Sparks.glb#scene0"
                             },
                             {
-                                "type": "Hiber3D::SceneRoot",
+                                "type": "Hiber3D::SceneInstance",
                                 "data": {
                                     "scene": "glbs/deathAnimations/Sparks.glb#scene0"
                                 }

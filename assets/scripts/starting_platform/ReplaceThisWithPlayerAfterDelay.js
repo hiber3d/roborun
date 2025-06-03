@@ -11,10 +11,10 @@ export default class {
     hiber3d.addComponent(playerEntity, "Hiber3D_Transform");
 
     hiber3d.addComponent(playerEntity, "Hiber3D_Name");
-    hiber3d.setComponent(playerEntity, "Hiber3D_Name", "PlayerSceneRoot");
+    hiber3d.setComponent(playerEntity, "Hiber3D_Name", "PlayerSceneInstance");
 
-    hiber3d.addComponent(playerEntity, "Hiber3D_SceneRoot");
-    hiber3d.setComponent(playerEntity, "Hiber3D_SceneRoot", "scene", this.PLAYER_SCENE);
+    hiber3d.addComponent(playerEntity, "Hiber3D_SceneInstance");
+    hiber3d.setComponent(playerEntity, "Hiber3D_SceneInstance", "scene", this.PLAYER_SCENE);
 
     regUtils.destroyEntity(this.entity);
   }

@@ -120,7 +120,7 @@
                         "data": "GrinderModel"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "glbs\\obstacles\\Grinder.glb#scene0"
                         }

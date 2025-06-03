@@ -524,16 +524,16 @@ export default class {
 
     // Path
     const pathSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
-    hiber3d.addComponent(pathSceneEntity, "Hiber3D_SceneRoot");
-    hiber3d.setComponent(pathSceneEntity, "Hiber3D_SceneRoot", "scene", segmentPath);
+    hiber3d.addComponent(pathSceneEntity, "Hiber3D_SceneInstance");
+    hiber3d.setComponent(pathSceneEntity, "Hiber3D_SceneInstance", "scene", segmentPath);
     hiber3d.addComponent(pathSceneEntity, "Hiber3D_Name");
     hiber3d.setComponent(pathSceneEntity, "Hiber3D_Name", "PathScene");
     hiber3d.addComponent(pathSceneEntity, "Hiber3D_Transform");
 
     // Room
     const roomSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
-    hiber3d.addComponent(roomSceneEntity, "Hiber3D_SceneRoot");
-    hiber3d.setComponent(roomSceneEntity, "Hiber3D_SceneRoot", "scene", roomPath);
+    hiber3d.addComponent(roomSceneEntity, "Hiber3D_SceneInstance");
+    hiber3d.setComponent(roomSceneEntity, "Hiber3D_SceneInstance", "scene", roomPath);
     hiber3d.addComponent(roomSceneEntity, "Hiber3D_Name");
     hiber3d.setComponent(roomSceneEntity, "Hiber3D_Name", "RoomScene");
     hiber3d.addComponent(roomSceneEntity, "Hiber3D_Transform");
@@ -541,8 +541,8 @@ export default class {
     // Obstacle
     if (obstaclePath !== undefined) {
       const obstacleEntity = regUtils.createChildToParent(segmentSceneEntity);
-      hiber3d.addComponent(obstacleEntity, "Hiber3D_SceneRoot");
-      hiber3d.setComponent(obstacleEntity, "Hiber3D_SceneRoot", "scene", obstaclePath);
+      hiber3d.addComponent(obstacleEntity, "Hiber3D_SceneInstance");
+      hiber3d.setComponent(obstacleEntity, "Hiber3D_SceneInstance", "scene", obstaclePath);
       hiber3d.addComponent(obstacleEntity, "Hiber3D_Name");
       hiber3d.setComponent(obstacleEntity, "Hiber3D_Name", "ObstacleScene");
       hiber3d.addComponent(obstacleEntity, "Hiber3D_Transform");
@@ -554,8 +554,8 @@ export default class {
     // PickUp
     if (pickUpPath !== undefined) {
       const pickUpEntity = regUtils.createChildToParent(segmentSceneEntity);
-      hiber3d.addComponent(pickUpEntity, "Hiber3D_SceneRoot");
-      hiber3d.setComponent(pickUpEntity, "Hiber3D_SceneRoot", "scene", pickUpPath);
+      hiber3d.addComponent(pickUpEntity, "Hiber3D_SceneInstance");
+      hiber3d.setComponent(pickUpEntity, "Hiber3D_SceneInstance", "scene", pickUpPath);
       hiber3d.addComponent(pickUpEntity, "Hiber3D_Name");
       hiber3d.setComponent(pickUpEntity, "Hiber3D_Name", pickUpPath);
       hiber3d.addComponent(pickUpEntity, "Hiber3D_Transform");

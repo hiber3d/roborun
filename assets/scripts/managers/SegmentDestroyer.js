@@ -27,8 +27,8 @@ export default class {
       hiber3d.hasComponents(entity, "Hiber3D_ComputedWorldTransform")) {
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
-      hiber3d.addComponent(entity, "Hiber3D_SceneRoot");
-      hiber3d.setComponent(entity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.addComponent(entity, "Hiber3D_SceneInstance");
+      hiber3d.setComponent(entity, "Hiber3D_SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
       hiber3d.setComponent(entity, "Hiber3D_Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
     }
   }

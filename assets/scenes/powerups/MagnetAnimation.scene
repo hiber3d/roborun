@@ -106,7 +106,7 @@
                                 "data": "Magnet"
                             },
                             {
-                                "type": "Hiber3D::SceneRoot",
+                                "type": "Hiber3D::SceneInstance",
                                 "data": {
                                     "scene": "glbs/vfx/Magnet_animation.glb#scene0"
                                 }

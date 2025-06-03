@@ -65,8 +65,8 @@ export default class {
       this.debugSplineEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D_Transform");
       hiber3d.setComponent(this.debugSplineEntity, "Hiber3D_Transform", "scale", {x:0.1, y:0.3, z:0.1});
-      hiber3d.addComponent(this.debugSplineEntity, "Hiber3D_SceneRoot");
-      hiber3d.setComponent(this.debugSplineEntity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.addComponent(this.debugSplineEntity, "Hiber3D_SceneInstance");
+      hiber3d.setComponent(this.debugSplineEntity, "Hiber3D_SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineEntity, "Hiber3D_Name", "DebugSpline");
     }
@@ -78,8 +78,8 @@ export default class {
       this.debugSplineLeftLaneEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D_Transform");
       hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D_Transform", "scale", { x: 0.1, y: 0.1, z: 0.1 });
-      hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D_SceneRoot");
-      hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D_SceneInstance");
+      hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D_SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D_Name", "DebugSplineLeftLane");
     }
@@ -91,8 +91,8 @@ export default class {
       this.debugSplineRightLaneEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D_Transform");
       hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D_Transform", "scale", { x: 0.1, y: 0.1, z: 0.1 });
-      hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D_SceneRoot");
-      hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D_SceneInstance");
+      hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D_SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D_Name", "DebugSplineRightLane");
     }
@@ -104,8 +104,8 @@ export default class {
       this.debugSplineLeftWallEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D_Transform");
       hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D_Transform", "scale", { x: 0.2, y: 0.2, z: 0.2 });
-      hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D_SceneRoot");
-      hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D_SceneInstance");
+      hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D_SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D_Name", "DebugSplineLeftWall");
     }
@@ -117,8 +117,8 @@ export default class {
       this.debugSplineRightWallEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D_Transform");
       hiber3d.setComponent(this.debugSplineRightWallEntity, "Hiber3D_Transform", "scale", { x: 0.2, y: 0.2, z: 0.2 });
-      hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D_SceneRoot");
-      hiber3d.setComponent(this.debugSplineRightWallEntity, "Hiber3D_SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D_SceneInstance");
+      hiber3d.setComponent(this.debugSplineRightWallEntity, "Hiber3D_SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D_Name");
       hiber3d.setComponent(this.debugSplineRightWallEntity, "Hiber3D_Name", "DebugSplineRightWall");
     }

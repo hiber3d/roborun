@@ -34,7 +34,7 @@
                         "data": "Managers.scene"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "scenes/Managers.scene"
                         }
@@ -101,10 +101,10 @@
                             },
                             {
                                 "type": "Hiber3D::Name",
-                                "data": "ChangeableSceneRoot"
+                                "data": "ChangeableSceneInstance"
                             },
                             {
-                                "type": "Hiber3D::SceneRoot",
+                                "type": "Hiber3D::SceneInstance",
                                 "data": {
                                     "scene": "scenes/RunningScene.scene"
                                 }

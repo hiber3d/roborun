@@ -15,8 +15,8 @@ export default class {
     hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D_Transform");
     hiber3d.setComponent(this.magnetColliderEntity, "Hiber3D_Transform", "position", "y", this.MAGNET_COLLIDER_OFFSET_HEIGHT);
 
-    hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D_SceneRoot");
-    hiber3d.setComponent(this.magnetColliderEntity, "Hiber3D_SceneRoot", "scene", "scenes/powerups/MagnetCollider.scene");
+    hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D_SceneInstance");
+    hiber3d.setComponent(this.magnetColliderEntity, "Hiber3D_SceneInstance", "scene", "scenes/powerups/MagnetCollider.scene");
 
     hiber3d.addComponent(this.magnetColliderEntity, "Hiber3D_Name");
     hiber3d.setComponent(this.magnetColliderEntity, "Hiber3D_Name", "MagnetCollider.scene");
@@ -26,8 +26,8 @@ export default class {
 
     hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D_Transform");
 
-    hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D_SceneRoot");
-    hiber3d.setComponent(this.magnetEffectEntity, "Hiber3D_SceneRoot", "scene", "scenes/powerups/MagnetActivated.scene");
+    hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D_SceneInstance");
+    hiber3d.setComponent(this.magnetEffectEntity, "Hiber3D_SceneInstance", "scene", "scenes/powerups/MagnetActivated.scene");
 
     hiber3d.addComponent(this.magnetEffectEntity, "Hiber3D_Name");
     hiber3d.setComponent(this.magnetEffectEntity, "Hiber3D_Name", "MagnetEffect.scene");

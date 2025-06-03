@@ -77,7 +77,7 @@
                         "data": "ProcessorModel"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "glbs\\obstacles\\Processor.glb#scene0"
                         }
