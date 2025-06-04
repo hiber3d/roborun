@@ -12,7 +12,7 @@ export default class {
       return hiber3d.getComponent(this.entity, "DeathScene", "path");
     }
 
-    const name = hiber3d.getComponent(this.entity, "Hiber3D_Name");
+    const name = hiber3d.getComponent(this.entity, "Hiber3D::Name");
     const path = this.OBSTACLE_TYPES[name];
     if (path !== undefined) {
       return path;
@@ -29,12 +29,12 @@ export default class {
     return undefined;
   }
   onCreate() {
-    hiber3d.addEventListener(this, "Hiber3D_CollisionStarted");
+    hiber3d.addEventListener(this, "Hiber3D::CollisionStarted");
   }
   update(dt) {
   }
   onEvent(event, payload) {
-    if (event === "Hiber3D_CollisionStarted") {
+    if (event === "Hiber3D::CollisionStarted") {
       if (roboRunUtils.isPlayerCollision(this.entity, payload)) {
         const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
         if (!hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {

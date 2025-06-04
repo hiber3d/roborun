@@ -6,11 +6,11 @@ export function getStepEntity(segmentSceneEntity, stepIndex) {
     //hiber3d.print("getStepEntity() - stepsEntity is undefined");
     return undefined;
   }
-  if (hiber3d.hasComponents(stepsEntity, "Hiber3D_Children") === false) {
+  if (hiber3d.hasComponents(stepsEntity, "Hiber3D::Children") === false) {
     //hiber3d.print("getStepEntity() - stepsEntity has no children");
     return undefined;
   }
-  const stepChildren = hiber3d.getComponent(stepsEntity, "Hiber3D_Children", "entities");
+  const stepChildren = hiber3d.getComponent(stepsEntity, "Hiber3D::Children", "entities");
   var index = stepIndex;
   if (stepIndex === -1) {
     index = Object.keys(stepChildren).length - 1;
@@ -24,11 +24,11 @@ export function getStepEntity(segmentSceneEntity, stepIndex) {
     //hiber3d.print("getStepEntity() - stepEntity:'" + stepEntity + "' has no Step component");
     return undefined;
   }
-  if (hiber3d.hasComponents(stepEntity, "Hiber3D_Transform") === false) {
+  if (hiber3d.hasComponents(stepEntity, "Hiber3D::Transform") === false) {
     //hiber3d.print("getStepEntity() - stepEntity:'" + stepEntity + "' has no Hiber3D::Transform component");
     return undefined;
   }
-  if (hiber3d.hasComponents(stepEntity, "Hiber3D_ComputedWorldTransform") === false) {
+  if (hiber3d.hasComponents(stepEntity, "Hiber3D::ComputedWorldTransform") === false) {
     //hiber3d.print("getStepEntity() - stepEntity:'" + stepEntity + "' has no Hiber3D::ComputedWorldTransform component");
     return undefined;
   }
@@ -111,12 +111,12 @@ export function takeTurn(left) {
 
 export function getNumberOfSegments() {
   const segmentsSceneEntity = hiber3d.getSingleton("SegmentsState", "segmentsSceneEntity");
-  if(hiber3d.hasComponents(segmentsSceneEntity, "Hiber3D_Children") === false) {
+  if(hiber3d.hasComponents(segmentsSceneEntity, "Hiber3D::Children") === false) {
     hiber3d.print("getNumberOfSegments() - segmentsSceneEntity:'" + segmentsSceneEntity + "' has no children");
     return 0;
   }
   var segments = 0;
-  var children = hiber3d.getComponent(segmentsSceneEntity, "Hiber3D_Children", "entities");
+  var children = hiber3d.getComponent(segmentsSceneEntity, "Hiber3D::Children", "entities");
   for (var i = 0; i < children.length; i++) {
     if (hiber3d.hasComponents(children[i], "SegmentScene")) {
       segments++;

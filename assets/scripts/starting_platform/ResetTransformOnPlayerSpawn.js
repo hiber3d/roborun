@@ -8,8 +8,8 @@ export default class {
   shouldLerpToZero() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     return !regUtils.isNullEntity(playerEntity) &&
-      hiber3d.hasComponents(playerEntity, "Hiber3D_ComputedWorldTransform") &&
-      hiber3d.hasComponents(this.entity, "Hiber3D_ComputedWorldTransform");
+      hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") &&
+      hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   }
   onCreate() {
   }
@@ -17,7 +17,7 @@ export default class {
     if(!this.shouldLerpToZero()) {
       return;
     }
-    var transform = hiber3d.getComponent(this.entity, "Hiber3D_Transform");
+    var transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
     transform.position = vectorUtils.divideVector(transform.position, 1 + this.POSITION_SPEED);
 
     const realRotation = { x: transform.rotation.x, y: transform.rotation.y, z: transform.rotation.z };
@@ -26,7 +26,7 @@ export default class {
     const normalizedScaledRotation = quatUtils.normalizeQuaternion(scaledRotation);
     transform.rotation = normalizedScaledRotation;
 
-    hiber3d.setComponent(this.entity, "Hiber3D_Transform", transform);
+    hiber3d.setComponent(this.entity, "Hiber3D::Transform", transform);
   }
   onEvent(event, payload) {
   }

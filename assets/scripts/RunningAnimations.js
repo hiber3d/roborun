@@ -6,7 +6,7 @@ export default class {
   }
   update() {
     if (!hiber3d.getSingleton("GameState", "alive") ||
-    !hiber3d.hasComponents(this.entity, "Hiber3D_Transform")) {
+    !hiber3d.hasComponents(this.entity, "Hiber3D::Transform")) {
       return;
     }
     // TODO: Make event

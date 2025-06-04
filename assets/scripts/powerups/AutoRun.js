@@ -120,7 +120,7 @@ export default class {
 
       const newHeightDiff = this.getHeightDiff(this.stage);
       const newHeight = roboRunUtils.getSplineHeight(this.entity) + newHeightDiff;
-      hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", "y", newHeight);
+      hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", "y", newHeight);
       this.latestHeightDiff = newHeightDiff;
     }
     

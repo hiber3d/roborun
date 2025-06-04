@@ -11,7 +11,7 @@ export default class {
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     if (regUtils.isNullEntity(playerEntity) ||
-      !hiber3d.hasComponents(playerEntity, "Hiber3D_ComputedWorldTransform") ||
+      !hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") ||
       !hiber3d.hasComponents(playerEntity, "SplineData")) {
       return false;
     }
@@ -24,12 +24,12 @@ export default class {
   }
   spawnDebugCylinder(entity) {
     if (entity !== undefined &&
-      hiber3d.hasComponents(entity, "Hiber3D_ComputedWorldTransform")) {
+      hiber3d.hasComponents(entity, "Hiber3D::ComputedWorldTransform")) {
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
-      hiber3d.addComponent(entity, "Hiber3D_SceneInstance");
-      hiber3d.setComponent(entity, "Hiber3D_SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
-      hiber3d.setComponent(entity, "Hiber3D_Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
+      hiber3d.addComponent(entity, "Hiber3D::SceneInstance");
+      hiber3d.setComponent(entity, "Hiber3D::SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.setComponent(entity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
     }
   }
 
@@ -49,8 +49,8 @@ export default class {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     const playerSplineData = hiber3d.getComponent(playerEntity, "SplineData");
     const playerPosition = playerSplineData.position;
-    const nextStepPosition = hiber3d.getComponent(nextStepEntity, "Hiber3D_ComputedWorldTransform", "position");
-    const nextStepRotation = hiber3d.getComponent(nextStepEntity, "Hiber3D_ComputedWorldTransform", "rotation");
+    const nextStepPosition = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform", "position");
+    const nextStepRotation = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform", "rotation");
 
     if (this.playerPositionLastTick !== undefined) {
       const forwardVector = quatUtils.rotateVectorByQuaternion({ x: 0, y: 0, z: -1 }, nextStepRotation);

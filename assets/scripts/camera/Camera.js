@@ -19,15 +19,15 @@ export default class {
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     return !regUtils.isNullEntity(playerEntity) &&
-      hiber3d.hasComponents(playerEntity, "Hiber3D_Transform") &&
-      hiber3d.hasComponents(this.entity, "Hiber3D_Transform");
+      hiber3d.hasComponents(playerEntity, "Hiber3D::Transform") &&
+      hiber3d.hasComponents(this.entity, "Hiber3D::Transform");
   }
   onCreate() {
 
-    this.fovStart = hiber3d.getComponent(this.entity, "Hiber3D_Camera", "fovDegrees");
+    this.fovStart = hiber3d.getComponent(this.entity, "Hiber3D::Camera", "fovDegrees");
     this.fovGoal = this.fovStart;
 
-    this.offsetStart = hiber3d.getComponent(this.entity, "Hiber3D_Transform", "position");
+    this.offsetStart = hiber3d.getComponent(this.entity, "Hiber3D::Transform", "position");
   }
   update(dt) {
     if (this.shouldRun() === false) {
@@ -42,10 +42,10 @@ export default class {
     } else {
       this.fovGoal = this.fovStart;
     }
-    const fov = hiber3d.getComponent(this.entity, "Hiber3D_Camera", "fovDegrees");
+    const fov = hiber3d.getComponent(this.entity, "Hiber3D::Camera", "fovDegrees");
     if (fov !== this.fovGoal) {
       const newFov = scalarUtils.lerpScalar(fov, this.fovGoal, this.FOV_LERP_SPEED);
-      hiber3d.setComponent(this.entity, "Hiber3D_Camera", "fovDegrees", newFov);
+      hiber3d.setComponent(this.entity, "Hiber3D::Camera", "fovDegrees", newFov);
     }
     // Zoom
     if (hasAutoRun) {
@@ -57,9 +57,9 @@ export default class {
 
       const newZoom = scalarUtils.lerpScalar(this.zoomCurrent, this.zoomGoal, this.ZOOM_LERP_SPEED);
       const newZoomFactor = newZoom / this.zoomCurrent;
-      const position = hiber3d.getComponent(this.entity, "Hiber3D_Transform", "position");
+      const position = hiber3d.getComponent(this.entity, "Hiber3D::Transform", "position");
       const newPosition = vectorUtils.multiplyVector(position, newZoomFactor);
-      hiber3d.setComponent(this.entity, "Hiber3D_Transform", "position", newPosition);
+      hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", newPosition);
       if (!hiber3d.getSingleton("GameState", "paused")) {
       hiber3d.print(
         "zoomCurrent: " + this.zoomCurrent +
