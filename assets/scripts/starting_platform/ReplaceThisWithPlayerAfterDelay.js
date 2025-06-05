@@ -1,32 +1,34 @@
-({
-  PLAYER_SCENE: "scenes/Player.scene",
-  DELAY: 2,
+import * as regUtils from "scripts/utils/RegUtils.js";
 
-  timeSinceCreated: 0,
+export default class {
+  PLAYER_SCENE = "scenes/Player.scene";
+  DELAY = 2;
+
+  timeSinceCreated = 0;
   replaceThisWithPlayer() {
     var playerEntity = regUtils.createChildToParent(regUtils.getParent(regUtils.getParent(regUtils.getParent(this.entity))));
 
     hiber3d.addComponent(playerEntity, "Hiber3D::Transform");
 
     hiber3d.addComponent(playerEntity, "Hiber3D::Name");
-    hiber3d.setValue(playerEntity, "Hiber3D::Name", "PlayerSceneRoot");
+    hiber3d.setComponent(playerEntity, "Hiber3D::Name", "PlayerSceneInstance");
 
     hiber3d.addScript(playerEntity, "scripts/player/PlayerSFX.js");
 
-    hiber3d.addComponent(playerEntity, "Hiber3D::SceneRoot");
-    hiber3d.setValue(playerEntity, "Hiber3D::SceneRoot", "scene", this.PLAYER_SCENE);
+    hiber3d.addComponent(playerEntity, "Hiber3D::SceneInstance");
+    hiber3d.setComponent(playerEntity, "Hiber3D::SceneInstance", "scene", this.PLAYER_SCENE);
 
     regUtils.destroyEntity(this.entity);
-  },
+  }
   onCreate() {
-  },
-  update(dt) {
+  }
+  onUpdate(dt) {
     if (this.timeSinceCreated >= this.DELAY) {
       this.replaceThisWithPlayer();
     } else {
       this.timeSinceCreated += dt;
     }
-  },
+  }
   onEvent(event, payload) {
   }
-});
+}

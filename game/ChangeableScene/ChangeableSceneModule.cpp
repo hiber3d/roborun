@@ -9,7 +9,7 @@
 #include <Hiber3D/Hierarchy/Hierarchy.hpp>
 #include <Hiber3D/Hierarchy/HierarchyComponents.hpp>
 #include <Hiber3D/Scene/SceneModule.hpp>
-#include <Hiber3D/Scene/SceneRoot.hpp>
+#include <Hiber3D/Scene/SceneInstance.hpp>
 #include <Hiber3D/Scripting/JavaScriptScriptingModule.hpp>
 
 #include <RoboRun/RoboRunEvents.hpp>
@@ -36,8 +36,8 @@ static void switchToScene(
         }
         const auto newChild = createEntityAsChild(registry, entity);
         registry.emplace<Hiber3D::Transform>(newChild);
-        registry.emplace<Hiber3D::Name>(newChild, Hiber3D::FixedString<64>{"ChangeableSceneRoot"});
-        registry.emplace<Hiber3D::SceneRoot>(newChild, Hiber3D::SceneRoot{.scene = sceneHandle});
+        registry.emplace<Hiber3D::Name>(newChild, Hiber3D::FixedString<64>{"ChangeableSceneInstance"});
+        registry.emplace<Hiber3D::SceneInstance>(newChild, Hiber3D::SceneInstance{.scene = sceneHandle});
     }
     loadingChangingScene->loading = false;
 }

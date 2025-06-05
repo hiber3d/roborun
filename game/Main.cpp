@@ -111,10 +111,9 @@ public:
         context.registerModule<Hiber3D::RenderModule>(Hiber3D::RenderModuleSettings{.shadowsEnabled = false});
 
         context.registerModule<Hiber3D::JavaScriptScriptingModule>();
-        context.registerModule<Hiber3D::RmlUiModule>();
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Transform>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::ComputedWorldTransform>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::SceneRoot>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::SceneInstance>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::ScriptInstance>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Children>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::Parent>(context);
@@ -131,7 +130,8 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioSource>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioSettings>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioStats>(context);
-
+        
+        context.registerModule<Hiber3D::RmlUiModule>();
         context.registerModule<Hiber3D::InteropModule>();
         context.registerModule<Hiber3D::DebugModule>();
         context.registerModule<Hiber3D::InputModule>();

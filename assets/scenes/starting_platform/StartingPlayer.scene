@@ -87,7 +87,7 @@
                         "data": "Avatar"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "glbs/player.glb#scene0"
                         }

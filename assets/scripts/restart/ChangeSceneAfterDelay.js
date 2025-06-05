@@ -1,12 +1,12 @@
-({
-  DELAY: 3.5,
-  SCENE: "scenes/RunningScene.scene",
+export default class {
+  DELAY = 3.5;
+  SCENE = "scenes/RunningScene.scene";
 
-  sceneChanged: false,
-  timeSinceStarted: 0,
+  sceneChanged = false;
+  timeSinceStarted = 0;
   onCreate() {
-  },
-  update(dt) {
+  }
+  onUpdate(dt) {
     if (this.timeSinceStarted >= this.DELAY) {
       if (!this.sceneChanged) {
         const changeSceneEvent = { path: this.SCENE };
@@ -17,7 +17,7 @@
     } else {
       this.timeSinceStarted += dt;
     }
-  },
+  }
   onEvent(event, payload) {
   }
-});
+}

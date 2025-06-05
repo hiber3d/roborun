@@ -1,18 +1,14 @@
-const module = module || {};
-module.exports = module.exports || {};
+import * as regUtils from "scripts/utils/RegUtils.js";
 
-
-function getSplineHeight(entity) {
-    return hiber3d.hasComponents(entity, "SplineData") ? hiber3d.getValue(entity, "SplineData", "position").y : 0;
+export function getSplineHeight(entity) {
+    return hiber3d.hasComponents(entity, "SplineData") ? hiber3d.getComponent(entity, "SplineData", "position").y : 0;
   }
-module.exports.getSplineHeight = getSplineHeight;
 
-function isInAir(entity, height) {
+export function isInAir(entity, height) {
     return height > getSplineHeight(entity);
 }
-module.exports.isInAir = isInAir;
 
-function isAutoRunAir(entity){
+export function isAutoRunAir(entity){
   if(hiber3d.hasScripts(entity, "scripts/powerups/AutoRun.js")) {
     const autoRunScript = hiber3d.getScript(entity, "scripts/powerups/AutoRun.js");
     if(autoRunScript !== undefined && autoRunScript.stage !== undefined) {
@@ -21,9 +17,8 @@ function isAutoRunAir(entity){
   }
   return false;
 }
-module.exports.isAutoRunAir = isAutoRunAir;
 
-function isAutoRunGround(entity){
+export function isAutoRunGround(entity){
   if(hiber3d.hasScripts(entity, "scripts/powerups/AutoRun.js")) {
     const autoRunScript = hiber3d.getScript(entity, "scripts/powerups/AutoRun.js");
     if(autoRunScript !== undefined && autoRunScript.stage !== undefined) {
@@ -32,8 +27,8 @@ function isAutoRunGround(entity){
   }
   return false;
 }
-module.exports.isAutoRunGround = isAutoRunGround;
-function getOtherEntityInCollision(entity, collisionEventPayload) {
+
+export function getOtherEntityInCollision(entity, collisionEventPayload) {
   if (collisionEventPayload.entity1 === entity) {
     return collisionEventPayload.entity2;
   }
@@ -42,10 +37,9 @@ function getOtherEntityInCollision(entity, collisionEventPayload) {
   }
   return undefined;
 }
-module.exports.getOtherEntityInCollision = getOtherEntityInCollision;
-function isPlayerCollision(entity, collisionEventPayload) {
-  const playerEntity = hiber3d.getValue("GameState", "playerEntity");
+
+export function isPlayerCollision(entity, collisionEventPayload) {
+  const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
   const otherEntityInCollision = getOtherEntityInCollision(entity, collisionEventPayload);
-  return playerEntity !== undefined && playerEntity === otherEntityInCollision;
+  return !regUtils.isNullEntity(playerEntity) && playerEntity === otherEntityInCollision;
 }
-module.exports.isPlayerCollision = isPlayerCollision;

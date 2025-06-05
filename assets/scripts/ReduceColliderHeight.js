@@ -1,29 +1,31 @@
-({
-  DEFAULT_COLLIDER_HEIGHT: 0.75,
-  REDUCED_COLLIDER_HEIGHT: -0.4,
+import * as regUtils from "scripts/utils/RegUtils.js";
 
-  wasReducedLastTick: false,
+export default class {
+  DEFAULT_COLLIDER_HEIGHT = 0.75;
+  REDUCED_COLLIDER_HEIGHT = -0.4;
+
+  wasReducedLastTick = false;
   shouldRun() {
     if(hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") === false) {
       return false;
     }
     return true;
-  },
+  }
   modifyColliderHeight(shouldReduce) {
     const colliderEntity = regUtils.findEntityWithNameAmongDescendants(this.entity, "Shape");
     if (colliderEntity === undefined) {
       hiber3d.print("ReduceColliderHeight.js - ERROR: No 'Shape' found in hierarchy");
     }
     if (shouldReduce === true) {
-      hiber3d.setValue(colliderEntity, "Hiber3D::Transform", "position", "y", this.REDUCED_COLLIDER_HEIGHT);
+      hiber3d.setComponent(colliderEntity, "Hiber3D::Transform", "position", "y", this.REDUCED_COLLIDER_HEIGHT);
     } else {
-      hiber3d.setValue(colliderEntity, "Hiber3D::Transform", "position", "y", this.DEFAULT_COLLIDER_HEIGHT);
+      hiber3d.setComponent(colliderEntity, "Hiber3D::Transform", "position", "y", this.DEFAULT_COLLIDER_HEIGHT);
     }
-  },
+  }
   onCreate() {
 
-  },
-  update(dt) {
+  }
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }
@@ -38,7 +40,7 @@
     }
 
     this.wasReducedLastTick = isReduced;
-  },
+  }
   onEvent(event, payload) {
-  },
-});
+  }
+}

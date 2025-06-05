@@ -1,3 +1,4 @@
+// TODO: Move to scripts/state/InputKeys.js
 const KEYS = {
   START: 41, // W
   PAUSE: 40, // V
@@ -13,24 +14,24 @@ const KEYS = {
   TOGGLE_AUTO_TURN_DEBUG: 38, // T
 };
 
-({
+export default class {
   onCreate() {
-    hiber3d.addEventListener(this.entity, "SwipedUp");
-    hiber3d.addEventListener(this.entity, "SwipedDown");
-    hiber3d.addEventListener(this.entity, "SwipedLeft");
-    hiber3d.addEventListener(this.entity, "SwipedRight");
-    hiber3d.addEventListener(this.entity, "LeftTapped");
-    hiber3d.addEventListener(this.entity, "RightTapped");
-  },
-  update(dt) {
+    hiber3d.addEventListener(this, "SwipedUp");
+    hiber3d.addEventListener(this, "SwipedDown");
+    hiber3d.addEventListener(this, "SwipedLeft");
+    hiber3d.addEventListener(this, "SwipedRight");
+    hiber3d.addEventListener(this, "LeftTapped");
+    hiber3d.addEventListener(this, "RightTapped");
+  }
+  onUpdate(dt) {
     // Keyboard events
     if (hiber3d.call("keyJustPressed", KEYS.START)) {
       hiber3d.writeEvent("StartInput", {});
     }
-    if (hiber3d.call("keyJustPressed", KEYS.PAUSE) && !hiber3d.getValue("GameState", "paused")) {
+    if (hiber3d.call("keyJustPressed", KEYS.PAUSE) && !hiber3d.getSingleton("GameState", "paused")) {
       hiber3d.writeEvent("PauseInput", {});
     }
-    if (hiber3d.call("keyJustPressed", KEYS.UNPAUSE) && hiber3d.getValue("GameState", "paused")) {
+    if (hiber3d.call("keyJustPressed", KEYS.UNPAUSE) && hiber3d.getSingleton("GameState", "paused")) {
       hiber3d.writeEvent("UnpauseInput", {});
     }
     if (hiber3d.call("keyJustPressed", KEYS.JUMP)) {
@@ -57,12 +58,12 @@ const KEYS = {
     if (hiber3d.call("keyJustPressed", KEYS.RESTART)) {
       hiber3d.writeEvent("RestartInput", {});
     }
-  },
+  }
   onEvent(event, payload) {
     // Touch events
 
     // Start game on any touch input
-    if (hiber3d.getValue("GameState", "paused") === true) {
+    if (hiber3d.getSingleton("GameState", "paused") === true) {
       if (event === "LeftTapped" ||
         event === "RightTapped" ||
         event === "SwipedUp" ||
@@ -92,5 +93,5 @@ const KEYS = {
     if (event === "SwipedDown") {
       hiber3d.writeEvent("SlideInput", {});
     }
-  },
-});
+  }
+}

@@ -136,7 +136,7 @@
                                         "data": "MagnetTrail"
                                     },
                                     {
-                                        "type": "Hiber3D::SceneRoot",
+                                        "type": "Hiber3D::SceneInstance",
                                         "data": {
                                             "scene": "glbs/vfx/Magnet_trail.glb#scene0"
                                         }
@@ -248,7 +248,7 @@
                                         "data": "MagnetTrail"
                                     },
                                     {
-                                        "type": "Hiber3D::SceneRoot",
+                                        "type": "Hiber3D::SceneInstance",
                                         "data": {
                                             "scene": "glbs/vfx/Magnet_trail.glb#scene0"
                                         }
@@ -360,7 +360,7 @@
                                         "data": "MagnetTrail"
                                     },
                                     {
-                                        "type": "Hiber3D::SceneRoot",
+                                        "type": "Hiber3D::SceneInstance",
                                         "data": {
                                             "scene": "glbs/vfx/Magnet_trail.glb#scene0"
                                         }
@@ -472,7 +472,7 @@
                                         "data": "MagnetTrail"
                                     },
                                     {
-                                        "type": "Hiber3D::SceneRoot",
+                                        "type": "Hiber3D::SceneInstance",
                                         "data": {
                                             "scene": "glbs/vfx/Magnet_trail.glb#scene0"
                                         }

@@ -173,7 +173,7 @@
             "data": "platform"
           },
           {
-            "type": "Hiber3D::SceneRoot",
+            "type": "Hiber3D::SceneInstance",
             "data": {
               "scene": "glbs\\segments\\Segment_straight_A.glb#scene0"
             }
