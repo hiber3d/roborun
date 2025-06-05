@@ -1,7 +1,6 @@
-﻿const module = module || {};
-module.exports = module.exports || {};
+﻿import * as regUtils from "scripts/utils/RegUtils.js";
 
-function getStepEntity(segmentSceneEntity, stepIndex) {
+export function getStepEntity(segmentSceneEntity, stepIndex) {
   const stepsEntity = regUtils.findEntityWithNameAmongDescendants(segmentSceneEntity, "steps");
   if (stepsEntity == undefined) {
     //hiber3d.print("getStepEntity() - stepsEntity is undefined");
@@ -11,7 +10,7 @@ function getStepEntity(segmentSceneEntity, stepIndex) {
     //hiber3d.print("getStepEntity() - stepsEntity has no children");
     return undefined;
   }
-  const stepChildren = hiber3d.getValue(stepsEntity, "Hiber3D::Children", "entities");
+  const stepChildren = hiber3d.getComponent(stepsEntity, "Hiber3D::Children", "entities");
   var index = stepIndex;
   if (stepIndex === -1) {
     index = Object.keys(stepChildren).length - 1;
@@ -35,96 +34,89 @@ function getStepEntity(segmentSceneEntity, stepIndex) {
   }
   return stepEntity;
 }
-module.exports.getStepEntity = getStepEntity;
 
-function getCurrentStepEntity() {
-  const segmentSceneEntity = hiber3d.getValue("SegmentsState", "currentSegmentSceneEntity");
-  const stepIndex = hiber3d.getValue("SegmentsState", "currentStepIndex");
+export function getCurrentStepEntity() {
+  const segmentSceneEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
+  const stepIndex = hiber3d.getSingleton("SegmentsState", "currentStepIndex");
   return getStepEntity(segmentSceneEntity, stepIndex);
 }
-module.exports.getCurrentStepEntity = getCurrentStepEntity;
 
-function getNextStepEntity() {
-  const segmentSceneEntity = hiber3d.getValue("SegmentsState", "currentSegmentSceneEntity");
-  const stepIndex = hiber3d.getValue("SegmentsState", "currentStepIndex") + 1;
+export function getNextStepEntity() {
+  const segmentSceneEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
+  const stepIndex = hiber3d.getSingleton("SegmentsState", "currentStepIndex") + 1;
   return getStepEntity(segmentSceneEntity, stepIndex);
 }
-module.exports.getNextStepEntity = getNextStepEntity;
 
-function getLastStepEntityOf(segmentSceneEntity) {
+export function getLastStepEntityOf(segmentSceneEntity) {
   return getStepEntity(segmentSceneEntity, -1);
 }
-module.exports.getLastStepEntityOf = getLastStepEntityOf;
 
-function isLastStepEntity(stepEntity) {
+export function isLastStepEntity(stepEntity) {
   return regUtils.isLastChild(stepEntity);
 }
-module.exports.isLastStepEntity = isLastStepEntity;
 
-function isPlayerAtForward() {
+export function isPlayerAtForward() {
   const currentStepEntity = getCurrentStepEntity();
   if (currentStepEntity === undefined) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return false;
   }
-  return hiber3d.getValue(currentStepEntity, "Step", "indexForward") >= 0;
+  return hiber3d.getComponent(currentStepEntity, "Step", "indexForward") >= 0;
 }
-module.exports.isPlayerAtForward = isPlayerAtForward;
-function isPlayerAtLeftTurn() {
-  const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
-    hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
-    return false;
-  }
-  return hiber3d.getValue(currentStepEntity, "Step", "indexLeft") >= 0;
-}
-module.exports.isPlayerAtLeftTurn = isPlayerAtLeftTurn;
-function isPlayerAtRightTurn() {
-  const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
-    hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
-    return false;
-  }
-  return rightIndex = hiber3d.getValue(currentStepEntity, "Step", "indexRight") >= 0;
-}
-module.exports.isPlayerAtRightTurn = isPlayerAtRightTurn;
 
-function takeTurn(left) {
+export function isPlayerAtLeftTurn() {
+  const currentStepEntity = getCurrentStepEntity();
+  if (currentStepEntity === undefined) {
+    hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
+    return false;
+  }
+  return hiber3d.getComponent(currentStepEntity, "Step", "indexLeft") >= 0;
+}
+
+export function isPlayerAtRightTurn() {
+  const currentStepEntity = getCurrentStepEntity();
+  if (currentStepEntity === undefined) {
+    hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
+    return false;
+  }
+  return hiber3d.getComponent(currentStepEntity, "Step", "indexRight") >= 0;
+}
+
+export function takeTurn(left) {
   const currentStepEntity = getCurrentStepEntity();
   if (currentStepEntity === undefined) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return;
   }
-  const newIndex = hiber3d.getValue(currentStepEntity, "Step", (left ? "indexLeft" : "indexRight"));
+  const newIndex = hiber3d.getComponent(currentStepEntity, "Step", (left ? "indexLeft" : "indexRight"));
   if (newIndex < 0) {
     hiber3d.print("takeTurn() - illegal newIndex value:'" + newIndex + "'");
     return;
   }
-  hiber3d.setValue("SegmentsState", "currentStepIndex", newIndex);
-  hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", 0);
+  hiber3d.setSingleton("SegmentsState", "currentStepIndex", newIndex);
+  hiber3d.setSingleton("SegmentsState", "distanceFromCurrentStep", 0);
 
   // Progress to next segment
   if (newIndex == 0) {
-    const currentSegmentSceneEntity = hiber3d.getValue("SegmentsState", "currentSegmentSceneEntity");
+    const currentSegmentSceneEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
     if (hiber3d.hasComponents(currentSegmentSceneEntity, "SegmentScene")) {
       hiber3d.print("takeTurn() - currentSegmentSceneEntity:'" + currentSegmentSceneEntity + "' misses SegmentScene component");
       return;
     }
-    const nextSegmentSceneEntity = hiber3d.getValue(currentSegmentSceneEntity, "SegmentScene", "next");
+    const nextSegmentSceneEntity = hiber3d.getComponent(currentSegmentSceneEntity, "SegmentScene", "next");
 
-    hiber3d.setValue("SegmentsState", "currentSegmentSceneEntity", nextSegmentSceneEntity);
+    hiber3d.setSingleton("SegmentsState", "currentSegmentSceneEntity", nextSegmentSceneEntity);
   }
 }
-module.exports.takeTurn = takeTurn;
 
-function getNumberOfSegments() {
-  const segmentsSceneEntity = hiber3d.getValue("SegmentsState", "segmentsSceneEntity");
+export function getNumberOfSegments() {
+  const segmentsSceneEntity = hiber3d.getSingleton("SegmentsState", "segmentsSceneEntity");
   if(hiber3d.hasComponents(segmentsSceneEntity, "Hiber3D::Children") === false) {
     hiber3d.print("getNumberOfSegments() - segmentsSceneEntity:'" + segmentsSceneEntity + "' has no children");
     return 0;
   }
   var segments = 0;
-  var children = hiber3d.getValue(segmentsSceneEntity, "Hiber3D::Children", "entities");
+  var children = hiber3d.getComponent(segmentsSceneEntity, "Hiber3D::Children", "entities");
   for (var i = 0; i < children.length; i++) {
     if (hiber3d.hasComponents(children[i], "SegmentScene")) {
       segments++;
@@ -133,4 +125,3 @@ function getNumberOfSegments() {
 
   return segments;
 }
-module.exports.getNumberOfSegments = getNumberOfSegments;

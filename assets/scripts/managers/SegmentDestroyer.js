@@ -1,11 +1,16 @@
-({
-  DEBUG_SEGMENTS: false,
+import * as vectorUtils from "scripts/utils/VectorUtils.js";
+import * as quatUtils from "scripts/utils/QuatUtils.js";
+import * as regUtils from "scripts/utils/RegUtils.js";
+import * as segUtils from "scripts/utils/SegUtils.js";
 
-  playerPositionLastTick: undefined,
+export default class {
+  DEBUG_SEGMENTS = false;
+
+  playerPositionLastTick = undefined;
 
   shouldRun() {
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    if (playerEntity === undefined ||
+    const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
+    if (regUtils.isNullEntity(playerEntity) ||
       !hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") ||
       !hiber3d.hasComponents(playerEntity, "SplineData")) {
       return false;
@@ -14,25 +19,25 @@
     if (!isOnPath) {
       return false;
     }
-    return hiber3d.getValue("GameState", "alive") &&
-      !hiber3d.getValue("GameState", "paused");
-  },
+    return hiber3d.getSingleton("GameState", "alive") &&
+      !hiber3d.getSingleton("GameState", "paused");
+  }
   spawnDebugCylinder(entity) {
     if (entity !== undefined &&
       hiber3d.hasComponents(entity, "Hiber3D::ComputedWorldTransform")) {
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
-      hiber3d.addComponent(entity, "Hiber3D::SceneRoot");
-      hiber3d.setValue(entity, "Hiber3D::SceneRoot", "scene", "glbs/primitives/cylinder.glb#scene0");
-      hiber3d.setValue(entity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
+      hiber3d.addComponent(entity, "Hiber3D::SceneInstance");
+      hiber3d.setComponent(entity, "Hiber3D::SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
+      hiber3d.setComponent(entity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.4, z: 0.1 });
     }
-  },
+  }
 
   onCreate() {
-    hiber3d.addEventListener(this.entity, "NewStepEvent");
-    hiber3d.addEventListener(this.entity, "NewSegmentEvent");
-  },
-  update() {
+    hiber3d.addEventListener(this, "NewStepEvent");
+    hiber3d.addEventListener(this, "NewSegmentEvent");
+  }
+  onUpdate() {
     if (!this.shouldRun()) {
       return;
     }
@@ -41,11 +46,11 @@
     if (nextStepEntity === undefined) {
       return;
     }
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    const playerSplineData = hiber3d.getValue(playerEntity, "SplineData");
+    const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
+    const playerSplineData = hiber3d.getComponent(playerEntity, "SplineData");
     const playerPosition = playerSplineData.position;
-    const nextStepPosition = hiber3d.getValue(nextStepEntity, "Hiber3D::ComputedWorldTransform", "position");
-    const nextStepRotation = hiber3d.getValue(nextStepEntity, "Hiber3D::ComputedWorldTransform", "rotation");
+    const nextStepPosition = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform", "position");
+    const nextStepRotation = hiber3d.getComponent(nextStepEntity, "Hiber3D::ComputedWorldTransform", "rotation");
 
     if (this.playerPositionLastTick !== undefined) {
       const forwardVector = quatUtils.rotateVectorByQuaternion({ x: 0, y: 0, z: -1 }, nextStepRotation);
@@ -79,16 +84,16 @@
       //);
       if (hasPassed) {
         const newStepIndex = regUtils.getChildIndexOf(nextStepEntity);
-        hiber3d.setValue("SegmentsState", "currentStepIndex", newStepIndex);
-        hiber3d.setValue("SegmentsState", "distanceFromCurrentStep", 0);
+        hiber3d.setSingleton("SegmentsState", "currentStepIndex", newStepIndex);
+        hiber3d.setSingleton("SegmentsState", "distanceFromCurrentStep", 0);
         hiber3d.writeEvent("NewStepEvent");
         const newNextStepEntity = segUtils.getNextStepEntity();
         const newNextStepIndex = regUtils.getChildIndexOf(newNextStepEntity);
         if (newNextStepIndex === 0) {
-          const currentSegmentEntity = hiber3d.getValue("SegmentsState", "currentSegmentSceneEntity");
-          const nextSegmentEntity = hiber3d.getValue(currentSegmentEntity, "SegmentScene", "next");
-          hiber3d.setValue("SegmentsState", "currentSegmentSceneEntity", nextSegmentEntity);
-          hiber3d.setValue("SegmentsState", "currentStepIndex", 0);
+          const currentSegmentEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
+          const nextSegmentEntity = hiber3d.getComponent(currentSegmentEntity, "SegmentScene", "next");
+          hiber3d.setSingleton("SegmentsState", "currentSegmentSceneEntity", nextSegmentEntity);
+          hiber3d.setSingleton("SegmentsState", "currentStepIndex", 0);
           hiber3d.writeEvent("NewSegmentEvent");
         }
         if (!segUtils.isPlayerAtForward() && hiber3d.hasComponents(playerEntity, "OnPath")) {
@@ -105,13 +110,13 @@
     //);
 
     this.playerPositionLastTick = playerPosition;
-  },
+  }
   onEvent(event, payload) {
     if (event === "NewStepEvent") {
       // Going off-path
       if (!segUtils.isPlayerAtForward()) {
-        const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-        if (playerEntity !== undefined && hiber3d.hasComponents(playerEntity, "OnPath")) {
+        const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
+        if (!regUtils.isNullEntity(playerEntity) && hiber3d.hasComponents(playerEntity, "OnPath")) {
           hiber3d.removeComponent(playerEntity, "OnPath");
         }
       }
@@ -123,17 +128,17 @@
       }
     }
     if (event === "NewSegmentEvent") {
-      const current = hiber3d.getValue("SegmentsState", "currentSegmentSceneEntity");
+      const current = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
       if (current !== undefined && hiber3d.hasComponents(current, "SegmentScene")) {
-        const prev = hiber3d.getValue(current, "SegmentScene", "prev");
+        const prev = hiber3d.getComponent(current, "SegmentScene", "prev");
         if (prev !== undefined && hiber3d.hasComponents(prev, "SegmentScene")) {
-          const prevPrev = hiber3d.getValue(prev, "SegmentScene", "prev");
+          const prevPrev = hiber3d.getComponent(prev, "SegmentScene", "prev");
           if (prevPrev !== undefined && hiber3d.hasComponents(prevPrev, "SegmentScene")) {
-            const prevPrevPrev = hiber3d.getValue(prevPrev, "SegmentScene", "prev");
+            const prevPrevPrev = hiber3d.getComponent(prevPrev, "SegmentScene", "prev");
             if (prevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrev, "SegmentScene")) {
-              const prevPrevPrevPrev = hiber3d.getValue(prevPrevPrev, "SegmentScene", "prev");
+              const prevPrevPrevPrev = hiber3d.getComponent(prevPrevPrev, "SegmentScene", "prev");
               if (prevPrevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrevPrev, "SegmentScene")) {
-                const prevPrevPrevPrevPrev = hiber3d.getValue(prevPrevPrevPrev, "SegmentScene", "prev");
+                const prevPrevPrevPrevPrev = hiber3d.getComponent(prevPrevPrevPrev, "SegmentScene", "prev");
                 if (prevPrevPrevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrevPrevPrev, "SegmentScene")) {
                   regUtils.destroyEntity(prevPrevPrevPrevPrev);
                 }
@@ -144,4 +149,4 @@
       }
     }
   }
-});
+}

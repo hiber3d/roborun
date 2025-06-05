@@ -1,24 +1,27 @@
-({
-  DISTANCE: 50,
+import * as vectorUtils from "scripts/utils/VectorUtils.js";
+import * as regUtils from "scripts/utils/RegUtils.js";
+
+export default class {
+  DISTANCE = 50;
   shouldRun() {
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    return playerEntity !== undefined &&
+    const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
+    return !regUtils.isNullEntity(playerEntity) &&
       hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
-  },
+  }
   onCreate() {
-  },
-  update(dt) {
+  }
+  onUpdate(dt) {
     if (this.shouldRun() === false) {
       return;
     }
-    const playerEntity = hiber3d.getValue("GameState", "playerEntity");
-    const playerPosition = hiber3d.getValue(playerEntity, "Hiber3D::ComputedWorldTransform", "position");
-    const position = hiber3d.getValue(this.entity, "Hiber3D::ComputedWorldTransform", "position");
+    const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
+    const playerPosition = hiber3d.getComponent(playerEntity, "Hiber3D::ComputedWorldTransform", "position");
+    const position = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform", "position");
     if (!vectorUtils.inRange(playerPosition, position, this.DISTANCE)) {
       regUtils.destroyEntity(this.entity);
     }
-  },
+  }
   onEvent(event, payload) {
   }
-});
+}

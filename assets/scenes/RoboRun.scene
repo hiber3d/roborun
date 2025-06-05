@@ -3,15 +3,6 @@
     "root": {
         "id": 1048577,
         "components": [
-            {
-                "type": "Hiber3D::ScriptInstance",
-                "data": {
-                    "scripts": [
-                        "scripts/state/AnimationLayers.js",
-                        "scripts/state/Utils.js"
-                    ]
-                }
-            }
         ],
         "children": [
             {
@@ -43,7 +34,7 @@
                         "data": "Managers.scene"
                     },
                     {
-                        "type": "Hiber3D::SceneRoot",
+                        "type": "Hiber3D::SceneInstance",
                         "data": {
                             "scene": "scenes/Managers.scene"
                         }
@@ -110,10 +101,10 @@
                             },
                             {
                                 "type": "Hiber3D::Name",
-                                "data": "ChangeableSceneRoot"
+                                "data": "ChangeableSceneInstance"
                             },
                             {
-                                "type": "Hiber3D::SceneRoot",
+                                "type": "Hiber3D::SceneInstance",
                                 "data": {
                                     "scene": "scenes/RunningScene.scene"
                                 }

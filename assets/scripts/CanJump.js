@@ -1,23 +1,26 @@
-({
+import * as regUtils from "scripts/utils/RegUtils.js";
+import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
+
+export default class {
   // Pre-jump is the concept of the player queueing up a potential future jump while currently in a state unable to jump.
   // Consider the player falling from a previous jump and then attempting a new jump right before hitting the ground.
   // This effect reduces the perception of missed inputs.
-  MAX_PRE_JUMP_TIME: 0.25,
+  MAX_PRE_JUMP_TIME = 0.25;
 
-  timeSinceQueuedPreJump: -1, // -1 means no pre-jump queued
+  timeSinceQueuedPreJump = -1; // -1 means no pre-jump queued
   shouldRun() {
-    return hiber3d.getValue("GameState", "alive") && !hiber3d.getValue("GameState", "paused");
-  },
+    return hiber3d.getSingleton("GameState", "alive") && !hiber3d.getSingleton("GameState", "paused");
+  }
   canStartJumping(){
     const isJumping = hiber3d.hasScripts(this.entity, "scripts/Jumping.js");
     const isAutoRunAir = roboRunUtils.isAutoRunAir(this.entity);
-    const isInAir = roboRunUtils.isInAir(this.entity, hiber3d.getValue(this.entity, "Hiber3D::Transform", "position", "y"));
+    const isInAir = roboRunUtils.isInAir(this.entity, hiber3d.getComponent(this.entity, "Hiber3D::Transform", "position", "y"));
     return !isJumping && !isAutoRunAir && !isInAir;
-  },
+  }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "JumpInput");
-  },
-  update(dt) {
+    hiber3d.addEventListener(this, "JumpInput");
+  }
+  onUpdate(dt) {
     if(!this.shouldRun()){
       return;
     }
@@ -29,7 +32,7 @@
       }
       this.timeSinceQueuedPreJump += dt;
     } 
-  },
+  }
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;
@@ -41,5 +44,5 @@
         this.timeSinceQueuedPreJump = 0;
       }
     }
-  },
-});
+  }
+}

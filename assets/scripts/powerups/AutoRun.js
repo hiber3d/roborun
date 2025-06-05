@@ -1,43 +1,47 @@
-({
-  AUTO_RUN_DURATION: 3, // full duration
-  AUTO_RUN_ASCEND_DURATION: 0.3, // fly up
-  AUTO_RUN_DIP_DURATION: 0.3, // slight dip before power-up ends
-  AUTO_RUN_DESCEND_DURATION: 0.3, // fly down
-  AUTO_RUN_DESCEND_GROUNDED_DURATION: 1.0, // keep running
+import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
+import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
+import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 
-  AUTO_RUN_MAX_HEIGHT: 3.5,
-  AUTO_RUN_DIP_HEIGHT_DIFF: 0.5, // 0.5 --> will dip from MAX_HEIGHT down to MAX_HEIGHT - 0.5
+export default class {
+  AUTO_RUN_DURATION = 3; // full duration
+  AUTO_RUN_ASCEND_DURATION = 0.3; // fly up
+  AUTO_RUN_DIP_DURATION = 0.3; // slight dip before power-up ends
+  AUTO_RUN_DESCEND_DURATION = 0.3; // fly down
+  AUTO_RUN_DESCEND_GROUNDED_DURATION = 1.0; // keep running
 
-  STAGE: {
+  AUTO_RUN_MAX_HEIGHT = 3.5;
+  AUTO_RUN_DIP_HEIGHT_DIFF = 0.5; // 0.5 --> will dip from MAX_HEIGHT down to MAX_HEIGHT - 0.5
+
+  STAGE = {
     ASCEND: 0,
     MAX_HEIGHT: 1,
     DIP: 2,
     DESCEND: 3,
     GROUNDED: 4
-  },
+  };
 
   // Assigned in onCreate()
-  start: 0,
-  ascendStart: 0,
-  ascendEnd: 0,
-  maxHeightStart: 0,
-  maxHeightEnd: 0,
-  dipStart: 0,
-  dipEnd: 0,
-  descendStart: 0,
-  descendEnd: 0,
-  groundedStart: 0,
-  groundedEnd: 0,
-  end: 0,
+  start = 0;
+  ascendStart = 0;
+  ascendEnd = 0;
+  maxHeightStart = 0;
+  maxHeightEnd = 0;
+  dipStart = 0;
+  dipEnd = 0;
+  descendStart = 0;
+  descendEnd = 0;
+  groundedStart = 0;
+  groundedEnd = 0;
+  end = 0;
 
-  stage: 0,
-  timeSinceStarted: 0,
-  startingHeightDiff: 0,
-  latestHeightDiff: 0,
+  stage = 0;
+  timeSinceStarted = 0;
+  startingHeightDiff = 0;
+  latestHeightDiff = 0;
 
   shouldRun() {
-    return !hiber3d.getValue("GameState", "paused");
-  },
+    return !hiber3d.getSingleton("GameState", "paused");
+  }
   updateStage() {
     if (this.timeSinceStarted < this.ascendEnd) {
       this.stage = this.STAGE.ASCEND;
@@ -54,7 +58,7 @@
     else if (this.timeSinceStarted < this.end) {
       this.stage = this.STAGE.GROUNDED;
     }
-  },
+  }
   getHeightDiff(stage) {
     if (stage === this.STAGE.ASCEND) {
       return scalarUtils.lerpScalar(this.startingHeightDiff, this.AUTO_RUN_MAX_HEIGHT, this.timeSinceStarted / this.AUTO_RUN_ASCEND_DURATION);
@@ -73,7 +77,7 @@
     }
     hiber3d.print("AutoRun.js: Illegal stage value:'" + stage + "'");
     return 0;
-  },
+  }
   onCreate() {
     this.start = 0;
     this.ascendStart = this.start;
@@ -88,10 +92,10 @@
     this.groundedEnd = this.groundedStart + this.AUTO_RUN_DESCEND_GROUNDED_DURATION;
     this.end = this.AUTO_RUN_DURATION;
     
-    hiber3d.addEventListener(this.entity, "DivedEvent");
-    hiber3d.addEventListener(this.entity, "JumpedEvent");
-  },
-  update(dt) {
+    hiber3d.addEventListener(this, "DivedEvent");
+    hiber3d.addEventListener(this, "JumpedEvent");
+  }
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }
@@ -116,11 +120,11 @@
 
       const newHeightDiff = this.getHeightDiff(this.stage);
       const newHeight = roboRunUtils.getSplineHeight(this.entity) + newHeightDiff;
-      hiber3d.setValue(this.entity, "Hiber3D::Transform", "position", "y", newHeight);
+      hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", "y", newHeight);
       this.latestHeightDiff = newHeightDiff;
     }
     
-  },
+  }
   onEvent(event, payload) {
     // Cancel AutoRun if jumping or diving
     if(event === "JumpedEvent" || event === "DivedEvent"){
@@ -129,4 +133,4 @@
       }
     }
   }
-});
+}

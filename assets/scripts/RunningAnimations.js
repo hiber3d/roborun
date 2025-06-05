@@ -1,14 +1,16 @@
-({
-  pausedLastTick: true,
+import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
+
+export default class {
+  pausedLastTick = true;
   onCreate() {
-  },
-  update() {
-    if (!hiber3d.getValue("GameState", "alive") ||
+  }
+  onUpdate() {
+    if (!hiber3d.getSingleton("GameState", "alive") ||
     !hiber3d.hasComponents(this.entity, "Hiber3D::Transform")) {
       return;
     }
     // TODO: Make event
-    const pausedThisTick = hiber3d.getValue("GameState", "paused");
+    const pausedThisTick = hiber3d.getSingleton("GameState", "paused");
     if (this.pausedLastTick === true && pausedThisTick === false) {
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "run", layer: ANIMATION_LAYER.BASE, loop: true });
     }
@@ -20,4 +22,4 @@
       return;
     }
   }
-});
+}
