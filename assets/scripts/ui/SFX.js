@@ -7,11 +7,13 @@ export default class {
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   }
+
   onCreate() {
     hiber3d.addEventListener(this, "BroadcastCollectiblePickup");
     hiber3d.addEventListener(this, "BroadcastGameStarted");
     hiber3d.addEventListener(this, "BroadcastPerfectCollectiblePickup");
   }
+
   createAudioEntity(parent, name, asset, playSpeed, volume) {
     // TODO: Move this to the C++ source?
     hiber3d.setSingleton("Hiber3D::AudioSettings", "maxActiveVoices", 32);
@@ -26,8 +28,8 @@ export default class {
     hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "volume", volume);
 
     hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "playbackMode", 3);
-
   }
+
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;

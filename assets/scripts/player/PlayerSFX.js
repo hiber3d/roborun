@@ -2,6 +2,7 @@ export default class {
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   }
+
   onCreate() {
     hiber3d.addEventListener(this, "JumpedEvent");
     hiber3d.addEventListener(this, "LandedEvent");
@@ -10,6 +11,7 @@ export default class {
     hiber3d.addEventListener(this, "BroadcastTilted");
     hiber3d.addEventListener(this, "BroadcastTurned");
   }
+
   createAudioEntity(parent, name, asset, playSpeed, volume) {
     const sfxEntity = hiber3d.call("createEntityAsChild", parent);
     hiber3d.addComponent(sfxEntity, "Hiber3D::AudioSource");
@@ -22,6 +24,7 @@ export default class {
 
     hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "playbackMode", 3);
   }
+
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;

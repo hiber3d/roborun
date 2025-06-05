@@ -1,16 +1,17 @@
 export default class {
-
   name = "";
 
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   }
+
   onCreate() {
     this.name = hiber3d.getComponent(this.entity, "Hiber3D::Name");
     hiber3d.addEventListener(this, "BroadcastGameStarted");
     hiber3d.addEventListener(this, "BroadcastPlayerStats");
     hiber3d.addEventListener(this, "GameRestarted");
   }
+
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;
