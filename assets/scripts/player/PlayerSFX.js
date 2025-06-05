@@ -1,27 +1,27 @@
-({
+export default class {
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
-  },
+  }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "JumpedEvent");
-    hiber3d.addEventListener(this.entity, "LandedEvent");
-    hiber3d.addEventListener(this.entity, "BroadcastPowerupPickup");
-    hiber3d.addEventListener(this.entity, "BroadcastSlided");
-    hiber3d.addEventListener(this.entity, "BroadcastTilted");
-    hiber3d.addEventListener(this.entity, "BroadcastTurned");
-  },
+    hiber3d.addEventListener(this, "JumpedEvent");
+    hiber3d.addEventListener(this, "LandedEvent");
+    hiber3d.addEventListener(this, "BroadcastPowerupPickup");
+    hiber3d.addEventListener(this, "BroadcastSlided");
+    hiber3d.addEventListener(this, "BroadcastTilted");
+    hiber3d.addEventListener(this, "BroadcastTurned");
+  }
   createAudioEntity(parent, name, asset, playSpeed, volume) {
     const sfxEntity = hiber3d.call("createEntityAsChild", parent);
     hiber3d.addComponent(sfxEntity, "Hiber3D::AudioSource");
     hiber3d.addComponent(sfxEntity, "Hiber3D::Name"); // This is just to make it easier to trace which sounds have been added
 
-    hiber3d.setValue(sfxEntity, "Hiber3D::Name", name);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "asset", asset);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "playSpeed", playSpeed);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "volume", volume);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::Name", name);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "asset", asset);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "playSpeed", playSpeed);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "volume", volume);
 
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "playbackMode", 3);
-  },
+    hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "playbackMode", 3);
+  }
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;
@@ -45,4 +45,4 @@
       this.createAudioEntity(this.entity, "Turned", "audio/sfx/turn_0" + Math.floor(1 + Math.random() * 2) + ".mp3", 1, 0.2);
     }
   }
-});
+}

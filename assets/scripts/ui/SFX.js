@@ -1,33 +1,33 @@
 const COOL_DOWN_TIMER_MS = 1000;
 
-({
-  lastPickup: null,
-  pickupsInARow: 0,
+export default class {
+  lastPickup = null;
+  pickupsInARow = 0;
 
   shouldRun() {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
-  },
+  }
   onCreate() {
-    hiber3d.addEventListener(this.entity, "BroadcastCollectiblePickup");
-    hiber3d.addEventListener(this.entity, "BroadcastGameStarted");
-    hiber3d.addEventListener(this.entity, "BroadcastPerfectCollectiblePickup");
-  },
+    hiber3d.addEventListener(this, "BroadcastCollectiblePickup");
+    hiber3d.addEventListener(this, "BroadcastGameStarted");
+    hiber3d.addEventListener(this, "BroadcastPerfectCollectiblePickup");
+  }
   createAudioEntity(parent, name, asset, playSpeed, volume) {
     // TODO: Move this to the C++ source?
-    hiber3d.setValue("Hiber3D::AudioSettings", "maxActiveVoices", 32);
+    hiber3d.setSingleton("Hiber3D::AudioSettings", "maxActiveVoices", 32);
 
     const sfxEntity = hiber3d.call("createEntityAsChild", parent);
     hiber3d.addComponent(sfxEntity, "Hiber3D::AudioSource");
     hiber3d.addComponent(sfxEntity, "Hiber3D::Name"); // This is just to make it easier to trace which sounds have been added
 
-    hiber3d.setValue(sfxEntity, "Hiber3D::Name", name);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "asset", asset);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "playSpeed", playSpeed);
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "volume", volume);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::Name", name);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "asset", asset);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "playSpeed", playSpeed);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "volume", volume);
 
-    hiber3d.setValue(sfxEntity, "Hiber3D::AudioSource", "playbackMode", 3);
+    hiber3d.setComponent(sfxEntity, "Hiber3D::AudioSource", "playbackMode", 3);
 
-  },
+  }
   onEvent(event, payload) {
     if (!this.shouldRun()) {
       return;
@@ -53,4 +53,4 @@ const COOL_DOWN_TIMER_MS = 1000;
       this.createAudioEntity(this.entity, "PerfectPickup", "audio/sfx/success_01.mp3", 1, 0.7);
     }
   }
-});
+}
