@@ -32,7 +32,7 @@ export default class {
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "dive", layer: ANIMATION_LAYER.ROLL, loop: true });
     hiber3d.writeEvent("DivedEvent", { entity: this.entity });
   }
-  update(dt) {
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }

@@ -18,7 +18,7 @@ export default class {
   onCreate() {
     hiber3d.addEventListener(this, "Hiber3D::CollisionStarted");
   }
-  update() {
+  onUpdate() {
   }
   onEvent(event, payload) {
     if (event === "Hiber3D::CollisionStarted") {

@@ -1,7 +1,7 @@
 export default class {
   onCreate() {
   }
-  update(dt) {
+  onUpdate(dt) {
   }
   onEvent(event, payload) {
   }

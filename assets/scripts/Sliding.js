@@ -13,7 +13,7 @@ export default class {
   onCreate() {
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", layer: ANIMATION_LAYER.ROLL, loop: true });
   }
-  update(dt) {
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }

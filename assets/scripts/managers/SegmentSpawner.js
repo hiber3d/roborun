@@ -598,7 +598,7 @@ export default class {
     var newSegmentEntity = this.spawnSegmentScene(transform);
     hiber3d.setSingleton("SegmentsState", "currentSegmentSceneEntity", newSegmentEntity);
   }
-  update() {
+  onUpdate() {
     // When too few segments, spawn another
     const currentSegmentSceneEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
     if (currentSegmentSceneEntity === undefined) {

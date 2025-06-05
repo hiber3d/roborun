@@ -5,7 +5,7 @@ export default class {
     //hiber3d.setSingleton("GameState", "difficulty", 1); // For debugging "late-game"
   }
 
-  update(dt) {
+  onUpdate(dt) {
     if (hiber3d.getSingleton("GameState", "paused")) {
       return;
     }

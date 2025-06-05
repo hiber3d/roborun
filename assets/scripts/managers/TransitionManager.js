@@ -22,7 +22,7 @@ export default class {
     hiber3d.call("rmlCreateDataModel", "transition_model");
     this.transitionDirection = -1;
   }
-  update(dt) {
+  onUpdate(dt) {
     if (this.transitionDirection !== 0) {
       const normalizedDirection = this.transitionDirection > 0 ? 1 : -1;
       const delta = dt * normalizedDirection / this.TRANSITION_DURATION;

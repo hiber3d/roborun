@@ -17,7 +17,7 @@ export default class {
 
   }
 
-  update(deltaTime) {
+  onUpdate(deltaTime) {
     if(this.speedingTicksLeft >= 0){
       if(this.speedingTicksLeft === 0){
         this.setSpeedFactor(false);

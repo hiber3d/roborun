@@ -60,7 +60,7 @@ export default class {
       hiber3d.writeEvent("StartInput", {});
     }
   }
-  update(dt) {
+  onUpdate(dt) {
     if(this.tryReplace === true && this.hasReplaceStartingRobotWithStartingPlayer === false) {
       this.replaceStartingRobotWithStartingPlayer();
     }

@@ -5,7 +5,7 @@ export default class {
     hiber3d.addEventListener(this, "KillPlayer");
     hiber3d.addEventListener(this, "PlayerDied");
   }
-  update() {
+  onUpdate() {
   }
   onEvent(event, payload) {
     if (event === "KillPlayer") {

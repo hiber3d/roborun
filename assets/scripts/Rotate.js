@@ -15,7 +15,7 @@ export default class {
     this.timeSinceStart = latestRotationOffset; // Prevent all objects from moving in sync
   }
 
-  update(dt) {
+  onUpdate(dt) {
     if (!hiber3d.hasComponents(this.entity, "Hiber3D::Transform")) {
       return;
     }

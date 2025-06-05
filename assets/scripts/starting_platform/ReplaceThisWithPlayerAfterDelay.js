@@ -20,7 +20,7 @@ export default class {
   }
   onCreate() {
   }
-  update(dt) {
+  onUpdate(dt) {
     if (this.timeSinceCreated >= this.DELAY) {
       this.replaceThisWithPlayer();
     } else {

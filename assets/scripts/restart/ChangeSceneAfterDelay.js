@@ -6,7 +6,7 @@ export default class {
   timeSinceStarted = 0;
   onCreate() {
   }
-  update(dt) {
+  onUpdate(dt) {
     if (this.timeSinceStarted >= this.DELAY) {
       if (!this.sceneChanged) {
         const changeSceneEvent = { path: this.SCENE };

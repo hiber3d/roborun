@@ -8,7 +8,7 @@ export default class {
 
     hiber3d.addEventListener(this, "GameRestarted");
   }
-  update() {
+  onUpdate() {
   }
   onEvent(event, payload) {
 

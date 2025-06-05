@@ -37,7 +37,7 @@ export default class {
     hiber3d.addEventListener(this, "NewStepEvent");
     hiber3d.addEventListener(this, "NewSegmentEvent");
   }
-  update() {
+  onUpdate() {
     if (!this.shouldRun()) {
       return;
     }

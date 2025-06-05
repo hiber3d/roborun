@@ -4,7 +4,7 @@ export default class {
   pausedLastTick = true;
   onCreate() {
   }
-  update() {
+  onUpdate() {
     if (!hiber3d.getSingleton("GameState", "alive") ||
     !hiber3d.hasComponents(this.entity, "Hiber3D::Transform")) {
       return;

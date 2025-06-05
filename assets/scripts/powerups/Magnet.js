@@ -45,7 +45,7 @@ export default class {
     this.createMagnetCollider();
     this.createMagnetEffect();
   }
-  update(dt) {
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }

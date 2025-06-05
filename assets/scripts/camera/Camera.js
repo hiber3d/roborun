@@ -29,7 +29,7 @@ export default class {
 
     this.offsetStart = hiber3d.getComponent(this.entity, "Hiber3D::Transform", "position");
   }
-  update(dt) {
+  onUpdate(dt) {
     if (this.shouldRun() === false) {
       return;
     }

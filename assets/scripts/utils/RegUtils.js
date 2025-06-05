@@ -86,7 +86,7 @@ export function findEntityWithNameAmongAncestors(entity, name) {
       return entity;
     }
   }
-  const parent = regUtils.getParent(entity);
+  const parent = getParent(entity);
   if(parent !== undefined) {
     const ancestor = findEntityWithNameAmongAncestors(parent, name);
     return ancestor;

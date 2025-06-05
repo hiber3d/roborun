@@ -95,7 +95,7 @@ export default class {
     hiber3d.addEventListener(this, "DivedEvent");
     hiber3d.addEventListener(this, "JumpedEvent");
   }
-  update(dt) {
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }

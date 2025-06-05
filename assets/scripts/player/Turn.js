@@ -18,7 +18,7 @@ export default class {
     hiber3d.addEventListener(this, "TurnLeftInput");
     hiber3d.addEventListener(this, "TurnRightInput");
   }
-  update() {
+  onUpdate() {
     if (!this.shouldRun()) {
       return;
     }

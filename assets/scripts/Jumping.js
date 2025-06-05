@@ -46,7 +46,7 @@ export default class {
     hiber3d.writeEvent("QueueAnimation", { playAnimation: { entity: this.entity, name: "fall", layer: ANIMATION_LAYER.FALL, loop: true } });
     hiber3d.writeEvent("JumpedEvent", { entity: this.entity });
   }
-  update(dt) {
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }

@@ -20,7 +20,7 @@ export default class {
   onCreate() {
     hiber3d.addEventListener(this, "JumpInput");
   }
-  update(dt) {
+  onUpdate(dt) {
     if(!this.shouldRun()){
       return;
     }

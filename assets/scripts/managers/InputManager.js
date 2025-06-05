@@ -23,7 +23,7 @@ export default class {
     hiber3d.addEventListener(this, "LeftTapped");
     hiber3d.addEventListener(this, "RightTapped");
   }
-  update(dt) {
+  onUpdate(dt) {
     // Keyboard events
     if (hiber3d.call("keyJustPressed", KEYS.START)) {
       hiber3d.writeEvent("StartInput", {});

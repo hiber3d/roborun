@@ -21,7 +21,7 @@ export default class {
     hiber3d.addEventListener(this, "LeftLaneInput");
     hiber3d.addEventListener(this, "RightLaneInput");
   }
-  update(dt) {
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }

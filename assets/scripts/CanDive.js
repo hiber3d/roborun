@@ -13,7 +13,7 @@ export default class {
   onCreate() {
     hiber3d.addEventListener(this, "DiveInput");
   }
-  update(dt) {
+  onUpdate(dt) {
   }
   onEvent(event, payload) {
     if (!this.shouldRun()) {

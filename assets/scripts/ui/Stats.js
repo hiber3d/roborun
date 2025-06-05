@@ -23,7 +23,7 @@ export default class {
   updateStats(key, value) {
     hiber3d.call("rmlSetDataModelString", "stats_model", key, value.toString());
   }
-  update() {
+  onUpdate() {
     if (!this.shouldRun()) {
       this.updateStats("visibility", "hidden");
       return;

@@ -3,7 +3,7 @@ export default class {
 
     }
 
-    update(deltaTime) {
+    onUpdate(deltaTime) {
         const x = hiber3d.getComponent(this.entity, "Hiber3D::Transform", "position", "x")
         hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", "x",x+0.001 )
     }

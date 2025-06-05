@@ -25,7 +25,7 @@ export default class {
   onCreate() {
 
   }
-  update(dt) {
+  onUpdate(dt) {
     if (!this.shouldRun()) {
       return;
     }

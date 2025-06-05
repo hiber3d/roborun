@@ -10,7 +10,7 @@ export default class {
   onCreate() {
     hiber3d.addEventListener(this, "Hiber3D::CollisionPersisted");
   }
-  update(dt) {
+  onUpdate(dt) {
     this.latestDeltaTime = dt;
   }
   onEvent(event, payload) {
