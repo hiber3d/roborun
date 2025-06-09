@@ -1,5 +1,6 @@
 import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   SLIDE_DURATION = 0.5;
