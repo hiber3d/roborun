@@ -1,6 +1,7 @@
 import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 import * as hierarchy from "hiber3d:hierarchy";
+import * as registry from "hiber3d:registry";
 
 const STRAIGHT_ROOMS = [
   {

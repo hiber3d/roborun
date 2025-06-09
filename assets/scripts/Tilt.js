@@ -1,6 +1,7 @@
 import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   TILT_ENABLED = true;
