@@ -24,7 +24,7 @@ export default class {
         closestEntity = startingRobot;
       }
     }
-    if(closestEntity === undefined) {
+    if(closestEntity === undefined || !registry.isValid(closestEntity)) {
       hiber3d.print("ReplaceStartingRobotWithStartingPlayerOnStart.js - No starting robot found");
     }
     return closestEntity;
@@ -34,7 +34,7 @@ export default class {
       return;
     }
     const startingRobotEntityToReplace = this.getStartingRobotToReplace();
-    if (startingRobotEntityToReplace === undefined) {
+    if (startingRobotEntityToReplace === undefined || !registry.isValid(startingRobotEntityToReplace)) {
       return;
     }
     this.hasReplaceStartingRobotWithStartingPlayer = true;
