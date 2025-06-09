@@ -1,6 +1,6 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as scalarUtils from "scripts/utils/ScalarUtils.js";
-import * as regUtils from "scripts/utils/RegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   FOV_LERP_SPEED = 0.05;
@@ -18,7 +18,7 @@ export default class {
 
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    return !regUtils.isNullEntity(playerEntity) &&
+    return registry.isValid(playerEntity) &&
       hiber3d.hasComponents(playerEntity, "Hiber3D::Transform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D::Transform");
   }

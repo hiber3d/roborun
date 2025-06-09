@@ -1,6 +1,7 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   // TODO: Move these into magnet and keep some factor here?
@@ -16,7 +17,7 @@ export default class {
   onEvent(event, payload) {
     if (event === "Hiber3D::CollisionPersisted") {
       const otherEntityInCollision = roboRunUtils.getOtherEntityInCollision(this.entity, payload);
-      if (otherEntityInCollision !== undefined && hiber3d.hasScripts(otherEntityInCollision, "scripts/powerups/MagnetCollider.js")) {
+      if (registry.isValid(otherEntityInCollision) && hiber3d.hasScripts(otherEntityInCollision, "scripts/powerups/MagnetCollider.js")) {
 
         const worldPosition = hiber3d.getComponent(this.entity, "Hiber3D::ComputedWorldTransform", "position");
         const otherWorldPosition = hiber3d.getComponent(otherEntityInCollision, "Hiber3D::ComputedWorldTransform", "position");

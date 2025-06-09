@@ -2,6 +2,7 @@ import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   DIVE_DURATION = 0.5;
@@ -15,14 +16,14 @@ export default class {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.getSingleton("GameState", "alive") &&
       !hiber3d.getSingleton("GameState", "paused") &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      registry.isValid(segUtils.getCurrentStepEntity());
   }
   getDeltaHeight() {
     return Math.min(1, 1 - Math.pow(1 + this.DIVE_SPEED_BASE, this.timeSpentDivingInAir * this.DIVE_SPEED_ACCELERATION));
   }
   onCreate() {
     hiber3d.addEventListener(this, "DiveInput");
-    
+
     regUtils.removeScriptIfPresent(this.entity, "scripts/Jumping.js");
     regUtils.removeScriptIfPresent(this.entity, "scripts/powerups/AutoRun.js");
 
@@ -52,7 +53,7 @@ export default class {
       this.timeSpentDivingInAir += dt;
     } else {
       this.timeSpentDivingOnGround += dt;
-        hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
+      hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
       if (this.timeSpentDivingOnGround >= this.DIVE_DURATION) {
         hiber3d.writeEvent("CancelAnimation", { entity: this.entity, name: "dive" });
         hiber3d.removeScript(this.entity, "scripts/Diving.js");

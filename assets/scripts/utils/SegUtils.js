@@ -1,8 +1,10 @@
 ﻿import * as regUtils from "scripts/utils/RegUtils.js";
+import * as hierarchy from "hiber3d:hierarchy";
+import * as registry from "hiber3d:registry";
 
 export function getStepEntity(segmentSceneEntity, stepIndex) {
-  const stepsEntity = regUtils.findEntityWithNameAmongDescendants(segmentSceneEntity, "steps");
-  if (stepsEntity == undefined) {
+  const stepsEntity = hierarchy.findEntityInHierarchyWithName("steps", segmentSceneEntity);
+  if (!registry.isValid(stepsEntity)) {
     //hiber3d.print("getStepEntity() - stepsEntity is undefined");
     return undefined;
   }
@@ -57,7 +59,7 @@ export function isLastStepEntity(stepEntity) {
 
 export function isPlayerAtForward() {
   const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
+  if (!registry.isValid(currentStepEntity)) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return false;
   }
@@ -66,7 +68,7 @@ export function isPlayerAtForward() {
 
 export function isPlayerAtLeftTurn() {
   const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
+  if (!registry.isValid(currentStepEntity)) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return false;
   }
@@ -75,7 +77,7 @@ export function isPlayerAtLeftTurn() {
 
 export function isPlayerAtRightTurn() {
   const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
+  if (!registry.isValid(currentStepEntity)) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return false;
   }
@@ -84,7 +86,7 @@ export function isPlayerAtRightTurn() {
 
 export function takeTurn(left) {
   const currentStepEntity = getCurrentStepEntity();
-  if (currentStepEntity === undefined) {
+  if (!registry.isValid(currentStepEntity)) {
     hiber3d.print("isPlayerAtTurn() - currentStepEntity is undefined");
     return;
   }

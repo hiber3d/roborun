@@ -4,6 +4,7 @@ import * as regUtils from "scripts/utils/RegUtils.js";
 import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
 import * as splineUtils from "scripts/utils/SplineUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   RUN_SPEED = 15;
@@ -25,7 +26,7 @@ export default class {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.getSingleton("GameState", "alive") &&
       !hiber3d.getSingleton("GameState", "paused") &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      registry.isValid(segUtils.getCurrentStepEntity());
   }
   getSpeed() {
     var speed = this.RUN_SPEED;
@@ -41,10 +42,10 @@ export default class {
     const rotation = hiber3d.getComponent(this.entity, "Hiber3D::Transform", "rotation");
     const direction = quatUtils.vectorFromQuaternion(rotation);
     if (direction.y !== 0) {
-    const rawHillFactor = hiber3d.hasScripts(this.entity, "scripts/Diving.js") || hiber3d.hasScripts(this.entity, "scripts/Sliding.js") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
-    const scaledHillFactor = (direction.y < 0 ? rawHillFactor : 1 / rawHillFactor);
-    const safeHillFactor = Math.abs(scaledHillFactor) > 0.01 ? scaledHillFactor : 1;
-    speed *= safeHillFactor;
+      const rawHillFactor = hiber3d.hasScripts(this.entity, "scripts/Diving.js") || hiber3d.hasScripts(this.entity, "scripts/Sliding.js") ? this.SLIDE_IN_HILL_FACTOR : this.RUN_IN_HILL_FACTOR;
+      const scaledHillFactor = (direction.y < 0 ? rawHillFactor : 1 / rawHillFactor);
+      const safeHillFactor = Math.abs(scaledHillFactor) > 0.01 ? scaledHillFactor : 1;
+      speed *= safeHillFactor;
     }
 
     if (!hiber3d.hasComponents(this.entity, "OnPath")) {
@@ -61,10 +62,10 @@ export default class {
   }
   debugSpline(splinePosition, splineRotation) {
     const currentStepEntity = segUtils.getCurrentStepEntity();
-    if (this.debugSplineEntity === undefined) {
+    if (!registry.isValid(this.debugSplineEntity)) {
       this.debugSplineEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::Transform");
-      hiber3d.setComponent(this.debugSplineEntity, "Hiber3D::Transform", "scale", {x:0.1, y:0.3, z:0.1});
+      hiber3d.setComponent(this.debugSplineEntity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.3, z: 0.1 });
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::SceneInstance");
       hiber3d.setComponent(this.debugSplineEntity, "Hiber3D::SceneInstance", "scene", "glbs/primitives/cylinder.glb#scene0");
       hiber3d.addComponent(this.debugSplineEntity, "Hiber3D::Name");
@@ -74,7 +75,7 @@ export default class {
     hiber3d.setComponent(this.debugSplineEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, offset));
     hiber3d.setComponent(this.debugSplineEntity, "Hiber3D::Transform", "rotation", splineRotation);
 
-    if (this.debugSplineLeftLaneEntity === undefined) {
+    if (!registry.isValid(this.debugSplineLeftLaneEntity)) {
       this.debugSplineLeftLaneEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineLeftLaneEntity, "Hiber3D::Transform");
       hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.1, z: 0.1 });
@@ -87,7 +88,7 @@ export default class {
     hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, leftLaneOffset));
     hiber3d.setComponent(this.debugSplineLeftLaneEntity, "Hiber3D::Transform", "rotation", splineRotation);
 
-    if (this.debugSplineRightLaneEntity === undefined) {
+    if (!registry.isValid(this.debugSplineRightLaneEntity)) {
       this.debugSplineRightLaneEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineRightLaneEntity, "Hiber3D::Transform");
       hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D::Transform", "scale", { x: 0.1, y: 0.1, z: 0.1 });
@@ -100,7 +101,7 @@ export default class {
     hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, rightLaneOffset));
     hiber3d.setComponent(this.debugSplineRightLaneEntity, "Hiber3D::Transform", "rotation", splineRotation);
 
-    if (this.debugSplineLeftWallEntity === undefined) {
+    if (!registry.isValid(this.debugSplineLeftWallEntity)) {
       this.debugSplineLeftWallEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineLeftWallEntity, "Hiber3D::Transform");
       hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D::Transform", "scale", { x: 0.2, y: 0.2, z: 0.2 });
@@ -113,7 +114,7 @@ export default class {
     hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D::Transform", "position", vectorUtils.addVectors(splinePosition, leftWallOffset));
     hiber3d.setComponent(this.debugSplineLeftWallEntity, "Hiber3D::Transform", "rotation", splineRotation);
 
-    if (this.debugSplineRightWallEntity === undefined) {
+    if (!registry.isValid(this.debugSplineRightWallEntity)) {
       this.debugSplineRightWallEntity = hiber3d.createEntity();
       hiber3d.addComponent(this.debugSplineRightWallEntity, "Hiber3D::Transform");
       hiber3d.setComponent(this.debugSplineRightWallEntity, "Hiber3D::Transform", "scale", { x: 0.2, y: 0.2, z: 0.2 });
@@ -129,7 +130,7 @@ export default class {
   getSpline() {
     const currentStepEntity = segUtils.getCurrentStepEntity();
     const nextStepEntity = segUtils.getNextStepEntity();
-    if (currentStepEntity === undefined || nextStepEntity === undefined) {
+    if (!registry.isValid(currentStepEntity) || !registry.isValid(nextStepEntity)) {
       return;
     }
 
@@ -151,7 +152,7 @@ export default class {
   }
   getTiltOffset(rotation) {
     const currentStepEntity = segUtils.getCurrentStepEntity();
-    if (currentStepEntity === undefined) {
+    if (!registry.isValid(currentStepEntity)) {
       return undefined;
     }
     regUtils.addComponentIfNotPresent(this.entity, "TiltFactor");
@@ -164,7 +165,7 @@ export default class {
   }
   recordStats(delta) {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    if(this.entity === playerEntity){
+    if (this.entity === playerEntity) {
       var stats = regUtils.addComponentIfNotPresent(playerEntity, "Stats");
       stats.meters += delta;
       stats.points = stats.points + delta * stats.multiplier;
@@ -174,14 +175,14 @@ export default class {
       hiber3d.setSingleton("SegmentsState", "distanceFromCurrentStep", newDistanceFromCurrentStep);
     }
   }
-  isSettingHeightAvailable(){
+  isSettingHeightAvailable() {
     return !hiber3d.hasScripts(this.entity, "scripts/Jumping.js") &&
-    !hiber3d.hasScripts(this.entity, "scripts/Diving.js") &&
-    !hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js");
+      !hiber3d.hasScripts(this.entity, "scripts/Diving.js") &&
+      !hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js");
   }
-  setPosition(newPosition){
+  setPosition(newPosition) {
     const isSettingHeightAvailable = this.isSettingHeightAvailable();
-    if(isSettingHeightAvailable){
+    if (isSettingHeightAvailable) {
       hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", newPosition);
     } else {
       hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", "x", newPosition.x);
@@ -225,7 +226,7 @@ export default class {
       const fallenOff = !vectorUtils.inRangeOfPoints(position, leftWallPosition, rightWallPosition);
       if (fallenOff) {
         const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-        if(this.entity === playerEntity){
+        if (this.entity === playerEntity) {
           hiber3d.writeEvent("KillPlayer", {});
         }
       } else {
