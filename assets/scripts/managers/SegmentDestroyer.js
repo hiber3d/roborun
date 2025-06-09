@@ -24,7 +24,7 @@ export default class {
       !hiber3d.getSingleton("GameState", "paused");
   }
   spawnDebugCylinder(entity) {
-    if (entity !== undefined &&
+    if (registry.isValid(entity) &&
       hiber3d.hasComponents(entity, "Hiber3D::ComputedWorldTransform")) {
 
       //hiber3d.print("Debugging entity:'" + entity + "'");
@@ -44,7 +44,7 @@ export default class {
     }
 
     const nextStepEntity = segUtils.getNextStepEntity();
-    if (nextStepEntity === undefined) {
+    if (!registry.isValid(nextStepEntity)) {
       return;
     }
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
@@ -130,17 +130,17 @@ export default class {
     }
     if (event === "NewSegmentEvent") {
       const current = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
-      if (current !== undefined && hiber3d.hasComponents(current, "SegmentScene")) {
+      if (registry.isValid(current) && hiber3d.hasComponents(current, "SegmentScene")) {
         const prev = hiber3d.getComponent(current, "SegmentScene", "prev");
-        if (prev !== undefined && hiber3d.hasComponents(prev, "SegmentScene")) {
+        if (registry.isValid(prev) && hiber3d.hasComponents(prev, "SegmentScene")) {
           const prevPrev = hiber3d.getComponent(prev, "SegmentScene", "prev");
-          if (prevPrev !== undefined && hiber3d.hasComponents(prevPrev, "SegmentScene")) {
+          if (registry.isValid(prevPrev) && hiber3d.hasComponents(prevPrev, "SegmentScene")) {
             const prevPrevPrev = hiber3d.getComponent(prevPrev, "SegmentScene", "prev");
-            if (prevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrev, "SegmentScene")) {
+            if (registry.isValid(prevPrevPrev) && hiber3d.hasComponents(prevPrevPrev, "SegmentScene")) {
               const prevPrevPrevPrev = hiber3d.getComponent(prevPrevPrev, "SegmentScene", "prev");
-              if (prevPrevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrevPrev, "SegmentScene")) {
+              if (registry.isValid(prevPrevPrevPrev) && hiber3d.hasComponents(prevPrevPrevPrev, "SegmentScene")) {
                 const prevPrevPrevPrevPrev = hiber3d.getComponent(prevPrevPrevPrev, "SegmentScene", "prev");
-                if (prevPrevPrevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrevPrevPrev, "SegmentScene")) {
+                if (registry.isValid(prevPrevPrevPrevPrev) && hiber3d.hasComponents(prevPrevPrevPrevPrev, "SegmentScene")) {
                   registry.destroyEntity(prevPrevPrevPrevPrev);
                 }
               }

@@ -1,5 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   // TODO: Temorary solution until we can save modified script values in editor
@@ -8,7 +9,7 @@ export default class {
     "Arm2": "scenes/deaths/Arm2.scene",
   };
   getDeathScenePath() {
-    if(hiber3d.hasComponents(this.entity, "DeathScene")){
+    if (hiber3d.hasComponents(this.entity, "DeathScene")) {
       return hiber3d.getComponent(this.entity, "DeathScene", "path");
     }
 
@@ -21,7 +22,7 @@ export default class {
     for (var i = 0; i < Object.keys(this.OBSTACLE_TYPES).length; i++) {
       const key = Object.keys(this.OBSTACLE_TYPES)[i];
       const ancestor = regUtils.findEntityWithNameAmongAncestors(this.entity, key);
-      if(ancestor !== undefined) {
+      if (registry.isValid(ancestor)) {
         const path = this.OBSTACLE_TYPES[key];
         return path;
       }
@@ -39,10 +40,10 @@ export default class {
         const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
         if (!hiber3d.hasScripts(playerEntity, "scripts/powerups/AutoRun.js")) {
           hiber3d.writeEvent("KillPlayer", {});
-          
+
           const deathScenePath = this.getDeathScenePath();
           if (deathScenePath !== undefined) {
-            hiber3d.writeEvent("ChangeScene", { path:deathScenePath });
+            hiber3d.writeEvent("ChangeScene", { path: deathScenePath });
           }
         }
       }

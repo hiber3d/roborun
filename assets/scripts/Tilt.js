@@ -15,7 +15,7 @@ export default class {
       (hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js")) &&
       hiber3d.getSingleton("GameState", "alive") &&
       !hiber3d.getSingleton("GameState", "paused") &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      registry.isValid(segUtils.getCurrentStepEntity());
   }
   onCreate() {
     hiber3d.addEventListener(this, "LeftLaneInput");

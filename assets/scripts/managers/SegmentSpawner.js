@@ -582,7 +582,7 @@ export default class {
   spawnSegmentSceneWithHierarchy() {
     const latestSegment = this.latestSegmentSceneEntity;
     const out = segUtils.getLastStepEntityOf(latestSegment);
-    if (out === undefined || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
+    if (!registry.isValid(out) || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
       return;
     }
     const outTransform = hiber3d.getComponent(out, "Hiber3D::ComputedWorldTransform");
@@ -601,7 +601,7 @@ export default class {
   onUpdate() {
     // When too few segments, spawn another
     const currentSegmentSceneEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
-    if (currentSegmentSceneEntity === undefined) {
+    if (!registry.isValid(currentSegmentSceneEntity)) {
       return;
     }
     if (segUtils.getNumberOfSegments() < this.NUM_SEGMENTS) {

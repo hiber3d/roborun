@@ -6,7 +6,7 @@ export default class {
 
     onUpdate() {
         const children = hierarchy.getChildren(this.entity);
-        if (children === undefined || Object.keys(children).length === 0) {
+        if (children === undefined || children.length === 0) {
             hiber3d.writeEvent("BroadcastPerfectCollectiblePickup", {})
             registry.destroyEntity(this.entity);
             return;
