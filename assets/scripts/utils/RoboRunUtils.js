@@ -1,4 +1,4 @@
-import * as regUtils from "scripts/utils/RegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export function getSplineHeight(entity) {
     return hiber3d.hasComponents(entity, "SplineData") ? hiber3d.getComponent(entity, "SplineData", "position").y : 0;
@@ -41,5 +41,5 @@ export function getOtherEntityInCollision(entity, collisionEventPayload) {
 export function isPlayerCollision(entity, collisionEventPayload) {
   const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
   const otherEntityInCollision = getOtherEntityInCollision(entity, collisionEventPayload);
-  return !regUtils.isNullEntity(playerEntity) && playerEntity === otherEntityInCollision;
+  return registry.isValid(playerEntity) && playerEntity === otherEntityInCollision;
 }

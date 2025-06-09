@@ -2,6 +2,7 @@ import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as quatUtils from "scripts/utils/QuatUtils.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   DEBUG_SEGMENTS = false;
@@ -10,7 +11,7 @@ export default class {
 
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    if (regUtils.isNullEntity(playerEntity) ||
+    if (!registry.isValid(playerEntity) ||
       !hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") ||
       !hiber3d.hasComponents(playerEntity, "SplineData")) {
       return false;
@@ -116,7 +117,7 @@ export default class {
       // Going off-path
       if (!segUtils.isPlayerAtForward()) {
         const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-        if (!regUtils.isNullEntity(playerEntity) && hiber3d.hasComponents(playerEntity, "OnPath")) {
+        if (registry.isValid(playerEntity) && hiber3d.hasComponents(playerEntity, "OnPath")) {
           hiber3d.removeComponent(playerEntity, "OnPath");
         }
       }
@@ -140,7 +141,7 @@ export default class {
               if (prevPrevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrevPrev, "SegmentScene")) {
                 const prevPrevPrevPrevPrev = hiber3d.getComponent(prevPrevPrevPrev, "SegmentScene", "prev");
                 if (prevPrevPrevPrevPrev !== undefined && hiber3d.hasComponents(prevPrevPrevPrevPrev, "SegmentScene")) {
-                  regUtils.destroyEntity(prevPrevPrevPrevPrev);
+                  registry.destroyEntity(prevPrevPrevPrevPrev);
                 }
               }
             }

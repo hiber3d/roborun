@@ -1,8 +1,10 @@
 ﻿import * as regUtils from "scripts/utils/RegUtils.js";
+import * as hierarchy from "hiber3d:hierarchy";
+import * as registry from "hiber3d:registry";
 
 export function getStepEntity(segmentSceneEntity, stepIndex) {
-  const stepsEntity = regUtils.findEntityWithNameAmongDescendants(segmentSceneEntity, "steps");
-  if (stepsEntity == undefined) {
+  const stepsEntity = hierarchy.findEntityInHierarchyWithName("steps", segmentSceneEntity);
+  if (!registry.isValid(stepsEntity)) {
     //hiber3d.print("getStepEntity() - stepsEntity is undefined");
     return undefined;
   }

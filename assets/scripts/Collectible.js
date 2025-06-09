@@ -1,5 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   onCreate() {
@@ -20,7 +21,7 @@ export default class {
 
         hiber3d.writeEvent("BroadcastCollectiblePickup", {});
 
-        regUtils.destroyEntity(this.entity);
+        registry.destroyEntity(this.entity);
       }
     }
   }

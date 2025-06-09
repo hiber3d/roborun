@@ -1,4 +1,5 @@
-import * as regUtils from "scripts/utils/RegUtils.js";
+import * as registry from "hiber3d:registry";
+import * as hierarchy from "hiber3d:hierarchy";
 
 export default class {
   PLAYER_SCENE = "scenes/starting_platform/StartingPlayer.scene";
@@ -40,7 +41,7 @@ export default class {
 
     const transformToSpawnPlayerAt = hiber3d.getComponent(startingRobotEntityToReplace, "Hiber3D::ComputedWorldTransform");
 
-    var playerEntity = regUtils.createChildToParent(this.entity);
+    var playerEntity = hierarchy.createEntityAsChild(this.entity);
 
     hiber3d.addComponent(playerEntity, "Hiber3D::Transform");
     hiber3d.setComponent(playerEntity, "Hiber3D::Transform", transformToSpawnPlayerAt);
@@ -51,7 +52,7 @@ export default class {
     hiber3d.addComponent(playerEntity, "Hiber3D::SceneInstance");
     hiber3d.setComponent(playerEntity, "Hiber3D::SceneInstance", "scene", this.PLAYER_SCENE);
 
-    regUtils.destroyEntity(startingRobotEntityToReplace);
+    registry.destroyEntity(startingRobotEntityToReplace);
   }
   onCreate() {
     hiber3d.addEventListener(this, "StartInput");

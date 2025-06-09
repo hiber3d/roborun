@@ -1,13 +1,14 @@
-import * as regUtils from "scripts/utils/RegUtils.js";
+import * as hierarchy from "hiber3d:hierarchy";
+import * as registry from "hiber3d:registry";
 
 export default class {
     onCreate() {}
 
     onUpdate() {
-        const children = regUtils.getChildren(this.entity);
+        const children = hierarchy.getChildren(this.entity);
         if (children === undefined || Object.keys(children).length === 0) {
             hiber3d.writeEvent("BroadcastPerfectCollectiblePickup", {})
-            regUtils.destroyEntity(this.entity);
+            registry.destroyEntity(this.entity);
             return;
         }
     }
