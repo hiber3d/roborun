@@ -41,8 +41,14 @@
                             "playSpeed": 1,
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
-                            "status": 0,
+                            "status": 1,
                             "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
                         }
                     },
                     {
@@ -93,8 +99,14 @@
                             "playSpeed": 1,
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
-                            "status": 0,
+                            "status": 1,
                             "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
                         }
                     },
                     {
@@ -145,8 +157,14 @@
                             "playSpeed": 1,
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
-                            "status": 0,
+                            "status": 1,
                             "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
                         }
                     },
                     {
@@ -197,8 +215,14 @@
                             "playSpeed": 1,
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
-                            "status": 0,
+                            "status": 1,
                             "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
                         }
                     },
                     {
@@ -249,8 +273,14 @@
                             "playSpeed": 1,
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
-                            "status": 0,
+                            "status": 1,
                             "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
                         }
                     },
                     {
@@ -301,8 +331,14 @@
                             "playSpeed": 1,
                             "playSpeedFadeTime": 0.25,
                             "playbackMode": 1,
-                            "status": 0,
+                            "status": 1,
                             "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
                         }
                     },
                     {
