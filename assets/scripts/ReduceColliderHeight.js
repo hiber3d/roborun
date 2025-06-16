@@ -1,4 +1,5 @@
-import * as regUtils from "scripts/utils/RegUtils.js";
+import * as hierarchy from "hiber3d:hierarchy";
+import * as registry from "hiber3d:registry";
 
 export default class {
   DEFAULT_COLLIDER_HEIGHT = 0.75;
@@ -6,14 +7,14 @@ export default class {
 
   wasReducedLastTick = false;
   shouldRun() {
-    if(hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") === false) {
+    if (hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") === false) {
       return false;
     }
     return true;
   }
   modifyColliderHeight(shouldReduce) {
-    const colliderEntity = regUtils.findEntityWithNameAmongDescendants(this.entity, "Shape");
-    if (colliderEntity === undefined) {
+    const colliderEntity = hierarchy.findEntityInHierarchyWithName("Shape", this.entity);
+    if (!registry.isValid(colliderEntity)) {
       hiber3d.print("ReduceColliderHeight.js - ERROR: No 'Shape' found in hierarchy");
     }
     if (shouldReduce === true) {

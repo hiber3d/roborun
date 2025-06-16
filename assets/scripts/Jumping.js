@@ -2,6 +2,7 @@ import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   timeSinceJumped = 0;
@@ -10,7 +11,7 @@ export default class {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.getSingleton("GameState", "alive") &&
       !hiber3d.getSingleton("GameState", "paused") &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      registry.isValid(segUtils.getCurrentStepEntity());
   }
   getDeltaHeight() {
     const maxHeight = 2.5;
@@ -50,7 +51,7 @@ export default class {
     if (!this.shouldRun()) {
       return;
     }
-    
+
     this.timeSinceJumped += dt;
     const newJumpHeight = this.startHeight + this.getDeltaHeight();
 
@@ -62,7 +63,7 @@ export default class {
       hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "land", layer: ANIMATION_LAYER.ACTION, loop: false });
       hiber3d.writeEvent("LandedEvent", { entity: this.entity });
       hiber3d.setComponent(this.entity, "Hiber3D::Transform", "position", "y", roboRunUtils.getSplineHeight(this.entity));
-      
+
       hiber3d.removeScript(this.entity, "scripts/Jumping.js");
     }
   }

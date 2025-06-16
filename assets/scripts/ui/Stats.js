@@ -1,10 +1,10 @@
-import * as regUtils from "scripts/utils/RegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   shouldRun() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
     return (
-      !regUtils.isNullEntity(playerEntity) &&
+      registry.isValid(playerEntity) &&
       hiber3d.hasComponents(playerEntity, "Stats") &&
       hiber3d.getSingleton("GameState", "alive")
     );

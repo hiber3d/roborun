@@ -1,13 +1,13 @@
 import * as vectorUtils from "scripts/utils/VectorUtils.js";
 import * as quatUtils from "scripts/utils/QuatUtils.js";
-import * as regUtils from "scripts/utils/RegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   POSITION_SPEED = 0.01;
   ROTATION_SPEED = 0.05;
   shouldLerpToZero() {
     const playerEntity = hiber3d.getSingleton("GameState", "playerEntity");
-    return !regUtils.isNullEntity(playerEntity) &&
+    return registry.isValid(playerEntity) &&
       hiber3d.hasComponents(playerEntity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform");
   }

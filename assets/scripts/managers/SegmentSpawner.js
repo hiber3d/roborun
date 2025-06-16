@@ -1,6 +1,7 @@
-import * as regUtils from "scripts/utils/RegUtils.js";
 import * as scalarUtils from "scripts/utils/ScalarUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
+import * as hierarchy from "hiber3d:hierarchy";
+import * as registry from "hiber3d:registry";
 
 const STRAIGHT_ROOMS = [
   {
@@ -513,7 +514,7 @@ export default class {
     const pickUpScale = stuffToSpawn.pickUpScale;
 
     // Segment
-    const segmentSceneEntity = regUtils.createChildToParent(segmentsSceneEntity);
+    const segmentSceneEntity = hierarchy.createEntityAsChild(segmentsSceneEntity);
     hiber3d.addComponent(segmentSceneEntity, "SegmentScene");
     hiber3d.addComponent(segmentSceneEntity, "Hiber3D::Name");
     hiber3d.setComponent(segmentSceneEntity, "Hiber3D::Name", "SegmentScene" + this.segmentIndex);
@@ -523,7 +524,7 @@ export default class {
     }
 
     // Path
-    const pathSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
+    const pathSceneEntity = hierarchy.createEntityAsChild(segmentSceneEntity);
     hiber3d.addComponent(pathSceneEntity, "Hiber3D::SceneInstance");
     hiber3d.setComponent(pathSceneEntity, "Hiber3D::SceneInstance", "scene", segmentPath);
     hiber3d.addComponent(pathSceneEntity, "Hiber3D::Name");
@@ -531,7 +532,7 @@ export default class {
     hiber3d.addComponent(pathSceneEntity, "Hiber3D::Transform");
 
     // Room
-    const roomSceneEntity = regUtils.createChildToParent(segmentSceneEntity);
+    const roomSceneEntity = hierarchy.createEntityAsChild(segmentSceneEntity);
     hiber3d.addComponent(roomSceneEntity, "Hiber3D::SceneInstance");
     hiber3d.setComponent(roomSceneEntity, "Hiber3D::SceneInstance", "scene", roomPath);
     hiber3d.addComponent(roomSceneEntity, "Hiber3D::Name");
@@ -540,7 +541,7 @@ export default class {
 
     // Obstacle
     if (obstaclePath !== undefined) {
-      const obstacleEntity = regUtils.createChildToParent(segmentSceneEntity);
+      const obstacleEntity = hierarchy.createEntityAsChild(segmentSceneEntity);
       hiber3d.addComponent(obstacleEntity, "Hiber3D::SceneInstance");
       hiber3d.setComponent(obstacleEntity, "Hiber3D::SceneInstance", "scene", obstaclePath);
       hiber3d.addComponent(obstacleEntity, "Hiber3D::Name");
@@ -553,7 +554,7 @@ export default class {
 
     // PickUp
     if (pickUpPath !== undefined) {
-      const pickUpEntity = regUtils.createChildToParent(segmentSceneEntity);
+      const pickUpEntity = hierarchy.createEntityAsChild(segmentSceneEntity);
       hiber3d.addComponent(pickUpEntity, "Hiber3D::SceneInstance");
       hiber3d.setComponent(pickUpEntity, "Hiber3D::SceneInstance", "scene", pickUpPath);
       hiber3d.addComponent(pickUpEntity, "Hiber3D::Name");
@@ -582,7 +583,7 @@ export default class {
   spawnSegmentSceneWithHierarchy() {
     const latestSegment = this.latestSegmentSceneEntity;
     const out = segUtils.getLastStepEntityOf(latestSegment);
-    if (out === undefined || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
+    if (!registry.isValid(out) || !hiber3d.hasComponents(out, "Hiber3D::ComputedWorldTransform")) {
       return;
     }
     const outTransform = hiber3d.getComponent(out, "Hiber3D::ComputedWorldTransform");
@@ -601,7 +602,7 @@ export default class {
   onUpdate() {
     // When too few segments, spawn another
     const currentSegmentSceneEntity = hiber3d.getSingleton("SegmentsState", "currentSegmentSceneEntity");
-    if (currentSegmentSceneEntity === undefined) {
+    if (!registry.isValid(currentSegmentSceneEntity)) {
       return;
     }
     if (segUtils.getNumberOfSegments() < this.NUM_SEGMENTS) {

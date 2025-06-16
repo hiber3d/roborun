@@ -1,5 +1,6 @@
 import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   SLIDE_DURATION = 0.5;
@@ -8,7 +9,7 @@ export default class {
     return hiber3d.hasComponents(this.entity, "Hiber3D::ComputedWorldTransform") &&
       hiber3d.getSingleton("GameState", "alive") &&
       !hiber3d.getSingleton("GameState", "paused") &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      registry.isValid(segUtils.getCurrentStepEntity());
   }
   onCreate() {
     hiber3d.writeEvent("PlayAnimation", { entity: this.entity, name: "slide", layer: ANIMATION_LAYER.ROLL, loop: true });
@@ -26,5 +27,5 @@ export default class {
       hiber3d.removeScript(this.entity, "scripts/Sliding.js");
     }
   }
-  onEvent(event, payload) {  }
+  onEvent(event, payload) { }
 }

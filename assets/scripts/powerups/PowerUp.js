@@ -1,5 +1,6 @@
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as roboRunUtils from "scripts/utils/RoboRunUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   // TODO: Temorary solution until we can save modified script values in editor
@@ -35,7 +36,7 @@ export default class {
         hiber3d.writeEvent("BroadcastPowerupPickup", {});
 
         // Destroy this power-up
-        regUtils.destroyEntity(this.entity);
+        registry.destroyEntity(this.entity);
       }
     }
   }

@@ -1,6 +1,7 @@
 import ANIMATION_LAYER from "scripts/state/AnimationLayers.js";
 import * as regUtils from "scripts/utils/RegUtils.js";
 import * as segUtils from "scripts/utils/SegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   TILT_ENABLED = true;
@@ -15,7 +16,7 @@ export default class {
       (hiber3d.hasComponents(this.entity, "OnPath") || hiber3d.hasScripts(this.entity, "scripts/powerups/AutoRun.js")) &&
       hiber3d.getSingleton("GameState", "alive") &&
       !hiber3d.getSingleton("GameState", "paused") &&
-      segUtils.getCurrentStepEntity() !== undefined;
+      registry.isValid(segUtils.getCurrentStepEntity());
   }
   onCreate() {
     hiber3d.addEventListener(this, "LeftLaneInput");

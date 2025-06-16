@@ -1,4 +1,4 @@
-import * as regUtils from "scripts/utils/RegUtils.js";
+import * as registry from "hiber3d:registry";
 
 export default class {
   MAGNET_DURATION = 7.5;
@@ -52,8 +52,8 @@ export default class {
 
     // Stop
     if (this.timeSinceStarted >= this.MAGNET_DURATION) {
-      regUtils.destroyEntity(this.magnetColliderEntity);
-      regUtils.destroyEntity(this.magnetEffectEntity);
+      registry.destroyEntity(this.magnetColliderEntity);
+      registry.destroyEntity(this.magnetEffectEntity);
       hiber3d.removeScript(this.entity, "scripts/powerups/Magnet.js");
     } else {
       this.updateMagnetEffectScale();
