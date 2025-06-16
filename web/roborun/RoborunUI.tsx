@@ -25,7 +25,7 @@ export const RoborunUI = () => {
       }, 1000);
     });
 
-    const diedListener = api.onPlayerDied(() => {
+    const diedListener = api.onPostScore(() => {
       setTimeout(() => {
         setVisible(false);
       }, 1000);

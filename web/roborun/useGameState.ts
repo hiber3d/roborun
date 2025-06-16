@@ -1,10 +1,10 @@
-import { useHiber3D, Stats } from "./../hiber3d";
 import { useCallback, useEffect, useReducer } from "react";
-import { postScores } from "utils/postMessage";
 import { sendGaEvent } from "utils/ga";
+import { postScores } from "utils/postMessage";
 import { telegramUser } from "utils/telegram";
+import { PostScore, useHiber3D } from "./../hiber3d";
 
-type Score = Stats;
+type Score = PostScore;
 export type Player = {
   name: string;
   uuid: string;
@@ -176,34 +176,21 @@ export const useGameState = () => {
   }, [api, canvasRef]);
 
   const sendScore = useCallback(
-    async (player: Player, score: Score) => {
-      const multiplier = (Math.floor(score.multiplier * 10 + 0.0001) / 10).toFixed(1);
+    async (player: Player, score: PostScore) => {
+      const rawMultiplier = score.scores?.find((s) => s.type === "MULTIPLIER")?.score || 1;
+      const points = score.scores?.find((s) => s.type === "POINTS")?.score || 0;
+      const meters = score.scores?.find((s) => s.type === "METERS")?.score || 0;
+      const multiplier = (Math.floor(rawMultiplier * 10 + 0.0001) / 10).toFixed(1);
+
       const payload = {
-        ...score,
+        collectibles: score.scores?.find((s) => s.type === "COLLECTIBLES")?.score || 0,
         multiplier,
-        points: Math.round(score.points),
-        meters: Math.round(score.meters),
+        points,
+        meters,
         ...player,
       };
 
-      postScores([
-        {
-          type: "POINTS",
-          score: payload.points,
-        },
-        {
-          type: "METERS",
-          score: payload.meters,
-        },
-        {
-          type: "MULTIPLIER",
-          score: parseFloat(multiplier),
-        },
-        {
-          type: "COLLECTIBLES",
-          score: payload.collectibles,
-        },
-      ]);
+      postScores(score);
 
       const result = await fetch("https://filipengberg-gameleaderboardapi.web.val.run/submit", {
         method: "POST",
@@ -242,11 +229,9 @@ export const useGameState = () => {
     if (!api) {
       return;
     }
-    const listener = api.onPlayerDied((payload) => {
+    const listener = api.onPostScore((payload) => {
       sendGaEvent("player_died");
-      const pendingScore = {
-        ...payload.stats,
-      };
+      const pendingScore = { ...payload };
       if (!state.player) {
         dispatch({
           action: "SHOW_PLAYER_FORM",
