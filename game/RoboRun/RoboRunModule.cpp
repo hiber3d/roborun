@@ -17,8 +17,7 @@
 #include <Hiber3D/Scripting/JavaScriptScriptingModule.hpp>
 #include <Hiber3D/Scripting/ScriptInstance.hpp>
 
-#include <string>
-#include <unordered_map>
+#include <picosha2.h>
 
 static void resetSingletons(
     Hiber3D::Singleton<GameState> gameState) {
@@ -109,9 +108,54 @@ static void handleRestartGame(
     }
 }
 
+static std::string getHash(PostScore postScore) {
+    constexpr auto hashSalt = "HashGottaGoFarRoboRun";
+
+    std::string data = hashSalt;
+    for (const auto& stat : postScore.scores) {
+        data += stat.type + std::to_string(stat.score);
+    }
+    data += std::to_string(postScore.timestamp);
+    return picosha2::hash256_hex_string(data);
+}
+
+static void sendPostScore(
+    Hiber3D::EventView<PlayerDied>   events,
+    Hiber3D::EventWriter<PostScore>& postScoreWriter) {
+    for (const auto& event : events) {
+        PostScore postScore;
+        Score     distanceScore;
+        distanceScore.type  = "METERS";
+        distanceScore.score = std::round(event.stats.meters);
+
+        Score pointScore;
+        pointScore.type  = "POINTS";
+        pointScore.score = std::round(event.stats.points);
+
+        Score multiplierScore;
+        multiplierScore.type  = "MULTIPLIER";
+        multiplierScore.score = std::round(event.stats.multiplier * 10.0) / 10.0;
+
+        Score collectiblesScore;
+        collectiblesScore.type  = "COLLECTIBLES";
+        collectiblesScore.score = event.stats.collectibles;
+
+        postScore.scores.push_back(multiplierScore);
+        postScore.scores.push_back(pointScore);
+        postScore.scores.push_back(distanceScore);
+        postScore.scores.push_back(collectiblesScore);
+        postScore.timestamp = static_cast<int>(Hiber3D::Time::now().asMilliseconds());
+
+        postScore.hash = getHash(postScore);
+
+        postScoreWriter.writeEvent(std::move(postScore));
+    }
+}
+
 void RoboRunModule::onRegister(Hiber3D::InitContext& context) {
     context.addSystem(Hiber3D::Schedule::ON_EXIT, resetSingletons);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleGameRestarted);
+    context.addSystem(Hiber3D::Schedule::ON_TICK, sendPostScore);
     context.addSystem(Hiber3D::Schedule::ON_START, loadEnvironment);
     context.addSystem(Hiber3D::Schedule::ON_TICK, handleRestartGame);
 

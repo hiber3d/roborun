@@ -39,9 +39,24 @@ struct KillPlayer {
 
 HIBER3D_REFLECT(HIBER3D_TYPE(KillPlayer));
 
+struct Score {
+    std::string type;
+    double      score;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(Score), HIBER3D_MEMBER(type), HIBER3D_MEMBER(score));
+
 struct PlayerDied {
     Stats stats;
 };
 
+struct PostScore {
+    std::vector<Score> scores;
+    int                timestamp;
+    std::string        hash;
+};
+
+HIBER3D_REFLECT(HIBER3D_TYPE(PostScore), HIBER3D_MEMBER(scores), HIBER3D_MEMBER(timestamp), HIBER3D_MEMBER(hash));
 HIBER3D_REFLECT(HIBER3D_TYPE(PlayerDied), HIBER3D_MEMBER(stats));
-HIBER3D_INTEROP_SEND_TO_JS(PlayerDied);
+
+HIBER3D_INTEROP_SEND_TO_JS(PostScore);
