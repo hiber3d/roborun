@@ -1,7 +1,8 @@
 #include "AudioEvents.hpp"
 #include "AudioModule.hpp"
 
-#include <Hiber3D/Audio/AudioAssets.hpp>
+#include <Hiber3D/Asset/AssetServer.hpp>
+#include <Hiber3D/Asset/AssetStates.hpp>
 #include <Hiber3D/Audio/AudioComponents.hpp>
 #include <Hiber3D/Audio/AudioModule.hpp>
 #include <Hiber3D/Editor/EditorModule.hpp>
@@ -18,16 +19,12 @@ HIBER3D_REFLECT(HIBER3D_TYPE(SyncedMusic));
 
 // This allows multiple music tracks, each in their own AudioSource,
 // to start simultaneously when all of them have finished loading.
-static void startSyncedMusicWhenLoaded(Hiber3D::Singleton<Hiber3D::Assets<Hiber3D::Audio>>    assets,
+static void startSyncedMusicWhenLoaded(Hiber3D::Singleton<Hiber3D::AssetServer> assetServer,
                                        Hiber3D::View<Hiber3D::AudioSource, const SyncedMusic> audioComponents) {
     bool allLoaded = true;
 
     for (auto [entity, audio, syncedMusic] : audioComponents.each()) {
-        // Previously, audio were loaded and decoded when the audio played for the first time.
-        // Now, audio assets are loaded and decoded when the scene is loaded.
-        // So, once *this* system runs the first time, all audio assets should already be ready to play.
-        // Sooo... do we even need this system anymore? Or should it listen for some AssetEvent instead of polling?
-        if (audio->status == Hiber3D::AudioStatus::PAUSED && assets->get(audio->asset) == nullptr) {
+        if (audio->status == Hiber3D::AudioStatus::PAUSED && assetServer->getLoadState(audio->asset.toUntyped()) != Hiber3D::AssetLoadState::LOADED) {
             allLoaded = false;
         }
     }
