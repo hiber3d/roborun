@@ -1,1 +1,419 @@
-{"version":"1.0.0","root":{"id":9437186,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CollectiblesLine"}],"children":[{"id":9437187,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":1,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"offset"},{"type":"Hiber3D::ScriptInstance","data":{"scripts":["scripts/broadcast/BroadcastPerfectCollectiblePickup.js"]}}],"children":[{"id":9437201,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437206,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-1},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437248,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-2},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437221,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-3},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437238,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-4},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437237,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-5},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437254,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-6},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437215,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-7},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437247,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-8},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]},{"id":9437253,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-9},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Collectible.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\collectibles\\Collectible.scene"}}],"children":[]}]}]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 9437186,
+        "components": [],
+        "children": [
+            {
+                "id": 9437187,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 1,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "offset"
+                    },
+                    {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                            "scripts": [
+                                "scripts/broadcast/BroadcastPerfectCollectiblePickup.js"
+                            ]
+                        }
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 9437201,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437206,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -1
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437248,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -2
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437221,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -3
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437238,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -4
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437237,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -5
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437254,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -6
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437215,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -7
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437247,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -8
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 9437253,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -9
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Collectible.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\collectibles\\Collectible.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}

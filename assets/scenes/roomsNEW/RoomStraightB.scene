@@ -1,1 +1,2825 @@
-{"version":"1.0.0","root":{"id":12582914,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoomStraightB"}],"children":[{"id":12582927,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Room"}],"children":[{"id":13631547,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoomStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_straight_B.glb#mesh0/primitive0","material":"glbs/rooms/Room_straight_A.glb#material15","castShadows":true}}],"children":[{"id":10485860,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Decals"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_straight_B.glb#mesh2/primitive0","material":"glbs/rooms/Room_straight_A.glb#material5","castShadows":true}}],"children":[]},{"id":13631557,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoomFrame"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_straight_A.glb#mesh4/primitive0","material":"glbs/rooms/Room_straight_A.glb#material7","castShadows":true}}],"children":[]},{"id":9437289,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":-0.9,"z":-5.0147},"rotation":{"x":0,"y":1,"z":0,"w":-4.37114e-08},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Walkway"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_straight_B.glb#mesh5/primitive0","material":"glbs/rooms/Room_straight_A.glb#material12","castShadows":true}}],"children":[{"id":9437288,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"WalkwayFrame"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_straight_B.glb#mesh6/primitive0","material":"glbs/rooms/Room_straight_A.glb#material11","castShadows":true}}],"children":[]}]},{"id":9437290,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":4.62928,"y":9.58128,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CableHolder"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Cable_holder.glb#mesh0/primitive0","material":"glbs/decorations/Cable_holder.glb#material0","castShadows":true}}],"children":[]},{"id":11534376,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":5.90359,"y":6.19409,"z":-5},"rotation":{"x":0.5,"y":-0.5,"z":0.5,"w":0.5},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ThickWire"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_straight_B.glb#mesh4/primitive0","material":"glbs/rooms/Room_straight_A.glb#material1","castShadows":true}}],"children":[{"id":9437280,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ThinWire"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_straight_B.glb#mesh3/primitive0","material":"glbs/rooms/Room_straight_A.glb#material8","castShadows":true}}],"children":[]}]},{"id":9437287,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":4.62928,"y":9.58128,"z":-4.99938},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CableHolder"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Cable_holder.glb#mesh0/primitive0","material":"glbs/decorations/Cable_holder.glb#material0","castShadows":true}}],"children":[]}]}]},{"id":10485802,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Decorations"}],"children":[{"id":12582930,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipes"}],"children":[{"id":10485801,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":5.78761,"y":0.650291,"z":-8.15917},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipe1"}],"children":[{"id":12582990,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000387822,"y":-0.505485,"z":0.999116},"rotation":{"x":0.00027293,"y":0.707107,"z":-0.00027293,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437285,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770034,"y":-0.994515,"z":0.499115},"rotation":{"x":0.00027293,"y":0.707107,"z":0.707107,"w":0.000272959},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437279,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770118,"y":-0.994515,"z":-0.999116},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437269,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770074,"y":-0.994515,"z":-0.996187},"rotation":{"x":-0.499807,"y":0.500193,"z":-0.500193,"w":0.499807},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]}]},{"id":12582935,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":6.7924,"y":-0.283812,"z":-5.58844},"rotation":{"x":0.5,"y":-0.5,"z":-0.5,"w":0.5},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipe2"}],"children":[{"id":12582964,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.000770121,"y":0.994515,"z":0.999116},"rotation":{"x":0.000385981,"y":1,"z":0,"w":0},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437286,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770121,"y":-0.500399,"z":0.999115},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":13631544,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770034,"y":-0.994515,"z":0.499115},"rotation":{"x":0.00027293,"y":0.707107,"z":0.707107,"w":0.000272959},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":10485805,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770118,"y":-0.994515,"z":-0.999116},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]}]},{"id":13631546,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":6.90909,"y":3.42493,"z":-8.51498},"rotation":{"x":0.5,"y":0.5,"z":-0.5,"w":0.5},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipe4"}],"children":[{"id":13631542,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000853027,"y":-0.607789,"z":1.00794},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582963,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.0130706,"y":-1.1019,"z":0.507936},"rotation":{"x":0.00027293,"y":0.707107,"z":0.707107,"w":0.000272959},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582947,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.510246,"y":-1.10139,"z":0.010743},"rotation":{"x":0,"y":-0.707107,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582961,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.0130706,"y":-1.1019,"z":0.51044},"rotation":{"x":-0.500193,"y":-0.499807,"z":0.499807,"w":0.500193},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582960,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-4.25629,"y":-1.09862,"z":0.0104405},"rotation":{"x":-0.499807,"y":0.500193,"z":0.499807,"w":0.500193},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437282,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-2.75735,"y":-1.10082,"z":0.010743},"rotation":{"x":0,"y":-0.707107,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582944,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-2.75845,"y":-1.11188,"z":0.00999121},"rotation":{"x":0.5,"y":0.5,"z":0.5,"w":0.5},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightC"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_C.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[{"id":12582945,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.109525,"y":-0.18208,"z":0.374524},"rotation":{"x":0,"y":0,"z":0.965926,"w":0.258819},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ValvePipe"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Valve.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[{"id":12582940,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":4.65661e-10,"y":-0.00868051,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Valve"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Valve.glb#mesh0/primitive1","material":"glbs/decorations/Valve.glb#material1","castShadows":true}}],"children":[]}]}]}]},{"id":12582943,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":6.78258,"y":0.32076,"z":-5.75047},"rotation":{"x":0.5,"y":-0.5,"z":-0.5,"w":0.5},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipe5"}],"children":[{"id":12582942,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.000771874,"y":0.996786,"z":0.999116},"rotation":{"x":0.00027293,"y":0.707107,"z":0.00027293,"w":-0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582959,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770121,"y":-0.29601,"z":0.999115},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":10485774,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000626386,"y":-0.808443,"z":0.499115},"rotation":{"x":0.00027293,"y":0.707107,"z":0.707107,"w":0.000272959},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437283,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770118,"y":-0.994515,"z":-0.999116},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582938,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.498842,"y":1.49717,"z":0.999116},"rotation":{"x":-0.706834,"y":0.70738,"z":0,"w":0},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]}]},{"id":12582928,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-6.12963,"y":4.26938,"z":-8.43554},"rotation":{"x":-6.18172e-08,"y":3.19744e-14,"z":0.707107,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipe4"}],"children":[{"id":12582929,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000852941,"y":-1.10191,"z":0.507936},"rotation":{"x":0.00027293,"y":0.707107,"z":0.707107,"w":0.000272959},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582933,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.500591,"y":-1.10139,"z":0.010743},"rotation":{"x":0,"y":-0.707107,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":13631512,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000853002,"y":-1.10191,"z":0.51044},"rotation":{"x":-0.500193,"y":-0.499807,"z":0.499807,"w":0.500193},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582917,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-3.49831,"y":-1.09921,"z":0.0104405},"rotation":{"x":-0.499807,"y":0.500193,"z":0.499807,"w":0.500193},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":10485841,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-2.00059,"y":-1.10139,"z":0.010743},"rotation":{"x":0,"y":-0.707107,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582920,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-3.9997,"y":-0.605997,"z":0.0135059},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightB"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_B.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437281,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.000302479,"y":-0.605997,"z":1.01351},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightB"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_B.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]}]},{"id":12582924,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-6.79615,"y":1.94132,"z":-7.45501},"rotation":{"x":0.707095,"y":0.00410026,"z":0.707095,"w":0.00410026},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipe2"}],"children":[{"id":12582918,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.000770121,"y":0.994515,"z":0.999116},"rotation":{"x":0.000385981,"y":1,"z":0,"w":0},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582922,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770121,"y":-0.500399,"z":0.999115},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582988,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770034,"y":-0.994515,"z":0.499115},"rotation":{"x":0.00027293,"y":0.707107,"z":0.707107,"w":0.000272959},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]}]},{"id":12582923,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-6.78523,"y":-0.117417,"z":-8.42139},"rotation":{"x":-0.497705,"y":-0.502285,"z":-0.497705,"w":-0.502285},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipe3"}],"children":[{"id":12582919,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.00136034,"y":1.75918,"z":0.999116},"rotation":{"x":0.000385981,"y":1,"z":0,"w":0},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":12582921,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770121,"y":-0.49047,"z":0.999115},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437213,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770034,"y":-0.994515,"z":0.499115},"rotation":{"x":0.00027293,"y":0.707107,"z":0.707107,"w":0.000272959},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437206,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.134807,"y":1.37847,"z":1.21027},"rotation":{"x":0.677282,"y":0.203197,"z":-0.203197,"w":0.677282},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ValvePipe"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Valve.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[{"id":9437204,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0.0049434,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Valve"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Valve.glb#mesh0/primitive1","material":"glbs/decorations/Valve.glb#material1","castShadows":true}}],"children":[]}]},{"id":7340076,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":1.76148,"z":0.99972},"rotation":{"x":0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightC"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_C.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]}]},{"id":9437220,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-6.76026,"y":2.20368,"z":-8.04367},"rotation":{"x":0,"y":-0.707107,"z":0,"w":-0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pipe2"}],"children":[{"id":9437221,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0.000770121,"y":0.994515,"z":0.999116},"rotation":{"x":0.000385981,"y":1,"z":0,"w":0},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":11534399,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770121,"y":-0.515384,"z":0.999115},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeStraightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]},{"id":9437223,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.000770034,"y":-0.994515,"z":0.499115},"rotation":{"x":0.00027293,"y":0.707107,"z":0.707107,"w":0.000272959},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"PipeTurnA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0","material":"glbs/decorations/Pipe_straight_A.glb#material0","castShadows":true}}],"children":[]}]}]},{"id":6291540,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":10.4955,"z":-5},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Beam"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Beam.glb#mesh0/primitive0","material":"glbs/decorations/Beam.glb#material0","castShadows":true}}],"children":[]},{"id":8388674,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.114051,"y":10.0559,"z":-4.97781},"rotation":{"x":0,"y":-0.0413864,"z":0,"w":0.999143},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CeilingLamp"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Ceiling_lamp.glb#mesh0/primitive0","material":"glbs/decorations/Ceiling_lamp.glb#material0","castShadows":true}}],"children":[{"id":9437266,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.0739497,"y":-3.05508,"z":0.0297642},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CeilingLampBulb"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Ceiling_lamp.glb#mesh1/primitive0","material":"glbs/decorations/Ceiling_lamp.glb#material1","castShadows":true}}],"children":[{"id":6291539,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-4.20073e-11,"y":-0.0743831,"z":5.21748e-10},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Spotlight"},{"type":"Hiber3D::Light","data":{"type":1,"color":{"x":1,"y":0.92549,"z":0.721569},"strength":0.8,"radius":12,"openingAngleDegs":159}}],"children":[]},{"id":9437222,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":5.12305,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pointlight"},{"type":"Hiber3D::Light","data":{"type":0,"color":{"x":1,"y":0.913725,"z":0.760784},"strength":0.5,"radius":11,"openingAngleDegs":90}}],"children":[]}]}]},{"id":8388675,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-6.294,"y":0.208362,"z":-5.58025},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"MedBox"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Med_box.glb#mesh0/primitive0","material":"glbs/decorations/Med_box.glb#material0","castShadows":true}}],"children":[]},{"id":8388680,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":5.35888,"y":-0.806765,"z":-0.918024},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Stairs"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Stairs.glb#mesh0/primitive0","material":"glbs/decorations/Stairs.glb#material0","castShadows":true}}],"children":[{"id":5242973,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.00316978,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Grid"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Stairs.glb#mesh0/primitive1","material":"glbs/decorations/Stairs.glb#material1","castShadows":true}}],"children":[]}]},{"id":8388673,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Barrels"}],"children":[{"id":8388611,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-5.91325,"y":-0.549301,"z":-2.32668},"rotation":{"x":0.65783,"y":0.259345,"z":-0.259345,"w":0.65783},"scale":{"x":0.469326,"y":0.469326,"z":0.469326}}},{"type":"Hiber3D::Name","data":"Barrel"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Barrel.glb#mesh0/primitive0","material":"glbs/decorations/Barrel.glb#material0","castShadows":true}}],"children":[]},{"id":5242968,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-5.10866,"y":-0.882678,"z":-2.67984},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":0.469326,"y":0.469326,"z":0.469326}}},{"type":"Hiber3D::Name","data":"Barrel"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Barrel.glb#mesh0/primitive0","material":"glbs/decorations/Barrel.glb#material0","castShadows":true}}],"children":[]}]},{"id":5242969,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pallets"}],"children":[{"id":5242970,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-6.05568,"y":0.185171,"z":-3.99523},"rotation":{"x":0.441116,"y":0.552645,"z":0.441116,"w":-0.552645},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pallet"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pallet.glb#mesh0/primitive0","material":"glbs/decorations/Pallet.glb#material0","castShadows":true}}],"children":[]}]}]}]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 12582914,
+        "components": [],
+        "children": [
+            {
+                "id": 12582927,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Room"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 13631547,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "RoomStraightA"
+                            },
+                            {
+                                "type": "Hiber3D::Renderable",
+                                "data": {
+                                    "mesh": "glbs/roomsNEW/Room_straight_B.glb#mesh0/primitive0",
+                                    "material": "glbs/rooms/Room_straight_A.glb#material15",
+                                    "castShadows": true
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 10485860,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Decals"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/roomsNEW/Room_straight_B.glb#mesh2/primitive0",
+                                            "material": "glbs/rooms/Room_straight_A.glb#material5",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 13631557,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "RoomFrame"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/roomsNEW/Room_straight_A.glb#mesh4/primitive0",
+                                            "material": "glbs/rooms/Room_straight_A.glb#material7",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 9437289,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": -0.9,
+                                                "z": -5.0147
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 1,
+                                                "z": 0,
+                                                "w": -4.37114e-08
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Walkway"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/roomsNEW/Room_straight_B.glb#mesh5/primitive0",
+                                            "material": "glbs/rooms/Room_straight_A.glb#material12",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 9437288,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "WalkwayFrame"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/roomsNEW/Room_straight_B.glb#mesh6/primitive0",
+                                                    "material": "glbs/rooms/Room_straight_A.glb#material11",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 9437290,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 4.62928,
+                                                "y": 9.58128,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "CableHolder"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Cable_holder.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Cable_holder.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 11534376,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 5.90359,
+                                                "y": 6.19409,
+                                                "z": -5
+                                            },
+                                            "rotation": {
+                                                "x": 0.5,
+                                                "y": -0.5,
+                                                "z": 0.5,
+                                                "w": 0.5
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "ThickWire"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/roomsNEW/Room_straight_B.glb#mesh4/primitive0",
+                                            "material": "glbs/rooms/Room_straight_A.glb#material1",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 9437280,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "ThinWire"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/roomsNEW/Room_straight_B.glb#mesh3/primitive0",
+                                                    "material": "glbs/rooms/Room_straight_A.glb#material8",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 9437287,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 4.62928,
+                                                "y": 9.58128,
+                                                "z": -4.99938
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "CableHolder"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Cable_holder.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Cable_holder.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 10485802,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Decorations"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 12582930,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Pipes"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 10485801,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 5.78761,
+                                                "y": 0.650291,
+                                                "z": -8.15917
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pipe1"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 12582990,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000387822,
+                                                        "y": -0.505485,
+                                                        "z": 0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": -0.00027293,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437285,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770034,
+                                                        "y": -0.994515,
+                                                        "z": 0.499115
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.707107,
+                                                        "w": 0.000272959
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437279,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770118,
+                                                        "y": -0.994515,
+                                                        "z": -0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437269,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770074,
+                                                        "y": -0.994515,
+                                                        "z": -0.996187
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.499807,
+                                                        "y": 0.500193,
+                                                        "z": -0.500193,
+                                                        "w": 0.499807
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 12582935,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 6.7924,
+                                                "y": -0.283812,
+                                                "z": -5.58844
+                                            },
+                                            "rotation": {
+                                                "x": 0.5,
+                                                "y": -0.5,
+                                                "z": -0.5,
+                                                "w": 0.5
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pipe2"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 12582964,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0.000770121,
+                                                        "y": 0.994515,
+                                                        "z": 0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.000385981,
+                                                        "y": 1,
+                                                        "z": 0,
+                                                        "w": 0
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437286,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770121,
+                                                        "y": -0.500399,
+                                                        "z": 0.999115
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13631544,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770034,
+                                                        "y": -0.994515,
+                                                        "z": 0.499115
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.707107,
+                                                        "w": 0.000272959
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 10485805,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770118,
+                                                        "y": -0.994515,
+                                                        "z": -0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 13631546,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 6.90909,
+                                                "y": 3.42493,
+                                                "z": -8.51498
+                                            },
+                                            "rotation": {
+                                                "x": 0.5,
+                                                "y": 0.5,
+                                                "z": -0.5,
+                                                "w": 0.5
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pipe4"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 13631542,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000853027,
+                                                        "y": -0.607789,
+                                                        "z": 1.00794
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582963,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.0130706,
+                                                        "y": -1.1019,
+                                                        "z": 0.507936
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.707107,
+                                                        "w": 0.000272959
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582947,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.510246,
+                                                        "y": -1.10139,
+                                                        "z": 0.010743
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": -0.707107,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582961,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.0130706,
+                                                        "y": -1.1019,
+                                                        "z": 0.51044
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.500193,
+                                                        "y": -0.499807,
+                                                        "z": 0.499807,
+                                                        "w": 0.500193
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582960,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -4.25629,
+                                                        "y": -1.09862,
+                                                        "z": 0.0104405
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.499807,
+                                                        "y": 0.500193,
+                                                        "z": 0.499807,
+                                                        "w": 0.500193
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437282,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -2.75735,
+                                                        "y": -1.10082,
+                                                        "z": 0.010743
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": -0.707107,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582944,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -2.75845,
+                                                        "y": -1.11188,
+                                                        "z": 0.00999121
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.5,
+                                                        "y": 0.5,
+                                                        "z": 0.5,
+                                                        "w": 0.5
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightC"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_C.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": [
+                                            {
+                                                "id": 12582945,
+                                                "components": [
+                                                    {
+                                                        "type": "Hiber3D::Transform",
+                                                        "data": {
+                                                            "position": {
+                                                                "x": -0.109525,
+                                                                "y": -0.18208,
+                                                                "z": 0.374524
+                                                            },
+                                                            "rotation": {
+                                                                "x": 0,
+                                                                "y": 0,
+                                                                "z": 0.965926,
+                                                                "w": 0.258819
+                                                            },
+                                                            "scale": {
+                                                                "x": 1,
+                                                                "y": 1,
+                                                                "z": 1
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "Hiber3D::Name",
+                                                        "data": "ValvePipe"
+                                                    },
+                                                    {
+                                                        "type": "Hiber3D::Renderable",
+                                                        "data": {
+                                                            "mesh": "glbs/decorations/Valve.glb#mesh0/primitive0",
+                                                            "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                            "castShadows": true
+                                                        }
+                                                    }
+                                                ],
+                                                "children": [
+                                                    {
+                                                        "id": 12582940,
+                                                        "components": [
+                                                            {
+                                                                "type": "Hiber3D::Transform",
+                                                                "data": {
+                                                                    "position": {
+                                                                        "x": 4.65661e-10,
+                                                                        "y": -0.00868051,
+                                                                        "z": 0
+                                                                    },
+                                                                    "rotation": {
+                                                                        "x": 0,
+                                                                        "y": 0,
+                                                                        "z": 0,
+                                                                        "w": 1
+                                                                    },
+                                                                    "scale": {
+                                                                        "x": 1,
+                                                                        "y": 1,
+                                                                        "z": 1
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "Hiber3D::Name",
+                                                                "data": "Valve"
+                                                            },
+                                                            {
+                                                                "type": "Hiber3D::Renderable",
+                                                                "data": {
+                                                                    "mesh": "glbs/decorations/Valve.glb#mesh0/primitive1",
+                                                                    "material": "glbs/decorations/Valve.glb#material1",
+                                                                    "castShadows": true
+                                                                }
+                                                            }
+                                                        ],
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 12582943,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 6.78258,
+                                                "y": 0.32076,
+                                                "z": -5.75047
+                                            },
+                                            "rotation": {
+                                                "x": 0.5,
+                                                "y": -0.5,
+                                                "z": -0.5,
+                                                "w": 0.5
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pipe5"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 12582942,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0.000771874,
+                                                        "y": 0.996786,
+                                                        "z": 0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.00027293,
+                                                        "w": -0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582959,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770121,
+                                                        "y": -0.29601,
+                                                        "z": 0.999115
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 10485774,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000626386,
+                                                        "y": -0.808443,
+                                                        "z": 0.499115
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.707107,
+                                                        "w": 0.000272959
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437283,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770118,
+                                                        "y": -0.994515,
+                                                        "z": -0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582938,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.498842,
+                                                        "y": 1.49717,
+                                                        "z": 0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.706834,
+                                                        "y": 0.70738,
+                                                        "z": 0,
+                                                        "w": 0
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 12582928,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -6.12963,
+                                                "y": 4.26938,
+                                                "z": -8.43554
+                                            },
+                                            "rotation": {
+                                                "x": -6.18172e-08,
+                                                "y": 3.19744e-14,
+                                                "z": 0.707107,
+                                                "w": 0.707107
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pipe4"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 12582929,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000852941,
+                                                        "y": -1.10191,
+                                                        "z": 0.507936
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.707107,
+                                                        "w": 0.000272959
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582933,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.500591,
+                                                        "y": -1.10139,
+                                                        "z": 0.010743
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": -0.707107,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 13631512,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000853002,
+                                                        "y": -1.10191,
+                                                        "z": 0.51044
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.500193,
+                                                        "y": -0.499807,
+                                                        "z": 0.499807,
+                                                        "w": 0.500193
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582917,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -3.49831,
+                                                        "y": -1.09921,
+                                                        "z": 0.0104405
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.499807,
+                                                        "y": 0.500193,
+                                                        "z": 0.499807,
+                                                        "w": 0.500193
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 10485841,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -2.00059,
+                                                        "y": -1.10139,
+                                                        "z": 0.010743
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": -0.707107,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582920,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -3.9997,
+                                                        "y": -0.605997,
+                                                        "z": 0.0135059
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightB"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_B.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437281,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0.000302479,
+                                                        "y": -0.605997,
+                                                        "z": 1.01351
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightB"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_B.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 12582924,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -6.79615,
+                                                "y": 1.94132,
+                                                "z": -7.45501
+                                            },
+                                            "rotation": {
+                                                "x": 0.707095,
+                                                "y": 0.00410026,
+                                                "z": 0.707095,
+                                                "w": 0.00410026
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pipe2"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 12582918,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0.000770121,
+                                                        "y": 0.994515,
+                                                        "z": 0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.000385981,
+                                                        "y": 1,
+                                                        "z": 0,
+                                                        "w": 0
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582922,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770121,
+                                                        "y": -0.500399,
+                                                        "z": 0.999115
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582988,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770034,
+                                                        "y": -0.994515,
+                                                        "z": 0.499115
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.707107,
+                                                        "w": 0.000272959
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 12582923,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -6.78523,
+                                                "y": -0.117417,
+                                                "z": -8.42139
+                                            },
+                                            "rotation": {
+                                                "x": -0.497705,
+                                                "y": -0.502285,
+                                                "z": -0.497705,
+                                                "w": -0.502285
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pipe3"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 12582919,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0.00136034,
+                                                        "y": 1.75918,
+                                                        "z": 0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.000385981,
+                                                        "y": 1,
+                                                        "z": 0,
+                                                        "w": 0
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 12582921,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770121,
+                                                        "y": -0.49047,
+                                                        "z": 0.999115
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437213,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770034,
+                                                        "y": -0.994515,
+                                                        "z": 0.499115
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.707107,
+                                                        "w": 0.000272959
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437206,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0.134807,
+                                                        "y": 1.37847,
+                                                        "z": 1.21027
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.677282,
+                                                        "y": 0.203197,
+                                                        "z": -0.203197,
+                                                        "w": 0.677282
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "ValvePipe"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Valve.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": [
+                                            {
+                                                "id": 9437204,
+                                                "components": [
+                                                    {
+                                                        "type": "Hiber3D::Transform",
+                                                        "data": {
+                                                            "position": {
+                                                                "x": 0,
+                                                                "y": 0.0049434,
+                                                                "z": 0
+                                                            },
+                                                            "rotation": {
+                                                                "x": 0,
+                                                                "y": 0,
+                                                                "z": 0,
+                                                                "w": 1
+                                                            },
+                                                            "scale": {
+                                                                "x": 1,
+                                                                "y": 1,
+                                                                "z": 1
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "Hiber3D::Name",
+                                                        "data": "Valve"
+                                                    },
+                                                    {
+                                                        "type": "Hiber3D::Renderable",
+                                                        "data": {
+                                                            "mesh": "glbs/decorations/Valve.glb#mesh0/primitive1",
+                                                            "material": "glbs/decorations/Valve.glb#material1",
+                                                            "castShadows": true
+                                                        }
+                                                    }
+                                                ],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": 7340076,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0,
+                                                        "y": 1.76148,
+                                                        "z": 0.99972
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightC"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_C.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 9437220,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -6.76026,
+                                                "y": 2.20368,
+                                                "z": -8.04367
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": -0.707107,
+                                                "z": 0,
+                                                "w": -0.707107
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pipe2"
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 9437221,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0.000770121,
+                                                        "y": 0.994515,
+                                                        "z": 0.999116
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.000385981,
+                                                        "y": 1,
+                                                        "z": 0,
+                                                        "w": 0
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 11534399,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770121,
+                                                        "y": -0.515384,
+                                                        "z": 0.999115
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeStraightA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_straight_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437223,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -0.000770034,
+                                                        "y": -0.994515,
+                                                        "z": 0.499115
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0.00027293,
+                                                        "y": 0.707107,
+                                                        "z": 0.707107,
+                                                        "w": 0.000272959
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "PipeTurnA"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/decorations/Pipe_turn_A.glb#mesh0/primitive0",
+                                                    "material": "glbs/decorations/Pipe_straight_A.glb#material0",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 6291540,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 10.4955,
+                                        "z": -5
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Beam"
+                            },
+                            {
+                                "type": "Hiber3D::Renderable",
+                                "data": {
+                                    "mesh": "glbs/decorations/Beam.glb#mesh0/primitive0",
+                                    "material": "glbs/decorations/Beam.glb#material0",
+                                    "castShadows": true
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 8388674,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": -0.114051,
+                                        "y": 10.0559,
+                                        "z": -4.97781
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": -0.0413864,
+                                        "z": 0,
+                                        "w": 0.999143
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "CeilingLamp"
+                            },
+                            {
+                                "type": "Hiber3D::Renderable",
+                                "data": {
+                                    "mesh": "glbs/decorations/Ceiling_lamp.glb#mesh0/primitive0",
+                                    "material": "glbs/decorations/Ceiling_lamp.glb#material0",
+                                    "castShadows": true
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 9437266,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -0.0739497,
+                                                "y": -3.05508,
+                                                "z": 0.0297642
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "CeilingLampBulb"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Ceiling_lamp.glb#mesh1/primitive0",
+                                            "material": "glbs/decorations/Ceiling_lamp.glb#material1",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 6291539,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -4.20073e-11,
+                                                        "y": -0.0743831,
+                                                        "z": 5.21748e-10
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "Spotlight"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Light",
+                                                "data": {
+                                                    "type": 1,
+                                                    "color": {
+                                                        "x": 1,
+                                                        "y": 0.92549,
+                                                        "z": 0.721569
+                                                    },
+                                                    "strength": 0.8,
+                                                    "radius": 12,
+                                                    "openingAngleDegs": 159
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 9437222,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0,
+                                                        "y": 5.12305,
+                                                        "z": 0
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "Pointlight"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Light",
+                                                "data": {
+                                                    "type": 0,
+                                                    "color": {
+                                                        "x": 1,
+                                                        "y": 0.913725,
+                                                        "z": 0.760784
+                                                    },
+                                                    "strength": 0.5,
+                                                    "radius": 11,
+                                                    "openingAngleDegs": 90
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 8388675,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": -6.294,
+                                        "y": 0.208362,
+                                        "z": -5.58025
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "MedBox"
+                            },
+                            {
+                                "type": "Hiber3D::Renderable",
+                                "data": {
+                                    "mesh": "glbs/decorations/Med_box.glb#mesh0/primitive0",
+                                    "material": "glbs/decorations/Med_box.glb#material0",
+                                    "castShadows": true
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 8388680,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 5.35888,
+                                        "y": -0.806765,
+                                        "z": -0.918024
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Stairs"
+                            },
+                            {
+                                "type": "Hiber3D::Renderable",
+                                "data": {
+                                    "mesh": "glbs/decorations/Stairs.glb#mesh0/primitive0",
+                                    "material": "glbs/decorations/Stairs.glb#material0",
+                                    "castShadows": true
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 5242973,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -0.00316978,
+                                                "y": 0,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Grid"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Stairs.glb#mesh0/primitive1",
+                                            "material": "glbs/decorations/Stairs.glb#material1",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 8388673,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Barrels"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 8388611,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -5.91325,
+                                                "y": -0.549301,
+                                                "z": -2.32668
+                                            },
+                                            "rotation": {
+                                                "x": 0.65783,
+                                                "y": 0.259345,
+                                                "z": -0.259345,
+                                                "w": 0.65783
+                                            },
+                                            "scale": {
+                                                "x": 0.469326,
+                                                "y": 0.469326,
+                                                "z": 0.469326
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Barrel"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Barrel.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Barrel.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242968,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -5.10866,
+                                                "y": -0.882678,
+                                                "z": -2.67984
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 0.469326,
+                                                "y": 0.469326,
+                                                "z": 0.469326
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Barrel"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Barrel.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Barrel.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 5242969,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Pallets"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 5242970,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -6.05568,
+                                                "y": 0.185171,
+                                                "z": -3.99523
+                                            },
+                                            "rotation": {
+                                                "x": 0.441116,
+                                                "y": 0.552645,
+                                                "z": 0.441116,
+                                                "w": -0.552645
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pallet"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Pallet.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Pallet.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

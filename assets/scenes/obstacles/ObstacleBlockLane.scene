@@ -1,1 +1,226 @@
-{"version":"1.0.0","root":{"id":4195764,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ObstacleBlockLane"}],"children":[{"id":4195820,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":5},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Offset"}],"children":[{"id":5243701,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-7.24612},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Obstacle1LaneJumpOver.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\obstacles\\Obstacle1LaneJumpOver.scene"}}],"children":[]},{"id":4195014,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-9.21188},"rotation":{"x":0,"y":0.0255986,"z":0,"w":0.999672},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Obstacle1LaneJumpOver.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\obstacles\\Obstacle1LaneJumpOver.scene"}}],"children":[]},{"id":4195010,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-4.9944},"rotation":{"x":0,"y":-0.022178,"z":0,"w":0.999754},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Obstacle1LaneJumpOver.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\obstacles\\Obstacle1LaneJumpOver.scene"}}],"children":[]},{"id":4195765,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-0.794173},"rotation":{"x":0,"y":-0.0383034,"z":0,"w":0.999266},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Obstacle1LaneJumpOver.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\obstacles\\Obstacle1LaneJumpOver.scene"}}],"children":[]},{"id":3145735,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":-2.76548},"rotation":{"x":0,"y":0.0276009,"z":0,"w":0.999285},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Obstacle1LaneJumpOver.scene"},{"type":"Hiber3D::SceneInstance","data":{"scene":"scenes\\obstacles\\Obstacle1LaneJumpOver.scene"}}],"children":[]}]}]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 4195764,
+        "components": [],
+        "children": [
+            {
+                "id": 4195820,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 5
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Offset"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 5243701,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -7.24612
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Obstacle1LaneJumpOver.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\obstacles\\Obstacle1LaneJumpOver.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 4195014,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -9.21188
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0.0255986,
+                                        "z": 0,
+                                        "w": 0.999672
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Obstacle1LaneJumpOver.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\obstacles\\Obstacle1LaneJumpOver.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 4195010,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -4.9944
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": -0.022178,
+                                        "z": 0,
+                                        "w": 0.999754
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Obstacle1LaneJumpOver.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\obstacles\\Obstacle1LaneJumpOver.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 4195765,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -0.794173
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": -0.0383034,
+                                        "z": 0,
+                                        "w": 0.999266
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Obstacle1LaneJumpOver.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\obstacles\\Obstacle1LaneJumpOver.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 3145735,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": -2.76548
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0.0276009,
+                                        "z": 0,
+                                        "w": 0.999285
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Obstacle1LaneJumpOver.scene"
+                            },
+                            {
+                                "type": "Hiber3D::SceneInstance",
+                                "data": {
+                                    "scene": "scenes\\obstacles\\Obstacle1LaneJumpOver.scene"
+                                }
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}
