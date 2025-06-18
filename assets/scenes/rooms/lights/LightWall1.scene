@@ -1,1 +1,23 @@
-{"version":"1.0.0","root":{"id":5243573,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"LIghtWall1"},{"type":"Hiber3D::Light","data":{"type":1,"color":{"x":1,"y":0.792157,"z":0.341176},"strength":1.5,"dir":{"x":1,"y":-1,"z":0},"radius":12,"openingAngleDegs":55,"offset":{"x":0,"y":0,"z":0}}}],"children":[]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 5243573,
+        "components": [
+            {
+                "type": "Hiber3D::Light",
+                "data": {
+                    "type": 1,
+                    "color": {
+                        "x": 1,
+                        "y": 0.792157,
+                        "z": 0.341176
+                    },
+                    "strength": 1.5,
+                    "radius": 12,
+                    "openingAngleDegs": 55
+                }
+            }
+        ],
+        "children": []
+    }
+}

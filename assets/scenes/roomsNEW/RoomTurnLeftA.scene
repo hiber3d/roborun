@@ -1,1 +1,1161 @@
-{"version":"1.0.0","root":{"id":5242882,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoomTurnRightA"}],"children":[{"id":5242884,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Room"}],"children":[{"id":5242955,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoomTurnRightA"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_turn_left_A.glb#mesh0/primitive0","material":"glbs/rooms/Room_straight_A.glb#material15","castShadows":true}}],"children":[{"id":6291525,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Decals"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_turn_left_A.glb#mesh2/primitive0","material":"glbs/rooms/Room_straight_A.glb#material5","castShadows":true}}],"children":[]},{"id":6291470,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"RoomFrame"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_turn_left_A.glb#mesh6/primitive0","material":"glbs/rooms/Room_straight_A.glb#material7","castShadows":true}}],"children":[]},{"id":6291519,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Walkway"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_turn_left_A.glb#mesh4/primitive0","material":"glbs/rooms/Room_straight_A.glb#material12","castShadows":true}}],"children":[{"id":6291516,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"WalkwayFrame"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_turn_left_A.glb#mesh5/primitive0","material":"glbs/rooms/Room_straight_A.glb#material11","castShadows":true}}],"children":[]}]},{"id":5242893,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":4.62928,"y":9.58128,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CableHolder"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Cable_holder.glb#mesh0/primitive0","material":"glbs/decorations/Cable_holder.glb#material0","castShadows":true}}],"children":[]},{"id":6291527,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ThickWire"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_turn_left_A.glb#mesh3/primitive0","material":"glbs/rooms/Room_straight_A.glb#material1","castShadows":true}}],"children":[{"id":6291509,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"ThinWire"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/roomsNEW/Room_turn_left_A.glb#mesh1/primitive0","material":"glbs/rooms/Room_straight_A.glb#material8","castShadows":true}}],"children":[]}]},{"id":6291526,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":2.15393,"y":8.83526,"z":-12.0197},"rotation":{"x":0.277614,"y":0.277614,"z":-0.65033,"w":-0.65033},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CableHolder"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Cable_holder_B.glb#mesh0/primitive0","material":"glbs/decorations/Cable_holder.glb#material0","castShadows":true}}],"children":[]}]}]},{"id":6291518,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Decorations"}],"children":[{"id":5242954,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-1.92369,"y":10.4955,"z":-8.09107},"rotation":{"x":0,"y":0.382684,"z":0,"w":0.92388},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Beam"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Beam.glb#mesh0/primitive0","material":"glbs/decorations/Beam.glb#material0","castShadows":true}}],"children":[]},{"id":5242952,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-1.85373,"y":10.5611,"z":-8.10985},"rotation":{"x":0,"y":-0.0413864,"z":0,"w":0.999143},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CeilingLamp"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Ceiling_lamp.glb#mesh0/primitive0","material":"glbs/decorations/Ceiling_lamp.glb#material0","castShadows":true}}],"children":[{"id":5242953,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.0739497,"y":-3.05508,"z":0.0297642},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"CeilingLampBulb"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Ceiling_lamp.glb#mesh1/primitive0","material":"glbs/decorations/Ceiling_lamp.glb#material1","castShadows":true}}],"children":[{"id":5242945,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-4.20073e-11,"y":-0.0743831,"z":5.21748e-10},"rotation":{"x":-0.707107,"y":0,"z":0,"w":0.707107},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Spotlight"},{"type":"Hiber3D::Light","data":{"type":1,"color":{"x":1,"y":0.92549,"z":0.721569},"strength":0.8,"radius":12,"openingAngleDegs":159}}],"children":[]},{"id":5242944,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":5.12305,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pointlight"},{"type":"Hiber3D::Light","data":{"type":0,"color":{"x":1,"y":0.913725,"z":0.760784},"strength":0.5,"radius":11,"openingAngleDegs":90}}],"children":[]}]}]},{"id":5242947,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Barrels"}],"children":[{"id":6291517,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-5.91325,"y":-0.549301,"z":-2.32668},"rotation":{"x":0.65783,"y":0.259345,"z":-0.259345,"w":0.65783},"scale":{"x":0.469326,"y":0.469326,"z":0.469326}}},{"type":"Hiber3D::Name","data":"Barrel"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Barrel.glb#mesh0/primitive0","material":"glbs/decorations/Barrel.glb#material0","castShadows":true}}],"children":[]},{"id":5242948,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-5.10866,"y":-0.882678,"z":-2.67984},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":0.469326,"y":0.469326,"z":0.469326}}},{"type":"Hiber3D::Name","data":"Barrel"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Barrel.glb#mesh0/primitive0","material":"glbs/decorations/Barrel.glb#material0","castShadows":true}}],"children":[]},{"id":5242946,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-2.34793,"y":-0.203074,"z":-13.5553},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":0.469326,"y":0.469326,"z":0.469326}}},{"type":"Hiber3D::Name","data":"Barrel"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Barrel.glb#mesh0/primitive0","material":"glbs/decorations/Barrel.glb#material0","castShadows":true}}],"children":[]}]},{"id":5242956,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":0,"y":0,"z":0},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pallets"}],"children":[{"id":5242889,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-6.10667,"y":0.17358,"z":-3.16967},"rotation":{"x":0.42342,"y":0.566317,"z":0.458371,"w":-0.53842},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pallet"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pallet.glb#mesh0/primitive0","material":"glbs/decorations/Pallet.glb#material0","castShadows":true}}],"children":[]},{"id":5242892,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-2.4625,"y":-0.613925,"z":-13.2137},"rotation":{"x":0,"y":0.252569,"z":0,"w":0.967579},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pallet"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pallet.glb#mesh0/primitive0","material":"glbs/decorations/Pallet.glb#material0","castShadows":true}}],"children":[]},{"id":5242891,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-2.60964,"y":-0.395518,"z":-13.3681},"rotation":{"x":0,"y":0.685692,"z":0,"w":0.727892},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pallet"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pallet.glb#mesh0/primitive0","material":"glbs/decorations/Pallet.glb#material0","castShadows":true}}],"children":[]},{"id":5242890,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":5.85909,"y":0.0370125,"z":-15.8907},"rotation":{"x":-0.00531668,"y":0.820316,"z":0.571019,"w":-0.0314819},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Pallet"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Pallet.glb#mesh0/primitive0","material":"glbs/decorations/Pallet.glb#material0","castShadows":true}}],"children":[]}]},{"id":5242883,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-3.47753,"y":-0.821542,"z":-12.3138},"rotation":{"x":0,"y":0.877499,"z":0,"w":0.47958},"scale":{"x":0.617776,"y":0.617776,"z":0.617776}}},{"type":"Hiber3D::Name","data":"Cones"}],"children":[{"id":5242888,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":5.03273,"y":0,"z":0.388242},"rotation":{"x":0,"y":0.367083,"z":0,"w":0.930188},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Cone"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Cone.glb#mesh0/primitive0","material":"glbs/decorations/Cone.glb#material0","castShadows":true}}],"children":[]},{"id":5242887,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":2.64792,"y":0,"z":-0.667287},"rotation":{"x":0,"y":0.367083,"z":0,"w":0.930188},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Cone"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Cone.glb#mesh0/primitive0","material":"glbs/decorations/Cone.glb#material0","castShadows":true}}],"children":[]},{"id":5242886,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-0.514929,"y":0,"z":-0.246486},"rotation":{"x":0,"y":-0.442924,"z":0,"w":0.896559},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Cone"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Cone.glb#mesh0/primitive0","material":"glbs/decorations/Cone.glb#material0","castShadows":true}}],"children":[]},{"id":5242885,"components":[{"type":"Hiber3D::Transform","data":{"position":{"x":-3.38658,"y":0,"z":0.89191},"rotation":{"x":0,"y":0,"z":0,"w":1},"scale":{"x":1,"y":1,"z":1}}},{"type":"Hiber3D::Name","data":"Cone"},{"type":"Hiber3D::Renderable","data":{"mesh":"glbs/decorations/Cone.glb#mesh0/primitive0","material":"glbs/decorations/Cone.glb#material0","castShadows":true}}],"children":[]}]}]}]}}
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 5242882,
+        "components": [],
+        "children": [
+            {
+                "id": 5242884,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Room"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 5242955,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "RoomTurnRightA"
+                            },
+                            {
+                                "type": "Hiber3D::Renderable",
+                                "data": {
+                                    "mesh": "glbs/roomsNEW/Room_turn_left_A.glb#mesh0/primitive0",
+                                    "material": "glbs/rooms/Room_straight_A.glb#material15",
+                                    "castShadows": true
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 6291525,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Decals"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/roomsNEW/Room_turn_left_A.glb#mesh2/primitive0",
+                                            "material": "glbs/rooms/Room_straight_A.glb#material5",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 6291470,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "RoomFrame"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/roomsNEW/Room_turn_left_A.glb#mesh6/primitive0",
+                                            "material": "glbs/rooms/Room_straight_A.glb#material7",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 6291519,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Walkway"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/roomsNEW/Room_turn_left_A.glb#mesh4/primitive0",
+                                            "material": "glbs/rooms/Room_straight_A.glb#material12",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 6291516,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "WalkwayFrame"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/roomsNEW/Room_turn_left_A.glb#mesh5/primitive0",
+                                                    "material": "glbs/rooms/Room_straight_A.glb#material11",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 5242893,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 4.62928,
+                                                "y": 9.58128,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "CableHolder"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Cable_holder.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Cable_holder.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 6291527,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "ThickWire"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/roomsNEW/Room_turn_left_A.glb#mesh3/primitive0",
+                                            "material": "glbs/rooms/Room_straight_A.glb#material1",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 6291509,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "ThinWire"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Renderable",
+                                                "data": {
+                                                    "mesh": "glbs/roomsNEW/Room_turn_left_A.glb#mesh1/primitive0",
+                                                    "material": "glbs/rooms/Room_straight_A.glb#material8",
+                                                    "castShadows": true
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 6291526,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 2.15393,
+                                                "y": 8.83526,
+                                                "z": -12.0197
+                                            },
+                                            "rotation": {
+                                                "x": 0.277614,
+                                                "y": 0.277614,
+                                                "z": -0.65033,
+                                                "w": -0.65033
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "CableHolder"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Cable_holder_B.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Cable_holder.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 6291518,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "Decorations"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 5242954,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": -1.92369,
+                                        "y": 10.4955,
+                                        "z": -8.09107
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0.382684,
+                                        "z": 0,
+                                        "w": 0.92388
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Beam"
+                            },
+                            {
+                                "type": "Hiber3D::Renderable",
+                                "data": {
+                                    "mesh": "glbs/decorations/Beam.glb#mesh0/primitive0",
+                                    "material": "glbs/decorations/Beam.glb#material0",
+                                    "castShadows": true
+                                }
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 5242952,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": -1.85373,
+                                        "y": 10.5611,
+                                        "z": -8.10985
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": -0.0413864,
+                                        "z": 0,
+                                        "w": 0.999143
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "CeilingLamp"
+                            },
+                            {
+                                "type": "Hiber3D::Renderable",
+                                "data": {
+                                    "mesh": "glbs/decorations/Ceiling_lamp.glb#mesh0/primitive0",
+                                    "material": "glbs/decorations/Ceiling_lamp.glb#material0",
+                                    "castShadows": true
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 5242953,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -0.0739497,
+                                                "y": -3.05508,
+                                                "z": 0.0297642
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "CeilingLampBulb"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Ceiling_lamp.glb#mesh1/primitive0",
+                                            "material": "glbs/decorations/Ceiling_lamp.glb#material1",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "id": 5242945,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": -4.20073e-11,
+                                                        "y": -0.0743831,
+                                                        "z": 5.21748e-10
+                                                    },
+                                                    "rotation": {
+                                                        "x": -0.707107,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 0.707107
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "Spotlight"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Light",
+                                                "data": {
+                                                    "type": 1,
+                                                    "color": {
+                                                        "x": 1,
+                                                        "y": 0.92549,
+                                                        "z": 0.721569
+                                                    },
+                                                    "strength": 0.8,
+                                                    "radius": 12,
+                                                    "openingAngleDegs": 159
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": 5242944,
+                                        "components": [
+                                            {
+                                                "type": "Hiber3D::Transform",
+                                                "data": {
+                                                    "position": {
+                                                        "x": 0,
+                                                        "y": 5.12305,
+                                                        "z": 0
+                                                    },
+                                                    "rotation": {
+                                                        "x": 0,
+                                                        "y": 0,
+                                                        "z": 0,
+                                                        "w": 1
+                                                    },
+                                                    "scale": {
+                                                        "x": 1,
+                                                        "y": 1,
+                                                        "z": 1
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Hiber3D::Name",
+                                                "data": "Pointlight"
+                                            },
+                                            {
+                                                "type": "Hiber3D::Light",
+                                                "data": {
+                                                    "type": 0,
+                                                    "color": {
+                                                        "x": 1,
+                                                        "y": 0.913725,
+                                                        "z": 0.760784
+                                                    },
+                                                    "strength": 0.5,
+                                                    "radius": 11,
+                                                    "openingAngleDegs": 90
+                                                }
+                                            }
+                                        ],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 5242947,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Barrels"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 6291517,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -5.91325,
+                                                "y": -0.549301,
+                                                "z": -2.32668
+                                            },
+                                            "rotation": {
+                                                "x": 0.65783,
+                                                "y": 0.259345,
+                                                "z": -0.259345,
+                                                "w": 0.65783
+                                            },
+                                            "scale": {
+                                                "x": 0.469326,
+                                                "y": 0.469326,
+                                                "z": 0.469326
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Barrel"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Barrel.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Barrel.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242948,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -5.10866,
+                                                "y": -0.882678,
+                                                "z": -2.67984
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 0.469326,
+                                                "y": 0.469326,
+                                                "z": 0.469326
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Barrel"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Barrel.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Barrel.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242946,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -2.34793,
+                                                "y": -0.203074,
+                                                "z": -13.5553
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 0.469326,
+                                                "y": 0.469326,
+                                                "z": 0.469326
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Barrel"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Barrel.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Barrel.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 5242956,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0,
+                                        "z": 0,
+                                        "w": 1
+                                    },
+                                    "scale": {
+                                        "x": 1,
+                                        "y": 1,
+                                        "z": 1
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Pallets"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 5242889,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -6.10667,
+                                                "y": 0.17358,
+                                                "z": -3.16967
+                                            },
+                                            "rotation": {
+                                                "x": 0.42342,
+                                                "y": 0.566317,
+                                                "z": 0.458371,
+                                                "w": -0.53842
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pallet"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Pallet.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Pallet.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242892,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -2.4625,
+                                                "y": -0.613925,
+                                                "z": -13.2137
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0.252569,
+                                                "z": 0,
+                                                "w": 0.967579
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pallet"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Pallet.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Pallet.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242891,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -2.60964,
+                                                "y": -0.395518,
+                                                "z": -13.3681
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0.685692,
+                                                "z": 0,
+                                                "w": 0.727892
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pallet"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Pallet.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Pallet.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242890,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 5.85909,
+                                                "y": 0.0370125,
+                                                "z": -15.8907
+                                            },
+                                            "rotation": {
+                                                "x": -0.00531668,
+                                                "y": 0.820316,
+                                                "z": 0.571019,
+                                                "w": -0.0314819
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Pallet"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Pallet.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Pallet.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 5242883,
+                        "components": [
+                            {
+                                "type": "Hiber3D::Transform",
+                                "data": {
+                                    "position": {
+                                        "x": -3.47753,
+                                        "y": -0.821542,
+                                        "z": -12.3138
+                                    },
+                                    "rotation": {
+                                        "x": 0,
+                                        "y": 0.877499,
+                                        "z": 0,
+                                        "w": 0.47958
+                                    },
+                                    "scale": {
+                                        "x": 0.617776,
+                                        "y": 0.617776,
+                                        "z": 0.617776
+                                    }
+                                }
+                            },
+                            {
+                                "type": "Hiber3D::Name",
+                                "data": "Cones"
+                            }
+                        ],
+                        "children": [
+                            {
+                                "id": 5242888,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 5.03273,
+                                                "y": 0,
+                                                "z": 0.388242
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0.367083,
+                                                "z": 0,
+                                                "w": 0.930188
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Cone"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Cone.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Cone.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242887,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": 2.64792,
+                                                "y": 0,
+                                                "z": -0.667287
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0.367083,
+                                                "z": 0,
+                                                "w": 0.930188
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Cone"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Cone.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Cone.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242886,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -0.514929,
+                                                "y": 0,
+                                                "z": -0.246486
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": -0.442924,
+                                                "z": 0,
+                                                "w": 0.896559
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Cone"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Cone.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Cone.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            },
+                            {
+                                "id": 5242885,
+                                "components": [
+                                    {
+                                        "type": "Hiber3D::Transform",
+                                        "data": {
+                                            "position": {
+                                                "x": -3.38658,
+                                                "y": 0,
+                                                "z": 0.89191
+                                            },
+                                            "rotation": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0,
+                                                "w": 1
+                                            },
+                                            "scale": {
+                                                "x": 1,
+                                                "y": 1,
+                                                "z": 1
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Hiber3D::Name",
+                                        "data": "Cone"
+                                    },
+                                    {
+                                        "type": "Hiber3D::Renderable",
+                                        "data": {
+                                            "mesh": "glbs/decorations/Cone.glb#mesh0/primitive0",
+                                            "material": "glbs/decorations/Cone.glb#material0",
+                                            "castShadows": true
+                                        }
+                                    }
+                                ],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
