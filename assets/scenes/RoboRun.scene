@@ -2,8 +2,7 @@
     "version": "1.0.0",
     "root": {
         "id": 1048577,
-        "components": [
-        ],
+        "components": [],
         "children": [
             {
                 "id": 1048578,
