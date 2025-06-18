@@ -1,11 +1,9 @@
-type Score = {
-  type: string;
-  score: number;
-};
+import { PostScore } from "GameTemplate_webgpu";
 
 type Payload = {
   action: "hiber3d_postScores";
-  payload: Score[];
+  payload: PostScore;
+  version: number;
 };
 
 type StatusPayload = {
@@ -15,10 +13,11 @@ type StatusPayload = {
   };
 };
 
-export const postScores = (scores: Score[]) => {
+export const postScores = (scores: PostScore) => {
   const payload: Payload = {
     action: "hiber3d_postScores",
     payload: scores,
+    version: 2,
   };
   window.parent.postMessage(payload, "*");
 };
