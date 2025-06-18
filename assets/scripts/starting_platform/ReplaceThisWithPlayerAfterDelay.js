@@ -14,7 +14,7 @@ export default class {
     hiber3d.addComponent(playerEntity, "Hiber3D::Name");
     hiber3d.setComponent(playerEntity, "Hiber3D::Name", "PlayerSceneInstance");
 
-    hiber3d.addScript(playerEntity, "scripts/player/PlayerSFX.js");
+    hiber3d.addScript(playerEntity, "scripts/player/PlayerSoundEffects.js");
 
     hiber3d.addComponent(playerEntity, "Hiber3D::SceneInstance");
     hiber3d.setComponent(playerEntity, "Hiber3D::SceneInstance", "scene", this.PLAYER_SCENE);

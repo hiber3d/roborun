@@ -12,7 +12,7 @@ export default class {
     hiber3d.addEventListener(this, "BroadcastTurned");
   }
 
-  createAudioEntity(parent, name, asset, playSpeed, volume) {
+  playSound(parent, name, asset, playSpeed, volume) {
     const sfxEntity = hiber3d.call("createEntityAsChild", parent);
     hiber3d.addComponent(sfxEntity, "Hiber3D::AudioSource");
     hiber3d.addComponent(sfxEntity, "Hiber3D::Name"); // This is just to make it easier to trace which sounds have been added
@@ -30,22 +30,22 @@ export default class {
       return;
     }
     if (event === "JumpedEvent") {
-      this.createAudioEntity(this.entity, "Jumped", "audio/sfx/jump_01.mp3", 1, 0.6);
+      this.playSound(this.entity, "Jumped", "audio/sfx/jump_01.mp3", 1, 0.6);
     }
     else if (event === "LandedEvent") {
-      this.createAudioEntity(this.entity, "Landed", "audio/sfx/land_01.mp3", 1, 0.6);
+      this.playSound(this.entity, "Landed", "audio/sfx/land_01.mp3", 1, 0.6);
     }
     else if (event === "BroadcastPowerupPickup") {
-      this.createAudioEntity(this.entity, "PowerupPickup", "audio/sfx/rocket_01.mp3", 1, 0.6);
+      this.playSound(this.entity, "PowerupPickup", "audio/sfx/rocket_01.mp3", 1, 0.6);
     }
     else if (event === "BroadcastSlided") {
-      this.createAudioEntity(this.entity, "Slided", "audio/sfx/roll_01.mp3", 1, 0.9);
+      this.playSound(this.entity, "Slided", "audio/sfx/roll_01.mp3", 1, 0.9);
     }
     else if (event === "BroadcastTilted") {
-      this.createAudioEntity(this.entity, "Tilted", "audio/sfx/tilt_01.mp3", 0.9 + Math.random() * 0.2, 0.6);
+      this.playSound(this.entity, "Tilted", "audio/sfx/tilt_01.mp3", 0.9 + Math.random() * 0.2, 0.6);
     }
     else if (event === "BroadcastTurned") {
-      this.createAudioEntity(this.entity, "Turned", "audio/sfx/turn_0" + Math.floor(1 + Math.random() * 2) + ".mp3", 1, 0.2);
+      this.playSound(this.entity, "Turned", "audio/sfx/turn_0" + Math.floor(1 + Math.random() * 2) + ".mp3", 1, 0.2);
     }
   }
 }

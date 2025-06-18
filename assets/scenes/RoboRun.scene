@@ -139,12 +139,12 @@
                     },
                     {
                         "type": "Hiber3D::Name",
-                        "data": "BGM.scene"
+                        "data": "Music.scene"
                     },
                     {
                         "type": "Hiber3D::SceneRoot",
                         "data": {
-                            "scene": "BGM.scene"
+                            "scene": "scenes/Music.scene"
                         }
                     }
                 ],
@@ -176,13 +176,13 @@
                     },
                     {
                         "type": "Hiber3D::Name",
-                        "data": "SFX"
+                        "data": "SoundEffects"
                     },
                     {
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
-                                "scripts/ui/SFX.js"
+                                "scripts/ui/SoundEffects.js"
                             ]
                         }
                     }
