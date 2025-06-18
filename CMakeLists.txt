@@ -26,7 +26,11 @@ set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/AnimationLoadoutEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/AnimationLoadoutModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/AnimationLoadout/AnimationLoadoutModule.cpp
-    
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Audio/AudioEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Audio/AudioModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Audio/AudioModule.cpp
+
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Broadcast/BroadcastEvents.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Broadcast/BroadcastModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Broadcast/BroadcastModule.cpp

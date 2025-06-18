@@ -1,4 +1,5 @@
 #include <AnimationLoadout/AnimationLoadoutModule.hpp>
+#include <Audio/AudioModule.hpp>
 #include <Broadcast/BroadcastModule.hpp>
 #include <Input/InputModule.hpp>
 #include <Path/PathModule.hpp>
@@ -43,36 +44,6 @@
 
 #include <RoboRun/RoboRunModule.hpp>
 
-struct SyncedMusic {
-    bool dummy;
-};
-
-// This allows multiple music tracks, each in their own AudioSource,
-// to start simultaneously when all of them have finished loading.
-static void startMusicWhenReady(
-    Hiber3D::Singleton<Hiber3D::Assets<Hiber3D::Audio>> assets,
-    Hiber3D::View<Hiber3D::AudioSource, const SyncedMusic>        audioComponents) {
-    bool allLoaded = true;
-
-    for (auto [entity, audio, syncedMusic] : audioComponents.each()) {
-        // Previously, audio were loaded and decoded when the audio played for the first time.
-        // Now, audio assets are loaded and decoded when the scene is loaded.
-        // So, once *this* system runs the first time, all audio assets should already be ready to play.
-        // Sooo... do we even need this system anymore? Or should it listen for some AssetEvent instead of polling?
-        if (audio->status == Hiber3D::AudioStatus::PAUSED && assets->get(audio->asset) == nullptr) {
-            allLoaded = false;
-        }
-    }
-
-    if (allLoaded) {
-        for (auto [entity, audio, syncedMusic] : audioComponents.each()) {
-            if (audio->status == Hiber3D::AudioStatus::PAUSED) {
-                audio.mut().status = Hiber3D::AudioStatus::PLAYING;
-            }
-        }
-    }
-}
-
 class MainModule : public Hiber3D::Module {
 public:
     // TODO: Remove when we have proper config handling
@@ -99,7 +70,6 @@ public:
 
         context.registerModule<Hiber3D::SceneModule>();
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::AudioSource>(context);
-        context.getModule<Hiber3D::SceneModule>().registerComponent<SyncedMusic>(context);
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::ScriptInstance>(context);
 
         context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "scenes/RoboRun.scene"});
@@ -136,18 +106,16 @@ public:
         context.registerModule<Hiber3D::DebugModule>();
         context.registerModule<Hiber3D::InputModule>();
         context.registerModule<Hiber3D::EditorModule>(Hiber3D::EditorModuleSettings{.startInPlayMode = true});
-        context.getModule<Hiber3D::EditorModule>().registerComponent<SyncedMusic>(context);
 
         // Custom modules
         context.registerModule<AnimationLoadoutModule>();
+        context.registerModule<AudioModule>();
         context.registerModule<BroadcastModule>();
         context.registerModule<InputModule>();
         context.registerModule<RoboRunModule>();
         context.registerModule<PathModule>();
         context.registerModule<ChangeableSceneModule>();
         context.registerModule<SegmentModule>();
-
-        context.addSystem(Hiber3D::Schedule::ON_FRAME, startMusicWhenReady);
     }
 };
 
@@ -155,5 +123,3 @@ int main(int argc, char* argv[]) {
     Hiber3D::run("GameTemplate", std::make_unique<MainModule>(argc, argv), Hiber3D::ApplicationRunMode::GraphicalApp, argc, argv);
     return 0;
 }
-
-HIBER3D_REFLECT(HIBER3D_TYPE(SyncedMusic), HIBER3D_MEMBER(dummy));
