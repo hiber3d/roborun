@@ -63,7 +63,9 @@ public:
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::StandardMaterial>(context);
         context.getModule<Hiber3D::AssetModule>().registerAssetType<Hiber3D::Cubemap>(context);
 
-        context.registerModule<Hiber3D::AudioModule>();
+        // Start muted by default, while we wait for frontend to update from localstorage.
+        // Otherwise, we might start playing audio before the frontend has finished loading and mute after a split second...
+        context.registerModule<Hiber3D::AudioModule>(Hiber3D::AudioSettings{.mainVolume = 0.0f, .globalFadeTime = 0.1, .maxActiveVoices = 32 });
 
         context.registerModule<Hiber3D::LogModule>(Hiber3D::LogSettings{.logLevel = Hiber3D::LogLevel::INFO});
         context.registerModule<Hiber3D::HierarchyModule>();
