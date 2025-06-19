@@ -16,7 +16,6 @@ export default class {
       return;
     }
     if (event === "MuteAudio") {
-      hiber3d.print("MuteAudio event received for entity: " + payload.doMute);
       hiber3d.setSingleton("Hiber3D::AudioSettings", "mainVolume", payload.doMute ? 0.0 : 1.0);
     }
   }
