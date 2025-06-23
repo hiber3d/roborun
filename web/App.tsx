@@ -1,5 +1,4 @@
 import { Hiber3D } from "./hiber3d";
-import { AudioProvider } from "audio/AudioProvider";
 import { RoborunMode } from "roborun/RoborunMode";
 
 export const App = () => (
@@ -15,8 +14,6 @@ export const App = () => (
       },
     }}
   >
-    <AudioProvider>
-      <RoborunMode />
-    </AudioProvider>
+    <RoborunMode />
   </Hiber3D>
 );

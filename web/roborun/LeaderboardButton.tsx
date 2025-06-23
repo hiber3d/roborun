@@ -1,8 +1,8 @@
-import { useAudio } from "audio/useAudio";
+import { useHiber3D } from "hiber3d";
 import { Player } from "roborun/useGameState";
 
 export const LeaderboardButton = ({ player, showLeaderboard }: { player?: Player; showLeaderboard: () => void }) => {
-  const { sfx } = useAudio();
+  const { api } = useHiber3D();
 
   if (!player) {
     return <div />;
@@ -12,7 +12,7 @@ export const LeaderboardButton = ({ player, showLeaderboard }: { player?: Player
     <div
       className="relative h-[84px] truncate min-w-[150px] roborun-button select-none"
       onClick={showLeaderboard}
-      onPointerDown={() => sfx.play("buttonpress")}
+      onPointerDown={() => api?.writePlayButtonPressAudio()}
     >
       <div
         className="absolute w-full h-full"

@@ -1,5 +1,3 @@
-import { useMusicMultiTracks } from "audio/useMusicMultiTracks";
-import { useSoundEffects } from "audio/useSoundEffects";
 import { AnimatePresence } from "framer-motion";
 import { Mute } from "roborun/Mute";
 import { LeaderboardContent } from "./LeaderboardContent";
@@ -15,8 +13,6 @@ const tapMode = urlParams.get("tapmode") ? true : false;
 export const RoborunMode = () => {
   const { submitName, state, fetchRank, showLeaderboard, showMainMenu } = useGameState();
   useTouchControls({ tapMode });
-  useSoundEffects();
-  useMusicMultiTracks();
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
