@@ -4,7 +4,7 @@ export default class {
   }
 
   onCreate() {
-    hiber3d.addEventListener(this, "MuteAudio");
+    hiber3d.addEventListener(this, "ToggleMuteAudio");
     hiber3d.writeEvent("BroadcastRequestMuteState", {});
   }
 
@@ -12,8 +12,8 @@ export default class {
     if (!this.shouldRun()) {
       return;
     }
-    if (event === "MuteAudio") {
-      hiber3d.setSingleton("Hiber3D::AudioSettings", "mainVolume", payload.doMute ? 0.0 : 1.0);
+    if (event === "ToggleMuteAudio") {
+      hiber3d.setSingleton("Hiber3D::AudioSettings", "mainVolume", payload.mute ? 0.0 : 1.0);
     }
   }
 }

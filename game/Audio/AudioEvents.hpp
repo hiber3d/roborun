@@ -2,12 +2,12 @@
 
 #include <Hiber3D/Interop/Defines.hpp>
 
-struct MuteAudio {
-    bool doMute = true;
+struct ToggleMuteAudio {
+    bool mute = true;
 };
 
-HIBER3D_REFLECT(HIBER3D_TYPE(MuteAudio), HIBER3D_MEMBER(doMute));
-HIBER3D_INTEROP_RECEIVE_FROM_JS(MuteAudio);
+HIBER3D_REFLECT(HIBER3D_TYPE(ToggleMuteAudio), HIBER3D_MEMBER(mute));
+HIBER3D_INTEROP_RECEIVE_FROM_JS(ToggleMuteAudio);
 
 struct BroadcastRequestMuteState {};
 

@@ -14,7 +14,7 @@ export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
   const toggleMute = () => {
     const newMutedState = !isMuted;
 
-    api?.writeMuteAudio({ doMute: newMutedState });
+    api?.writeToggleMuteAudio({ mute: newMutedState });
     setMuted(newMutedState);
     setConfigInLocalStorage(localStorageKey, { mute: newMutedState, volume: 1 });
   };
@@ -27,7 +27,7 @@ export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
       const initialMutedState = getConfigFromLocalStorage(localStorageKey) ?? { mute: false, volume: 1 };
       setMuted(initialMutedState.mute);
       requestAnimationFrame(() => {
-        api?.writeMuteAudio({ doMute: initialMutedState.mute });
+        api?.writeToggleMuteAudio({ mute: initialMutedState.mute });
       })
     })
     return () => {
