@@ -9,8 +9,6 @@ const localStorageKey = "sound";
 export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
   const { api } = useHiber3D();
 
-  const initialConfigLoaded = useRef(false);
-
   const [ isMuted, setMuted ] = useState(false);
 
   const toggleMute = () => {
