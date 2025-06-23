@@ -119,7 +119,7 @@
                         "scripts/player/Turn.js",
                         "scripts/Tilt.js",
                         "scripts/ReduceColliderHeight.js",
-                        "scripts/player/PlayerSoundEffects.js"
+                        "scripts/audio/PlayerSoundEffects.js"
                     ]
                 }
             }

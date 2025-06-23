@@ -55,7 +55,7 @@
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
-                                "scripts/Music.js"
+                                "scripts/audio/Music.js"
                             ]
                         }
                     }
@@ -113,7 +113,7 @@
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
-                                "scripts/Music.js"
+                                "scripts/audio/Music.js"
                             ]
                         }
                     }
@@ -171,7 +171,7 @@
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
-                                "scripts/Music.js"
+                                "scripts/audio/Music.js"
                             ]
                         }
                     }
@@ -229,7 +229,7 @@
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
-                                "scripts/Music.js"
+                                "scripts/audio/Music.js"
                             ]
                         }
                     }
@@ -287,7 +287,7 @@
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
-                                "scripts/Music.js"
+                                "scripts/audio/Music.js"
                             ]
                         }
                     }
@@ -345,7 +345,7 @@
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
-                                "scripts/Music.js"
+                                "scripts/audio/Music.js"
                             ]
                         }
                     }
