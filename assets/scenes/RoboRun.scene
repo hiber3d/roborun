@@ -7,7 +7,7 @@
                 "type": "Hiber3D::ScriptInstance",
                 "data": {
                     "scripts": [
-                        "scripts/audio/Mute.js"
+                        "scripts/managers/MuteManager.js"
                     ]
                 }
             }
@@ -191,7 +191,7 @@
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
-                                "scripts/audio/SoundEffects.js"
+                                "scripts/managers/SoundEffectsManager.js"
                             ]
                         }
                     }
