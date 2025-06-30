@@ -23,7 +23,7 @@ export const Mute = ({ minimal = false }: { minimal?: boolean }) => {
     if (!api) {
       return;
     }
-    const muteListener = api.onBroadcastRequestMuteState(() => {
+    const muteListener = api.onRequestMuteState(() => {
       const initialMutedState = getConfigFromLocalStorage(localStorageKey) ?? { mute: false, volume: 1 };
       setMuted(initialMutedState.mute);
       requestAnimationFrame(() => {

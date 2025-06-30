@@ -43,7 +43,7 @@ void AudioModule::onRegister(Hiber3D::InitContext& context) {
     
     if (context.isModuleRegistered<Hiber3D::JavaScriptScriptingModule>()) {
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<ToggleMuteAudio>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<BroadcastRequestMuteState>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<RequestMuteState>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerEvent<PlayButtonPressAudio>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<SyncedMusic>(context);
     }

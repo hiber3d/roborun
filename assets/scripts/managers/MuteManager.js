@@ -5,7 +5,7 @@ export default class {
 
   onCreate() {
     hiber3d.addEventListener(this, "ToggleMuteAudio");
-    hiber3d.writeEvent("BroadcastRequestMuteState", {});
+    hiber3d.writeEvent("RequestMuteState", {});
   }
 
   onEvent(event, payload) {
