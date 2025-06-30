@@ -14,7 +14,7 @@ export default class {
     hiber3d.addEventListener(this, "BroadcastCollectiblePickup");
     hiber3d.addEventListener(this, "BroadcastGameStarted");
     hiber3d.addEventListener(this, "BroadcastPerfectCollectiblePickup");
-    hiber3d.addEventListener(this, "PlayButtonPressAudio");
+    hiber3d.addEventListener(this, "PlayAudioOnButtonPressed");
   }
 
   onEvent(event, payload) {
@@ -25,7 +25,7 @@ export default class {
     // TODO: Move this to the C++ source? Makes it harder to change, because you need to recompile...
     hiber3d.setSingleton("Hiber3D::AudioSettings", "maxActiveVoices", 32);
 
-    if (event === "PlayButtonPressAudio") {
+    if (event === "PlayAudioOnButtonPressed") {
       audioUtils.playAudio(this.entity, "ButtonPress", "audio/sfx/buttonpress.mp3", 1, 1);
     } else if (event === "BroadcastCollectiblePickup") {
       const now = Date.now();

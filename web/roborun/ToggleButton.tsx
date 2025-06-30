@@ -30,7 +30,7 @@ export const ToggleButton = ({
             }
       }
       onClick={onClick}
-      onPointerDown={() => api?.writePlayButtonPressAudio()}
+      onPointerDown={() => api?.writePlayAudioOnButtonPressed()}
     >
       {children}
     </div>

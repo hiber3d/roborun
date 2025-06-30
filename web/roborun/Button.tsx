@@ -9,7 +9,7 @@ export const Button = ({ children, className, ...props }: ComponentProps<"button
     <button
       className={twMerge("h-[80px] relative block roborun-button", className)}
       {...props}
-      onPointerDown={() => api?.writePlayButtonPressAudio()}
+      onPointerDown={() => api?.writePlayAudioOnButtonPressed()}
     >
       <div
         className="absolute w-full top-0 left-0"

@@ -14,7 +14,7 @@ struct RequestMuteState {};
 HIBER3D_REFLECT(HIBER3D_TYPE(RequestMuteState));
 HIBER3D_INTEROP_SEND_TO_JS(RequestMuteState);
 
-struct PlayButtonPressAudio {};
+struct PlayAudioOnButtonPressed {};
 
-HIBER3D_REFLECT(HIBER3D_TYPE(PlayButtonPressAudio));
-HIBER3D_INTEROP_RECEIVE_FROM_JS(PlayButtonPressAudio);
+HIBER3D_REFLECT(HIBER3D_TYPE(PlayAudioOnButtonPressed));
+HIBER3D_INTEROP_RECEIVE_FROM_JS(PlayAudioOnButtonPressed);

@@ -12,7 +12,7 @@ export const LeaderboardButton = ({ player, showLeaderboard }: { player?: Player
     <div
       className="relative h-[84px] truncate min-w-[150px] roborun-button select-none"
       onClick={showLeaderboard}
-      onPointerDown={() => api?.writePlayButtonPressAudio()}
+      onPointerDown={() => api?.writePlayAudioOnButtonPressed()}
     >
       <div
         className="absolute w-full h-full"
