@@ -94,9 +94,9 @@ export default class {
   MAX_INCLINES_IN_A_ROW = 1;
 
   // Obstacles
-  OBSTACLE_CHANCE_AT_DIFFICULTY_0 = 0.25;
+  OBSTACLE_CHANCE_AT_DIFFICULTY_0 = 1;
   OBSTACLE_CHANCE_AT_DIFFICULTY_1 = 1;
-  MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_0 = 2;
+  MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_0 = 0;
   MIN_OBSTACLELESS_BETWEEN_OBSTACLES_AT_DIFFICULTY_1 = 0;
 
   // PickUps
@@ -208,12 +208,12 @@ export default class {
               ],
             },
             {
-              probability: 0.8,
+              probability: 1.8,
               obstacle: "scenes/obstacles/ObstacleRobotArm1.scene",
               obstacleLane: [LANE.MID],
             },
             {
-              probability: 0.8,
+              probability: 1.8,
               obstacle: "scenes/obstacles/ObstacleRobotArm2.scene",
               obstacleLane: [LANE.MID],
             }
