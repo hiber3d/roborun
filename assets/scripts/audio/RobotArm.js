@@ -1,18 +1,22 @@
+import * as input from "hiber3d:input";
+
 export default class {
   transform = null;
+  name = "";
 
   onCreate() {
     this.transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
     hiber3d.addComponent(this.entity ,"Hiber3D::AudioSource");
     hiber3d.setComponent(this.entity, "Hiber3D::AudioSource", "asset", "audio/sfx/a_fx_forcefield_01.ogg");
     hiber3d.setComponent(this.entity, "Hiber3D::AudioSource", "playbackMode", 1);
-    hiber3d.setComponent(this.entity, "Hiber3D::AudioSource", "playSpeedFadeTime", 0.3);
-    hiber3d.setComponent(this.entity, "Hiber3D::AudioSource", "volumeFadeTime", 0.3);
+    hiber3d.setComponent(this.entity, "Hiber3D::AudioSource", "playSpeedFadeTime", 0.1);
+    hiber3d.setComponent(this.entity, "Hiber3D::AudioSource", "volumeFadeTime", 0.1);
     hiber3d.addComponent(this.entity, "Hiber3D::SpatialAudio");
     hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "volumeAttenuationModel", 1);
     hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "maxAttenuationDistance", 100);
     hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "minAttenuationDistance", 1);
     hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "rolloffFactor", 1);
+    this.name = hiber3d.getComponent(this.entity, "Hiber3D::Name");
   }
 
   onReload() {
@@ -21,14 +25,98 @@ export default class {
 
   onUpdate(deltaTime) {
     const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
-    const angularVelocity = ((this.transform.rotation.x - transform.rotation.x) + (this.transform.rotation.y - transform.rotation.y) + (this.transform.rotation.z - transform.rotation.z) + (this.transform.rotation.w - transform.rotation.w)) / deltaTime;
-    hiber3d.print("Angular Velocity: " + angularVelocity);
+
+    if (this.name == "Base") {
+      if (input.keyIsPressed(input.Key.LEFT_ARROW)) {
+        transform.rotation.rotateAroundAxis({x: 0, y: 1, z: 0}, deltaTime * Math.PI / 2);
+      }
+      if (input.keyIsPressed(input.Key.RIGHT_ARROW)) {
+        transform.rotation.rotateAroundAxis({x: 0, y: 1, z: 0}, -deltaTime * Math.PI / 2);
+      }
+    }
+
+    if (this.name == "Bottom") {
+      if (input.keyIsPressed(input.Key.UP_ARROW)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, deltaTime * Math.PI / 2);
+      }
+      if (input.keyIsPressed(input.Key.DOWN_ARROW)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, -deltaTime * Math.PI / 2);
+      }
+    }
+
+    if (this.name == "Middle") {
+      if (input.keyIsPressed(input.Key.J)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, deltaTime * Math.PI / 2);
+      }
+      if (input.keyIsPressed(input.Key.L)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, -deltaTime * Math.PI / 2);
+      }
+    }
+
+    if (this.name == "Top") {
+      if (input.keyIsPressed(input.Key.I)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, deltaTime * Math.PI / 2);
+      }
+      if (input.keyIsPressed(input.Key.K)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, -deltaTime * Math.PI / 2);
+      }
+    }
+
+    if (this.name == "Hand") {
+      if (input.keyIsPressed(input.Key.A)) {
+        transform.rotation.rotateAroundAxis({x: 0, y: 1, z: 0}, deltaTime * Math.PI / 2);
+      }
+      if (input.keyIsPressed(input.Key.D)) {
+        transform.rotation.rotateAroundAxis({x: 0, y: 1, z: 0}, -deltaTime * Math.PI / 2);
+      }
+    }
+
+    if (this.name == "Claw1") {
+      if (input.keyIsPressed(input.Key.W)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, deltaTime * Math.PI / 2);
+      }
+      if (input.keyIsPressed(input.Key.S)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, -deltaTime * Math.PI / 2);
+      }
+    }
+
+    if (this.name == "Claw2") {
+      if (input.keyIsPressed(input.Key.W)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, -deltaTime * Math.PI / 2);
+      }
+      if (input.keyIsPressed(input.Key.S)) {
+        transform.rotation.rotateAroundAxis({x: 1, y: 0, z: 0}, deltaTime * Math.PI / 2);
+      }
+    }
+
+    const oldEulerRotation = this.transform.rotation.toEulerRollPitchYaw();
+    const newEulerRotation = transform.rotation.toEulerRollPitchYaw();
+    const rotationDelta = {
+      x: (newEulerRotation.x - oldEulerRotation.x) % (2 * Math.PI),
+      y: (newEulerRotation.y - oldEulerRotation.y) % (2 * Math.PI),
+      z: (newEulerRotation.z - oldEulerRotation.z) % (2 * Math.PI)
+    };
+
+    // TODO: This bugs out badly when the old and new rotation are on different sides of 360 degrees,
+    // resulting in very strange sounds. Find some way to "normalize" the rotationDelta first!
+    const angularVelocity = Math.sqrt(rotationDelta.x**2 + rotationDelta.y**2 + rotationDelta.z**2) / deltaTime;
+
     const audio = hiber3d.getComponent(this.entity, "Hiber3D::AudioSource");
     audio.volume = 0.5 + Math.abs(angularVelocity) * 10;
-    audio.playSpeed = 0 + Math.abs(angularVelocity) * 6;
+    audio.playSpeed = 0 + Math.abs(angularVelocity) * 3;
     hiber3d.setComponent(this.entity, "Hiber3D::AudioSource", "volume", audio.volume);
     hiber3d.setComponent(this.entity, "Hiber3D::AudioSource", "playSpeed", audio.playSpeed);
+
     this.transform = transform;
+    hiber3d.setComponent(this.entity, "Hiber3D::Transform", "rotation", transform.rotation);
+
+    // Base: Only Y
+    // Bottom: Only X
+    // Middle: Only X
+    // Top: Only X
+    // Hand: Only Y
+    // Claw1: Only X
+    // Claw2: Only -X
   }
 
   onEvent(event, payload) {

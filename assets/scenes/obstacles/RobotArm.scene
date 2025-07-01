@@ -192,6 +192,15 @@
                     "type": "Hiber3D::Name",
                     "data": "Base"
                   },
+                                        {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                          "scripts": [
+                            "scripts/Obstacle.js",
+                                        "scripts/audio/RobotArm.js"
+                          ]
+                        }
+                      },
                   {
                     "type": "Hiber3D::AnimationTargetId",
                     "data": 6
@@ -620,7 +629,8 @@
                                         "type": "Hiber3D::ScriptInstance",
                                         "data": {
                                           "scripts": [
-                                            "scripts/Obstacle.js"
+                                            "scripts/Obstacle.js",
+                                        "scripts/audio/RobotArm.js"
                                           ]
                                         }
                                       },
