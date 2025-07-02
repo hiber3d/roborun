@@ -20,17 +20,17 @@ HIBER3D_REFLECT(HIBER3D_TYPE(SyncedMusic));
 // This allows multiple music tracks, each in their own AudioSource,
 // to start simultaneously when all of them have finished loading.
 static void startSyncedMusicWhenLoaded(Hiber3D::Singleton<Hiber3D::AssetServer> assetServer,
-                                       Hiber3D::View<Hiber3D::AudioSource, const SyncedMusic> audioComponents) {
+                                       Hiber3D::View<Hiber3D::AudioSource, const SyncedMusic> syncedMusicTracks) {
     bool allLoaded = true;
 
-    for (auto [entity, audio] : audioComponents.each()) {
-        if (audio->status == Hiber3D::AudioStatus::PAUSED && assetServer->getLoadState(audio->asset.toUntyped()) != Hiber3D::AssetLoadState::LOADED) {
+    for (auto [entity, audio] : syncedMusicTracks.each()) {
+        if (audio->status == Hiber3D::AudioStatus::PAUSED && assetServer->getLoadedWithDependenciesStatus(audio->asset.toUntyped()) != Hiber3D::AssetLoadedWithDependencyStatus::LOADED) {
             allLoaded = false;
         }
     }
 
     if (allLoaded) {
-        for (auto [entity, audio] : audioComponents.each()) {
+        for (auto [entity, audio] : syncedMusicTracks.each()) {
             if (audio->status == Hiber3D::AudioStatus::PAUSED) {
                 audio.mut().status = Hiber3D::AudioStatus::PLAYING;
             }
