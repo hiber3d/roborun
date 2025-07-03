@@ -551,6 +551,17 @@
                                         "data": "CameraComponent"
                                     },
                                     {
+                                        "type": "Hiber3D::AudioListener",
+                                        "data": {
+                                            "priority": 0,
+                                            "velocity": {
+                                                "x": 0,
+                                                "y": 0,
+                                                "z": 0
+                                            }
+                                        }
+                                    },
+                                    {
                                         "type": "Hiber3D::ScriptInstance",
                                         "data": {
                                             "scripts": [
