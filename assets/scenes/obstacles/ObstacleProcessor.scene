@@ -181,62 +181,6 @@
                     }
                 ],
                 "children": []
-            },
-            {
-                "id": 37748755,
-                "components": [
-                    {
-                        "type": "Hiber3D::Transform",
-                        "data": {
-                            "position": {
-                                "x": 0,
-                                "y": 1.44565,
-                                "z": -0.845588
-                            },
-                            "rotation": {
-                                "x": 0,
-                                "y": 0,
-                                "z": 0,
-                                "w": 1
-                            },
-                            "scale": {
-                                "x": 1,
-                                "y": 1,
-                                "z": 1
-                            }
-                        }
-                    },
-                    {
-                        "type": "Hiber3D::AudioSource",
-                        "data": {
-                            "asset": "audio/sfx/a_fx_forcefield_01.mp3",
-                            "volume": 1,
-                            "volumeFadeTime": 0.5,
-                            "playSpeed": 1,
-                            "playSpeedFadeTime": 0.5,
-                            "playbackMode": 1,
-                            "status": 0,
-                            "loopPoint": 0
-                        }
-                    },
-                    {
-                        "type": "Hiber3D::SpatialAudio",
-                        "data": {
-                            "volumeAttenuationModel": 1,
-                            "maxAttenuationDistance": 1000,
-                            "minAttenuationDistance": 1,
-                            "rolloffFactor": 0.1,
-                            "inaudibleBehavior": 0,
-                            "dopplerFactor": 1,
-                            "velocity": {
-                                "x": 0,
-                                "y": 0,
-                                "z": 0
-                            }
-                        }
-                    }
-                ],
-                "children": []
             }
         ]
     }

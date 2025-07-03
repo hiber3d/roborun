@@ -71,9 +71,7 @@ public:
         context.registerModule<Hiber3D::HierarchyModule>();
 
         context.registerModule<Hiber3D::SceneModule>();
-        context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::AudioListener>(context);
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::AudioSource>(context);
-        context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::SpatialAudio>(context);
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::ScriptInstance>(context);
 
         context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "scenes/RoboRun.scene"});
@@ -101,9 +99,7 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](const Hiber3D::Registry& registry, Hiber3D::Key key) { return registry.singleton<const Hiber3D::KeyboardState>().justReleased(key); }>(context, "keyJustReleased");
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
 
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioListener>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioSource>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::SpatialAudio>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioSettings>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioStats>(context);
         
