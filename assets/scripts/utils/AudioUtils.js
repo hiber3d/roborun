@@ -24,7 +24,7 @@ export function playAudio3D(parent, name, asset, playSpeed, volume) {
     "volumeAttenuationModel",
     audio.AudioAttenuationModel.INVERSE_DISTANCE
   );
-  hiber3d.setComponent(audioEntity, "Hiber3D::SpatialAudio", "inaudibleBehavior", audio.InaudibleBehavior.KEEP_PLAYING); //
+  hiber3d.setComponent(audioEntity, "Hiber3D::SpatialAudio", "inaudibleBehavior", audio.InaudibleBehavior.KEEP_PLAYING);
   hiber3d.setComponent(audioEntity, "Hiber3D::SpatialAudio", "minAttenuationDistance", 2);
   hiber3d.setComponent(audioEntity, "Hiber3D::SpatialAudio", "maxAttenuationDistance", 1000);
   hiber3d.setComponent(audioEntity, "Hiber3D::SpatialAudio", "rolloffFactor", 0.1);
