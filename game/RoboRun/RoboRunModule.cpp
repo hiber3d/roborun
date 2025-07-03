@@ -82,9 +82,9 @@ void loadEnvironment(
     renderEnvironment->fog.skyboxAlpha    = 1.0f;
     renderEnvironment->fog.skyboxGradient = 0.01f;
 
-    renderEnvironment->bloom.enabled            = true;
-    renderEnvironment->bloom.brightnessTreshold = 0.85f;
-    renderEnvironment->bloom.blendAlpha         = 0.35f;
+    renderEnvironment->bloom.enabled             = true;
+    renderEnvironment->bloom.brightnessThreshold = 0.85f;
+    renderEnvironment->bloom.blendAlpha          = 0.35f;
 
     renderEnvironment->colorGrading.enabled    = true;
     renderEnvironment->colorGrading.saturation = 1.08f;
