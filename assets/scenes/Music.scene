@@ -1,0 +1,357 @@
+{
+    "version": "1.0.0",
+    "root": {
+        "id": 14680802,
+        "components": [],
+        "children": [
+            {
+                "id": 1048585,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "bass_01"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/music/bass_01.ogg",
+                            "volume": 0,
+                            "volumeFadeTime": 0.25,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.25,
+                            "playbackMode": 1,
+                            "status": 1,
+                            "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                            "scripts": [
+                                "scripts/audio/Music.js"
+                            ]
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 1048586,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "bass_02"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/music/bass_02.ogg",
+                            "volume": 0,
+                            "volumeFadeTime": 0.25,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.25,
+                            "playbackMode": 1,
+                            "status": 1,
+                            "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                            "scripts": [
+                                "scripts/audio/Music.js"
+                            ]
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 1048587,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "bass_03"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/music/bass_03.ogg",
+                            "volume": 0,
+                            "volumeFadeTime": 0.25,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.25,
+                            "playbackMode": 1,
+                            "status": 1,
+                            "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                            "scripts": [
+                                "scripts/audio/Music.js"
+                            ]
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 1048588,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "drums_01"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/music/drums_01.ogg",
+                            "volume": 1,
+                            "volumeFadeTime": 0.25,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.25,
+                            "playbackMode": 1,
+                            "status": 1,
+                            "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                            "scripts": [
+                                "scripts/audio/Music.js"
+                            ]
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 1048589,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "drums_02"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/music/drums_02.ogg",
+                            "volume": 0,
+                            "volumeFadeTime": 0.25,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.25,
+                            "playbackMode": 1,
+                            "status": 1,
+                            "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                            "scripts": [
+                                "scripts/audio/Music.js"
+                            ]
+                        }
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 1048590,
+                "components": [
+                    {
+                        "type": "Hiber3D::Transform",
+                        "data": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0
+                            },
+                            "rotation": {
+                                "x": 0,
+                                "y": 0,
+                                "z": 0,
+                                "w": 1
+                            },
+                            "scale": {
+                                "x": 1,
+                                "y": 1,
+                                "z": 1
+                            }
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::Name",
+                        "data": "strings_01"
+                    },
+                    {
+                        "type": "Hiber3D::AudioSource",
+                        "data": {
+                            "asset": "audio/music/strings_01.ogg",
+                            "volume": 0,
+                            "volumeFadeTime": 0.25,
+                            "playSpeed": 1,
+                            "playSpeedFadeTime": 0.25,
+                            "playbackMode": 1,
+                            "status": 1,
+                            "loopPoint": 0
+                        }
+                    },
+                    {
+                        "type": "SyncedMusic",
+                        "data": {
+                            "dummy": false
+                        }
+                    },
+                    {
+                        "type": "Hiber3D::ScriptInstance",
+                        "data": {
+                            "scripts": [
+                                "scripts/audio/Music.js"
+                            ]
+                        }
+                    }
+                ],
+                "children": []
+            }
+        ]
+    }
+}

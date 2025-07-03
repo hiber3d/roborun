@@ -1,15 +1,15 @@
-import { useAudio } from "audio/useAudio";
+import { useHiber3D } from "hiber3d";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 export const Button = ({ children, className, ...props }: ComponentProps<"button">) => {
-  const { sfx } = useAudio();
+  const { api } = useHiber3D();
 
   return (
     <button
       className={twMerge("h-[80px] relative block roborun-button", className)}
       {...props}
-      onPointerDown={() => sfx.play("buttonpress")}
+      onPointerDown={() => api?.writePlayAudioOnButtonPressed()}
     >
       <div
         className="absolute w-full top-0 left-0"

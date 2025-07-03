@@ -1,4 +1,4 @@
-import { useAudio } from "audio/useAudio";
+import { useHiber3D } from "hiber3d";
 import { ReactNode } from "react";
 
 export const ToggleButton = ({
@@ -10,7 +10,7 @@ export const ToggleButton = ({
   onClick: () => void;
   children: ReactNode;
 }) => {
-  const { sfx } = useAudio();
+  const { api } = useHiber3D();
 
   return (
     <div
@@ -30,7 +30,7 @@ export const ToggleButton = ({
             }
       }
       onClick={onClick}
-      onPointerDown={() => sfx.play("buttonpress")}
+      onPointerDown={() => api?.writePlayAudioOnButtonPressed()}
     >
       {children}
     </div>

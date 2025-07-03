@@ -118,7 +118,8 @@
                         "scripts/RunningAnimations.js",
                         "scripts/player/Turn.js",
                         "scripts/Tilt.js",
-                        "scripts/ReduceColliderHeight.js"
+                        "scripts/ReduceColliderHeight.js",
+                        "scripts/audio/PlayerSoundEffects.js"
                     ]
                 }
             }
