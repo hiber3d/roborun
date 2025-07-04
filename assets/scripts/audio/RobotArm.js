@@ -7,7 +7,7 @@ const multipliers = {
   Middle: 0.8,
   Top: 0.7,
   Hand: 0.6,
-  Claw1: 0.7,
+  Claw1: 2.4,
   Claw2: 0.8,
 };
 
@@ -84,7 +84,7 @@ export default class {
             this.entity,
             "RobotArmMoving",
             assets[this.name],
-            this.multiplier * (moving ? 1.5 : 0.5),
+            this.multiplier * (1.5 - Math.random()),
             1.0
           );
         }
