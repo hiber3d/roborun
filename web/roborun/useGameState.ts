@@ -5,6 +5,7 @@ import { telegramUser } from "utils/telegram";
 import { PostScore, useHiber3D } from "./../hiber3d";
 
 type Score = PostScore;
+
 export type Player = {
   name: string;
   uuid: string;
@@ -16,7 +17,11 @@ export type Entry = {
   rank: number;
   player_name: string;
   user_uuid: string;
-} & Score;
+  points: number;
+  meters: number;
+  collectibles: number;
+  multiplier: number;
+};
 
 type Leaderboard = {
   leaderboard: Entry[];

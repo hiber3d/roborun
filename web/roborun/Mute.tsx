@@ -1,7 +1,7 @@
 import { useHiber3D } from "hiber3d";
 import { ToggleButton } from "roborun/ToggleButton";
 import { Volume2, VolumeX } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { getConfigFromLocalStorage, setConfigInLocalStorage } from "audio/utils/audioLocalStorage";
 
 const localStorageKey = "sound";
