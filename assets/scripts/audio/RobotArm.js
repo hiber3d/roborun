@@ -39,9 +39,9 @@ export default class {
       "volumeAttenuationModel",
       audio.AudioAttenuationModel.INVERSE_DISTANCE
     );
-    hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "maxAttenuationDistance", 100);
+    hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "maxAttenuationDistance", 1000);
     hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "minAttenuationDistance", 1);
-    hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "rolloffFactor", 0.2);
+    hiber3d.setComponent(this.entity, "Hiber3D::SpatialAudio", "rolloffFactor", 0.1);
     this.multiplier = multipliers[this.name] || 1;
 
     if (this.name != "Middle") {
