@@ -7,7 +7,7 @@ function addAudioSource(audioEntity, asset, playSpeed, volume) {
   hiber3d.setComponent(audioEntity, "Hiber3D::AudioSource", "playSpeed", playSpeed);
   hiber3d.setComponent(audioEntity, "Hiber3D::AudioSource", "volume", volume);
 
-  hiber3d.setComponent(audioEntity, "Hiber3D::AudioSource", "playbackMode", audio.AudioPlaybackMode.ONCE);
+  hiber3d.setComponent(audioEntity, "Hiber3D::AudioSource", "playbackMode", audio.AudioPlaybackMode.DESTROY_ENTITY_WHEN_FINISHED);
 }
 
 function addSpatialAudio(audioEntity) {
