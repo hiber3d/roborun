@@ -1,10 +1,9 @@
 #include <AnimationLoadout/AnimationLoadoutModule.hpp>
 #include <Audio/AudioModule.hpp>
 #include <Broadcast/BroadcastModule.hpp>
-#include <Input/InputModule.hpp>
-#include <Midi/MidiModule.hpp>
-#include <Path/PathModule.hpp>
 #include <ChangeableScene/ChangeableSceneModule.hpp>
+#include <Input/InputModule.hpp>
+#include <Path/PathModule.hpp>
 #include <Segment/SegmentModule.hpp>
 
 #include <Hiber3D/Animation/AnimationModule.hpp>
@@ -43,6 +42,8 @@
 #include <Hiber3D/WorldTransform/ComputedWorldTransform.hpp>
 #include <Hiber3D/WorldTransform/WorldTransformModule.hpp>
 
+#include <Gamepad/GamepadModule.hpp>
+#include <Midi/MidiModule.hpp>
 #include <RoboRun/RoboRunModule.hpp>
 
 class MainModule : public Hiber3D::Module {
@@ -66,7 +67,7 @@ public:
 
         // Start muted by default, while we wait for frontend to update from localstorage.
         // Otherwise, we might start playing audio before the frontend has finished loading and mute after a split second...
-        context.registerModule<Hiber3D::AudioModule>(Hiber3D::AudioSettings{.mainVolume = 0.0f, .globalFadeTime = 0.1, .maxActiveVoices = 32 });
+        context.registerModule<Hiber3D::AudioModule>(Hiber3D::AudioSettings{.mainVolume = 0.0f, .globalFadeTime = 0.1, .maxActiveVoices = 32});
 
         context.registerModule<Hiber3D::LogModule>(Hiber3D::LogSettings{.logLevel = Hiber3D::LogLevel::INFO});
         context.registerModule<Hiber3D::HierarchyModule>();
@@ -78,7 +79,7 @@ public:
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::SpatialAudio>(context);
 
         context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "scenes/RoboRun.scene"});
-        context.registerModule<Hiber3D::PhysicsModule>(); // before WorldTransformModule
+        context.registerModule<Hiber3D::PhysicsModule>();  // before WorldTransformModule
         context.registerModule<Hiber3D::GltfModule>();
         context.registerModule<Hiber3D::WorldTransformModule>();
         context.registerModule<Hiber3D::AnimationModule>();  // after HierarchyModule
@@ -108,7 +109,7 @@ public:
 
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioSettings>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioStats>(context);
-        
+
         context.registerModule<Hiber3D::RmlUiModule>();
         context.registerModule<Hiber3D::InteropModule>();
         context.registerModule<Hiber3D::DebugModule>();
@@ -124,6 +125,7 @@ public:
         context.registerModule<PathModule>();
         context.registerModule<ChangeableSceneModule>();
         context.registerModule<SegmentModule>();
+        context.registerModule<GamepadModule>();
         context.registerModule<MidiModule>();
     }
 };

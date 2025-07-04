@@ -63,6 +63,10 @@ set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Midi/MidiModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Midi/MidiModule.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Midi/MidiTypes.hpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Gamepad/GamepadModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Gamepad/GamepadModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Gamepad/GamepadTypes.hpp
 )
 
 hiber3d_add_game(GameTemplate "${GAME_FILES}")
