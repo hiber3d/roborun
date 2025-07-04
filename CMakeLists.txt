@@ -58,6 +58,11 @@ set(GAME_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentModule.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentModule.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Segment/SegmentTypes.hpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Midi/MidiEvents.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Midi/MidiModule.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Midi/MidiModule.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Midi/MidiTypes.hpp
 )
 
 hiber3d_add_game(GameTemplate "${GAME_FILES}")

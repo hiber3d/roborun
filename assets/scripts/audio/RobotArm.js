@@ -20,6 +20,45 @@ const assets = {
   "Claw2": "audio/sfx/liftservo-77999.mp3",
 };
 
+const cc = {
+  "Base": 1,
+  "Bottom": 2,
+  "Middle": 3,
+  "Top": 4,
+  "Hand": 5,
+  "Claw1": 6,
+  "Claw2": 6,
+};
+
+const rotateKeys1 = {
+  "Base": 1,
+  "Bottom": 3,
+  "Middle": 5,
+  "Top": 7,
+  "Hand": 9,
+  "Claw1": 11,
+  "Claw2": 11,
+}
+
+const rotateKeys2 = {
+  "Base": 2,
+  "Bottom": 4,
+  "Middle": 6,
+  "Top": 8,
+  "Hand": 10,
+  "Claw1": 12,
+  "Claw2": 12,
+}
+
+const axes = {
+  "Base": {x: 0, y: 1, z: 0},
+  "Bottom": {x: 1, y: 0, z: 0},
+  "Middle": {x: 1, y: 0, z: 0},
+  "Top": {x: 1, y: 0, z: 0},
+  "Hand": {x: 0, y: 1, z: 0},
+  "Claw1": {x: 1, y: 0, z: 0},
+  "Claw2": {x: -1, y: 0, z: 0},
+}
 
 export default class {
   transform = null;
@@ -65,6 +104,17 @@ export default class {
 
   onUpdate(deltaTime) {
     const transform = hiber3d.getComponent(this.entity, "Hiber3D::Transform");
+    const inputChannel = hiber3d.getSingleton("MidiState", "input", "channels", 1);
+    if (inputChannel.notes[rotateKeys1[this.name] + 36] > 0) {
+      transform.rotation.rotateAroundAxis(axes[this.name], deltaTime * Math.PI / 2);
+    }
+    if (inputChannel.notes[rotateKeys2[this.name]+ 36] > 0) {
+      transform.rotation.rotateAroundAxis(axes[this.name], -deltaTime * Math.PI / 2);
+    }
+    const normalizedCC = (inputChannel.cc[cc[this.name]] / 127) - 0.5;
+    transform.rotation.rotateAroundAxis(axes[this.name], deltaTime * normalizedCC * Math.PI / 2);
+
+    hiber3d.setComponent(this.entity, "Hiber3D::Transform", "rotation", transform.rotation);
     const angularVelocity = this.computeAngularVelocity(this.transform.rotation, transform.rotation, deltaTime);
     const audio = hiber3d.getComponent(this.entity, "Hiber3D::AudioSource");
     const moving = this.angularVelocity != angularVelocity;

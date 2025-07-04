@@ -2,6 +2,7 @@
 #include <Audio/AudioModule.hpp>
 #include <Broadcast/BroadcastModule.hpp>
 #include <Input/InputModule.hpp>
+#include <Midi/MidiModule.hpp>
 #include <Path/PathModule.hpp>
 #include <ChangeableScene/ChangeableSceneModule.hpp>
 #include <Segment/SegmentModule.hpp>
@@ -123,6 +124,7 @@ public:
         context.registerModule<PathModule>();
         context.registerModule<ChangeableSceneModule>();
         context.registerModule<SegmentModule>();
+        context.registerModule<MidiModule>();
     }
 };
 
