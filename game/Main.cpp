@@ -102,10 +102,11 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerFunction<[](Hiber3D::Registry& registry, Hiber3D::Entity entity) { return createEntityAsChild(registry, entity); }>(context, "createEntityAsChild");
 
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioListener>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioSettings>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioSource>(context);
-        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioStats>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::SpatialAudio>(context);
+
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioSettings>(context);
+        context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioStats>(context);
         
         context.registerModule<Hiber3D::RmlUiModule>();
         context.registerModule<Hiber3D::InteropModule>();
