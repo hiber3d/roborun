@@ -475,12 +475,6 @@
                         "data": "CameraFollowPlayer"
                     },
                     {
-                        "type": "Hiber3D::AudioListener",
-                        "data": {
-                            "priority": 0
-                        }
-                    },
-                    {
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                             "scripts": [
