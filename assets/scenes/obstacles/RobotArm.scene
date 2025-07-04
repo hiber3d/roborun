@@ -111,8 +111,7 @@
                 }
               }
             ],
-            "children": [
-            ]
+            "children": []
           },
           {
             "id": 7340036,
@@ -129,7 +128,7 @@
                     "x": -1,
                     "y": 0,
                     "z": 0,
-                    "w": 2.98023e-08
+                    "w": 2.98023e-8
                   },
                   "scale": {
                     "x": 1,
@@ -178,7 +177,7 @@
                       "rotation": {
                         "x": -1,
                         "y": -4.23516e-22,
-                        "z": 7.54979e-08,
+                        "z": 7.54979e-8,
                         "w": 3.55271e-15
                       },
                       "scale": {
@@ -210,8 +209,8 @@
                             "z": 0.949511
                           },
                           "rotation": {
-                            "x": -4.66494e-08,
-                            "y": 4.37114e-08,
+                            "x": -4.66494e-8,
+                            "y": 4.37114e-8,
                             "z": -2.03911e-15,
                             "w": 1
                           },
@@ -230,7 +229,8 @@
                         "type": "Hiber3D::ScriptInstance",
                         "data": {
                           "scripts": [
-                            "scripts/Obstacle.js"
+                            "scripts/Obstacle.js",
+                            "scripts/audio/RobotArm.js"
                           ]
                         }
                       },
@@ -274,12 +274,12 @@
                               "position": {
                                 "x": 0.661036,
                                 "y": 2.55543,
-                                "z": 5.50997e-09
+                                "z": 5.50997e-9
                               },
                               "rotation": {
                                 "x": 0.674187,
-                                "y": 2.09908e-08,
-                                "z": -2.2995e-08,
+                                "y": 2.09908e-8,
+                                "z": -2.2995e-8,
                                 "w": 0.738561
                               },
                               "scale": {
@@ -297,7 +297,8 @@
                             "type": "Hiber3D::ScriptInstance",
                             "data": {
                               "scripts": [
-                                "scripts/Obstacle.js"
+                                "scripts/Obstacle.js",
+                                "scripts/audio/RobotArm.js"
                               ]
                             }
                           },
@@ -339,13 +340,13 @@
                                 "type": "Hiber3D::Transform",
                                 "data": {
                                   "position": {
-                                    "x": 8.22054e-09,
+                                    "x": 8.22054e-9,
                                     "y": 2.8716,
-                                    "z": 2.92182e-08
+                                    "z": 2.92182e-8
                                   },
                                   "rotation": {
                                     "x": 0.0455119,
-                                    "y": -7.46925e-09,
+                                    "y": -7.46925e-9,
                                     "z": 0.00172479,
                                     "w": 0.998962
                                   },
@@ -364,7 +365,8 @@
                                 "type": "Hiber3D::ScriptInstance",
                                 "data": {
                                   "scripts": [
-                                    "scripts/Obstacle.js"
+                                    "scripts/Obstacle.js",
+                                    "scripts/audio/RobotArm.js"
                                   ]
                                 }
                               },
@@ -406,13 +408,13 @@
                                     "type": "Hiber3D::Transform",
                                     "data": {
                                       "position": {
-                                        "x": -5.00586e-09,
+                                        "x": -5.00586e-9,
                                         "y": 0.657458,
-                                        "z": -2.53774e-07
+                                        "z": -2.53774e-7
                                       },
                                       "rotation": {
-                                        "x": 7.38894e-06,
-                                        "y": -7.81911e-05,
+                                        "x": 0.00000738894,
+                                        "y": -0.0000781911,
                                         "z": -0.001723,
                                         "w": 0.999999
                                       },
@@ -431,7 +433,8 @@
                                     "type": "Hiber3D::ScriptInstance",
                                     "data": {
                                       "scripts": [
-                                        "scripts/Obstacle.js"
+                                        "scripts/Obstacle.js",
+                                        "scripts/audio/RobotArm.js"
                                       ]
                                     }
                                   },
@@ -473,14 +476,14 @@
                                         "type": "Hiber3D::Transform",
                                         "data": {
                                           "position": {
-                                            "x": 4.08869e-07,
+                                            "x": 4.08869e-7,
                                             "y": 0.72103,
                                             "z": -0.651628
                                           },
                                           "rotation": {
                                             "x": 0.122676,
-                                            "y": -1.61531e-07,
-                                            "z": 5.5995e-08,
+                                            "y": -1.61531e-7,
+                                            "z": 5.5995e-8,
                                             "w": 0.992447
                                           },
                                           "scale": {
@@ -498,7 +501,8 @@
                                         "type": "Hiber3D::ScriptInstance",
                                         "data": {
                                           "scripts": [
-                                            "scripts/Obstacle.js"
+                                            "scripts/Obstacle.js",
+                                            "scripts/audio/RobotArm.js"
                                           ]
                                         }
                                       },
@@ -540,14 +544,14 @@
                                             "type": "Hiber3D::Transform",
                                             "data": {
                                               "position": {
-                                                "x": -1.27293e-08,
+                                                "x": -1.27293e-8,
                                                 "y": 0.444972,
                                                 "z": 0.0562024
                                               },
                                               "rotation": {
                                                 "x": 0.703468,
-                                                "y": -6.25605e-09,
-                                                "z": 2.08861e-07,
+                                                "y": -6.25605e-9,
+                                                "z": 2.08861e-7,
                                                 "w": 0.710727
                                               },
                                               "scale": {
@@ -578,8 +582,7 @@
                                             }
                                           }
                                         ],
-                                        "children": [
-                                        ]
+                                        "children": []
                                       }
                                     ]
                                   },
@@ -590,7 +593,7 @@
                                         "type": "Hiber3D::Transform",
                                         "data": {
                                           "position": {
-                                            "x": -3.99976e-07,
+                                            "x": -3.99976e-7,
                                             "y": 0.717992,
                                             "z": 0.652962
                                           },
@@ -695,8 +698,7 @@
                                             }
                                           }
                                         ],
-                                        "children": [
-                                        ]
+                                        "children": []
                                       }
                                     ]
                                   },
@@ -707,9 +709,9 @@
                                         "type": "Hiber3D::Transform",
                                         "data": {
                                           "position": {
-                                            "x": 2.09875e-09,
+                                            "x": 2.09875e-9,
                                             "y": 0.223066,
-                                            "z": -5.3183e-08
+                                            "z": -5.3183e-8
                                           },
                                           "rotation": {
                                             "x": 0,
@@ -745,8 +747,7 @@
                                         }
                                       }
                                     ],
-                                    "children": [
-                                    ]
+                                    "children": []
                                   }
                                 ]
                               }
@@ -797,8 +798,7 @@
                                 }
                               }
                             ],
-                            "children": [
-                            ]
+                            "children": []
                           }
                         ]
                       },
@@ -847,8 +847,7 @@
                             }
                           }
                         ],
-                        "children": [
-                        ]
+                        "children": []
                       }
                     ]
                   }
