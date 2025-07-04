@@ -27,7 +27,7 @@ function addSpatialAudio(audioEntity) {
 }
 
 export function playAudio(parent, name, asset, playSpeed, volume) {
-  const audioEntity = registry.isValid(parent) ? hiber3d.call("createEntityAsChild", parent) : registry.create();
+  const audioEntity = registry.isValid(parent) ? hiber3d.call("createEntityAsChild", parent) : registry.createEntity();
 
   hiber3d.addComponent(audioEntity, "Hiber3D::Name"); // This is just to make it easier to trace which sounds have been added
   hiber3d.setComponent(audioEntity, "Hiber3D::Name", name);
@@ -38,7 +38,7 @@ export function playAudio(parent, name, asset, playSpeed, volume) {
 }
 
 export function playAudio3D(parent, name, asset, playSpeed, volume) {
-  const audioEntity = registry.isValid(parent) ? hiber3d.call("createEntityAsChild", parent) : registry.create();
+  const audioEntity = registry.isValid(parent) ? hiber3d.call("createEntityAsChild", parent) : registry.createEntity();
 
   hiber3d.addComponent(audioEntity, "Hiber3D::Name");
   hiber3d.setComponent(audioEntity, "Hiber3D::Name", name);
