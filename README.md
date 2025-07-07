@@ -11,7 +11,7 @@
 - ninja
 - clang-format
 
-### macOS
+### MacOS
 
 Install via [HomeBrew](https://brew.sh/)
 
@@ -27,15 +27,22 @@ Install via [Scoop](https://scoop.sh/)
 
 > Note: We recommend installing node via nvm
 
-clang-format is not available in `scoop`
+(clang-format is not available in `scoop`)
 
 ## Getting started
 
-From the root of the project, run
+Unless you have used `git lfs` before, it needs to be initialized now:
 
-1. `npm run compile` (See below for options)
+1. `git-lfs install`
+1. `git-lfs fetch`
+1. `git-lfs checkout`
+
+Next, from the root of the project, run
+
+1. `npm run compile` (See [below](#compiling-engine) for options)
 1. `npm install`
 1. `npm run dev`
+1. Press `cmd + e` (`ctrl + e` on Windows) to toggle the editor
 
 ## Building for distribution
 
