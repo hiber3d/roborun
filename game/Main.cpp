@@ -73,8 +73,8 @@ public:
         context.registerModule<Hiber3D::SceneModule>();
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::AudioListener>(context);
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::AudioSource>(context);
-        context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::SpatialAudio>(context);
         context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::ScriptInstance>(context);
+        context.getModule<Hiber3D::SceneModule>().registerComponent<Hiber3D::SpatialAudio>(context);
 
         context.registerModule<Hiber3D::SceneManagerModule>(Hiber3D::SceneManagerSettings{.defaultScene = "scenes/RoboRun.scene"});
         context.registerModule<Hiber3D::PhysicsModule>(); // before WorldTransformModule
@@ -104,6 +104,7 @@ public:
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioListener>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::AudioSource>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerComponent<Hiber3D::SpatialAudio>(context);
+
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioSettings>(context);
         context.getModule<Hiber3D::JavaScriptScriptingModule>().registerSingleton<Hiber3D::AudioStats>(context);
         
